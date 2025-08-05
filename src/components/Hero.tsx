@@ -39,9 +39,9 @@ const Hero: React.FC = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-            className="mx-auto w-48 h-48 rounded-full bg-gradient-to-br from-netflix-red to-red-600 flex items-center justify-center mb-8"
+            className="mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-netflix-red to-red-600 flex items-center justify-center mb-6 sm:mb-8"
           >
-            <span className="text-6xl font-bold text-white">SA</span>
+            <span className="text-4xl sm:text-5xl md:text-6xl font-bold text-white">SA</span>
           </motion.div>
 
           {/* Name and Title */}
@@ -51,13 +51,13 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="space-y-4"
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight">
               Siddhesh Amrale
             </h1>
-            <h2 className="text-2xl md:text-3xl text-netflix-red font-semibold">
+            <h2 className="text-xl sm:text-2xl md:text-3xl text-netflix-red font-semibold">
               AI Cloud Full Stack Engineer
             </h2>
-            <p className="text-xl text-netflix-light-gray max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-netflix-light-gray max-w-3xl mx-auto px-4">
               Passionate about creating innovative web solutions and turning ideas into reality through code.
             </p>
           </motion.div>
@@ -126,26 +126,6 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-netflix-light-gray rounded-full flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-netflix-light-gray rounded-full mt-2"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };
