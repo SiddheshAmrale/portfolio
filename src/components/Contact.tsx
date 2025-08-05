@@ -137,4 +137,112 @@ const Contact: React.FC = () => {
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`text-netflix-light-gray ${social.color} transition-all duration-200 p-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50`
+                    className={`text-netflix-light-gray ${social.color} transition-all duration-200 p-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50`}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Send a Message
+              </h3>
+              <p className="text-netflix-light-gray mb-8">
+                Have a question or want to work together? Drop me a line!
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-white font-medium mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg text-white placeholder-netflix-light-gray focus:outline-none focus:border-netflix-red/50 transition-all duration-300"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-white font-medium mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg text-white placeholder-netflix-light-gray focus:outline-none focus:border-netflix-red/50 transition-all duration-300"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="subject" className="block text-white font-medium mb-2">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg text-white placeholder-netflix-light-gray focus:outline-none focus:border-netflix-red/50 transition-all duration-300"
+                  placeholder="What's this about?"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-white font-medium mb-2">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg text-white placeholder-netflix-light-gray focus:outline-none focus:border-netflix-red/50 transition-all duration-300 resize-none"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+              
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-netflix-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200"
+              >
+                Send Message
+              </motion.button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
