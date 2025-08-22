@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiDocker, SiOpenai } from 'react-icons/si';
-import { BiBrain, BiImage, BiText, BiAnalyse, BiMicrophone, BiCode } from 'react-icons/bi';
+import { SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiDocker, SiOpenai, SiPytorch, SiRedis, SiFastapi } from 'react-icons/si';
+import { BiBrain, BiImage, BiText, BiAnalyse, BiMicrophone, BiCode, BiGame, BiEyes, BiChat, BiTrendingUp, BiFilterAlt } from 'react-icons/bi';
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -16,7 +16,7 @@ const Projects: React.FC = () => {
       category: "fullstack",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       icons: [<FaReact size={20} />, <FaNodeJs size={20} />, <SiMongodb size={20} />],
-      github: "https://github.com/siddheshamrale/ecommerce-platform",
+      github: "https://github.com/SiddheshAmrale/ecommerce-platform",
       featured: true
     },
     {
@@ -27,7 +27,7 @@ const Projects: React.FC = () => {
       category: "frontend",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
       icons: [<FaReact size={20} />, <SiTypescript size={20} />, <SiTailwindcss size={20} />],
-      github: "https://github.com/siddheshamrale/task-management-app",
+      github: "https://github.com/SiddheshAmrale/task-management-app",
       featured: true
     },
     {
@@ -38,7 +38,7 @@ const Projects: React.FC = () => {
       category: "backend",
       technologies: ["Node.js", "Express", "PostgreSQL", "Docker"],
       icons: [<FaNodeJs size={20} />, <SiPostgresql size={20} />, <SiDocker size={20} />],
-      github: "https://github.com/siddheshamrale/api-gateway-service",
+      github: "https://github.com/SiddheshAmrale/api-gateway-service",
       featured: false
     },
     {
@@ -49,20 +49,10 @@ const Projects: React.FC = () => {
       category: "fullstack",
       technologies: ["React", "Python", "PostgreSQL", "Chart.js"],
       icons: [<FaReact size={20} />, <FaPython size={20} />, <SiPostgresql size={20} />],
-      github: "https://github.com/siddheshamrale/data-analytics-dashboard",
+      github: "https://github.com/SiddheshAmrale/data-analytics-dashboard",
       featured: false
     },
-    {
-      id: 5,
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website built with React and TypeScript, featuring smooth animations and Netflix-inspired design.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8b6a40?w=500&h=300&fit=crop",
-      category: "frontend",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      icons: [<FaReact size={20} />, <SiTypescript size={20} />, <SiTailwindcss size={20} />],
-      github: "https://github.com/siddheshamrale/portfolio",
-      featured: false
-    },
+
     {
       id: 6,
       title: "Machine Learning API",
@@ -71,7 +61,7 @@ const Projects: React.FC = () => {
       category: "backend",
       technologies: ["Python", "Flask", "PostgreSQL", "Docker"],
       icons: [<FaPython size={20} />, <SiPostgresql size={20} />, <SiDocker size={20} />],
-      github: "https://github.com/siddheshamrale/machine-learning-api",
+      github: "https://github.com/SiddheshAmrale/machine-learning-api",
       featured: false
     },
     // AI Projects
@@ -83,73 +73,118 @@ const Projects: React.FC = () => {
       category: "ai",
       technologies: ["Python", "OpenAI GPT", "Conversation Memory", "API Integration"],
       icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiBrain size={20} />],
-      github: "https://github.com/siddheshamrale/ai-chat-assistant",
+      github: "https://github.com/SiddheshAmrale/ai-chat-assistant",
       featured: true
     },
     {
       id: 8,
-      title: "AI Image Generator",
-      description: "A powerful AI image generation tool using OpenAI's DALL-E model to create stunning images from text descriptions. Features text-to-image generation, image variations, and batch processing.",
-      image: "https://images.unsplash.com/photo-1686191128892-3b1a7b7b8b8b?w=500&h=300&fit=crop",
-      category: "ai",
-      technologies: ["Python", "OpenAI DALL-E", "Image Processing", "Batch Generation"],
-      icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiImage size={20} />],
-      github: "https://github.com/siddheshamrale/ai-image-generator",
-      featured: true
-    },
-    {
-      id: 9,
       title: "AI Text Summarizer",
       description: "An intelligent text summarization tool powered by OpenAI's GPT models that can condense long texts into concise summaries while preserving key information. Features multiple summary styles and batch processing.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       category: "ai",
       technologies: ["Python", "OpenAI GPT", "NLP", "Text Processing"],
       icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiText size={20} />],
-      github: "https://github.com/siddheshamrale/ai-text-summarizer",
+      github: "https://github.com/SiddheshAmrale/ai-text-summarizer",
       featured: false
     },
     {
-      id: 10,
+      id: 9,
       title: "AI Sentiment Analyzer",
       description: "An advanced sentiment analysis tool powered by OpenAI's GPT models that can analyze emotions, tone, and sentiment in text with high accuracy and detailed insights. Features comprehensive analysis and trend tracking.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       category: "ai",
       technologies: ["Python", "OpenAI GPT", "Sentiment Analysis", "Emotion Detection"],
       icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiAnalyse size={20} />],
-      github: "https://github.com/siddheshamrale/ai-sentiment-analyzer",
+      github: "https://github.com/SiddheshAmrale/ai-sentiment-analyzer",
       featured: false
     },
     {
-      id: 11,
+      id: 10,
       title: "AI Data Analyzer",
       description: "A powerful AI-powered data analysis tool that leverages OpenAI's GPT models to provide intelligent insights, visualizations, and comprehensive reports from your datasets. Features anomaly detection and trend analysis.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       category: "ai",
       technologies: ["Python", "OpenAI GPT", "Data Analysis", "Visualization"],
       icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiAnalyse size={20} />],
-      github: "https://github.com/siddheshamrale/ai-data-analyzer",
+      github: "https://github.com/SiddheshAmrale/ai-data-analyzer",
       featured: false
     },
     {
-      id: 12,
+      id: 11,
       title: "AI Voice Assistant",
       description: "A comprehensive voice-based AI assistant that provides speech-to-text, text-to-speech, and natural language conversation capabilities using OpenAI's advanced AI models. Features voice commands and conversation mode.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       category: "ai",
       technologies: ["Python", "OpenAI Whisper", "Text-to-Speech", "Voice Processing"],
       icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiMicrophone size={20} />],
-      github: "https://github.com/siddheshamrale/ai-voice-assistant",
+      github: "https://github.com/SiddheshAmrale/ai-voice-assistant",
       featured: false
     },
     {
-      id: 13,
+      id: 12,
       title: "AI Code Assistant",
       description: "An intelligent code generation, debugging, and analysis tool powered by OpenAI's GPT models that helps developers write better code, fix bugs, and understand complex codebases. Features code optimization and test generation.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       category: "ai",
       technologies: ["Python", "OpenAI GPT", "Code Generation", "Debugging"],
       icons: [<FaPython size={20} />, <SiOpenai size={20} />, <BiCode size={20} />],
-      github: "https://github.com/siddheshamrale/ai-code-assistant",
+      github: "https://github.com/SiddheshAmrale/ai-code-assistant",
+      featured: false
+    },
+    // New AI/ML Projects from ai_ml_projects directory
+    {
+      id: 13,
+      title: "AI-Powered Game Engine",
+      description: "Advanced game engine with procedural generation, NPC AI using reinforcement learning, and dynamic difficulty adjustment. Features real-time learning, GPU acceleration, and cross-platform support.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&h=300&fit=crop",
+      category: "ai",
+      technologies: ["Python", "PyTorch", "FastAPI", "Redis", "PostgreSQL"],
+      icons: [<FaPython size={20} />, <SiPytorch size={20} />, <BiGame size={20} />],
+      github: "https://github.com/siddhesh-amrale/ai-game-engine",
+      featured: true
+    },
+    {
+      id: 14,
+      title: "Computer Vision System",
+      description: "Multi-modal computer vision system with object detection, segmentation, OCR, and CLIP-based understanding. Features real-time processing, GPU acceleration, and comprehensive REST API.",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
+      category: "ai",
+      technologies: ["Python", "PyTorch", "FastAPI", "YOLO", "CLIP"],
+      icons: [<FaPython size={20} />, <SiPytorch size={20} />, <BiEyes size={20} />],
+      github: "https://github.com/siddhesh-amrale/computer-vision-system",
+      featured: true
+    },
+    {
+      id: 15,
+      title: "LLM RAG Chatbot",
+      description: "Enterprise-grade chatbot with Retrieval-Augmented Generation, multi-modal support, and real-time learning capabilities. Features vector database integration and continuous improvement.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop",
+      category: "ai",
+      technologies: ["Python", "FastAPI", "ChromaDB", "OpenAI", "Anthropic"],
+      icons: [<FaPython size={20} />, <SiFastapi size={20} />, <BiChat size={20} />],
+      github: "https://github.com/siddhesh-amrale/llm-rag-chatbot",
+      featured: true
+    },
+    {
+      id: 16,
+      title: "ML Pipeline Platform",
+      description: "Large-scale ML platform with distributed training, model versioning, A/B testing, and AutoML capabilities. Features PySpark integration, MLflow tracking, and Kubernetes deployment.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+      category: "ai",
+      technologies: ["Python", "PySpark", "MLflow", "Kubernetes", "Docker"],
+      icons: [<FaPython size={20} />, <SiDocker size={20} />, <BiTrendingUp size={20} />],
+      github: "https://github.com/siddhesh-amrale/ml-pipeline-platform",
+      featured: false
+    },
+    {
+      id: 17,
+      title: "Recommendation System",
+      description: "Advanced recommendation system with collaborative filtering, content-based filtering, and hybrid approaches. Features real-time updates, A/B testing framework, and scalable architecture.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
+      category: "ai",
+      technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Scikit-learn"],
+      icons: [<FaPython size={20} />, <SiFastapi size={20} />, <BiFilterAlt size={20} />],
+      github: "https://github.com/siddhesh-amrale/recommendation-system",
       featured: false
     }
   ];
@@ -177,7 +212,7 @@ const Projects: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Featured Projects
+            🚀 Featured Projects
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">

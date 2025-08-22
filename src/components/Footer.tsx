@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     {
       icon: <FaGithub size={20} />,
       name: "GitHub",
-      url: "https://github.com/siddheshamrale",
+      url: "https://github.com/SiddheshAmrale",
       color: "hover:text-gray-400"
     },
     {
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Contact Info</h4>
             <div className="space-y-2 text-netflix-light-gray">
               <p>📍 Pittsburgh, PA</p>
-              <p>📧 siddhesh.amrale@email.com</p>
+              <p>📧 siddhesh.amrale@gmail.com</p>
               <p>📱 +1 (973) 438-8729</p>
             </div>
           </motion.div>

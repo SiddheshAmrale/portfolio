@@ -37,7 +37,7 @@ const About: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            About Me
+            🎯 About Me
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
@@ -103,7 +103,7 @@ const About: React.FC = () => {
             className="grid grid-cols-2 gap-6"
           >
             {[
-              { number: "3+", label: "Years Experience" },
+              { number: "5+", label: "Years Experience" },
               { number: "20+", label: "Projects Completed" },
               { number: "15+", label: "Technologies" },
               { number: "100%", label: "Client Satisfaction" }

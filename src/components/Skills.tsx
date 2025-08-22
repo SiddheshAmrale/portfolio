@@ -66,7 +66,7 @@ const Skills: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Skills & Technologies
+            ⚡ Skills & Technologies
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">

@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
             className="space-y-4"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight">
-              Siddhesh Amrale
+              🚀 Siddhesh Amrale
             </h1>
             <h2 className="text-xl sm:text-2xl md:text-3xl text-netflix-red font-semibold">
               AI Cloud Full Stack Engineer
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.1, y: -5 }}
               whileTap={{ scale: 0.95 }}
-              href="https://github.com/siddheshamrale"
+              href="https://github.com/SiddheshAmrale"
               target="_blank"
               rel="noopener noreferrer"
               className="text-netflix-light-gray hover:text-netflix-red transition-colors duration-200"
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.1, y: -5 }}
               whileTap={{ scale: 0.95 }}
-              href="mailto:siddhesh.amrale@email.com"
+              href="mailto:siddhesh.amrale@gmail.com"
               className="text-netflix-light-gray hover:text-netflix-red transition-colors duration-200"
             >
               <FaEnvelope size={28} />

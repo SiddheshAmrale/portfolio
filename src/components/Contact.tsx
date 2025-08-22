@@ -27,8 +27,8 @@ const Contact: React.FC = () => {
     {
       icon: <FaEnvelope size={24} />,
       title: "Email",
-      value: "siddhesh.amrale@email.com",
-      link: "mailto:siddhesh.amrale@email.com"
+      value: "siddhesh.amrale@gmail.com",
+      link: "mailto:siddhesh.amrale@gmail.com"
     },
     {
       icon: <FaPhone size={24} />,
@@ -48,7 +48,7 @@ const Contact: React.FC = () => {
     {
       icon: <FaGithub size={24} />,
       name: "GitHub",
-      url: "https://github.com/siddheshamrale",
+      url: "https://github.com/SiddheshAmrale",
       color: "hover:text-gray-400"
     },
     {
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Get In Touch
+            📧 Get In Touch
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">

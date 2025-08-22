@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
             className="flex-shrink-0"
           >
             <h1 className="text-2xl font-bold text-netflix-red">
-              SIDDHESH AMRALE
+              🚀 SIDDHESH AMRALE
             </h1>
           </motion.div>
 
