@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiDocker, SiOpenai, SiPytorch, SiRedis, SiFastapi } from 'react-icons/si';
-import { BiBrain, BiImage, BiText, BiAnalyse, BiMicrophone, BiCode, BiGame, BiEyes, BiChat, BiTrendingUp, BiFilterAlt } from 'react-icons/bi';
+import { SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiDocker, SiOpenai, SiPytorch, SiFastapi } from 'react-icons/si';
+import { BiBrain, BiText, BiAnalyse, BiMicrophone, BiCode, BiGame, BiChat, BiTrendingUp, BiFilterAlt } from 'react-icons/bi';
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -150,7 +150,7 @@ const Projects: React.FC = () => {
       image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=300&fit=crop",
       category: "ai",
       technologies: ["Python", "PyTorch", "FastAPI", "YOLO", "CLIP"],
-      icons: [<FaPython size={20} />, <SiPytorch size={20} />, <BiEyes size={20} />],
+      icons: [<FaPython size={20} />, <SiPytorch size={20} />, <BiAnalyse size={20} />],
       github: "https://github.com/siddhesh-amrale/computer-vision-system",
       featured: true
     },
