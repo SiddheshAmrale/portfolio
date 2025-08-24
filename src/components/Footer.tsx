@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
     {
       icon: <FaLinkedin size={20} />,
       name: "LinkedIn",
-      url: "https://linkedin.com/in/siddhesh-amrale",
+      url: "https://linkedin.com/in/siddheshnitinamrale",
       color: "hover:text-blue-500"
     },
     {

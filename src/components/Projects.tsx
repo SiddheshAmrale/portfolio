@@ -140,7 +140,7 @@ const Projects: React.FC = () => {
       category: "ai",
       technologies: ["Python", "PyTorch", "FastAPI", "Redis", "PostgreSQL"],
       icons: [<FaPython size={20} />, <SiPytorch size={20} />, <BiGame size={20} />],
-      github: "https://github.com/siddhesh-amrale/ai-game-engine",
+      github: "https://github.com/siddheshamrale/ai-game-engine",
       featured: true
     },
     {
@@ -151,7 +151,7 @@ const Projects: React.FC = () => {
       category: "ai",
       technologies: ["Python", "PyTorch", "FastAPI", "YOLO", "CLIP"],
       icons: [<FaPython size={20} />, <SiPytorch size={20} />, <BiAnalyse size={20} />],
-      github: "https://github.com/siddhesh-amrale/computer-vision-system",
+      github: "https://github.com/siddheshamrale/computer-vision-system",
       featured: true
     },
     {
@@ -162,7 +162,7 @@ const Projects: React.FC = () => {
       category: "ai",
       technologies: ["Python", "FastAPI", "ChromaDB", "OpenAI", "Anthropic"],
       icons: [<FaPython size={20} />, <SiFastapi size={20} />, <BiChat size={20} />],
-      github: "https://github.com/siddhesh-amrale/llm-rag-chatbot",
+      github: "https://github.com/siddheshamrale/llm-rag-chatbot",
       featured: true
     },
     {
@@ -173,7 +173,7 @@ const Projects: React.FC = () => {
       category: "ai",
       technologies: ["Python", "PySpark", "MLflow", "Kubernetes", "Docker"],
       icons: [<FaPython size={20} />, <SiDocker size={20} />, <BiTrendingUp size={20} />],
-      github: "https://github.com/siddhesh-amrale/ml-pipeline-platform",
+      github: "https://github.com/siddheshamrale/ml-pipeline-platform",
       featured: false
     },
     {
@@ -184,7 +184,7 @@ const Projects: React.FC = () => {
       category: "ai",
       technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Scikit-learn"],
       icons: [<FaPython size={20} />, <SiFastapi size={20} />, <BiFilterAlt size={20} />],
-      github: "https://github.com/siddhesh-amrale/recommendation-system",
+      github: "https://github.com/siddheshamrale/recommendation-system",
       featured: false
     }
   ];

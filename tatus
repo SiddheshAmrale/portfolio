@@ -1,0 +1,5 @@
+[33mfd49970[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Fix build errors: Remove invalid BiEyes icon and clean up unused imports
+[33m161b060[m Update portfolio: Fix email to siddhesh.amrale@gmail.com, update experience to 5+ years, remove Portfolio website and AI Image Generator, add new AI projects, add title icons throughout components
+[33m2c84ce4[m fixed scroll bug, updated contact details
+[33m8ba03f1[m Complete merge with remote changes
+[33m971c95d[m Fix Contact component syntax error and ensure build success
