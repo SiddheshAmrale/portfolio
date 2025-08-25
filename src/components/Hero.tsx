@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
             className="space-y-4"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight">
-              🚀 Siddhesh Amrale
+              Siddhesh Amrale
             </h1>
             <h2 className="text-xl sm:text-2xl md:text-3xl text-netflix-red font-semibold">
               AI Cloud Full Stack Engineer
