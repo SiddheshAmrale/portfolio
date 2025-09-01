@@ -5,8 +5,8 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
 const Hero: React.FC = () => {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/Siddhesh_Amrale_Resume_Latest.docx';
-    link.download = 'Siddhesh_Amrale_Resume_Latest.docx';
+    link.href = '/Siddhesh_Amrale_Resume_2025_GenAI_.docx';
+    link.download = 'Siddhesh_Amrale_Resume_2025_GenAI_.docx';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -7,6 +7,19 @@ const Certifications: React.FC = () => {
   const certifications = [
     {
       id: 1,
+      title: "Microsoft Certified: Azure AI Engineer Associate (AI-104)",
+      issuer: "Microsoft",
+      date: "January 2025",
+      credentialId: "EDA4C40E9F0219A6",
+      description: "Validates expertise in designing and implementing AI solutions using Azure AI services. Demonstrates proficiency in building, deploying, and managing AI applications on Microsoft Azure platform.",
+      skills: ["Azure AI Services", "Machine Learning", "Cognitive Services", "Bot Framework", "Azure ML", "AI Solutions Architecture"],
+      icon: <FaCloud size={32} />,
+      featured: true,
+      expiresOn: "January 2027",
+      verificationUrl: "https://learn.microsoft.com/api/credentials/share/en-us/SiddheshAmrale-4796/EDA4C40E9F0219A6?sharingId=35158B22038BBCBE"
+    },
+    {
+      id: 2,
       title: "Microsoft Certified: Azure Developer Associate",
       issuer: "Microsoft",
       date: "May 13, 2024",
@@ -20,7 +33,7 @@ const Certifications: React.FC = () => {
       verificationUrl: "https://www.credly.com/badges/azure-developer"
     },
     {
-      id: 2,
+      id: 3,
       title: "Microsoft Certified: Azure Administrator Associate (AZ-104)",
       issuer: "Microsoft",
       date: "July 2022",
@@ -169,9 +182,10 @@ const Certifications: React.FC = () => {
               Why Azure Certifications Matter
             </h3>
             <p className="text-netflix-light-gray">
-              My Microsoft Azure certifications demonstrate comprehensive expertise in both Azure development and administration. 
-              The Azure Developer Associate certification validates my ability to design, build, test, and maintain cloud applications, 
-              while the Azure Administrator Associate certification shows my skills in managing Azure infrastructure and resources.
+              My Microsoft Azure certifications demonstrate comprehensive expertise across Azure development, AI engineering, and administration. 
+              The Azure AI Engineer Associate certification validates my ability to design and implement AI solutions using Azure AI services, 
+              the Azure Developer Associate certification shows my skills in building and maintaining cloud applications, 
+              and the Azure Administrator Associate certification demonstrates my expertise in managing Azure infrastructure and resources.
             </p>
           </div>
         </motion.div>
