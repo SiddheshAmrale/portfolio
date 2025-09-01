@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaGit, FaCloud, FaJava
+  FaReact, FaPython, FaAws, FaDocker, FaGit, FaCloud, FaJava
 } from 'react-icons/fa';
-import { SiTypescript, SiJavascript, SiGo, SiCsharp, SiAngular, SiDotnet, SiSpring, SiExpress, SiMysql, SiPostgresql, SiMongodb, SiKubernetes, SiTerraform, SiGcp, SiHuggingface, SiLangchain, SiOpenai } from 'react-icons/si';
+import { SiJavascript, SiGo, SiCsharp, SiAngular, SiDotnet, SiSpring, SiExpress, SiMysql, SiPostgresql, SiMongodb, SiKubernetes, SiTerraform, SiOpenai } from 'react-icons/si';
+import { FaBrain, FaRobot } from 'react-icons/fa';
 
 const Skills: React.FC = () => {
   const skillCategories = [
@@ -11,9 +12,9 @@ const Skills: React.FC = () => {
       title: "AI/ML & Data",
       skills: [
         { name: "Generative AI", icon: <SiOpenai size={24} /> },
-        { name: "RAG", icon: <SiLangchain size={24} /> },
-        { name: "LangChain", icon: <SiLangchain size={24} /> },
-        { name: "Hugging Face", icon: <SiHuggingface size={24} /> },
+        { name: "RAG", icon: <FaBrain size={24} /> },
+        { name: "LangChain", icon: <FaRobot size={24} /> },
+        { name: "Hugging Face", icon: <FaBrain size={24} /> },
         { name: "Azure OpenAI", icon: <SiOpenai size={24} /> },
         { name: "Databricks", icon: <FaCloud size={24} /> }
       ]
@@ -23,7 +24,7 @@ const Skills: React.FC = () => {
       skills: [
         { name: "Azure", icon: <FaCloud size={24} /> },
         { name: "AWS", icon: <FaAws size={24} /> },
-        { name: "GCP", icon: <SiGcp size={24} /> },
+        { name: "GCP", icon: <FaCloud size={24} /> },
         { name: "Docker", icon: <FaDocker size={24} /> },
         { name: "Kubernetes", icon: <SiKubernetes size={24} /> },
         { name: "Terraform", icon: <SiTerraform size={24} /> },
