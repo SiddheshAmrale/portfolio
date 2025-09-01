@@ -43,7 +43,6 @@ const Certifications: React.FC = () => {
       icon: <FaCloud size={32} />,
       featured: false,
       expiresOn: "July 2023",
-      status: "Expired",
       verificationUrl: "https://www.credly.com/badges/azure-administrator"
     }
   ];
@@ -88,13 +87,7 @@ const Certifications: React.FC = () => {
                 </div>
               )}
 
-              {/* Status Badge for Expired Certifications */}
-              {cert.status === "Expired" && (
-                <div className="absolute top-4 right-4 bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
-                  <BiCalendar size={14} />
-                  Expired
-                </div>
-              )}
+
 
               {/* Header */}
               <div className="flex items-start gap-4 mb-4">
