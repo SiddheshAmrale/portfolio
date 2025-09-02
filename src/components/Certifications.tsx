@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCertificate, FaAward, FaCloud } from 'react-icons/fa';
+import { FaCertificate, FaCloud } from 'react-icons/fa';
 import { BiCalendar, BiLink } from 'react-icons/bi';
 
 const Certifications: React.FC = () => {

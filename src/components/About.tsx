@@ -133,30 +133,7 @@ const About: React.FC = () => {
               solutions that make a difference. I believe in writing clean, maintainable code and 
               staying up-to-date with the latest technologies and best practices.
             </motion.p>
-            <motion.div 
-              className="flex flex-wrap gap-4"
-              style={{ transform: "translateZ(10px)" }}
-            >
-              {['React', 'Node.js', 'TypeScript', 'Python'].map((tech, index) => (
-                <motion.div
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
-                  whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ 
-                    scale: 1.1,
-                    transition: { duration: 0.3 }
-                  }}
-                  className="bg-netflix-red/20 border border-netflix-red/30 rounded-lg px-4 py-2"
-                  style={{
-                    transformStyle: "preserve-3d"
-                  }}
-                >
-                  <span className="text-netflix-red font-semibold">{tech}</span>
-                </motion.div>
-              ))}
-            </motion.div>
+
           </motion.div>
 
           {/* Right Column - Stats */}
@@ -171,7 +148,7 @@ const About: React.FC = () => {
             {[
               { number: "5+", label: "Years Experience" },
               { number: "20+", label: "Projects Completed" },
-              { number: "15+", label: "Technologies" },
+              { number: "40+", label: "Technologies" },
               { number: "100%", label: "Client Satisfaction" }
             ].map((stat, index) => (
               <motion.div
