@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiDocker, SiOpenai, SiPytorch, SiFastapi } from 'react-icons/si';
 import { BiBrain, BiText, BiAnalyse, BiMicrophone, BiCode, BiGame, BiChat, BiTrendingUp, BiFilterAlt } from 'react-icons/bi';
+import FloatingElements from './FloatingElements';
 
 const Projects: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -202,44 +203,94 @@ const Projects: React.FC = () => {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-20 bg-netflix-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 bg-netflix-dark relative overflow-hidden">
+      <FloatingElements />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 50, rotateX: -15 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
+          style={{ transformStyle: "preserve-3d" }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.3 }
+            }}
+            style={{
+              textShadow: "0 0 30px rgba(255, 255, 255, 0.3), 0 0 60px rgba(229, 9, 20, 0.2)",
+              transform: "translateZ(20px)"
+            }}
+          >
             🚀 Featured Projects
-          </h2>
-          <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
-          <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 bg-netflix-red mx-auto mb-8"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{
+              boxShadow: "0 0 20px rgba(229, 9, 20, 0.5)",
+              transform: "translateZ(15px)"
+            }}
+          />
+          <motion.p 
+            className="text-xl text-netflix-light-gray max-w-4xl mx-auto"
+            style={{ transform: "translateZ(10px)" }}
+          >
             Here are some of my recent projects that showcase my skills and experience in web development and AI technologies.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Category Filter */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, rotateX: -10 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-4 mb-12"
+          style={{ transformStyle: "preserve-3d" }}
         >
-          {categories.map((category) => (
+          {categories.map((category, index) => (
             <motion.button
               key={category.id}
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.1,
+                transition: { duration: 0.3 }
+              }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 ${
+              className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 relative overflow-hidden ${
                 selectedCategory === category.id
                   ? 'bg-netflix-red text-white'
                   : 'bg-netflix-black/50 text-netflix-light-gray hover:text-netflix-red border border-netflix-red/30'
               }`}
+              style={{
+                transform: "translateZ(15px)"
+              }}
             >
+              <motion.div
+                animate={{
+                  rotateY: [0, 360],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                style={{
+                  transform: "translateX(-100%) skewX(-15deg)"
+                }}
+              />
               {category.name}
             </motion.button>
           ))}
@@ -250,37 +301,45 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50, rotateY: -90 }}
+              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className={`group relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-all duration-300 ${
-                project.featured ? 'ring-2 ring-netflix-red/50' : ''
-              }`}
+              whileHover={{ 
+                y: -15,
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+              className="group relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-all duration-300"
+              style={{
+                transform: "translateZ(25px)",
+                transformStyle: "preserve-3d"
+              }}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
-                <img
+                <motion.img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-netflix-black/80 to-transparent"></div>
                 
-                {/* Featured Badge */}
-                {project.featured && (
-                  <div className="absolute top-4 left-4 bg-netflix-red text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Featured
-                  </div>
-                )}
+
               </div>
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-netflix-red transition-colors duration-200">
+                <motion.h3 
+                  className="text-xl font-bold text-white mb-3 group-hover:text-netflix-red transition-colors duration-200"
+                  style={{
+                    textShadow: "0 0 10px rgba(255, 255, 255, 0.3)"
+                  }}
+                >
                   {project.title}
-                </h3>
+                </motion.h3>
                 <p className="text-netflix-light-gray mb-4 line-clamp-3">
                   {project.description}
                 </p>
@@ -288,33 +347,74 @@ const Projects: React.FC = () => {
                 {/* Technologies */}
                 <div className="flex items-center gap-2 mb-4">
                   {project.icons.map((icon, iconIndex) => (
-                    <div key={iconIndex} className="text-netflix-red">
+                    <motion.div 
+                      key={iconIndex} 
+                      className="text-netflix-red"
+                      whileHover={{ 
+                        scale: 1.2,
+                        transition: { duration: 0.3 }
+                      }}
+                      style={{
+                        filter: "drop-shadow(0 0 5px rgba(229, 9, 20, 0.5))"
+                      }}
+                    >
                       {icon}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
-                    <span
+                    <motion.span
                       key={techIndex}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: techIndex * 0.05, duration: 0.3 }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        transition: { duration: 0.3 }
+                      }}
                       className="bg-netflix-red/20 text-netflix-red text-xs px-2 py-1 rounded"
+                      style={{
+                        transform: "translateZ(10px)"
+                      }}
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 
                 {/* Project Links */}
                 <div className="flex gap-3">
                   <motion.a
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      transition: { duration: 0.3 }
+                    }}
                     whileTap={{ scale: 0.95 }}
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-netflix-black/50 hover:bg-netflix-red text-netflix-light-gray hover:text-white px-4 py-2 rounded-lg transition-all duration-200"
+                    className="flex items-center gap-2 bg-netflix-black/50 hover:bg-netflix-red text-netflix-light-gray hover:text-white px-4 py-2 rounded-lg transition-all duration-200 relative overflow-hidden"
+                    style={{
+                      transform: "translateZ(15px)"
+                    }}
                   >
+                    <motion.div
+                      animate={{
+                        rotateY: [0, 360],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+                      style={{
+                        transform: "translateX(-100%) skewX(-15deg)"
+                      }}
+                    />
                     <FaGithub size={16} />
                     <span className="text-sm">Code</span>
                   </motion.a>
@@ -326,17 +426,39 @@ const Projects: React.FC = () => {
 
         {/* View More Button */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, rotateX: -10 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-center mt-12"
+          style={{ transformStyle: "preserve-3d" }}
         >
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.1,
+              y: -5,
+              transition: { duration: 0.3 }
+            }}
             whileTap={{ scale: 0.95 }}
-            className="bg-netflix-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
+            className="bg-netflix-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200 relative overflow-hidden"
+            style={{
+              transform: "translateZ(30px)"
+            }}
           >
+            <motion.div
+              animate={{
+                rotateY: [0, 360],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              style={{
+                transform: "translateX(-100%) skewX(-15deg)"
+              }}
+            />
             View All Projects
           </motion.button>
         </motion.div>

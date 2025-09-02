@@ -75,17 +75,9 @@ const Certifications: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className={`relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-all duration-300 p-6 ${
-                cert.featured ? 'ring-2 ring-netflix-red/50' : ''
-              }`}
+              className="relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-all duration-300 p-6"
             >
-              {/* Featured Badge */}
-              {cert.featured && (
-                <div className="absolute top-4 right-4 bg-netflix-red text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
-                  <FaAward size={14} />
-                  Featured
-                </div>
-              )}
+
 
 
 
