@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaPlay, FaPause, FaRedo, FaTrophy, FaClock, FaStar } from 'react-icons/fa';
+import { FaPlay, FaPause, FaRedo } from 'react-icons/fa';
 
 const Games: React.FC = () => {
   return (
@@ -29,6 +29,11 @@ const Games: React.FC = () => {
            {/* Memory Card Game */}
            <MemoryCardGame />
          </div>
+
+         {/* T-Rex Game - New Row */}
+         <div className="mt-8">
+           <TRexGame />
+         </div>
       </div>
     </section>
   );
@@ -43,7 +48,6 @@ const CodeTypingGame: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState(60);
   const [wpm, setWpm] = useState(0);
   const [accuracy, setAccuracy] = useState(100);
-  const [gameStarted, setGameStarted] = useState(false);
 
   const codeSnippets = [
     `function fibonacci(n) {
@@ -103,7 +107,6 @@ const CodeTypingGame: React.FC = () => {
     setWpm(0);
     setAccuracy(100);
     setGameState('playing');
-    setGameStarted(true);
   };
 
   const togglePause = () => {
@@ -122,7 +125,6 @@ const CodeTypingGame: React.FC = () => {
     setTimeLeft(60);
     setWpm(0);
     setAccuracy(100);
-    setGameStarted(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -550,6 +552,286 @@ const MemoryCardGame: React.FC = () => {
   );
 };
 
+// T-Rex Game Component
+const TRexGame: React.FC = () => {
+  const [gameState, setGameState] = useState<'ready' | 'playing' | 'gameOver'>('ready');
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  
+  // Refs for DOM manipulation - following codinn.dev approach
+  const dinoRef = useRef<HTMLDivElement>(null);
+  const cactusRef = useRef<HTMLDivElement>(null);
+  const gameIntervalRef = useRef<NodeJS.Timeout>();
 
+  const startGame = () => {
+    setGameState('playing');
+    setScore(0);
+    
+    // Start the game loop using setInterval like codinn.dev
+    gameIntervalRef.current = setInterval(() => {
+      // Get current dino Y position
+      const dinoTop = dinoRef.current ? 
+        parseInt(getComputedStyle(dinoRef.current).getPropertyValue("top")) : 0;
+      
+      // Get current cactus X position
+      const cactusLeft = cactusRef.current ? 
+        parseInt(getComputedStyle(cactusRef.current).getPropertyValue("left")) : 0;
+      
+      // Detect collision - following codinn.dev collision logic
+      if (cactusLeft < 40 && cactusLeft > 0 && dinoTop >= 145) {
+        // Collision detected
+        setGameState('gameOver');
+        setScore(currentScore => {
+          if (currentScore > highScore) {
+            setHighScore(currentScore);
+          }
+          return currentScore;
+        });
+        // Clear interval on game over
+        if (gameIntervalRef.current) {
+          clearInterval(gameIntervalRef.current);
+        }
+      } else {
+        // Update score
+        setScore(prev => prev + 1);
+      }
+    }, 10);
+  };
+
+  const resetGame = () => {
+    // Clear the game interval
+    if (gameIntervalRef.current) {
+      clearInterval(gameIntervalRef.current);
+    }
+    
+    // Reset dino position
+    if (dinoRef.current) {
+      dinoRef.current.classList.remove('jump');
+    }
+    
+    // Reset cactus position
+    if (cactusRef.current) {
+      cactusRef.current.style.animation = 'none';
+      // Trigger reflow to reset animation
+      void cactusRef.current.offsetHeight;
+    }
+    
+    // Start the game directly
+    startGame();
+  };
+
+  const jump = useCallback(() => {
+    if (gameState !== 'playing' || !dinoRef.current) return;
+    
+    // Add jump class if not already jumping
+    if (!dinoRef.current.classList.contains('jump')) {
+      dinoRef.current.classList.add('jump');
+      
+      // Remove jump class after animation completes (300ms)
+      setTimeout(() => {
+        if (dinoRef.current) {
+          dinoRef.current.classList.remove('jump');
+        }
+      }, 300);
+    }
+  }, [gameState]);
+
+  // Handle key press for jumping
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        jump();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, [jump]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (gameIntervalRef.current) {
+        clearInterval(gameIntervalRef.current);
+      }
+    };
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6"
+    >
+      <div className="text-center mb-6">
+        <h3 className="text-2xl font-bold text-white mb-2">🦕 T-Rex Runner</h3>
+        <p className="text-netflix-light-gray text-sm">Jump over obstacles and survive as long as possible!</p>
+      </div>
+
+      {/* Game Stats */}
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
+          <div className="text-xl font-bold text-green-400">{score}</div>
+          <div className="text-xs text-netflix-light-gray">Score</div>
+        </div>
+        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
+          <div className="text-xl font-bold text-yellow-400">{highScore}</div>
+          <div className="text-xs text-netflix-light-gray">High Score</div>
+        </div>
+      </div>
+
+      {/* Game Controls */}
+      <div className="flex justify-center mb-6">
+        {gameState === 'ready' && (
+          <motion.button
+            onClick={startGame}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center space-x-2 bg-netflix-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
+          >
+            <FaPlay />
+            <span>Start Game</span>
+          </motion.button>
+        )}
+        
+        {gameState === 'gameOver' && (
+          <motion.button
+            onClick={resetGame}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center space-x-2 bg-netflix-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
+          >
+            <FaRedo />
+            <span>Play Again</span>
+          </motion.button>
+        )}
+      </div>
+
+      {/* Game Area */}
+      <div className="flex justify-center">
+        <div 
+          className="relative bg-gradient-to-b from-sky-300 to-sky-500 border-2 border-gray-400 rounded-lg overflow-hidden"
+          style={{ width: 600, height: 225 }}
+        >
+          {/* Ground */}
+          <div 
+            className="absolute bg-green-600"
+            style={{ 
+              bottom: 0, 
+              left: 0, 
+              width: '100%', 
+              height: 20 
+            }}
+          />
+          
+          {/* Dino - using CSS animations like codinn.dev */}
+          <div
+            ref={dinoRef}
+            className="absolute text-4xl"
+            style={{
+              width: 50,
+              height: 50,
+              position: 'relative',
+              top: 175, // Adjusted to touch the ground (225 - 20 ground - 50 dino = 155, but using 175 for better visual)
+              left: 50,
+              transform: 'scaleX(-1)', // Flip the dino to face right
+            }}
+          >
+            🦕
+          </div>
+
+          {/* Cactus - using CSS animations like codinn.dev */}
+          <div
+            ref={cactusRef}
+            className="absolute text-2xl"
+            style={{
+              width: 20,
+              height: 40,
+              position: 'relative',
+              top: 145, // Positioned above the ground (225 - 20 ground - 40 cactus = 165, but using 145 to be visible)
+              left: 580,
+              animation: gameState === 'playing' ? 'block 1s infinite linear' : 'none',
+            }}
+          >
+            🌵
+          </div>
+
+          {/* Game Over Overlay */}
+          {gameState === 'gameOver' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 bg-black/70 flex items-center justify-center"
+            >
+              <div className="text-center text-white">
+                <div className="text-4xl mb-2">💀</div>
+                <h4 className="text-xl font-bold mb-2">Game Over!</h4>
+                <p className="text-sm mb-4">
+                  Score: <span className="text-green-400 font-bold">{score}</span>
+                </p>
+                {score === highScore && score > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-yellow-400 font-bold text-sm mb-2"
+                  >
+                    🎉 New High Score!
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Instructions Overlay */}
+          {gameState === 'ready' && (
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+              <div className="text-center text-white">
+                <div className="text-4xl mb-4">🦕</div>
+                <h4 className="text-lg font-bold mb-2">T-Rex Runner</h4>
+                <p className="text-sm mb-4">Press SPACE or ↑ to jump</p>
+                <p className="text-xs text-gray-300">Avoid the cactus!</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+            {/* Instructions */}
+      <div className="mt-4 bg-netflix-dark/30 border border-netflix-red/10 rounded-lg p-4">
+        <h4 className="text-sm font-semibold text-white mb-2">How to Play:</h4>
+        <ul className="text-netflix-light-gray space-y-1 text-xs">
+          <li>• Press <kbd className="bg-gray-700 px-1 rounded">SPACE</kbd> or <kbd className="bg-gray-700 px-1 rounded">↑</kbd> to jump</li>
+          <li>• Avoid the cactus 🌵</li>
+          <li>• Try to beat your high score!</li>
+        </ul>
+      </div>
+
+      {/* CSS Animations - following codinn.dev approach */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes jump {
+            0% { top: 175px; }
+            30% { top: 155px; }
+            50% { top: 105px; }
+            80% { top: 155px; }
+            100% { top: 175px; }
+          }
+          
+          @keyframes block {
+            0% { left: 580px; }
+            100% { left: -5px; }
+          }
+          
+          .jump {
+            animation: jump 0.3s linear;
+          }
+        `
+      }} />
+    </motion.div>
+  );
+};
 
 export default Games;
