@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import Games from './components/Games';
 import Footer from './components/Footer';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                 <Certifications />
                 <Projects />
                 <Contact />
+                <Games />
               </>
             } />
           </Routes>
