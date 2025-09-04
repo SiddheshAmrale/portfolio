@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCertificate, FaCloud } from 'react-icons/fa';
 import { BiCalendar, BiLink } from 'react-icons/bi';
+import FloatingElements from './FloatingElements';
 
 const Certifications: React.FC = () => {
   const certifications = [
@@ -48,8 +49,9 @@ const Certifications: React.FC = () => {
   ];
 
   return (
-    <section id="certifications" className="py-20 bg-netflix-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="certifications" className="py-20 bg-netflix-dark relative overflow-hidden">
+      <FloatingElements />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
