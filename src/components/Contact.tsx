@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Contact Form or Additional Info */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -137,60 +137,22 @@ const Contact: React.FC = () => {
           >
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">
-                Let's Connect
+                Ready to Work Together?
               </h3>
               <p className="text-netflix-light-gray mb-8">
-                I'm currently available for freelance work and full-time opportunities. 
-                If you have a project that needs some creative thinking, I'd love to hear about it.
+                I'm excited to hear about your project and discuss how we can bring your ideas to life. 
+                Let's create something amazing together!
               </p>
             </div>
 
-            {/* Contact Info Cards */}
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={index}
-                  href={info.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  whileHover={{ x: 10 }}
-                  className="flex items-center space-x-4 p-4 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50 transition-all duration-300"
-                >
-                  <div className="text-netflix-red">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">{info.title}</h4>
-                    <p className="text-netflix-light-gray">{info.value}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="text-xl font-semibold text-white mb-4">Follow Me</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`text-netflix-light-gray ${social.color} transition-all duration-200 p-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50`}
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
+            {/* Positive Message */}
+            <div className="bg-gradient-to-r from-netflix-red/20 to-red-600/20 border border-netflix-red/30 rounded-lg p-6 text-center">
+              <div className="text-4xl mb-4">🚀</div>
+              <h4 className="text-xl font-bold text-white mb-2">Let's Build Something Great!</h4>
+              <p className="text-netflix-light-gray">
+                Whether it's a web application, AI solution, or innovative project, 
+                I'm ready to help you achieve your goals with cutting-edge technology.
+              </p>
             </div>
           </motion.div>
         </div>
