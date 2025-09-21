@@ -494,9 +494,10 @@ const MemoryCardGame: React.FC = () => {
 
 // T-Rex Game Component
 const TRexGame: React.FC = () => {
-  const [gameState, setGameState] = useState<'ready' | 'playing' | 'gameOver'>('ready');
+  const [gameState, setGameState] = useState<'ready' | 'countdown' | 'playing' | 'gameOver'>('ready');
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [countdown, setCountdown] = useState(3);
   
   // Refs for DOM manipulation - following codinn.dev approach
   const dinoRef = useRef<HTMLDivElement>(null);
@@ -504,11 +505,18 @@ const TRexGame: React.FC = () => {
   const gameIntervalRef = useRef<NodeJS.Timeout>();
 
   const startGame = () => {
-    setGameState('playing');
+    setGameState('countdown');
     setScore(0);
+    setCountdown(3);
     
-    // Start the game loop using setInterval like codinn.dev
-    gameIntervalRef.current = setInterval(() => {
+    // Countdown before starting the game
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(countdownInterval);
+          setGameState('playing');
+          // Start the game loop using setInterval like codinn.dev
+          gameIntervalRef.current = setInterval(() => {
       // Get current dino Y position
       const dinoTop = dinoRef.current ? 
         parseInt(getComputedStyle(dinoRef.current).getPropertyValue("top")) : 0;
@@ -517,8 +525,8 @@ const TRexGame: React.FC = () => {
       const cactusLeft = cactusRef.current ? 
         parseInt(getComputedStyle(cactusRef.current).getPropertyValue("left")) : 0;
       
-      // Detect collision - following codinn.dev collision logic
-      if (cactusLeft < 40 && cactusLeft > 0 && dinoTop >= 145) {
+      // Detect collision - improved collision logic
+      if (cactusLeft < 80 && cactusLeft > 20 && dinoTop >= 160) {
         // Collision detected
         setGameState('gameOver');
         setScore(currentScore => {
@@ -536,6 +544,11 @@ const TRexGame: React.FC = () => {
         setScore(prev => prev + 1);
       }
     }, 10);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
   };
 
   const resetGame = () => {
@@ -576,23 +589,30 @@ const TRexGame: React.FC = () => {
     }
   }, [gameState]);
 
-  // Handle key press and touch for jumping
+  // Handle key press and touch for jumping - only when T-Rex game is playing
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.code === 'Space' || e.code === 'ArrowUp') {
+      // Only capture keys when T-Rex game is actively playing
+      if (gameState === 'playing' && (e.code === 'Space' || e.code === 'ArrowUp')) {
         e.preventDefault();
         jump();
       }
     };
 
     const handleTouch = (e: TouchEvent) => {
-      e.preventDefault();
-      jump();
+      // Only capture touch when T-Rex game is actively playing
+      if (gameState === 'playing') {
+        e.preventDefault();
+        jump();
+      }
     };
 
     const handleClick = (e: MouseEvent) => {
-      e.preventDefault();
-      jump();
+      // Only capture click when T-Rex game is actively playing
+      if (gameState === 'playing') {
+        e.preventDefault();
+        jump();
+      }
     };
 
     document.addEventListener('keydown', handleKeyPress);
@@ -604,7 +624,7 @@ const TRexGame: React.FC = () => {
       document.removeEventListener('touchstart', handleTouch);
       document.removeEventListener('click', handleClick);
     };
-  }, [jump]);
+  }, [jump, gameState]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -703,8 +723,8 @@ const TRexGame: React.FC = () => {
               height: 40,
               position: 'relative',
               top: 145, // Positioned above the ground (225 - 20 ground - 40 cactus = 165, but using 145 to be visible)
-              right: '-5%',
-              animation: gameState === 'playing' ? 'block 1s infinite linear' : 'none',
+              right: '-10%',
+              animation: gameState === 'playing' ? 'block 2s infinite linear' : 'none',
             }}
           >
             🌵
@@ -748,6 +768,18 @@ const TRexGame: React.FC = () => {
               </div>
             </div>
           )}
+
+          {/* Countdown Overlay */}
+          {gameState === 'countdown' && (
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+              <div className="text-center text-white">
+                <div className="text-6xl font-bold text-netflix-red mb-4">
+                  {countdown}
+                </div>
+                <p className="text-sm text-gray-300">Get ready!</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -774,7 +806,7 @@ const TRexGame: React.FC = () => {
           }
           
           @keyframes block {
-            0% { right: -5%; }
+            0% { right: -10%; }
             100% { right: 100%; }
           }
           
