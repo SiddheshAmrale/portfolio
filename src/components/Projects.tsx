@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { FaGithub, FaReact, FaNodeJs, FaPython } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiTailwindcss, SiDocker, SiOpenai, SiPytorch, SiFastapi } from 'react-icons/si';
 import { BiBrain, BiText, BiAnalyse, BiMicrophone, BiCode, BiGame, BiChat, BiTrendingUp, BiFilterAlt } from 'react-icons/bi';
@@ -206,106 +205,39 @@ const Projects: React.FC = () => {
     <section id="projects" className="py-20 bg-netflix-dark relative overflow-hidden">
       <FloatingElements />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50, rotateX: -15 }}
-          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-            whileHover={{ 
-              scale: 1.05,
-              transition: { duration: 0.3 }
-            }}
-            style={{
-              textShadow: "0 0 30px rgba(255, 255, 255, 0.3), 0 0 60px rgba(229, 9, 20, 0.2)",
-              transform: "translateZ(20px)"
-            }}
-          >
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             🚀 Featured Projects
-          </motion.h2>
-          <motion.div 
-            className="w-24 h-1 bg-netflix-red mx-auto mb-8"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            viewport={{ once: true }}
-            style={{
-              boxShadow: "0 0 20px rgba(229, 9, 20, 0.5)",
-              transform: "translateZ(15px)"
-            }}
-          />
-          <motion.p 
-            className="text-xl text-netflix-light-gray max-w-4xl mx-auto"
-            style={{ transform: "translateZ(10px)" }}
-          >
+          </h2>
+          <div className="w-24 h-1 bg-netflix-red mx-auto mb-8" />
+          <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
             Here are some of my recent projects that showcase my skills and experience in web development and AI technologies.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, rotateX: -10 }}
-          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          {categories.map((category, index) => (
-            <motion.button
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
               key={category.id}
-              initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
-              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.1,
-                transition: { duration: 0.3 }
-              }}
-              whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-200 relative overflow-hidden ${
+              className={`px-6 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 selectedCategory === category.id
                   ? 'bg-netflix-red text-white'
                   : 'bg-netflix-black/50 text-netflix-light-gray hover:text-netflix-red border border-netflix-red/30'
               }`}
-              style={{
-                transform: "translateZ(15px)"
-              }}
             >
-              <motion.div
-                animate={{
-                  rotateY: [0, 360],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                style={{
-                  transform: "translateX(-100%) skewX(-15deg)"
-                }}
-              />
               {category.name}
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <motion.div
+          {filteredProjects.map((project) => (
+            <div
               key={project.id}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-              className="group relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-all duration-300"
+              className="group relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-colors duration-300"
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -361,22 +293,16 @@ const Projects: React.FC = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* View More Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12">
           <button className="bg-netflix-red hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-colors duration-200">
             View All Projects
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
