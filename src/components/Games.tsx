@@ -1,18 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaPlay, FaPause, FaRedo } from 'react-icons/fa';
 
 const Games: React.FC = () => {
   return (
     <section id="games" className="py-20 bg-netflix-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             🎮 Mini Games
           </h2>
@@ -20,7 +14,7 @@ const Games: React.FC = () => {
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
             Take a break and enjoy these interactive games! Test your coding skills and memory.
           </p>
-        </motion.div>
+        </div>
 
                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
            {/* Code Typing Challenge */}
@@ -153,13 +147,7 @@ const CodeTypingGame: React.FC = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6"
-    >
+    <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-white mb-2">⌨️ Code Typing Challenge</h3>
         <p className="text-netflix-light-gray text-sm">Test your coding speed and accuracy!</p>
@@ -249,11 +237,7 @@ const CodeTypingGame: React.FC = () => {
 
       {/* Game Over Screen */}
       {gameState === 'finished' && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-4 text-center"
-        >
+        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-4 text-center">
           <div className="text-2xl mb-2">🎉</div>
           <h4 className="text-lg font-bold text-white mb-2">Game Over!</h4>
           <div className="text-sm text-netflix-light-gray mb-3">
@@ -261,17 +245,15 @@ const CodeTypingGame: React.FC = () => {
             WPM: <span className="text-blue-400 font-bold">{wpm}</span> | 
             Accuracy: <span className="text-yellow-400 font-bold">{Math.round(accuracy)}%</span>
           </div>
-          <motion.button
+          <button
             onClick={resetGame}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className="bg-netflix-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
           >
             Play Again
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
@@ -391,13 +373,7 @@ const MemoryCardGame: React.FC = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6"
-    >
+    <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-white mb-2">🧠 Memory Card Game</h3>
         <p className="text-netflix-light-gray text-sm">Match the pairs as fast as possible!</p>
@@ -451,62 +427,32 @@ const MemoryCardGame: React.FC = () => {
       {/* Game Board */}
       {gameState === 'playing' && (
         <div className="grid grid-cols-4 gap-3 mb-4">
-          <AnimatePresence>
-            {cards.map((card) => (
-              <motion.div
-                key={card.id}
-                initial={{ scale: 0, rotate: 180 }}
-                animate={{ 
-                  scale: 1, 
-                  rotate: card.isFlipped || card.isMatched ? 0 : 180,
-                  opacity: card.isMatched ? 0.5 : 1
-                }}
-                exit={{ scale: 0, rotate: 180 }}
-                whileHover={{ scale: card.isMatched ? 1 : 1.05 }}
-                whileTap={{ scale: card.isMatched ? 1 : 0.95 }}
-                onClick={() => handleCardClick(card.id)}
-                className={`
-                  aspect-square flex items-center justify-center text-2xl font-bold rounded-lg cursor-pointer transition-all duration-300
-                  ${card.isMatched 
-                    ? 'bg-green-600/50 border-2 border-green-400' 
-                    : card.isFlipped 
-                      ? 'bg-netflix-red border-2 border-red-400' 
-                      : 'bg-netflix-dark border-2 border-netflix-red/50 hover:border-netflix-red'
-                  }
-                `}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: card.isFlipped || card.isMatched ? 'rotateY(0deg)' : 'rotateY(180deg)'
-                }}
-              >
-                <motion.div
-                  animate={{ 
-                    rotateY: card.isFlipped || card.isMatched ? 0 : 180 
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {card.isFlipped || card.isMatched ? card.value : '?'}
-                </motion.div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          {cards.map((card) => (
+            <div
+              key={card.id}
+              onClick={() => handleCardClick(card.id)}
+              className={`
+                aspect-square flex items-center justify-center text-2xl font-bold rounded-lg cursor-pointer transition-all duration-200
+                ${card.isMatched 
+                  ? 'bg-green-600/50 border-2 border-green-400' 
+                  : card.isFlipped 
+                    ? 'bg-netflix-red border-2 border-red-400' 
+                    : 'bg-netflix-dark border-2 border-netflix-red/50 hover:border-netflix-red'
+                }
+              `}
+            >
+              {card.isFlipped || card.isMatched ? card.value : '?'}
+            </div>
+          ))}
         </div>
       )}
 
       {/* Game Over Screen */}
       {gameState === 'finished' && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6 text-center"
-        >
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 0.5, repeat: 2 }}
-            className="text-4xl mb-4"
-          >
+        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6 text-center">
+          <div className="text-4xl mb-4">
             🏆
-          </motion.div>
+          </div>
           <h4 className="text-xl font-bold text-white mb-3">Congratulations!</h4>
           <div className="space-y-2 mb-4">
             <div className="text-netflix-light-gray">
@@ -516,24 +462,18 @@ const MemoryCardGame: React.FC = () => {
               Moves: <span className="text-blue-400 font-bold">{moves}</span>
             </div>
             {(!bestTime || timeElapsed < bestTime) && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-yellow-400 font-bold"
-              >
+              <div className="text-yellow-400 font-bold">
                 🎉 New Best Time!
-              </motion.div>
+              </div>
             )}
           </div>
-          <motion.button
+          <button
             onClick={resetGame}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className="bg-netflix-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
           >
             Play Again
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
       )}
 
       {/* Instructions */}
@@ -548,7 +488,7 @@ const MemoryCardGame: React.FC = () => {
           </ul>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
@@ -636,7 +576,7 @@ const TRexGame: React.FC = () => {
     }
   }, [gameState]);
 
-  // Handle key press for jumping
+  // Handle key press and touch for jumping
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.code === 'Space' || e.code === 'ArrowUp') {
@@ -645,8 +585,25 @@ const TRexGame: React.FC = () => {
       }
     };
 
+    const handleTouch = (e: TouchEvent) => {
+      e.preventDefault();
+      jump();
+    };
+
+    const handleClick = (e: MouseEvent) => {
+      e.preventDefault();
+      jump();
+    };
+
     document.addEventListener('keydown', handleKeyPress);
-    return () => document.removeEventListener('keydown', handleKeyPress);
+    document.addEventListener('touchstart', handleTouch);
+    document.addEventListener('click', handleClick);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener('touchstart', handleTouch);
+      document.removeEventListener('click', handleClick);
+    };
   }, [jump]);
 
   // Cleanup on unmount
@@ -659,13 +616,7 @@ const TRexGame: React.FC = () => {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6"
-    >
+    <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold text-white mb-2">🦕 T-Rex Runner</h3>
         <p className="text-netflix-light-gray text-sm">Jump over obstacles and survive as long as possible!</p>
@@ -713,8 +664,8 @@ const TRexGame: React.FC = () => {
       {/* Game Area */}
       <div className="flex justify-center">
         <div 
-          className="relative bg-gradient-to-b from-sky-300 to-sky-500 border-2 border-gray-400 rounded-lg overflow-hidden"
-          style={{ width: 600, height: 225 }}
+          className="relative bg-gradient-to-b from-sky-300 to-sky-500 border-2 border-gray-400 rounded-lg overflow-hidden w-full max-w-lg"
+          style={{ height: 225 }}
         >
           {/* Ground */}
           <div 
@@ -736,7 +687,7 @@ const TRexGame: React.FC = () => {
               height: 50,
               position: 'relative',
               top: 175, // Adjusted to touch the ground (225 - 20 ground - 50 dino = 155, but using 175 for better visual)
-              left: 50,
+              left: '5%',
               transform: 'scaleX(-1)', // Flip the dino to face right
             }}
           >
@@ -752,7 +703,7 @@ const TRexGame: React.FC = () => {
               height: 40,
               position: 'relative',
               top: 145, // Positioned above the ground (225 - 20 ground - 40 cactus = 165, but using 145 to be visible)
-              left: 580,
+              right: '-5%',
               animation: gameState === 'playing' ? 'block 1s infinite linear' : 'none',
             }}
           >
@@ -791,7 +742,8 @@ const TRexGame: React.FC = () => {
               <div className="text-center text-white">
                 <div className="text-4xl mb-4">🦕</div>
                 <h4 className="text-lg font-bold mb-2">T-Rex Runner</h4>
-                <p className="text-sm mb-4">Press SPACE or ↑ to jump</p>
+                <p className="text-sm mb-2">Press SPACE or ↑ to jump</p>
+                <p className="text-xs mb-4">On mobile: Tap anywhere to jump</p>
                 <p className="text-xs text-gray-300">Avoid the cactus!</p>
               </div>
             </div>
@@ -804,6 +756,7 @@ const TRexGame: React.FC = () => {
         <h4 className="text-sm font-semibold text-white mb-2">How to Play:</h4>
         <ul className="text-netflix-light-gray space-y-1 text-xs">
           <li>• Press <kbd className="bg-gray-700 px-1 rounded">SPACE</kbd> or <kbd className="bg-gray-700 px-1 rounded">↑</kbd> to jump</li>
+          <li>• On mobile: Tap anywhere on the screen to jump</li>
           <li>• Avoid the cactus 🌵</li>
           <li>• Try to beat your high score!</li>
         </ul>
@@ -821,8 +774,8 @@ const TRexGame: React.FC = () => {
           }
           
           @keyframes block {
-            0% { left: 580px; }
-            100% { left: -5px; }
+            0% { right: -5%; }
+            100% { right: 100%; }
           }
           
           .jump {
@@ -830,7 +783,7 @@ const TRexGame: React.FC = () => {
           }
         `
       }} />
-    </motion.div>
+    </div>
   );
 };
 
