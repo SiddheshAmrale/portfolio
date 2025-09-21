@@ -12,13 +12,13 @@ const Games: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
-            Take a break and enjoy these interactive games! Test your coding skills and memory.
+            Take a break and enjoy these interactive games! Test your reflexes, memory, and jumping skills.
           </p>
         </div>
 
                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-           {/* Code Typing Challenge */}
-           <CodeTypingGame />
+           {/* Catch the Objects Mini Game */}
+           <CatchTheObjectsGame />
            
            {/* Memory Card Game */}
            <MemoryCardGame />
@@ -33,73 +33,26 @@ const Games: React.FC = () => {
   );
 };
 
-// Code Typing Challenge Component
-const CodeTypingGame: React.FC = () => {
+// Catch the Falling Objects Mini Game
+const CatchTheObjectsGame: React.FC = () => {
   const [gameState, setGameState] = useState<'ready' | 'playing' | 'paused' | 'finished'>('ready');
-  const [currentCode, setCurrentCode] = useState('');
-  const [userInput, setUserInput] = useState('');
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(60);
-  const [wpm, setWpm] = useState(0);
-  const [accuracy, setAccuracy] = useState(100);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [lives, setLives] = useState(3);
+  const [basketPosition, setBasketPosition] = useState(50); // Percentage from left
+  const [fallingObjects, setFallingObjects] = useState<Array<{id: number, x: number, y: number, type: 'good' | 'bad', emoji: string}>>([]);
+  const [gameSpeed, setGameSpeed] = useState(1);
 
-  const codeSnippets = [
-    `function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}`,
-    `const quickSort = (arr) => {
-  if (arr.length <= 1) return arr;
-  const pivot = arr[Math.floor(arr.length / 2)];
-  const left = arr.filter(x => x < pivot);
-  const right = arr.filter(x => x > pivot);
-  return [...quickSort(left), pivot, ...quickSort(right)];
-};`,
-    `class ReactComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
-  
-  handleClick = () => {
-    this.setState({ count: this.state.count + 1 });
-  }
-  
-  render() {
-    return <button onClick={this.handleClick}>
-      Count: {this.state.count}
-    </button>;
-  }
-}`,
-    `const useCustomHook = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-  
-  const increment = useCallback(() => {
-    setValue(prev => prev + 1);
-  }, []);
-  
-  return { value, increment };
-};`,
-    `async function fetchUserData(userId) {
-  try {
-    const response = await fetch(\`/api/users/\${userId}\`);
-    if (!response.ok) throw new Error('User not found');
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching user:', error);
-    return null;
-  }
-}`
-  ];
+  const goodObjects = ['🍎', '🍌', '🍇', '🍓', '🥝', '🍊', '🍋', '🍑'];
+  const badObjects = ['💣', '🔥', '⚡', '💀', '☠️', '💢', '❌', '🚫'];
 
   const startGame = () => {
-    const randomCode = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
-    setCurrentCode(randomCode);
-    setUserInput('');
     setScore(0);
-    setTimeLeft(60);
-    setWpm(0);
-    setAccuracy(100);
+    setTimeLeft(30);
+    setLives(3);
+    setBasketPosition(50);
+    setFallingObjects([]);
+    setGameSpeed(1);
     setGameState('playing');
   };
 
@@ -113,48 +66,134 @@ const CodeTypingGame: React.FC = () => {
 
   const resetGame = () => {
     setGameState('ready');
-    setCurrentCode('');
-    setUserInput('');
     setScore(0);
-    setTimeLeft(60);
-    setWpm(0);
-    setAccuracy(100);
+    setTimeLeft(30);
+    setLives(3);
+    setBasketPosition(50);
+    setFallingObjects([]);
+    setGameSpeed(1);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const moveBasket = (direction: 'left' | 'right') => {
     if (gameState !== 'playing') return;
     
-    const input = e.target.value;
-    setUserInput(input);
-    
-    const correctChars = input.split('').filter((char, index) => 
-      char === currentCode[index]
-    ).length;
-    
-    const newAccuracy = input.length > 0 ? (correctChars / input.length) * 100 : 100;
-    setAccuracy(newAccuracy);
-    
-    const wordsTyped = input.split(/\s+/).length;
-    const timeElapsed = (60 - timeLeft) / 60;
-    const newWpm = timeElapsed > 0 ? Math.round(wordsTyped / timeElapsed) : 0;
-    setWpm(newWpm);
-    
-    setScore(correctChars);
-    
-    if (input === currentCode) {
-      setGameState('finished');
-    }
+    setBasketPosition(prev => {
+      const newPosition = direction === 'left' ? prev - 10 : prev + 10;
+      return Math.max(0, Math.min(90, newPosition));
+    });
   };
+
+  const catchObject = (objectId: number) => {
+    const object = fallingObjects.find(obj => obj.id === objectId);
+    if (!object) return;
+
+    if (object.type === 'good') {
+      setScore(prev => prev + 10);
+    } else {
+      setLives(prev => prev - 1);
+      if (lives <= 1) {
+        setGameState('finished');
+      }
+    }
+
+    setFallingObjects(prev => prev.filter(obj => obj.id !== objectId));
+  };
+
+  // Game loop effect
+  useEffect(() => {
+    if (gameState !== 'playing') return;
+
+    const gameInterval = setInterval(() => {
+      // Spawn new objects
+      if (Math.random() < 0.3) {
+        const isGood = Math.random() < 0.7; // 70% chance for good objects
+        const newObject = {
+          id: Date.now() + Math.random(),
+          x: Math.random() * 80 + 10, // 10% to 90% of screen width
+          y: 0,
+          type: isGood ? 'good' : 'bad' as 'good' | 'bad',
+          emoji: isGood 
+            ? goodObjects[Math.floor(Math.random() * goodObjects.length)]
+            : badObjects[Math.floor(Math.random() * badObjects.length)]
+        };
+        
+        setFallingObjects(prev => [...prev, newObject]);
+      }
+
+      // Move existing objects down
+      setFallingObjects(prev => 
+        prev.map(obj => ({
+          ...obj,
+          y: obj.y + gameSpeed
+        })).filter(obj => {
+          // Check if object reached basket level
+          if (obj.y >= 150) {
+            // Check if caught by basket
+            const basketLeft = basketPosition;
+            const basketRight = basketPosition + 20;
+            const objectLeft = obj.x;
+            const objectRight = obj.x + 10;
+            
+            if (objectLeft >= basketLeft && objectRight <= basketRight) {
+              catchObject(obj.id);
+            }
+            return false; // Remove object
+          }
+          return true;
+        })
+      );
+
+      // Increase game speed over time
+      setGameSpeed(prev => Math.min(prev + 0.01, 3));
+    }, 50);
+
+    return () => clearInterval(gameInterval);
+  }, [gameState, basketPosition, lives, gameSpeed, goodObjects, badObjects, catchObject]);
+
+  // Timer effect
+  useEffect(() => {
+    if (gameState !== 'playing') return;
+
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          setGameState('finished');
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [gameState]);
+
+  // Keyboard controls
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (gameState !== 'playing') return;
+      
+      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        e.preventDefault();
+        moveBasket('left');
+      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        e.preventDefault();
+        moveBasket('right');
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, [gameState, moveBasket]);
 
   return (
     <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6">
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-white mb-2">⌨️ Code Typing Challenge</h3>
-        <p className="text-netflix-light-gray text-sm">Test your coding speed and accuracy!</p>
+        <h3 className="text-2xl font-bold text-white mb-2">🎯 Catch the Objects</h3>
+        <p className="text-netflix-light-gray text-sm">Catch good objects, avoid bad ones!</p>
       </div>
 
       {/* Game Stats */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
           <div className="text-xl font-bold text-netflix-red">{timeLeft}</div>
           <div className="text-xs text-netflix-light-gray">Time</div>
@@ -164,74 +203,77 @@ const CodeTypingGame: React.FC = () => {
           <div className="text-xs text-netflix-light-gray">Score</div>
         </div>
         <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
-          <div className="text-xl font-bold text-blue-400">{wpm}</div>
-          <div className="text-xs text-netflix-light-gray">WPM</div>
-        </div>
-        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
-          <div className="text-xl font-bold text-yellow-400">{Math.round(accuracy)}%</div>
-          <div className="text-xs text-netflix-light-gray">Accuracy</div>
+          <div className="text-xl font-bold text-yellow-400">{lives}</div>
+          <div className="text-xs text-netflix-light-gray">Lives</div>
         </div>
       </div>
 
       {/* Game Controls */}
       <div className="flex justify-center space-x-3 mb-4">
         {gameState === 'ready' && (
-          <motion.button
+          <button
             onClick={startGame}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className="flex items-center space-x-2 bg-netflix-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
           >
             <FaPlay />
             <span>Start</span>
-          </motion.button>
+          </button>
         )}
         
         {(gameState === 'playing' || gameState === 'paused') && (
           <>
-            <motion.button
+            <button
               onClick={togglePause}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-2 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
             >
               {gameState === 'playing' ? <FaPause /> : <FaPlay />}
               <span>{gameState === 'playing' ? 'Pause' : 'Resume'}</span>
-            </motion.button>
+            </button>
             
-            <motion.button
+            <button
               onClick={resetGame}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
             >
               <FaRedo />
               <span>Reset</span>
-            </motion.button>
+            </button>
           </>
         )}
       </div>
 
-      {/* Code Display */}
-      {currentCode && (
-        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-4 mb-4">
-          <div className="text-xs text-netflix-light-gray mb-2">Code to type:</div>
-          <pre className="text-green-400 font-mono text-xs leading-relaxed whitespace-pre-wrap">
-            {currentCode}
-          </pre>
-        </div>
-      )}
-
-      {/* Input Area */}
+      {/* Game Area */}
       {gameState === 'playing' && (
-        <div>
-          <textarea
-            value={userInput}
-            onChange={handleInputChange}
-            className="w-full h-24 px-3 py-2 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg text-white font-mono text-xs focus:outline-none focus:border-netflix-red/50 transition-all duration-300 resize-none"
-            placeholder="Start typing..."
-            spellCheck={false}
-          />
+        <div className="relative bg-gradient-to-b from-blue-900 to-blue-700 border border-blue-400 rounded-lg overflow-hidden mb-4" style={{ height: 200 }}>
+          {/* Falling Objects */}
+          {fallingObjects.map(obj => (
+            <div
+              key={obj.id}
+              className="absolute text-2xl select-none"
+              style={{
+                left: `${obj.x}%`,
+                top: `${obj.y}px`,
+                transform: 'translateY(-50%)'
+              }}
+            >
+              {obj.emoji}
+            </div>
+          ))}
+
+          {/* Basket */}
+          <div
+            className="absolute bottom-2 text-3xl"
+            style={{
+              left: `${basketPosition}%`,
+              transform: 'translateX(-50%)'
+            }}
+          >
+            🧺
+          </div>
+
+          {/* Instructions Overlay */}
+          <div className="absolute top-2 left-2 text-white text-xs bg-black/50 px-2 py-1 rounded">
+            Use ← → or A D keys to move
+          </div>
         </div>
       )}
 
@@ -241,9 +283,7 @@ const CodeTypingGame: React.FC = () => {
           <div className="text-2xl mb-2">🎉</div>
           <h4 className="text-lg font-bold text-white mb-2">Game Over!</h4>
           <div className="text-sm text-netflix-light-gray mb-3">
-            Score: <span className="text-netflix-red font-bold">{score}</span> | 
-            WPM: <span className="text-blue-400 font-bold">{wpm}</span> | 
-            Accuracy: <span className="text-yellow-400 font-bold">{Math.round(accuracy)}%</span>
+            Final Score: <span className="text-netflix-red font-bold">{score}</span>
           </div>
           <button
             onClick={resetGame}
@@ -251,6 +291,20 @@ const CodeTypingGame: React.FC = () => {
           >
             Play Again
           </button>
+        </div>
+      )}
+
+      {/* Instructions */}
+      {gameState === 'ready' && (
+        <div className="bg-netflix-dark/30 border border-netflix-red/10 rounded-lg p-4">
+          <h4 className="text-sm font-semibold text-white mb-2">How to Play:</h4>
+          <ul className="text-netflix-light-gray space-y-1 text-xs">
+            <li>• Use ← → arrow keys or A D keys to move the basket</li>
+            <li>• Catch good objects (fruits) for +10 points</li>
+            <li>• Avoid bad objects (bombs) or lose a life</li>
+            <li>• You have 3 lives and 30 seconds</li>
+            <li>• Game gets faster over time!</li>
+          </ul>
         </div>
       )}
     </div>
@@ -543,8 +597,8 @@ const TRexGame: React.FC = () => {
       const cactusLeft = cactusRef.current ? 
         parseInt(getComputedStyle(cactusRef.current).getPropertyValue("left")) : 0;
       
-            // Only check collision if obstacles have started (after 5 seconds)
-            if (obstacleDelay <= 0 && cactusLeft < 80 && cactusLeft > 20 && dinoTop >= 160) {
+      // Only check collision if obstacles have started (after 5 seconds)
+      if (obstacleDelay <= 0 && cactusLeft < 80 && cactusLeft > 20 && dinoTop >= 160) {
         // Collision detected
         setGameState('gameOver');
         setScore(currentScore => {
@@ -744,7 +798,7 @@ const TRexGame: React.FC = () => {
               height: 40,
               position: 'relative',
               top: 145, // Positioned above the ground (225 - 20 ground - 40 cactus = 165, but using 145 to be visible)
-              right: '-10%',
+              left: '100%', // Start off-screen to the right
               animation: 'none', // Will be set dynamically after 5 seconds
             }}
           >
@@ -841,8 +895,8 @@ const TRexGame: React.FC = () => {
           }
           
           @keyframes block {
-            0% { right: -10%; }
-            100% { right: 100%; }
+            0% { left: 100%; }
+            100% { left: -10%; }
           }
           
           .jump {
