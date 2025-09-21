@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import {
   FaReact, FaPython, FaAws, FaDocker, FaGit, FaCloud, FaJava
 } from 'react-icons/fa';
@@ -61,13 +60,7 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="py-20 bg-netflix-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             ⚡ Skills & Technologies
           </h2>
@@ -75,32 +68,20 @@ const Skills: React.FC = () => {
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
             I've worked with a variety of technologies to create robust and scalable applications.
           </p>
-        </motion.div>
+        </div>
 
         <div className="space-y-12">
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={categoryIndex}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
+            <div key={categoryIndex} className="space-y-8">
               <h3 className="text-2xl font-bold text-white text-center mb-8">
                 {category.title}
               </h3>
               
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.div
+                  <div
                     key={skillIndex}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: skillIndex * 0.1, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -5 }}
-                    className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-4 hover:border-netflix-red/50 transition-all duration-300"
+                    className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-4 hover:border-netflix-red/50 transition-colors duration-300"
                   >
                     <div className="flex items-center justify-center mb-3 text-netflix-red">
                       {skill.icon}
@@ -108,17 +89,15 @@ const Skills: React.FC = () => {
                     <h4 className="text-sm font-semibold text-white text-center">
                       {skill.name}
                     </h4>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-
-
       </div>
     </section>
   );
 };
 
-export default Skills; 
+export default Skills;

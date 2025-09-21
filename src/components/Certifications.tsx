@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaCertificate, FaCloud } from 'react-icons/fa';
 import { BiCalendar, BiLink } from 'react-icons/bi';
 import FloatingElements from './FloatingElements';
@@ -52,13 +51,7 @@ const Certifications: React.FC = () => {
     <section id="certifications" className="py-20 bg-netflix-dark relative overflow-hidden">
       <FloatingElements />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             🏆 Certifications & Achievements
           </h2>
@@ -66,23 +59,14 @@ const Certifications: React.FC = () => {
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
             Professional certifications that validate my expertise in cloud technologies and Microsoft Azure.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {certifications.map((cert, index) => (
-            <motion.div
+          {certifications.map((cert) => (
+            <div
               key={cert.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-all duration-300 p-6"
+              className="relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-colors duration-300 p-6"
             >
-
-
-
-
               {/* Header */}
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-netflix-red">
@@ -141,9 +125,7 @@ const Certifications: React.FC = () => {
               </div>
 
               {/* Verification Link */}
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <a
                 href={cert.verificationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -151,19 +133,13 @@ const Certifications: React.FC = () => {
               >
                 <BiLink size={16} />
                 Verify Credential
-              </motion.a>
-            </motion.div>
+              </a>
+            </div>
           ))}
         </div>
 
         {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
+        <div className="mt-12 text-center">
           <div className="bg-netflix-black/30 border border-netflix-red/20 rounded-lg p-6">
             <h3 className="text-lg font-semibold text-white mb-2">
               Why Azure Certifications Matter
@@ -175,10 +151,10 @@ const Certifications: React.FC = () => {
               and the Azure Administrator Associate certification demonstrates my expertise in managing Azure infrastructure and resources.
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Certifications; 
+export default Certifications;

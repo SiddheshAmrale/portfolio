@@ -1,9 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
-
   const contactInfo = [
     {
       icon: <FaEnvelope size={24} />,
@@ -43,13 +41,7 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-20 bg-netflix-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             📧 Get In Touch
           </h2>
@@ -57,17 +49,11 @@ const Contact: React.FC = () => {
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
             I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">
                 Let's Connect
@@ -81,15 +67,10 @@ const Contact: React.FC = () => {
             {/* Contact Info Cards */}
             <div className="space-y-6">
               {contactInfo.map((info, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={info.link}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  whileHover={{ x: 10 }}
-                  className="flex items-center space-x-4 p-4 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50 transition-all duration-300"
+                  className="flex items-center space-x-4 p-4 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50 transition-colors duration-300"
                 >
                   <div className="text-netflix-red">
                     {info.icon}
@@ -98,7 +79,7 @@ const Contact: React.FC = () => {
                     <h4 className="text-white font-semibold">{info.title}</h4>
                     <p className="text-netflix-light-gray">{info.value}</p>
                   </div>
-                </motion.a>
+                </a>
               ))}
             </div>
 
@@ -107,34 +88,22 @@ const Contact: React.FC = () => {
               <h4 className="text-xl font-semibold text-white mb-4">Follow Me</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <motion.a
+                  <a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
                     className={`text-netflix-light-gray ${social.color} transition-all duration-200 p-3 bg-netflix-dark/50 border border-netflix-red/20 rounded-lg hover:border-netflix-red/50`}
                   >
                     {social.icon}
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Contact Form or Additional Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">
                 Ready to Work Together?
@@ -154,7 +123,7 @@ const Contact: React.FC = () => {
                 I'm ready to help you achieve your goals with cutting-edge technology.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
