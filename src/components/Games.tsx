@@ -427,23 +427,23 @@ const MemoryCardGame: React.FC = () => {
       {/* Game Board */}
       {gameState === 'playing' && (
         <div className="grid grid-cols-4 gap-3 mb-4">
-          {cards.map((card) => (
+            {cards.map((card) => (
             <div
-              key={card.id}
-              onClick={() => handleCardClick(card.id)}
-              className={`
+                key={card.id}
+                onClick={() => handleCardClick(card.id)}
+                className={`
                 aspect-square flex items-center justify-center text-2xl font-bold rounded-lg cursor-pointer transition-all duration-200
-                ${card.isMatched 
-                  ? 'bg-green-600/50 border-2 border-green-400' 
-                  : card.isFlipped 
-                    ? 'bg-netflix-red border-2 border-red-400' 
-                    : 'bg-netflix-dark border-2 border-netflix-red/50 hover:border-netflix-red'
-                }
-              `}
-            >
-              {card.isFlipped || card.isMatched ? card.value : '?'}
+                  ${card.isMatched 
+                    ? 'bg-green-600/50 border-2 border-green-400' 
+                    : card.isFlipped 
+                      ? 'bg-netflix-red border-2 border-red-400' 
+                      : 'bg-netflix-dark border-2 border-netflix-red/50 hover:border-netflix-red'
+                  }
+                `}
+                >
+                  {card.isFlipped || card.isMatched ? card.value : '?'}
             </div>
-          ))}
+            ))}
         </div>
       )}
 
@@ -498,6 +498,7 @@ const TRexGame: React.FC = () => {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [countdown, setCountdown] = useState(3);
+  const [obstacleDelay, setObstacleDelay] = useState(5);
   
   // Refs for DOM manipulation - following codinn.dev approach
   const dinoRef = useRef<HTMLDivElement>(null);
@@ -508,6 +509,7 @@ const TRexGame: React.FC = () => {
     setGameState('countdown');
     setScore(0);
     setCountdown(3);
+    setObstacleDelay(5);
     
     // Countdown before starting the game
     const countdownInterval = setInterval(() => {
@@ -515,8 +517,24 @@ const TRexGame: React.FC = () => {
         if (prev <= 1) {
           clearInterval(countdownInterval);
           setGameState('playing');
-          // Start the game loop using setInterval like codinn.dev
-          gameIntervalRef.current = setInterval(() => {
+          
+          // Start obstacle delay countdown
+          const obstacleCountdown = setInterval(() => {
+            setObstacleDelay(prev => {
+              if (prev <= 1) {
+                clearInterval(obstacleCountdown);
+                // Start obstacles after 5 seconds
+                if (cactusRef.current) {
+                  cactusRef.current.style.animation = 'block 2s infinite linear';
+                }
+                return 0;
+              }
+              return prev - 1;
+            });
+          }, 1000);
+    
+    // Start the game loop using setInterval like codinn.dev
+    gameIntervalRef.current = setInterval(() => {
       // Get current dino Y position
       const dinoTop = dinoRef.current ? 
         parseInt(getComputedStyle(dinoRef.current).getPropertyValue("top")) : 0;
@@ -525,8 +543,8 @@ const TRexGame: React.FC = () => {
       const cactusLeft = cactusRef.current ? 
         parseInt(getComputedStyle(cactusRef.current).getPropertyValue("left")) : 0;
       
-      // Detect collision - improved collision logic
-      if (cactusLeft < 80 && cactusLeft > 20 && dinoTop >= 160) {
+            // Only check collision if obstacles have started (after 5 seconds)
+            if (obstacleDelay <= 0 && cactusLeft < 80 && cactusLeft > 20 && dinoTop >= 160) {
         // Collision detected
         setGameState('gameOver');
         setScore(currentScore => {
@@ -568,6 +586,9 @@ const TRexGame: React.FC = () => {
       // Trigger reflow to reset animation
       void cactusRef.current.offsetHeight;
     }
+    
+    // Reset obstacle delay
+    setObstacleDelay(5);
     
     // Start the game directly
     startGame();
@@ -724,7 +745,7 @@ const TRexGame: React.FC = () => {
               position: 'relative',
               top: 145, // Positioned above the ground (225 - 20 ground - 40 cactus = 165, but using 145 to be visible)
               right: '-10%',
-              animation: gameState === 'playing' ? 'block 2s infinite linear' : 'none',
+              animation: 'none', // Will be set dynamically after 5 seconds
             }}
           >
             🌵
@@ -780,6 +801,19 @@ const TRexGame: React.FC = () => {
               </div>
             </div>
           )}
+
+          {/* Obstacle Delay Overlay */}
+          {gameState === 'playing' && obstacleDelay > 0 && (
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <div className="text-center text-white">
+                <div className="text-4xl font-bold text-green-400 mb-2">
+                  {obstacleDelay}
+                </div>
+                <p className="text-sm text-gray-300">Obstacles start in...</p>
+                <p className="text-xs text-gray-400 mt-2">Practice jumping!</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -789,7 +823,8 @@ const TRexGame: React.FC = () => {
         <ul className="text-netflix-light-gray space-y-1 text-xs">
           <li>• Press <kbd className="bg-gray-700 px-1 rounded">SPACE</kbd> or <kbd className="bg-gray-700 px-1 rounded">↑</kbd> to jump</li>
           <li>• On mobile: Tap anywhere on the screen to jump</li>
-          <li>• Avoid the cactus 🌵</li>
+          <li>• Obstacles start after 5 seconds - practice jumping!</li>
+          <li>• Avoid the cactus 🌵 when it starts moving</li>
           <li>• Try to beat your high score!</li>
         </ul>
       </div>
