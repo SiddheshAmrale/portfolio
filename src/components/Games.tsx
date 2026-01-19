@@ -12,13 +12,13 @@ const Games: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8"></div>
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
-            Take a break and enjoy these interactive games! Test your reflexes, memory, and jumping skills.
+            Take a break and enjoy these interactive games! Test your typing speed, memory, and jumping skills.
           </p>
         </div>
 
                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-           {/* Catch the Objects Mini Game */}
-           <CatchTheObjectsGame />
+           {/* Typing Test Mini Game */}
+           <TypingTestGame />
            
            {/* Memory Card Game */}
            <MemoryCardGame />
@@ -33,127 +33,137 @@ const Games: React.FC = () => {
   );
 };
 
-// Catch the Falling Objects Mini Game
-const CatchTheObjectsGame: React.FC = () => {
-  const [gameState, setGameState] = useState<'ready' | 'playing' | 'paused' | 'finished'>('ready');
-  const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(30);
-  const [lives, setLives] = useState(3);
-  const [basketPosition, setBasketPosition] = useState(50); // Percentage from left
-  const [fallingObjects, setFallingObjects] = useState<Array<{id: number, x: number, y: number, type: 'good' | 'bad', emoji: string}>>([]);
-  const [gameSpeed, setGameSpeed] = useState(1);
+// Typing Test Game Component
+const TypingTestGame: React.FC = () => {
+  const [gameState, setGameState] = useState<'ready' | 'playing' | 'finished'>('ready');
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [wpm, setWpm] = useState(0);
+  const [accuracy, setAccuracy] = useState(100);
+  const [wordsTyped, setWordsTyped] = useState(0);
+  const [errors, setErrors] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [userInput, setUserInput] = useState('');
+  const [charIndex, setCharIndex] = useState(0);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [bestWpm, setBestWpm] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const goodObjects = useMemo(() => ['🍎', '🍌', '🍇', '🍓', '🥝', '🍊', '🍋', '🍑'], []);
-  const badObjects = useMemo(() => ['💣', '🔥', '⚡', '💀', '☠️', '💢', '❌', '🚫'], []);
+  const sampleTexts = useMemo(() => [
+    "The quick brown fox jumps over the lazy dog. This is a classic typing test sentence that contains every letter of the alphabet.",
+    "Programming is the art of telling a computer what to do through a series of instructions. It requires logic, creativity, and problem-solving skills.",
+    "React is a powerful JavaScript library for building user interfaces. It allows developers to create reusable components and build complex applications efficiently.",
+    "TypeScript adds static type definitions to JavaScript, providing better tooling and catching errors at compile time rather than runtime.",
+    "The best way to learn coding is through practice. Build projects, solve problems, and never stop learning new technologies and frameworks.",
+    "Web development has evolved significantly over the years. Modern frameworks and tools make it easier than ever to create amazing user experiences.",
+    "Clean code is not just about making it work. It's about making it readable, maintainable, and understandable for other developers.",
+    "Algorithms and data structures form the foundation of computer science. Understanding them helps you write more efficient and elegant code.",
+    "Version control systems like Git are essential tools for developers. They help track changes, collaborate with teams, and manage codebases effectively.",
+    "Testing is a crucial part of software development. Writing tests helps ensure your code works correctly and prevents regressions when making changes."
+  ], []);
+
+  const getRandomText = useCallback(() => {
+    return sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
+  }, [sampleTexts]);
 
   const startGame = () => {
-    setScore(0);
-    setTimeLeft(30);
-    setLives(3);
-    setBasketPosition(50);
-    setFallingObjects([]);
-    setGameSpeed(1);
+    const text = getRandomText();
+    setCurrentText(text);
+    setUserInput('');
+    setCharIndex(0);
+    setTimeLeft(60);
+    setWpm(0);
+    setAccuracy(100);
+    setWordsTyped(0);
+    setErrors(0);
+    setStartTime(Date.now());
     setGameState('playing');
-  };
-
-  const togglePause = () => {
-    if (gameState === 'playing') {
-      setGameState('paused');
-    } else if (gameState === 'paused') {
-      setGameState('playing');
-    }
+    
+    // Focus input after a short delay
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
   };
 
   const resetGame = () => {
     setGameState('ready');
-    setScore(0);
-    setTimeLeft(30);
-    setLives(3);
-    setBasketPosition(50);
-    setFallingObjects([]);
-    setGameSpeed(1);
+    setUserInput('');
+    setCharIndex(0);
+    setTimeLeft(60);
+    setWpm(0);
+    setAccuracy(100);
+    setWordsTyped(0);
+    setErrors(0);
+    setStartTime(null);
   };
 
-  const moveBasket = useCallback((direction: 'left' | 'right') => {
-    if (gameState !== 'playing') return;
-    
-    setBasketPosition(prev => {
-      const newPosition = direction === 'left' ? prev - 10 : prev + 10;
-      return Math.max(0, Math.min(90, newPosition));
-    });
-  }, [gameState]);
-
-  const catchObject = useCallback((objectId: number) => {
-    setFallingObjects(prev => {
-      const object = prev.find(obj => obj.id === objectId);
-      if (!object) return prev;
-
-      if (object.type === 'good') {
-        setScore(scorePrev => scorePrev + 10);
-      } else {
-        setLives(livesPrev => {
-          const newLives = livesPrev - 1;
-          if (newLives <= 0) {
-            setGameState('finished');
+  const finishGame = useCallback((finalWpm?: number) => {
+    setGameState('finished');
+    if (finalWpm !== undefined) {
+      setBestWpm(prevBest => {
+        if (finalWpm > prevBest) {
+          return finalWpm;
+        }
+        return prevBest;
+      });
+    } else {
+      setWpm(currentWpm => {
+        setBestWpm(prevBest => {
+          if (currentWpm > prevBest) {
+            return currentWpm;
           }
-          return newLives;
+          return prevBest;
         });
-      }
-
-      return prev.filter(obj => obj.id !== objectId);
-    });
+        return currentWpm;
+      });
+    }
   }, []);
 
-  // Game loop effect
-  useEffect(() => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    
     if (gameState !== 'playing') return;
-
-    const gameInterval = setInterval(() => {
-      // Spawn new objects
-      if (Math.random() < 0.3) {
-        const isGood = Math.random() < 0.7; // 70% chance for good objects
-        const newObject = {
-          id: Date.now() + Math.random(),
-          x: Math.random() * 80 + 10, // 10% to 90% of screen width
-          y: 0,
-          type: isGood ? 'good' : 'bad' as 'good' | 'bad',
-          emoji: isGood 
-            ? goodObjects[Math.floor(Math.random() * goodObjects.length)]
-            : badObjects[Math.floor(Math.random() * badObjects.length)]
-        };
-        
-        setFallingObjects(prev => [...prev, newObject]);
+    
+    setUserInput(value);
+    
+    // Check for errors
+    let newErrors = 0;
+    for (let i = 0; i < value.length; i++) {
+      if (value[i] !== currentText[i]) {
+        newErrors++;
       }
-
-      // Move existing objects down
-      setFallingObjects(prev => 
-        prev.map(obj => ({
-          ...obj,
-          y: obj.y + gameSpeed
-        })).filter(obj => {
-          // Check if object reached basket level
-          if (obj.y >= 150) {
-            // Check if caught by basket
-            const basketLeft = basketPosition;
-            const basketRight = basketPosition + 20;
-            const objectLeft = obj.x;
-            const objectRight = obj.x + 10;
-            
-            if (objectLeft >= basketLeft && objectRight <= basketRight) {
-              catchObject(obj.id);
-            }
-            return false; // Remove object
-          }
-          return true;
-        })
-      );
-
-      // Increase game speed over time
-      setGameSpeed(prev => Math.min(prev + 0.01, 3));
-    }, 50);
-
-    return () => clearInterval(gameInterval);
-  }, [gameState, basketPosition, lives, gameSpeed, goodObjects, badObjects, catchObject]);
+    }
+    setErrors(newErrors);
+    
+    // Update character index
+    setCharIndex(value.length);
+    
+    // Calculate words typed (5 characters = 1 word)
+    const words = Math.floor(value.length / 5);
+    setWordsTyped(words);
+    
+    // Calculate WPM if time has passed
+    let calculatedWpm = 0;
+    if (startTime) {
+      const timeElapsed = (Date.now() - startTime) / 1000 / 60; // in minutes
+      if (timeElapsed > 0) {
+        calculatedWpm = Math.round(words / timeElapsed);
+        setWpm(calculatedWpm);
+      }
+    }
+    
+    // Calculate accuracy
+    const totalChars = value.length;
+    if (totalChars > 0) {
+      const correctChars = totalChars - newErrors;
+      const calculatedAccuracy = Math.round((correctChars / totalChars) * 100);
+      setAccuracy(calculatedAccuracy);
+    }
+    
+    // Check if text is complete
+    if (value === currentText) {
+      finishGame(calculatedWpm);
+    }
+  };
 
   // Timer effect
   useEffect(() => {
@@ -162,7 +172,10 @@ const CatchTheObjectsGame: React.FC = () => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
-          setGameState('finished');
+          setWpm(currentWpm => {
+            finishGame(currentWpm);
+            return currentWpm;
+          });
           return 0;
         }
         return prev - 1;
@@ -170,46 +183,65 @@ const CatchTheObjectsGame: React.FC = () => {
     }, 1000);
 
     return () => clearInterval(timer);
+  }, [gameState, finishGame]);
+
+  // Auto-focus input when game starts
+  useEffect(() => {
+    if (gameState === 'playing' && inputRef.current) {
+      inputRef.current.focus();
+    }
   }, [gameState]);
 
-  // Keyboard controls
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (gameState !== 'playing') return;
+  // Render text with highlighting
+  const renderText = () => {
+    if (!currentText) return null;
+    
+    return currentText.split('').map((char, index) => {
+      let className = 'text-gray-400';
       
-      if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-        e.preventDefault();
-        moveBasket('left');
-      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-        e.preventDefault();
-        moveBasket('right');
+      if (index < charIndex) {
+        // Already typed
+        if (userInput[index] === char) {
+          className = 'text-green-400'; // Correct
+        } else {
+          className = 'text-red-400 bg-red-900/30'; // Incorrect
+        }
+      } else if (index === charIndex) {
+        className = 'text-white bg-netflix-red/50 border-b-2 border-netflix-red'; // Current
       }
-    };
-
-    document.addEventListener('keydown', handleKeyPress);
-    return () => document.removeEventListener('keydown', handleKeyPress);
-  }, [gameState, moveBasket]);
+      
+      return (
+        <span key={index} className={className}>
+          {char === ' ' ? ' ' : char}
+        </span>
+      );
+    });
+  };
 
   return (
     <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6">
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-white mb-2">🎯 Catch the Objects</h3>
-        <p className="text-netflix-light-gray text-sm">Catch good objects, avoid bad ones!</p>
+        <h3 className="text-2xl font-bold text-white mb-2">⌨️ Typing Test</h3>
+        <p className="text-netflix-light-gray text-sm">Test your typing speed and accuracy!</p>
       </div>
 
       {/* Game Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-4 gap-3 mb-6">
         <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
-          <div className="text-xl font-bold text-netflix-red">{timeLeft}</div>
+          <div className="text-xl font-bold text-netflix-red">{timeLeft}s</div>
           <div className="text-xs text-netflix-light-gray">Time</div>
         </div>
         <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
-          <div className="text-xl font-bold text-green-400">{score}</div>
-          <div className="text-xs text-netflix-light-gray">Score</div>
+          <div className="text-xl font-bold text-green-400">{wpm}</div>
+          <div className="text-xs text-netflix-light-gray">WPM</div>
         </div>
         <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
-          <div className="text-xl font-bold text-yellow-400">{lives}</div>
-          <div className="text-xs text-netflix-light-gray">Lives</div>
+          <div className="text-xl font-bold text-yellow-400">{accuracy}%</div>
+          <div className="text-xs text-netflix-light-gray">Accuracy</div>
+        </div>
+        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-3 text-center">
+          <div className="text-xl font-bold text-blue-400">{bestWpm}</div>
+          <div className="text-xs text-netflix-light-gray">Best</div>
         </div>
       </div>
 
@@ -225,76 +257,75 @@ const CatchTheObjectsGame: React.FC = () => {
           </button>
         )}
         
-        {(gameState === 'playing' || gameState === 'paused') && (
-          <>
-            <button
-              onClick={togglePause}
-              className="flex items-center space-x-2 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
-            >
-              {gameState === 'playing' ? <FaPause /> : <FaPlay />}
-              <span>{gameState === 'playing' ? 'Pause' : 'Resume'}</span>
-            </button>
-            
-            <button
-              onClick={resetGame}
-              className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
-            >
-              <FaRedo />
-              <span>Reset</span>
-            </button>
-          </>
+        {gameState === 'playing' && (
+          <button
+            onClick={resetGame}
+            className="flex items-center space-x-2 bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
+          >
+            <FaRedo />
+            <span>Reset</span>
+          </button>
         )}
       </div>
 
       {/* Game Area */}
       {gameState === 'playing' && (
-        <div className="relative bg-gradient-to-b from-blue-900 to-blue-700 border border-blue-400 rounded-lg overflow-hidden mb-4" style={{ height: 200 }}>
-          {/* Falling Objects */}
-          {fallingObjects.map(obj => (
-            <div
-              key={obj.id}
-              className="absolute text-2xl select-none"
-              style={{
-                left: `${obj.x}%`,
-                top: `${obj.y}px`,
-                transform: 'translateY(-50%)'
-              }}
-            >
-              {obj.emoji}
-            </div>
-          ))}
-
-          {/* Basket */}
-          <div
-            className="absolute bottom-2 text-3xl"
-            style={{
-              left: `${basketPosition}%`,
-              transform: 'translateX(-50%)'
-            }}
-          >
-            🧺
+        <div className="mb-4 overflow-hidden">
+          <div className="bg-netflix-dark/70 border border-netflix-red/30 rounded-lg p-4 mb-4 min-h-[120px] max-h-[200px] overflow-y-auto overflow-x-hidden">
+            <p className="text-lg leading-relaxed font-mono" style={{ wordBreak: 'normal', whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}>
+              {renderText()}
+            </p>
           </div>
-
-          {/* Instructions Overlay */}
-          <div className="absolute top-2 left-2 text-white text-xs bg-black/50 px-2 py-1 rounded">
-            Use ← → or A D keys to move
+          
+          <input
+            ref={inputRef}
+            type="text"
+            value={userInput}
+            onChange={handleInputChange}
+            className="w-full bg-netflix-dark border-2 border-netflix-red/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-netflix-red text-lg font-mono"
+            placeholder="Start typing..."
+            autoFocus
+          />
+          
+          <div className="mt-2 text-xs text-netflix-light-gray text-center">
+            {errors > 0 && (
+              <span className="text-red-400">Errors: {errors}</span>
+            )}
           </div>
         </div>
       )}
 
       {/* Game Over Screen */}
       {gameState === 'finished' && (
-        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-4 text-center">
-          <div className="text-2xl mb-2">🎉</div>
-          <h4 className="text-lg font-bold text-white mb-2">Game Over!</h4>
-          <div className="text-sm text-netflix-light-gray mb-3">
-            Final Score: <span className="text-netflix-red font-bold">{score}</span>
+        <div className="bg-netflix-dark/50 border border-netflix-red/20 rounded-lg p-6 text-center">
+          <div className="text-4xl mb-4">🎉</div>
+          <h4 className="text-xl font-bold text-white mb-4">Test Complete!</h4>
+          <div className="space-y-2 mb-4">
+            <div className="text-netflix-light-gray">
+              Speed: <span className="text-green-400 font-bold text-xl">{wpm} WPM</span>
+            </div>
+            <div className="text-netflix-light-gray">
+              Accuracy: <span className="text-yellow-400 font-bold">{accuracy}%</span>
+            </div>
+            <div className="text-netflix-light-gray">
+              Words Typed: <span className="text-blue-400 font-bold">{wordsTyped}</span>
+            </div>
+            {errors > 0 && (
+              <div className="text-netflix-light-gray">
+                Errors: <span className="text-red-400 font-bold">{errors}</span>
+              </div>
+            )}
+            {wpm === bestWpm && wpm > 0 && (
+              <div className="text-yellow-400 font-bold mt-2">
+                🏆 New Best Score!
+              </div>
+            )}
           </div>
           <button
             onClick={resetGame}
             className="bg-netflix-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 text-sm"
           >
-            Play Again
+            Try Again
           </button>
         </div>
       )}
@@ -304,11 +335,11 @@ const CatchTheObjectsGame: React.FC = () => {
         <div className="bg-netflix-dark/30 border border-netflix-red/10 rounded-lg p-4">
           <h4 className="text-sm font-semibold text-white mb-2">How to Play:</h4>
           <ul className="text-netflix-light-gray space-y-1 text-xs">
-            <li>• Use ← → arrow keys or A D keys to move the basket</li>
-            <li>• Catch good objects (fruits) for +10 points</li>
-            <li>• Avoid bad objects (bombs) or lose a life</li>
-            <li>• You have 3 lives and 30 seconds</li>
-            <li>• Game gets faster over time!</li>
+            <li>• Click Start and begin typing the displayed text</li>
+            <li>• You have 60 seconds to type as much as possible</li>
+            <li>• WPM (Words Per Minute) is calculated based on your speed</li>
+            <li>• Accuracy shows how many characters you typed correctly</li>
+            <li>• Try to beat your best score!</li>
           </ul>
         </div>
       )}
