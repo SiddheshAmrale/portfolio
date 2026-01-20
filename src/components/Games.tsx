@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlay, FaPause, FaRedo } from 'react-icons/fa';
+import { FaPlay, FaRedo } from 'react-icons/fa';
 
 const Games: React.FC = () => {
   return (
@@ -610,7 +610,7 @@ const TRexGame: React.FC = () => {
     // Reset dino
     if (dinoRef.current) {
       dinoRef.current.classList.remove('jump');
-      dinoRef.current.style.top = '175px';
+      dinoRef.current.style.top = '140px';
     }
     
     // Reset cactus
@@ -642,7 +642,7 @@ const TRexGame: React.FC = () => {
           
           // Check collision: horizontal overlap AND dino on ground (not jumping)
           const horizontalOverlap = cactusLeft < dinoRight && cactusRight > dinoLeft;
-          const isOnGround = dinoBottom >= 220; // Ground level check
+          const isOnGround = dinoBottom >= 185; // Ground level check
           const notJumping = !isJumpingRef.current && !dinoRef.current.classList.contains('jump');
           
           if (horizontalOverlap && isOnGround && notJumping) {
@@ -685,7 +685,7 @@ const TRexGame: React.FC = () => {
     
     if (dinoRef.current) {
       dinoRef.current.classList.remove('jump');
-      dinoRef.current.style.top = '175px';
+      dinoRef.current.style.top = '140px';
     }
     
     if (cactusRef.current) {
@@ -706,7 +706,7 @@ const TRexGame: React.FC = () => {
         dinoRef.current.classList.remove('jump');
         isJumpingRef.current = false;
       }
-    }, 300);
+    }, 600);
   }, [gameState]);
 
   // Keyboard and touch controls
@@ -810,12 +810,12 @@ const TRexGame: React.FC = () => {
           {/* Dino */}
           <div
             ref={dinoRef}
-            className="absolute text-4xl"
+            className="absolute text-7xl"
             style={{
-              width: 50,
-              height: 50,
+              width: 70,
+              height: 85,
               position: 'relative',
-              top: 175,
+              top: 140,
               left: '5%',
               transform: 'scaleX(-1)',
             }}
@@ -826,12 +826,12 @@ const TRexGame: React.FC = () => {
           {/* Cactus */}
           <div
             ref={cactusRef}
-            className="absolute text-2xl"
+            className="absolute text-5xl"
             style={{
-              width: 20,
-              height: 40,
+              width: 50,
+              height: 105,
               position: 'relative',
-              top: 145,
+              top: 100,
               left: '100%',
               animation: 'none',
             }}
@@ -895,9 +895,9 @@ const TRexGame: React.FC = () => {
       <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes jump {
-            0% { top: 175px; }
-            50% { top: 105px; }
-            100% { top: 175px; }
+            0% { top: 140px; }
+            35% { top: 40px; }
+            100% { top: 140px; }
           }
           
           @keyframes block {
@@ -906,7 +906,7 @@ const TRexGame: React.FC = () => {
           }
           
           .jump {
-            animation: jump 0.3s linear;
+            animation: jump 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           }
         `
       }} />
