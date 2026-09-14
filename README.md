@@ -1,8 +1,10 @@
 # Siddhesh Amrale — portfolio + systems workbench
 
-The recruiter-facing site is Netflix-themed. The technical work is in [`src/labs`](src/labs/README.md): four investigations that run **without opening the website**.
+The recruiter-facing site is Netflix-themed. The technical work is in [`src/labs`](src/labs/README.md): four investigations that run **without opening the website**. The same engines are published as a standalone repo: [SiddheshAmrale/systems-workbench](https://github.com/SiddheshAmrale/systems-workbench).
 
 ```bash
+git clone https://github.com/SiddheshAmrale/portfolio.git
+cd portfolio
 npm install
 npm run workbench:test
 npm run workbench

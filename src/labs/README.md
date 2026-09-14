@@ -2,7 +2,7 @@
 
 Independent investigations for inference runtime behavior, a quantum compiler plus hybrid-job recovery, PQC TLS migration, and GPU fleet diagnostics.
 
-This package is the source of truth. The portfolio UI at `/labs/*` is a viewer over the same engines. You do not need the website to reproduce the results.
+This package is the source of truth. The portfolio UI at `/labs/*` is a viewer over the same engines. A standalone clone lives at [SiddheshAmrale/systems-workbench](https://github.com/SiddheshAmrale/systems-workbench). You do not need the website to reproduce the results.
 
 These are **pinned-seed models**, not cluster measurements, hardware compiler results, or a claim that anyone else has adopted the code.
 
@@ -11,7 +11,7 @@ These are **pinned-seed models**, not cluster measurements, hardware compiler re
 Requires Node 20+.
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/SiddheshAmrale/portfolio.git
 cd portfolio
 npm install
 npm run workbench:test

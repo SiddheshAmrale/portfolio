@@ -213,7 +213,7 @@ export function formatReportMarkdown(reports: InvestigationReport[]): string {
   const lines: string[] = [
     '# Systems workbench reports',
     '',
-    'Generated from the engines in `src/labs`. Run `npm run workbench` to reproduce.',
+    'Generated from the workbench engines. Run `npm run workbench` to reproduce.',
     ''
   ];
   for (let i = 0; i < reports.length; i++) {
