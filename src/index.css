@@ -138,6 +138,38 @@ code {
   animation: glow 2s ease-in-out infinite;
 }
 
+.app-workbench-root,
+.app-workbench-root * {
+  -webkit-perspective: none;
+  perspective: none;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+.app-workbench-root ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-workbench-root ::-webkit-scrollbar-track {
+  background: #07090d;
+}
+
+.app-workbench-root ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+.app-workbench-root ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+.app-workbench {
+  min-height: 100vh;
+  height: 100vh;
+  background: #07090d;
+  color: #e8edf5;
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   * {

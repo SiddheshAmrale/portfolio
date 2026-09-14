@@ -1,3 +1,17 @@
+# Siddhesh Amrale — portfolio + systems workbench
+
+The recruiter-facing site is Netflix-themed. The technical work is in [`src/labs`](src/labs/README.md): four investigations that run **without opening the website**.
+
+```bash
+npm install
+npm run workbench:test
+npm run workbench
+```
+
+That prints a lab report and writes `reports/latest.md`. The UI at `/labs/inference`, `/labs/quantum`, `/labs/pqc`, and `/labs/fleet` is a viewer over the same engines. Results are pinned-seed models, not hardware or cluster measurements.
+
+---
+
 # 🎬 Siddhesh Amrale - Netflix-Inspired Portfolio
 
 A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS, featuring a Netflix-inspired design with smooth animations and professional styling.

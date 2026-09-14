@@ -35,6 +35,9 @@ pids
 *.seed
 *.pid.lock
 
+# Generated investigation reports
+reports/
+
 # Coverage directory used by tools like istanbul
 coverage/
 
