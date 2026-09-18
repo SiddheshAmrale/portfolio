@@ -1,16 +1,29 @@
 # Siddhesh Amrale — portfolio + systems workbench
 
-The recruiter-facing site is Netflix-themed. The technical work is in [`src/labs`](src/labs/README.md): four investigations that run **without opening the website**. The same engines are published as a standalone repo: [SiddheshAmrale/systems-workbench](https://github.com/SiddheshAmrale/systems-workbench).
+The recruiter-facing site is Netflix-themed. Technical substance:
+
+| Package / route | Target theme | Reproduce |
+|---|---|---|
+| [`pilot/`](pilot/README.md) · `/labs/incident` | Credo PILOT telemetry + live Ubuntu netns | `npm run pilot:test` |
+| [`forge/`](forge/README.md) · `/labs/forge` | Databricks / Netflix lakehouse DE | `npm run labs:test` |
+| [`link/`](link/README.md) · `/labs/link` | Broadcom / Marvell SerDes & photonics vocab | `npm run labs:test` |
+| [`smr/`](smr/README.md) · `/labs/smr` | Oklo-style I&C data integrity | `npm run labs:test` |
+| `/learn` | Guided practical academy (must-know → practice → self-check) | open the app |
 
 ```bash
 git clone https://github.com/SiddheshAmrale/portfolio.git
 cd portfolio
 npm install
+python -m pip install -e "./pilot[dev]" -e "./forge[dev]" -e "./link[dev]" -e "./smr[dev]"
+npm run labs:test
+npm run labs:cases
 npm run workbench:test
-npm run workbench
+npm start
 ```
 
-That prints a lab report and writes `reports/latest.md`. The UI at `/labs/inference`, `/labs/quantum`, `/labs/pqc`, and `/labs/fleet` is a viewer over the same engines. Results are pinned-seed models, not hardware or cluster measurements.
+Honest limits are in `/learn` → Scorecard. Teaching models are not ASIC silicon, Databricks Runtime, or NQA-1 plant software.
+
+The older TypeScript workbenches still live in [`src/labs`](src/labs/README.md) and [SiddheshAmrale/systems-workbench](https://github.com/SiddheshAmrale/systems-workbench).
 
 ---
 
