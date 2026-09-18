@@ -21,7 +21,19 @@
       "mean_eye_ui": 0.798855,
       "mean_jitter_ui": 0.12922259999999997,
       "flaps": 0,
-      "domain": "electrical"
+      "domain": "electrical",
+      "link_health": {
+        "score": 78.9,
+        "band": "green",
+        "components": {
+          "snr": 0.999,
+          "ber": 0.36,
+          "eye": 1.0,
+          "jitter": 0.774,
+          "flap": 1.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -705,7 +717,19 @@
       "mean_eye_ui": 0.350755,
       "mean_jitter_ui": 0.25569459999999994,
       "flaps": 0,
-      "domain": "electrical"
+      "domain": "electrical",
+      "link_health": {
+        "score": 37.1,
+        "band": "red",
+        "components": {
+          "snr": 0.438,
+          "ber": 0.0,
+          "eye": 0.501,
+          "jitter": 0.412,
+          "flap": 1.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -1389,7 +1413,19 @@
       "mean_eye_ui": 0.801635,
       "mean_jitter_ui": 0.12794819999999996,
       "flaps": 0,
-      "domain": "electrical"
+      "domain": "electrical",
+      "link_health": {
+        "score": 79.1,
+        "band": "green",
+        "components": {
+          "snr": 1.0,
+          "ber": 0.365,
+          "eye": 1.0,
+          "jitter": 0.777,
+          "flap": 1.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -2073,7 +2109,19 @@
       "mean_eye_ui": 0.6660266666666667,
       "mean_jitter_ui": 0.1661185333333333,
       "flaps": 3,
-      "domain": "electrical"
+      "domain": "electrical",
+      "link_health": {
+        "score": 52.1,
+        "band": "amber",
+        "components": {
+          "snr": 0.78,
+          "ber": 0.0,
+          "eye": 0.951,
+          "jitter": 0.668,
+          "flap": 0.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -2757,7 +2805,19 @@
       "mean_eye_ui": 0.357655,
       "mean_jitter_ui": 0.25310259999999996,
       "flaps": 0,
-      "domain": "optical"
+      "domain": "optical",
+      "link_health": {
+        "score": 37.6,
+        "band": "red",
+        "components": {
+          "snr": 0.447,
+          "ber": 0.0,
+          "eye": 0.511,
+          "jitter": 0.42,
+          "flap": 1.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -3441,7 +3501,19 @@
       "mean_eye_ui": 0.799785,
       "mean_jitter_ui": 0.12833419999999995,
       "flaps": 0,
-      "domain": "optical"
+      "domain": "optical",
+      "link_health": {
+        "score": 79.0,
+        "band": "green",
+        "components": {
+          "snr": 1.0,
+          "ber": 0.363,
+          "eye": 1.0,
+          "jitter": 0.776,
+          "flap": 1.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -4125,7 +4197,19 @@
       "mean_eye_ui": 0.08,
       "mean_jitter_ui": 0.467925,
       "flaps": 0,
-      "domain": "electrical"
+      "domain": "electrical",
+      "link_health": {
+        "score": 37.5,
+        "band": "red",
+        "components": {
+          "snr": 0.909,
+          "ber": 0.054,
+          "eye": 0.114,
+          "jitter": 0.0,
+          "flap": 1.0
+        },
+        "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      }
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [

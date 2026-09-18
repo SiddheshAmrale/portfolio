@@ -37,6 +37,18 @@ def test_jitter_diagnosed():
     assert d["label"] == "jitter_limited"
 
 
+def test_link_health_score_healthy_high():
+    d = diagnose_lane(simulate_lane(0, impairment="healthy"))
+    assert d["link_health"]["score"] >= 70
+    assert d["link_health"]["band"] in ("green", "amber")
+
+
+def test_link_health_score_fade_lower():
+    healthy = diagnose_lane(simulate_lane(0, impairment="healthy"))["link_health"]["score"]
+    faded = diagnose_lane(simulate_lane(1, impairment="snr_fade"))["link_health"]["score"]
+    assert faded < healthy
+
+
 def test_build(tmp_path):
     out = build(tmp_path)
     assert (out / "cases.json").exists()

@@ -250,6 +250,47 @@ def case_experiment_sample_ratio() -> dict[str, Any]:
     }
 
 
+def case_out_of_order_cdc() -> dict[str, Any]:
+    """Late CDC change with earlier change_time arrives after a later change — still sorted by time."""
+    t0 = 1_700_000_000_000
+    # Delivery order (array order) is wrong; apply_scd2 sorts by change_time_ms.
+    changes = [
+        UserChange("u0", "pro", "us-east", t0 + 5 * 3_600_000),   # arrives first in feed
+        UserChange("u0", "free", "us-east", t0),                   # older change arrives late
+        UserChange("u1", "free", "us-west", t0),
+    ]
+    events = [
+        {
+            "event_id": "e_early",
+            "user_id": "u0",
+            "event_type": "convert",
+            "event_time_ms": t0 + 1 * 3_600_000,
+            "arrival_time_ms": t0 + 1 * 3_600_000 + 50,
+            "value": 1.0,
+        },
+        {
+            "event_id": "e_late",
+            "user_id": "u0",
+            "event_type": "convert",
+            "event_time_ms": t0 + 6 * 3_600_000,
+            "arrival_time_ms": t0 + 6 * 3_600_000 + 50,
+            "value": 1.0,
+        },
+    ]
+    run, payload = run_medallion(events, changes, name="out_of_order_cdc")
+    return {
+        "id": "out_of_order_cdc",
+        "title": "Out-of-order CDC sequenced",
+        "question": "CDC must apply by sequencing/change time, not arrival order — early convert stays on free.",
+        "theme": "AUTO CDC / sequencing",
+        "software": SOFTWARE,
+        "disclaimer": "Teaching stand-in for Databricks AUTO CDC sequencing. Not Lakeflow Runtime.",
+        **payload,
+        "run": run.to_dict(),
+        "note": "Feed order is pro-then-free; sorted apply yields free→pro history.",
+    }
+
+
 def all_cases() -> list[dict[str, Any]]:
     return [
         case_happy_path(),
@@ -257,6 +298,7 @@ def all_cases() -> list[dict[str, Any]]:
         case_late_arriving(),
         case_scd2_as_of(),
         case_schema_evolution(),
+        case_out_of_order_cdc(),
         case_experiment_healthy(),
         case_experiment_dup_alloc(),
         case_experiment_lag_slo(),

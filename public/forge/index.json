@@ -32,6 +32,12 @@
       "question": "Additive optional fields must not break bronze ingest when core contract still holds."
     },
     {
+      "id": "out_of_order_cdc",
+      "title": "Out-of-order CDC sequenced",
+      "theme": "AUTO CDC / sequencing",
+      "question": "CDC must apply by sequencing/change time, not arrival order \u2014 early convert stays on free."
+    },
+    {
       "id": "experiment_healthy",
       "title": "Experiment allocation health",
       "theme": "Netflix experimentation platform",

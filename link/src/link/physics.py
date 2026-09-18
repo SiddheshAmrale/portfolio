@@ -108,6 +108,42 @@ def simulate_lane(
     return rows
 
 
+def link_health_score(rows: list[LaneSample]) -> dict[str, Any]:
+    """Composite 0–100 teaching score (Credo PILOT Link Health Score theme). Not silicon FOM."""
+    if not rows:
+        return {"score": 0.0, "band": "unknown", "components": {}}
+    tail = rows[-6:]
+    mean_snr = sum(r.snr_db for r in tail) / len(tail)
+    mean_ber = sum(r.ber for r in tail) / len(tail)
+    mean_eye = sum(r.eye_open_ui for r in tail) / len(tail)
+    mean_jitter = sum(r.jitter_ui for r in tail) / len(tail)
+    flaps = max(r.flaps for r in rows)
+    # Component scores in [0, 1]
+    snr_c = min(max((mean_snr - 8.0) / 16.0, 0.0), 1.0)
+    # BER 1e-15 → ~1, BER 1e-3 → low
+    ber_c = min(max((-math.log10(max(mean_ber, 1e-15)) - 3.0) / 12.0, 0.0), 1.0)
+    eye_c = min(max(mean_eye / 0.7, 0.0), 1.0)
+    jit_c = min(max(1.0 - (mean_jitter - 0.05) / 0.35, 0.0), 1.0)
+    flap_c = 0.0 if flaps >= 2 else (0.5 if flaps == 1 else 1.0)
+    score = 100.0 * (0.28 * snr_c + 0.28 * ber_c + 0.22 * eye_c + 0.14 * jit_c + 0.08 * flap_c)
+    band = "green" if score >= 75 else ("amber" if score >= 50 else "red")
+    return {
+        "score": round(score, 1),
+        "band": band,
+        "components": {
+            "snr": round(snr_c, 3),
+            "ber": round(ber_c, 3),
+            "eye": round(eye_c, 3),
+            "jitter": round(jit_c, 3),
+            "flap": round(flap_c, 3),
+        },
+        "notes": (
+            "Composite Link Health Score teaching model inspired by PILOT-style "
+            "cluster observability. Weights are didactic, not Credo product formulas."
+        ),
+    }
+
+
 def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
     if not rows:
         return {"label": "insufficient_evidence", "notes": "no samples"}
@@ -146,6 +182,7 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
     else:
         label = "insufficient_evidence"
         notes = "Degraded but rules do not separate flap vs SI."
+    health = link_health_score(rows)
     return {
         "label": label,
         "notes": notes,
@@ -156,6 +193,7 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
         "mean_jitter_ui": mean_jitter,
         "flaps": flaps,
         "domain": rows[-1].domain,
+        "link_health": health,
         "impairment_truth": rows[-1].impairment,  # evaluation only
     }
 

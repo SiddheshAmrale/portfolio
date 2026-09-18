@@ -1435,6 +1435,172 @@
     "note": "device_fw appears on later events; event_id/user_id/event_type/time remain required."
   },
   {
+    "id": "out_of_order_cdc",
+    "title": "Out-of-order CDC sequenced",
+    "question": "CDC must apply by sequencing/change time, not arrival order \u2014 early convert stays on free.",
+    "theme": "AUTO CDC / sequencing",
+    "software": "forge 0.1.0",
+    "disclaimer": "Teaching stand-in for Databricks AUTO CDC sequencing. Not Lakeflow Runtime.",
+    "bronze": [
+      {
+        "event_id": "e_early",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700003600000,
+        "arrival_time_ms": 1700003600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e_late",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700021600000,
+        "arrival_time_ms": 1700021600050,
+        "value": 1.0
+      }
+    ],
+    "quarantine": [],
+    "silver_users": [
+      {
+        "user_id": "u0",
+        "plan": "free",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700018000000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u0",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700018000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "us-west",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      }
+    ],
+    "gold": [
+      {
+        "day": "d19675",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "pro",
+        "value": 1.0
+      }
+    ],
+    "run": {
+      "name": "out_of_order_cdc",
+      "bronze_in": 2,
+      "bronze_rejected": 0,
+      "silver_users": 3,
+      "gold_rows": 2,
+      "late_events": 0,
+      "contracts": [
+        {
+          "table": "bronze.events",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:event_id",
+              "passed": true,
+              "detail": "0 null values in event_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:event_time_ms",
+              "passed": true,
+              "detail": "0 null values in event_time_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:event_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            },
+            {
+              "name": "in_set:event_type",
+              "passed": true,
+              "detail": "0 values outside ['alloc', 'click', 'convert', 'sensor', 'view']",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "silver.users_scd2",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:valid_from_ms",
+              "passed": true,
+              "detail": "0 null values in valid_from_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:user_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "gold.daily_metrics",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:day",
+              "passed": true,
+              "detail": "0 null values in day",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:metric",
+              "passed": true,
+              "detail": "0 null values in metric",
+              "severity": "error"
+            },
+            {
+              "name": "range:value",
+              "passed": true,
+              "detail": "0 out of range [0.0,None]",
+              "severity": "error"
+            }
+          ]
+        }
+      ],
+      "notes": "Quarantined rejects stay visible. Late converts beyond watermark are counted for observability."
+    },
+    "note": "Feed order is pro-then-free; sorted apply yields free\u2192pro history."
+  },
+  {
     "id": "experiment_healthy",
     "title": "Experiment allocation health",
     "question": "Silver enrollment must be unique per (experiment,user); gold shows conversion by cell.",

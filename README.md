@@ -1,13 +1,13 @@
 # Siddhesh Amrale — portfolio + systems workbench
 
-The recruiter-facing site is Netflix-themed. Technical substance:
+The recruiter-facing site is Netflix-themed. Technical substance for Credo / Broadcom / Marvell / Oklo / Databricks / Netflix DE:
 
 | Package / route | Target theme | Reproduce |
 |---|---|---|
 | [`pilot/`](pilot/README.md) · `/labs/incident` | Credo PILOT telemetry + live Ubuntu netns | `npm run pilot:test` |
-| [`forge/`](forge/README.md) · `/labs/forge` | Databricks / Netflix lakehouse DE | `npm run labs:test` |
-| [`link/`](link/README.md) · `/labs/link` | Broadcom / Marvell SerDes & photonics vocab | `npm run labs:test` |
-| [`smr/`](smr/README.md) · `/labs/smr` | Oklo-style I&C data integrity | `npm run labs:test` |
+| [`forge/`](forge/README.md) · `/labs/forge` | Databricks medallion/CDC + Netflix allocation health (SRM, lag SLO) | `npm run labs:test` |
+| [`link/`](link/README.md) · `/labs/link` | SerDes / photonics vocab + Link Health Score | `npm run labs:test` |
+| [`smr/`](smr/README.md) · `/labs/smr` | Oklo-style I&C integrity (missing≠zero, multi-channel trips) | `npm run labs:test` |
 | `/learn` | Guided practical academy (must-know → practice → self-check) | open the app |
 
 ```bash
@@ -21,7 +21,7 @@ npm run workbench:test
 npm start
 ```
 
-Honest limits are in `/learn` → Scorecard. Teaching models are not ASIC silicon, Databricks Runtime, or NQA-1 plant software.
+**Honest elite bar:** interview-grade with reproducible failure modes and live Linux evidence — not ASIC silicon, Databricks Runtime, Netflix ExP, or NQA-1 plant software. See `/learn` → Scorecard.
 
 The older TypeScript workbenches still live in [`src/labs`](src/labs/README.md) and [SiddheshAmrale/systems-workbench](https://github.com/SiddheshAmrale/systems-workbench).
 

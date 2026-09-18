@@ -113,6 +113,20 @@ def test_build_writes(tmp_path):
     assert idx["duckdb_gold_by_plan"]
 
 
+def test_out_of_order_cdc_as_of():
+    cases = {c["id"]: c for c in all_cases()}
+    ooo = cases["out_of_order_cdc"]
+    # Early convert must attribute to free despite pro appearing first in the raw feed.
+    early_gold = [g for g in ooo["gold"] if g["value"] == 1.0]
+    plans = {g["plan"] for g in early_gold}
+    assert "free" in plans
+    versions = ooo["silver_users"]
+    u0 = [u for u in versions if u["user_id"] == "u0"]
+    assert len(u0) >= 2
+    assert any(u["plan"] == "free" for u in u0)
+    assert any(u["plan"] == "pro" and u["is_current"] for u in u0)
+
+
 def test_watermark_marks_late():
     from forge.streaming import Event, classify_late
     events = [

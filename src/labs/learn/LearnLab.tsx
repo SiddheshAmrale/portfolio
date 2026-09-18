@@ -36,8 +36,21 @@ const LearnLab: React.FC = function () {
   const scripts = usePilotJson<{ scripts: { company: string; talk_track: string }[] }>('/learn/interview-scripts.json');
   const [trackId, setTrackId] = useState('credo-pilot');
   const [lessonIdx, setLessonIdx] = useState(0);
-  const [done, setDone] = useState<Record<string, boolean>>({});
+  const [done, setDone] = useState<Record<string, boolean>>(function () {
+    try {
+      const raw = localStorage.getItem('learn-done-v1');
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+  const [revealed, setRevealed] = useState<Record<string, boolean>>({});
   const [view, setView] = useState('lesson');
+
+  const persistDone = function (next: Record<string, boolean>) {
+    setDone(next);
+    try { localStorage.setItem('learn-done-v1', JSON.stringify(next)); } catch { /* ignore */ }
+  };
 
   const track = useMemo(function () {
     if (!data) return null;
@@ -120,9 +133,7 @@ const LearnLab: React.FC = function () {
                     accent={ACCENT}
                     onClick={function () {
                       const key = track.id + ':' + lesson.id;
-                      setDone(function (prev) {
-                        return { ...prev, [key]: true };
-                      });
+                      persistDone({ ...done, [key]: true });
                     }}
                   >
                     Mark practiced
@@ -130,10 +141,31 @@ const LearnLab: React.FC = function () {
                 </div>
                 <p className="text-xs text-white/45 mt-3">Pass bar: {lesson.practice.pass}</p>
               </Panel>
-              <Panel title="Self-check">
-                <ul className="list-disc pl-5 text-sm text-white/70 space-y-1">
-                  {lesson.check.map(function (q) {
-                    return <li key={q}>{q}</li>;
+              <Panel title="Self-check (answer aloud, then reveal)">
+                <ul className="space-y-3">
+                  {lesson.check.map(function (q, qi) {
+                    const rk = track.id + ':' + lesson.id + ':' + qi;
+                    return (
+                      <li key={q} className="text-sm border-b border-white/5 pb-2">
+                        <p className="text-white/75">{q}</p>
+                        <button
+                          type="button"
+                          className="mt-1 text-[11px] text-pink-300/90 hover:underline"
+                          onClick={function () {
+                            setRevealed(function (prev) {
+                              return { ...prev, [rk]: !prev[rk] };
+                            });
+                          }}
+                        >
+                          {revealed[rk] ? 'Hide coaching hint' : 'Reveal coaching hint'}
+                        </button>
+                        {revealed[rk] ? (
+                          <p className="text-xs text-white/50 mt-1 leading-relaxed">
+                            Hint: restate the must-know in one sentence, then point at the practice lab evidence. Pass bar: {lesson.practice.pass}
+                          </p>
+                        ) : null}
+                      </li>
+                    );
                   })}
                 </ul>
               </Panel>

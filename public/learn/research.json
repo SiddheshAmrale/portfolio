@@ -11,7 +11,19 @@
       "company": "Credo",
       "product": "PILOT",
       "url": "https://credosemi.com/solutions/pilot/",
-      "keywords": ["eye quality", "SNR", "lane error rates", "link flaps", "SerDes", "PCIe retimer", "AEC", "predictive diagnostics"]
+      "keywords": ["eye quality", "SNR", "lane error rates", "link flaps", "SerDes", "PCIe retimer", "AEC", "predictive diagnostics", "eye diagrams", "residual ISI", "ZeroFlap"]
+    },
+    {
+      "company": "Credo",
+      "theme": "PILOT optical fabric observability",
+      "url": "https://credosemi.com/blogs/beyond-bandwidth-why-ai-infrastructure-needs-an-observable-optical-fabric/",
+      "keywords": ["FEC histogram", "SNR distribution", "Link Health Score", "cluster telemetry", "optical power", "ZF Optics"]
+    },
+    {
+      "company": "Credo",
+      "theme": "PCIe Gen6 Toucan + PILOT",
+      "url": "https://credosemi.com/blogs/building-stable-pcie-gen6-systems/",
+      "keywords": ["FOM", "CTLE", "VGA", "Rx FFE", "LTSSM", "eye heatmap", "margin trend"]
     },
     {
       "company": "Databricks",

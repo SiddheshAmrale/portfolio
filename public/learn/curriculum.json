@@ -68,13 +68,13 @@
           "id": "snr-ber-eye",
           "title": "SNR, BER, eye opening",
           "must_know": "Lower SNR raises BER and closes the eye. Teaching curves are not silicon characterization, but the monotonic relationship is interview-critical.",
-          "why": "Validation engineers reason in eye/jitter/BER/link margin daily.",
+          "why": "Validation engineers reason in eye/jitter/BER/link margin daily. Credo PILOT surfaces eye diagrams, residual ISI, and lane SNR/BER telemetry.",
           "practice": {
             "lab": "/labs/link",
-            "task": "Investigate an SNR-fade lane before revealing ground truth.",
-            "pass": "You can narrate SNR↓ → BER↑ → eye↓ without peeking."
+            "task": "Investigate an SNR-fade lane before revealing ground truth. Note the composite Link Health Score.",
+            "pass": "You can narrate SNR↓ → BER↑ → eye↓ → health score↓ without peeking."
           },
-          "check": ["What label should a sustained fade get vs flaps?"]
+          "check": ["What label should a sustained fade get vs flaps?", "What is a composite Link Health Score for?"]
         },
         {
           "id": "fec-gain",
@@ -147,14 +147,14 @@
         {
           "id": "scd2",
           "title": "CDC / SCD2 as-of joins",
-          "must_know": "Gold attribution uses the dimension version valid at event_time, not the current plan.",
-          "why": "APPLY CHANGES / SCD2 is a Databricks Professional exam theme.",
+          "must_know": "Gold attribution uses the dimension version valid at event_time, not the current plan. Sequencing uses change time, not feed arrival order.",
+          "why": "AUTO CDC / SCD2 is a Databricks Professional exam theme; late/out-of-order CDC is explicitly called out.",
           "practice": {
             "lab": "/labs/forge",
-            "task": "Open SCD2 as-of. Confirm early converts stay on free plan after upgrade.",
-            "pass": "You can draw valid_from/valid_to on a whiteboard."
+            "task": "Open SCD2 as-of and Out-of-order CDC sequenced. Confirm early converts stay on free.",
+            "pass": "You can draw valid_from/valid_to and explain sequencing on a whiteboard."
           },
-          "check": ["What happens if you join to is_current only?"]
+          "check": ["What happens if you join to is_current only?", "Why sort CDC by change_time before applying?"]
         },
         {
           "id": "late-data",

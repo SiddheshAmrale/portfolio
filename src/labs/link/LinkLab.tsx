@@ -69,9 +69,10 @@ const LinkLab: React.FC = function () {
         {view === 'investigate' ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-2 space-y-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                 <Kpi label="Domain" value={selected.domain} />
                 <Kpi label="Diagnosis" value={label} />
+                <Kpi label="Health" value={String(((selected.diagnosis as { link_health?: { score?: number; band?: string } }).link_health || {}).score ?? '—')} hint={String(((selected.diagnosis as { link_health?: { band?: string } }).link_health || {}).band || '')} />
                 <Kpi label="Mean SNR" value={fmtOpt((selected.diagnosis as { mean_snr_db?: number }).mean_snr_db, 1)} />
                 <Kpi label="Mean BER" value={fmtOpt((selected.diagnosis as { mean_ber?: number }).mean_ber, 2)} />
               </div>
