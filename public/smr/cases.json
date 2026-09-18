@@ -1,0 +1,1754 @@
+[
+  {
+    "id": "healthy",
+    "title": "Healthy coolant channel",
+    "question": "ok samples; trip stays quiet.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "healthy",
+    "samples": [
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1800000,
+        "value": 300.86,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1801000,
+        "value": 299.28,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1802000,
+        "value": 300.02,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1803000,
+        "value": 300.76,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1804000,
+        "value": 300.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1805000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1806000,
+        "value": 299.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1807000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1808000,
+        "value": 299.1,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1809000,
+        "value": 299.44,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1810000,
+        "value": 299.3,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1811000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1812000,
+        "value": 299.9,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1813000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1814000,
+        "value": 299.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1815000,
+        "value": 299.64,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1816000,
+        "value": 300.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1817000,
+        "value": 299.44,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1818000,
+        "value": 300.58,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1819000,
+        "value": 299.64,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 300.86,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 299.28,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 300.02,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 300.76,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 300.06,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 299.94,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": 299.1,
+        "status": "ok"
+      },
+      {
+        "t": 1809000,
+        "v": 299.44,
+        "status": "ok"
+      },
+      {
+        "t": 1810000,
+        "v": 299.3,
+        "status": "ok"
+      },
+      {
+        "t": 1811000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1812000,
+        "v": 299.9,
+        "status": "ok"
+      },
+      {
+        "t": 1813000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1814000,
+        "v": 299.06,
+        "status": "ok"
+      },
+      {
+        "t": 1815000,
+        "v": 299.64,
+        "status": "ok"
+      },
+      {
+        "t": 1816000,
+        "v": 300.94,
+        "status": "ok"
+      },
+      {
+        "t": 1817000,
+        "v": 299.44,
+        "status": "ok"
+      },
+      {
+        "t": 1818000,
+        "v": 300.58,
+        "status": "ok"
+      },
+      {
+        "t": 1819000,
+        "v": 299.64,
+        "status": "ok"
+      }
+    ],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": 299.974,
+      "naive_mean": 299.974,
+      "stale_count": 0,
+      "failed_count": 0,
+      "zero_filled_suspicion": false,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "coolant_temp",
+        "action": "high_temp_alarm",
+        "fired": false,
+        "at_ms": null,
+        "high": 330.0,
+        "low": null
+      }
+    ]
+  },
+  {
+    "id": "missing_gap",
+    "title": "Missing samples stay missing",
+    "question": "Gaps must be null, not zero.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "missing_gap",
+    "samples": [
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1800000,
+        "value": 300.86,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1801000,
+        "value": 299.28,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1802000,
+        "value": 300.02,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1803000,
+        "value": 300.76,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1804000,
+        "value": 300.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1805000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1806000,
+        "value": 299.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1807000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1808000,
+        "value": null,
+        "unit": "C",
+        "status": "missing",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1809000,
+        "value": null,
+        "unit": "C",
+        "status": "missing",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1810000,
+        "value": null,
+        "unit": "C",
+        "status": "missing",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1811000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1812000,
+        "value": 299.9,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1813000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1814000,
+        "value": 299.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1815000,
+        "value": 299.64,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1816000,
+        "value": 300.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1817000,
+        "value": 299.44,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1818000,
+        "value": 300.58,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1819000,
+        "value": 299.64,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 300.86,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 299.28,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 300.02,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 300.76,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 300.06,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 299.94,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": null,
+        "status": "missing"
+      },
+      {
+        "t": 1809000,
+        "v": null,
+        "status": "missing"
+      },
+      {
+        "t": 1810000,
+        "v": null,
+        "status": "missing"
+      },
+      {
+        "t": 1811000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1812000,
+        "v": 299.9,
+        "status": "ok"
+      },
+      {
+        "t": 1813000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1814000,
+        "v": 299.06,
+        "status": "ok"
+      },
+      {
+        "t": 1815000,
+        "v": 299.64,
+        "status": "ok"
+      },
+      {
+        "t": 1816000,
+        "v": 300.94,
+        "status": "ok"
+      },
+      {
+        "t": 1817000,
+        "v": 299.44,
+        "status": "ok"
+      },
+      {
+        "t": 1818000,
+        "v": 300.58,
+        "status": "ok"
+      },
+      {
+        "t": 1819000,
+        "v": 299.64,
+        "status": "ok"
+      }
+    ],
+    "integrity": {
+      "missing_visible": true,
+      "safe_mean": 300.09647058823526,
+      "naive_mean": 300.09647058823526,
+      "stale_count": 0,
+      "failed_count": 0,
+      "zero_filled_suspicion": false,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "coolant_temp",
+        "action": "high_temp_alarm",
+        "fired": false,
+        "at_ms": null,
+        "high": 330.0,
+        "low": null
+      }
+    ]
+  },
+  {
+    "id": "zero_filled_bug",
+    "title": "Zero-fill anti-pattern",
+    "question": "Treating missing as 0 destroys trip logic and means.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "zero_filled_bug",
+    "samples": [
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1800000,
+        "value": 300.86,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1801000,
+        "value": 299.28,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1802000,
+        "value": 300.02,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1803000,
+        "value": 300.76,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1804000,
+        "value": 300.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1805000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1806000,
+        "value": 299.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1807000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1808000,
+        "value": 0.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1809000,
+        "value": 0.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1810000,
+        "value": 0.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1811000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1812000,
+        "value": 299.9,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1813000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1814000,
+        "value": 299.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1815000,
+        "value": 299.64,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1816000,
+        "value": 300.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1817000,
+        "value": 299.44,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1818000,
+        "value": 300.58,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1819000,
+        "value": 299.64,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 300.86,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 299.28,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 300.02,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 300.76,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 300.06,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 299.94,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": 0.0,
+        "status": "ok"
+      },
+      {
+        "t": 1809000,
+        "v": 0.0,
+        "status": "ok"
+      },
+      {
+        "t": 1810000,
+        "v": 0.0,
+        "status": "ok"
+      },
+      {
+        "t": 1811000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1812000,
+        "v": 299.9,
+        "status": "ok"
+      },
+      {
+        "t": 1813000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1814000,
+        "v": 299.06,
+        "status": "ok"
+      },
+      {
+        "t": 1815000,
+        "v": 299.64,
+        "status": "ok"
+      },
+      {
+        "t": 1816000,
+        "v": 300.94,
+        "status": "ok"
+      },
+      {
+        "t": 1817000,
+        "v": 299.44,
+        "status": "ok"
+      },
+      {
+        "t": 1818000,
+        "v": 300.58,
+        "status": "ok"
+      },
+      {
+        "t": 1819000,
+        "v": 299.64,
+        "status": "ok"
+      }
+    ],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": 300.09647058823526,
+      "naive_mean": 255.08199999999997,
+      "stale_count": 0,
+      "failed_count": 0,
+      "zero_filled_suspicion": true,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "coolant_temp",
+        "action": "high_temp_alarm",
+        "fired": false,
+        "at_ms": null,
+        "high": 330.0,
+        "low": null
+      }
+    ]
+  },
+  {
+    "id": "stale",
+    "title": "Stale channel",
+    "question": "Frozen values must be marked stale.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "stale",
+    "samples": [
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1800000,
+        "value": 300.86,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1801000,
+        "value": 299.28,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1802000,
+        "value": 300.02,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1803000,
+        "value": 300.76,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1804000,
+        "value": 300.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1805000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1806000,
+        "value": 299.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1807000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1808000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1809000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1810000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1811000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1812000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1813000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1814000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1815000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1816000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1817000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1818000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1819000,
+        "value": 300.0,
+        "unit": "C",
+        "status": "stale",
+        "source_ref": "smr:sim#coolant_temp"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 300.86,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 299.28,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 300.02,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 300.76,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 300.06,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 299.94,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1809000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1810000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1811000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1812000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1813000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1814000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1815000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1816000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1817000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1818000,
+        "v": 300.0,
+        "status": "stale"
+      },
+      {
+        "t": 1819000,
+        "v": 300.0,
+        "status": "stale"
+      }
+    ],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": 300.21,
+      "naive_mean": 300.084,
+      "stale_count": 12,
+      "failed_count": 0,
+      "zero_filled_suspicion": false,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "coolant_temp",
+        "action": "high_temp_alarm",
+        "fired": false,
+        "at_ms": null,
+        "high": 330.0,
+        "low": null
+      }
+    ]
+  },
+  {
+    "id": "trip_high",
+    "title": "High-temp trip",
+    "question": "Crossing setpoint fires the alarm on ok samples only.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "trip_high",
+    "samples": [
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1800000,
+        "value": 300.86,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1801000,
+        "value": 299.28,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1802000,
+        "value": 300.02,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1803000,
+        "value": 300.76,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1804000,
+        "value": 300.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1805000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1806000,
+        "value": 299.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1807000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1808000,
+        "value": 299.1,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1809000,
+        "value": 299.44,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1810000,
+        "value": 340.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1811000,
+        "value": 342.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1812000,
+        "value": 344.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1813000,
+        "value": 346.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1814000,
+        "value": 348.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1815000,
+        "value": 350.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1816000,
+        "value": 352.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1817000,
+        "value": 354.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1818000,
+        "value": 356.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1819000,
+        "value": 358.0,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 300.86,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 299.28,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 300.02,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 300.76,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 300.06,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 299.94,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": 299.1,
+        "status": "ok"
+      },
+      {
+        "t": 1809000,
+        "v": 299.44,
+        "status": "ok"
+      },
+      {
+        "t": 1810000,
+        "v": 340.0,
+        "status": "ok"
+      },
+      {
+        "t": 1811000,
+        "v": 342.0,
+        "status": "ok"
+      },
+      {
+        "t": 1812000,
+        "v": 344.0,
+        "status": "ok"
+      },
+      {
+        "t": 1813000,
+        "v": 346.0,
+        "status": "ok"
+      },
+      {
+        "t": 1814000,
+        "v": 348.0,
+        "status": "ok"
+      },
+      {
+        "t": 1815000,
+        "v": 350.0,
+        "status": "ok"
+      },
+      {
+        "t": 1816000,
+        "v": 352.0,
+        "status": "ok"
+      },
+      {
+        "t": 1817000,
+        "v": 354.0,
+        "status": "ok"
+      },
+      {
+        "t": 1818000,
+        "v": 356.0,
+        "status": "ok"
+      },
+      {
+        "t": 1819000,
+        "v": 358.0,
+        "status": "ok"
+      }
+    ],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": 324.511,
+      "naive_mean": 324.511,
+      "stale_count": 0,
+      "failed_count": 0,
+      "zero_filled_suspicion": false,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "coolant_temp",
+        "action": "high_temp_alarm",
+        "fired": true,
+        "at_ms": 1810000,
+        "high": 330.0,
+        "low": null
+      }
+    ]
+  },
+  {
+    "id": "sensor_fail",
+    "title": "Sensor failed",
+    "question": "Failed status withholds values.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "sensor_fail",
+    "samples": [
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1800000,
+        "value": 300.86,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1801000,
+        "value": 299.28,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1802000,
+        "value": 300.02,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1803000,
+        "value": 300.76,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1804000,
+        "value": 300.06,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1805000,
+        "value": 299.84,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1806000,
+        "value": 299.94,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1807000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1808000,
+        "value": 299.1,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1809000,
+        "value": 299.44,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1810000,
+        "value": 299.3,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1811000,
+        "value": 300.92,
+        "unit": "C",
+        "status": "ok",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1812000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1813000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1814000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1815000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1816000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1817000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1818000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      },
+      {
+        "channel": "coolant_temp",
+        "t_ms": 1819000,
+        "value": null,
+        "unit": "C",
+        "status": "failed",
+        "source_ref": "smr:sim#coolant_temp"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 300.86,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 299.28,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 300.02,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 300.76,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 300.06,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 299.84,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 299.94,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": 299.1,
+        "status": "ok"
+      },
+      {
+        "t": 1809000,
+        "v": 299.44,
+        "status": "ok"
+      },
+      {
+        "t": 1810000,
+        "v": 299.3,
+        "status": "ok"
+      },
+      {
+        "t": 1811000,
+        "v": 300.92,
+        "status": "ok"
+      },
+      {
+        "t": 1812000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1813000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1814000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1815000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1816000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1817000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1818000,
+        "v": null,
+        "status": "failed"
+      },
+      {
+        "t": 1819000,
+        "v": null,
+        "status": "failed"
+      }
+    ],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": 300.0366666666667,
+      "naive_mean": 300.0366666666667,
+      "stale_count": 0,
+      "failed_count": 8,
+      "zero_filled_suspicion": false,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "coolant_temp",
+        "action": "high_temp_alarm",
+        "fired": false,
+        "at_ms": null,
+        "high": 330.0,
+        "low": null
+      }
+    ]
+  }
+]

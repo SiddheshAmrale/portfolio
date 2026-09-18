@@ -1,0 +1,54 @@
+{
+  "generated": "2026-09-18",
+  "sources": [
+    {
+      "company": "Credo",
+      "role": "Senior Software / Data Engineer (PILOT)",
+      "url": "https://www.tealhq.com/job/senior-software-data-engineer_7ea1acbba5111ccc760ee2bde4e5f603974dd",
+      "keywords": ["Python", "DuckDB", "ClickHouse", "Snowflake", "Redshift", "cloud pipelines", "data lakes", "React", "CI/CD", "SONiC", "EOS", "hardware telemetry", "reliability metrics"]
+    },
+    {
+      "company": "Credo",
+      "product": "PILOT",
+      "url": "https://credosemi.com/solutions/pilot/",
+      "keywords": ["eye quality", "SNR", "lane error rates", "link flaps", "SerDes", "PCIe retimer", "AEC", "predictive diagnostics"]
+    },
+    {
+      "company": "Databricks",
+      "theme": "Data Engineer / Professional cert themes",
+      "url": "https://www.databricks.com/sites/default/files/2026-07/databricks-certified-data-engineer-professional-exam-guide-july-3-2026.pdf",
+      "keywords": ["Delta Lake", "medallion", "Auto Loader", "Structured Streaming", "CDC", "Lakeflow", "Unity Catalog", "PySpark", "Jobs"]
+    },
+    {
+      "company": "Netflix",
+      "role": "Experimentation / Commerce Data Engineering",
+      "url": "https://workvista.synergize.co/remote-jobs/data-engineer-5-experimentation-platform",
+      "keywords": ["Spark", "Flink", "Iceberg", "Kafka", "data contracts", "data health", "allocation events", "observability"]
+    },
+    {
+      "company": "Broadcom",
+      "role": "DSP / System Validation",
+      "url": "https://broadcom.wd1.myworkdayjobs.com/en-US/External_Career/job/USA-California-San-Jose-1320-Ridder-Park-Drive/Digital-Signal-Processing-and-System-Validation-Engineer_R025724",
+      "keywords": ["PAM4", "SerDes", "ADC", "FFE", "DFE", "CDR", "BER", "optical interconnect"]
+    },
+    {
+      "company": "Marvell",
+      "role": "Photonic Fabric / Optical Validation",
+      "url": "https://hiring.camp/job/lmG6z3",
+      "keywords": ["PIC", "TDECQ", "OMA", "extinction ratio", "BERT", "DCA", "PyVISA", "eye", "link margin"]
+    },
+    {
+      "company": "Oklo",
+      "roles": ["Software Engineer", "I&C", "Controls Fuel Fab"],
+      "url": "https://job-boards.greenhouse.io/oklo/jobs/5739483004",
+      "keywords": ["reactor data platforms", "CI/CD for multiphysics", "instrumentation", "SCADA", "SQL process data", "traceability"]
+    }
+  ],
+  "portfolio_mapping": {
+    "pilot": ["Credo PILOT telemetry", "DuckDB", "live netns evidence"],
+    "link": ["SerDes/photonics vocabulary", "BER≠netem"],
+    "forge": ["Databricks medallion/CDC", "Netflix experiment health"],
+    "smr": ["Oklo I&C missing≠zero", "trip integrity"],
+    "learn": ["guided practice across all"]
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "software": "linklab 0.1.0",
+  "cases": [
+    {
+      "id": "healthy_electrical",
+      "title": "Healthy electrical lane",
+      "domain": "electrical"
+    },
+    {
+      "id": "snr_fade_electrical",
+      "title": "Electrical SNR fade",
+      "domain": "electrical"
+    },
+    {
+      "id": "burst_errors_electrical",
+      "title": "Burst errors",
+      "domain": "electrical"
+    },
+    {
+      "id": "flap_electrical",
+      "title": "Link flaps",
+      "domain": "electrical"
+    },
+    {
+      "id": "optical_oma_drop_optical",
+      "title": "Optical OMA/TDECQ-style fade",
+      "domain": "optical"
+    },
+    {
+      "id": "healthy_optical",
+      "title": "Healthy optical lane",
+      "domain": "optical"
+    },
+    {
+      "id": "not_netem",
+      "title": "Software loss \u2260 optical BER",
+      "domain": "meta"
+    }
+  ],
+  "eval": {
+    "n": 6,
+    "accuracy": 0.8333333333333334,
+    "rows": [
+      {
+        "id": "healthy_electrical",
+        "truth": "healthy",
+        "predicted": "healthy",
+        "ok": true
+      },
+      {
+        "id": "snr_fade_electrical",
+        "truth": "signal_integrity_degrade",
+        "predicted": "signal_integrity_degrade",
+        "ok": true
+      },
+      {
+        "id": "burst_errors_electrical",
+        "truth": "signal_integrity_degrade",
+        "predicted": "healthy",
+        "ok": false
+      },
+      {
+        "id": "flap_electrical",
+        "truth": "link_flap",
+        "predicted": "link_flap",
+        "ok": true
+      },
+      {
+        "id": "optical_oma_drop_optical",
+        "truth": "signal_integrity_degrade",
+        "predicted": "signal_integrity_degrade",
+        "ok": true
+      },
+      {
+        "id": "healthy_optical",
+        "truth": "healthy",
+        "predicted": "healthy",
+        "ok": true
+      }
+    ]
+  },
+  "keywords": [
+    "SerDes",
+    "PAM4",
+    "BER",
+    "FEC",
+    "eye quality",
+    "SNR",
+    "lane",
+    "silicon photonics",
+    "TDECQ",
+    "OMA",
+    "PILOT",
+    "retimer",
+    "AEC"
+  ],
+  "disclaimer": "Teaching models. Not post-silicon validation.",
+  "reproduce": "pip install -e ./link && python -m pytest -q && python -m link build-cases"
+}

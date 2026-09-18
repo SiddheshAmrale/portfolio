@@ -16,6 +16,46 @@ interface ProjectCard {
 
 const projects: ProjectCard[] = [
   {
+    id: 'learn',
+    title: 'Guided Practical Academy',
+    description: 'Must-know concepts with hands-on tasks across every lab: Credo PILOT telemetry, SerDes/photonics vocabulary, Databricks/Netflix lakehouse + experiment health, and Oklo-style instrumentation integrity.',
+    category: 'learn',
+    technologies: ['Curriculum', 'Practice', 'Keywords'],
+    path: '/learn',
+    accent: 'from-pink-800 to-black',
+    evidence: 'Interactive tracks'
+  },
+  {
+    id: 'forge',
+    title: 'Lakehouse Forge',
+    description: 'Elite Databricks/Netflix DE project: medallion Bronze→Silver→Gold, CDC/SCD2 as-of joins, data-contract quarantine, late-arriving facts, and experiment allocation uniqueness/health — runnable Python + DuckDB/Parquet, not a rented cluster.',
+    category: 'data',
+    technologies: ['Medallion', 'SCD2', 'Contracts', 'Experiments'],
+    path: '/labs/forge',
+    accent: 'from-emerald-800 to-black',
+    evidence: 'Python + pytest'
+  },
+  {
+    id: 'link',
+    title: 'Link Integrity Lab',
+    description: 'Credo/Broadcom/Marvell vocabulary: per-lane SNR, BER, eye opening, FEC residual, flaps vs SI fade, electrical vs optical domain. Explicitly teaches that software packet loss is not optical BER.',
+    category: 'connectivity',
+    technologies: ['SerDes', 'BER', 'FEC', 'Photonics'],
+    path: '/labs/link',
+    accent: 'from-cyan-800 to-black',
+    evidence: 'Python teaching models'
+  },
+  {
+    id: 'smr',
+    title: 'SMR Instrumentation Integrity',
+    description: 'Oklo-aligned I&C data integrity: missing≠zero, stale/failed channels, trip setpoints on trusted samples only. Teaching model — not NQA-1 plant software.',
+    category: 'energy',
+    technologies: ['I&C', 'Trips', 'Integrity'],
+    path: '/labs/smr',
+    accent: 'from-lime-800 to-black',
+    evidence: 'Python + pytest'
+  },
+  {
     id: 'telemetry',
     title: 'Telemetry Data Quality Lab',
     description: 'Linux-shaped counters through Parquet and DuckDB. Replay duplicates, reorder, gaps, delay, restart, unit change, and ambiguous drops. Naive rates and Prometheus increase() are compared with a classifier that withholds invented values. At least one operational alert changes after data quality.',
@@ -89,6 +129,10 @@ const projects: ProjectCard[] = [
 
 const categories = [
   { id: 'all', name: 'All labs' },
+  { id: 'learn', name: 'Learn' },
+  { id: 'data', name: 'Lakehouse DE' },
+  { id: 'connectivity', name: 'Link / SI' },
+  { id: 'energy', name: 'SMR / I&C' },
   { id: 'telemetry', name: 'Telemetry' },
   { id: 'systems', name: 'AI systems' },
   { id: 'quantum', name: 'Quantum' },
@@ -113,7 +157,11 @@ const Projects: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8" />
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
-            Each investigation launches as its own full-screen app. Three telemetry labs are viewers over pinned Python experiments (<code className="text-white/80">npm run pilot:test</code>, <code className="text-white/80">npm run pilot:cases</code>). The four TypeScript workbenches still run with <code className="text-white/80">npm run workbench</code>. They are independent investigations, not production cluster measurements.
+            Each investigation launches as its own full-screen app. Start with the{' '}
+            <Link to="/learn" className="text-white underline">Guided Practical Academy</Link>.
+            {' '}Telemetry labs use pinned Python experiments (<code className="text-white/80">npm run pilot:test</code>).
+            {' '}Lakehouse / link / SMR packages use <code className="text-white/80">npm run labs:test</code>.
+            {' '}TypeScript workbenches still run with <code className="text-white/80">npm run workbench</code>.
           </p>
         </div>
 

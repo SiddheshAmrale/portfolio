@@ -16,6 +16,10 @@ import FleetLab from './labs/fleet/FleetLab';
 import TelemetryLab from './labs/pilot/TelemetryLab';
 import IncidentLab from './labs/pilot/IncidentLab';
 import RegressionLab from './labs/pilot/RegressionLab';
+import ForgeLab from './labs/forge/ForgeLab';
+import LinkLab from './labs/link/LinkLab';
+import SmrLab from './labs/smr/SmrLab';
+import LearnLab from './labs/learn/LearnLab';
 
 const HomePage: React.FC = () => {
   const location = useLocation();
@@ -47,7 +51,7 @@ const HomePage: React.FC = () => {
 
 function AppShell() {
   const location = useLocation();
-  const isWorkbench = location.pathname.startsWith('/labs/');
+  const isWorkbench = location.pathname.startsWith('/labs/') || location.pathname.startsWith('/learn');
   return (
     <div className={isWorkbench ? 'min-h-screen bg-[#07090d] app-workbench-root' : 'min-h-screen bg-netflix-black'}>
       {isWorkbench ? null : <Navbar />}
@@ -61,6 +65,11 @@ function AppShell() {
           <Route path="/labs/telemetry" element={<TelemetryLab />} />
           <Route path="/labs/incident" element={<IncidentLab />} />
           <Route path="/labs/regression" element={<RegressionLab />} />
+          <Route path="/labs/forge" element={<ForgeLab />} />
+          <Route path="/labs/link" element={<LinkLab />} />
+          <Route path="/labs/smr" element={<SmrLab />} />
+          <Route path="/learn" element={<LearnLab />} />
+          <Route path="/labs/learn" element={<LearnLab />} />
         </Routes>
       </main>
       {isWorkbench ? null : <Footer />}

@@ -1,0 +1,57 @@
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+from .integrity import SOFTWARE, TripSetpoint, evaluate_trips, integrity_report, simulate_channel
+
+
+def all_cases() -> list[dict[str, Any]]:
+    trips = [TripSetpoint("coolant_temp", high=330.0, action="high_temp_alarm")]
+    modes = [
+        ("healthy", "Healthy coolant channel", "ok samples; trip stays quiet."),
+        ("missing_gap", "Missing samples stay missing", "Gaps must be null, not zero."),
+        ("zero_filled_bug", "Zero-fill anti-pattern", "Treating missing as 0 destroys trip logic and means."),
+        ("stale", "Stale channel", "Frozen values must be marked stale."),
+        ("trip_high", "High-temp trip", "Crossing setpoint fires the alarm on ok samples only."),
+        ("sensor_fail", "Sensor failed", "Failed status withholds values."),
+    ]
+    cases = []
+    for mode, title, question in modes:
+        rows = simulate_channel("coolant_temp", mode=mode, base=300.0, unit="C")
+        report = integrity_report(rows)
+        trip = evaluate_trips(rows, trips)
+        cases.append({
+            "id": mode,
+            "title": title,
+            "question": question,
+            "software": SOFTWARE,
+            "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+            "theme": "Oklo / SMR instrumentation",
+            "ground_truth": mode,
+            "samples": [r.to_dict() for r in rows],
+            "series": [{"t": r.t_ms, "v": r.value, "status": r.status} for r in rows],
+            "integrity": report,
+            "trips": trip,
+        })
+    return cases
+
+
+def build(out_dir: str | Path) -> Path:
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    cases = all_cases()
+    index = {
+        "software": SOFTWARE,
+        "cases": [{"id": c["id"], "title": c["title"]} for c in cases],
+        "keywords": [
+            "instrumentation", "controls", "SCADA", "missing data", "trip setpoint",
+            "advanced fission", "SMR", "data integrity", "NQA-1 awareness",
+        ],
+        "disclaimer": "Not nuclear-qualified software. Interview-aligned invariants only.",
+        "reproduce": "pip install -e ./smr && python -m pytest -q && python -m smr build-cases",
+    }
+    (out / "index.json").write_text(json.dumps(index, indent=2), encoding="utf-8")
+    (out / "cases.json").write_text(json.dumps(cases, indent=2), encoding="utf-8")
+    return out

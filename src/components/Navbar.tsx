@@ -23,12 +23,17 @@ const Navbar: React.FC = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Certifications', href: '#certifications' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Learn', href: '/learn' },
     { name: 'Contact', href: '#contact' },
     { name: 'Games', href: '#games' },
   ];
 
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
+    if (href.startsWith('/')) {
+      navigate(href);
+      return;
+    }
     if (location.pathname !== '/') {
       navigate('/' + href);
       return;

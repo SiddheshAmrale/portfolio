@@ -1,0 +1,1328 @@
+[
+  {
+    "id": "happy_path",
+    "title": "Clean medallion run",
+    "question": "When contracts pass, bronze\u2192silver\u2192gold should be reproducible and quarantine empty.",
+    "theme": "Databricks medallion",
+    "software": "forge 0.1.0",
+    "disclaimer": "DuckDB/Parquet lakehouse semantics \u2014 not a Databricks Runtime.",
+    "bronze": [
+      {
+        "event_id": "e0",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e1",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700003600000,
+        "arrival_time_ms": 1700003600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e2",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700007200000,
+        "arrival_time_ms": 1700007200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e3",
+        "user_id": "u3",
+        "event_type": "convert",
+        "event_time_ms": 1700010800000,
+        "arrival_time_ms": 1700010800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e4",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700014400000,
+        "arrival_time_ms": 1700014400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e5",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700018000000,
+        "arrival_time_ms": 1700018000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e6",
+        "user_id": "u2",
+        "event_type": "convert",
+        "event_time_ms": 1700021600000,
+        "arrival_time_ms": 1700021600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e7",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700025200000,
+        "arrival_time_ms": 1700025200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e8",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700028800000,
+        "arrival_time_ms": 1700028800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e9",
+        "user_id": "u1",
+        "event_type": "convert",
+        "event_time_ms": 1700032400000,
+        "arrival_time_ms": 1700032400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e10",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700036000000,
+        "arrival_time_ms": 1700036000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e11",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700039600000,
+        "arrival_time_ms": 1700039600050,
+        "value": 1.0
+      }
+    ],
+    "quarantine": [],
+    "silver_users": [
+      {
+        "user_id": "u0",
+        "plan": "free",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700018000000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u0",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700018000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "us-west",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700028800000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "eu",
+        "valid_from_ms": 1700028800000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u2",
+        "plan": "pro",
+        "region": "eu",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      },
+      {
+        "user_id": "u3",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      }
+    ],
+    "gold": [
+      {
+        "day": "d19675",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "pro",
+        "value": 2.0
+      }
+    ],
+    "run": {
+      "name": "happy_path",
+      "bronze_in": 12,
+      "bronze_rejected": 0,
+      "silver_users": 6,
+      "gold_rows": 3,
+      "late_events": 0,
+      "contracts": [
+        {
+          "table": "bronze.events",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:event_id",
+              "passed": true,
+              "detail": "0 null values in event_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:event_time_ms",
+              "passed": true,
+              "detail": "0 null values in event_time_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:event_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            },
+            {
+              "name": "in_set:event_type",
+              "passed": true,
+              "detail": "0 values outside ['alloc', 'click', 'convert', 'sensor', 'view']",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "silver.users_scd2",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:valid_from_ms",
+              "passed": true,
+              "detail": "0 null values in valid_from_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:user_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "gold.daily_metrics",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:day",
+              "passed": true,
+              "detail": "0 null values in day",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:metric",
+              "passed": true,
+              "detail": "0 null values in metric",
+              "severity": "error"
+            },
+            {
+              "name": "range:value",
+              "passed": true,
+              "detail": "0 out of range [0.0,None]",
+              "severity": "error"
+            }
+          ]
+        }
+      ],
+      "notes": "Quarantined rejects stay visible. Late converts beyond watermark are counted for observability."
+    }
+  },
+  {
+    "id": "contract_quarantine",
+    "title": "Contract quarantine",
+    "question": "Duplicates, null keys, and illegal event types must quarantine \u2014 not silently inflate gold.",
+    "theme": "Data contracts / quality",
+    "software": "forge 0.1.0",
+    "disclaimer": "Expectation failures are first-class. Silent drop is a pipeline smell.",
+    "bronze": [
+      {
+        "event_id": "e0",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e1",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700003600000,
+        "arrival_time_ms": 1700003600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e2",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700007200000,
+        "arrival_time_ms": 1700007200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e3",
+        "user_id": "u3",
+        "event_type": "convert",
+        "event_time_ms": 1700010800000,
+        "arrival_time_ms": 1700010800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e4",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700014400000,
+        "arrival_time_ms": 1700014400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e5",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700018000000,
+        "arrival_time_ms": 1700018000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e6",
+        "user_id": "u2",
+        "event_type": "convert",
+        "event_time_ms": 1700021600000,
+        "arrival_time_ms": 1700021600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e7",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700025200000,
+        "arrival_time_ms": 1700025200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e8",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700028800000,
+        "arrival_time_ms": 1700028800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e9",
+        "user_id": "u1",
+        "event_type": "convert",
+        "event_time_ms": 1700032400000,
+        "arrival_time_ms": 1700032400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e10",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700036000000,
+        "arrival_time_ms": 1700036000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e11",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700039600000,
+        "arrival_time_ms": 1700039600050,
+        "value": 1.0
+      }
+    ],
+    "quarantine": [
+      {
+        "event_id": "e0",
+        "user_id": "u9",
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000100,
+        "value": 1.0,
+        "_reject": "duplicate_event_id"
+      },
+      {
+        "event_id": "bad1",
+        "user_id": null,
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000100,
+        "value": 1.0,
+        "_reject": "null_required"
+      },
+      {
+        "event_id": "bad2",
+        "user_id": "u1",
+        "event_type": "explode",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000100,
+        "value": 1.0,
+        "_reject": "bad_event_type"
+      }
+    ],
+    "silver_users": [
+      {
+        "user_id": "u0",
+        "plan": "free",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700018000000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u0",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700018000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "us-west",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700028800000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "eu",
+        "valid_from_ms": 1700028800000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u2",
+        "plan": "pro",
+        "region": "eu",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      },
+      {
+        "user_id": "u3",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      }
+    ],
+    "gold": [
+      {
+        "day": "d19675",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "pro",
+        "value": 2.0
+      }
+    ],
+    "run": {
+      "name": "contract_quarantine",
+      "bronze_in": 15,
+      "bronze_rejected": 3,
+      "silver_users": 6,
+      "gold_rows": 3,
+      "late_events": 0,
+      "contracts": [
+        {
+          "table": "bronze.events",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:event_id",
+              "passed": true,
+              "detail": "0 null values in event_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:event_time_ms",
+              "passed": true,
+              "detail": "0 null values in event_time_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:event_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            },
+            {
+              "name": "in_set:event_type",
+              "passed": true,
+              "detail": "0 values outside ['alloc', 'click', 'convert', 'sensor', 'view']",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "silver.users_scd2",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:valid_from_ms",
+              "passed": true,
+              "detail": "0 null values in valid_from_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:user_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "gold.daily_metrics",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:day",
+              "passed": true,
+              "detail": "0 null values in day",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:metric",
+              "passed": true,
+              "detail": "0 null values in metric",
+              "severity": "error"
+            },
+            {
+              "name": "range:value",
+              "passed": true,
+              "detail": "0 out of range [0.0,None]",
+              "severity": "error"
+            }
+          ]
+        }
+      ],
+      "notes": "Quarantined rejects stay visible. Late converts beyond watermark are counted for observability."
+    }
+  },
+  {
+    "id": "late_arriving",
+    "title": "Late-arriving facts",
+    "question": "A convert that arrives after the watermark must still be visible and counted as late for ops.",
+    "theme": "Watermarks / freshness",
+    "software": "forge 0.1.0",
+    "disclaimer": "Watermark policy is explicit. Late data is measured, not wished away.",
+    "bronze": [
+      {
+        "event_id": "e0",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e1",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700003600000,
+        "arrival_time_ms": 1700003600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e2",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700007200000,
+        "arrival_time_ms": 1700007200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e3",
+        "user_id": "u3",
+        "event_type": "convert",
+        "event_time_ms": 1700010800000,
+        "arrival_time_ms": 1700010800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e4",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700014400000,
+        "arrival_time_ms": 1700014400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e5",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700018000000,
+        "arrival_time_ms": 1700018000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e6",
+        "user_id": "u2",
+        "event_type": "convert",
+        "event_time_ms": 1700021600000,
+        "arrival_time_ms": 1700021600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e7",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700025200000,
+        "arrival_time_ms": 1700025200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e8",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700028800000,
+        "arrival_time_ms": 1700028800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e9",
+        "user_id": "u1",
+        "event_type": "convert",
+        "event_time_ms": 1700032400000,
+        "arrival_time_ms": 1700032400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e10",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700036000000,
+        "arrival_time_ms": 1700036000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e11",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700039600000,
+        "arrival_time_ms": 1700039600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "late1",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700007200000,
+        "arrival_time_ms": 1700036060000,
+        "value": 5.0
+      }
+    ],
+    "quarantine": [],
+    "silver_users": [
+      {
+        "user_id": "u0",
+        "plan": "free",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700018000000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u0",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700018000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "us-west",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700028800000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "eu",
+        "valid_from_ms": 1700028800000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u2",
+        "plan": "pro",
+        "region": "eu",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      },
+      {
+        "user_id": "u3",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      }
+    ],
+    "gold": [
+      {
+        "day": "d19675",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "free",
+        "value": 6.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "pro",
+        "value": 2.0
+      }
+    ],
+    "run": {
+      "name": "late_arriving",
+      "bronze_in": 13,
+      "bronze_rejected": 0,
+      "silver_users": 6,
+      "gold_rows": 3,
+      "late_events": 1,
+      "contracts": [
+        {
+          "table": "bronze.events",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:event_id",
+              "passed": true,
+              "detail": "0 null values in event_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:event_time_ms",
+              "passed": true,
+              "detail": "0 null values in event_time_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:event_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            },
+            {
+              "name": "in_set:event_type",
+              "passed": true,
+              "detail": "0 values outside ['alloc', 'click', 'convert', 'sensor', 'view']",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "silver.users_scd2",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:valid_from_ms",
+              "passed": true,
+              "detail": "0 null values in valid_from_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:user_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "gold.daily_metrics",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:day",
+              "passed": true,
+              "detail": "0 null values in day",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:metric",
+              "passed": true,
+              "detail": "0 null values in metric",
+              "severity": "error"
+            },
+            {
+              "name": "range:value",
+              "passed": true,
+              "detail": "0 out of range [0.0,None]",
+              "severity": "error"
+            }
+          ]
+        }
+      ],
+      "notes": "Quarantined rejects stay visible. Late converts beyond watermark are counted for observability."
+    },
+    "watermark_ms": 1700036000000
+  },
+  {
+    "id": "scd2_as_of",
+    "title": "SCD2 as-of join",
+    "question": "Gold plan attribution must use the user dimension version valid at event_time, not current plan.",
+    "theme": "CDC / SCD2",
+    "software": "forge 0.1.0",
+    "disclaimer": "APPLY CHANGES / SCD2 teaching case. Not Unity Catalog.",
+    "bronze": [
+      {
+        "event_id": "e0",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e1",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700003600000,
+        "arrival_time_ms": 1700003600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e2",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700007200000,
+        "arrival_time_ms": 1700007200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e3",
+        "user_id": "u3",
+        "event_type": "convert",
+        "event_time_ms": 1700010800000,
+        "arrival_time_ms": 1700010800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e4",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700014400000,
+        "arrival_time_ms": 1700014400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e5",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700018000000,
+        "arrival_time_ms": 1700018000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e6",
+        "user_id": "u2",
+        "event_type": "convert",
+        "event_time_ms": 1700021600000,
+        "arrival_time_ms": 1700021600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e7",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700025200000,
+        "arrival_time_ms": 1700025200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e8",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700028800000,
+        "arrival_time_ms": 1700028800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e9",
+        "user_id": "u1",
+        "event_type": "convert",
+        "event_time_ms": 1700032400000,
+        "arrival_time_ms": 1700032400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e10",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700036000000,
+        "arrival_time_ms": 1700036000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e11",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700039600000,
+        "arrival_time_ms": 1700039600050,
+        "value": 1.0
+      }
+    ],
+    "quarantine": [],
+    "silver_users": [
+      {
+        "user_id": "u0",
+        "plan": "free",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700018000000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u0",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700018000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "us-west",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700028800000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "eu",
+        "valid_from_ms": 1700028800000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u2",
+        "plan": "pro",
+        "region": "eu",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      },
+      {
+        "user_id": "u3",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      }
+    ],
+    "gold": [
+      {
+        "day": "d19675",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "pro",
+        "value": 2.0
+      }
+    ],
+    "run": {
+      "name": "scd2_as_of",
+      "bronze_in": 12,
+      "bronze_rejected": 0,
+      "silver_users": 6,
+      "gold_rows": 3,
+      "late_events": 0,
+      "contracts": [
+        {
+          "table": "bronze.events",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:event_id",
+              "passed": true,
+              "detail": "0 null values in event_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:event_time_ms",
+              "passed": true,
+              "detail": "0 null values in event_time_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:event_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            },
+            {
+              "name": "in_set:event_type",
+              "passed": true,
+              "detail": "0 values outside ['alloc', 'click', 'convert', 'sensor', 'view']",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "silver.users_scd2",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:valid_from_ms",
+              "passed": true,
+              "detail": "0 null values in valid_from_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:user_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "gold.daily_metrics",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:day",
+              "passed": true,
+              "detail": "0 null values in day",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:metric",
+              "passed": true,
+              "detail": "0 null values in metric",
+              "severity": "error"
+            },
+            {
+              "name": "range:value",
+              "passed": true,
+              "detail": "0 out of range [0.0,None]",
+              "severity": "error"
+            }
+          ]
+        }
+      ],
+      "notes": "Quarantined rejects stay visible. Late converts beyond watermark are counted for observability."
+    },
+    "highlight": "u0 upgrades free\u2192pro at hour 5; converts before that stay free."
+  },
+  {
+    "id": "experiment_healthy",
+    "title": "Experiment allocation health",
+    "question": "Silver enrollment must be unique per (experiment,user); gold shows conversion by cell.",
+    "theme": "Netflix experimentation platform",
+    "software": "forge 0.1.0",
+    "disclaimer": "Allocation semantics only \u2014 not Netflix ExP. Iceberg/Spark not required to learn the invariant.",
+    "enrollment": [
+      {
+        "allocation_id": "a1",
+        "user_id": "u1",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000000,
+        "arrival_time_ms": 1700100000020,
+        "lag_ms": 20
+      },
+      {
+        "allocation_id": "a2",
+        "user_id": "u2",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000010,
+        "arrival_time_ms": 1700100000040,
+        "lag_ms": 30
+      },
+      {
+        "allocation_id": "a3",
+        "user_id": "u3",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000020,
+        "arrival_time_ms": 1700100000050,
+        "lag_ms": 30
+      },
+      {
+        "allocation_id": "a4",
+        "user_id": "u4",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000030,
+        "arrival_time_ms": 1700100000060,
+        "lag_ms": 30
+      }
+    ],
+    "metrics": [
+      {
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated": 2.0,
+        "converted": 0.0,
+        "conversion_rate": 0.0
+      },
+      {
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated": 2.0,
+        "converted": 2.0,
+        "conversion_rate": 1.0
+      }
+    ],
+    "health": {
+      "healthy": true,
+      "hard_failures": [],
+      "n_enrollment": 4,
+      "peak_allocation_lag_ms": 30,
+      "notes": "Duplicate (experiment,user) allocations break causal analysis. This is the Netflix experimentation-platform data-health theme."
+    },
+    "checks": [
+      {
+        "name": "non_null:allocation_id",
+        "passed": true,
+        "detail": "0 null values in allocation_id",
+        "severity": "error"
+      },
+      {
+        "name": "unique:experiment_id,user_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
+        "severity": "error"
+      },
+      {
+        "name": "unique:allocation_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "id": "experiment_dup_alloc",
+    "title": "Broken allocation uniqueness",
+    "question": "Duplicate (experiment,user) allocations must fail data-health checks before analysis.",
+    "theme": "Netflix data health",
+    "software": "forge 0.1.0",
+    "disclaimer": "Demonstrates why uniqueness is a contract, not a dashboard footnote.",
+    "enrollment": [
+      {
+        "allocation_id": "a1",
+        "user_id": "u1",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000000,
+        "arrival_time_ms": 1700100000020,
+        "lag_ms": 20
+      },
+      {
+        "allocation_id": "a2",
+        "user_id": "u1",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000010,
+        "arrival_time_ms": 1700100000040,
+        "lag_ms": 30
+      },
+      {
+        "allocation_id": "a3",
+        "user_id": "u3",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000020,
+        "arrival_time_ms": 1700100000050,
+        "lag_ms": 30
+      }
+    ],
+    "metrics": [
+      {
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated": 2.0,
+        "converted": 1.0,
+        "conversion_rate": 0.5
+      },
+      {
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated": 1.0,
+        "converted": 1.0,
+        "conversion_rate": 1.0
+      }
+    ],
+    "health": {
+      "healthy": false,
+      "hard_failures": [
+        {
+          "name": "unique:experiment_id,user_id",
+          "passed": false,
+          "detail": "1 duplicate keys",
+          "severity": "error"
+        }
+      ],
+      "n_enrollment": 3,
+      "peak_allocation_lag_ms": 30,
+      "notes": "Duplicate (experiment,user) allocations break causal analysis. This is the Netflix experimentation-platform data-health theme."
+    },
+    "checks": [
+      {
+        "name": "non_null:allocation_id",
+        "passed": true,
+        "detail": "0 null values in allocation_id",
+        "severity": "error"
+      },
+      {
+        "name": "unique:experiment_id,user_id",
+        "passed": false,
+        "detail": "1 duplicate keys",
+        "severity": "error"
+      },
+      {
+        "name": "unique:allocation_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
+        "severity": "error"
+      }
+    ]
+  }
+]

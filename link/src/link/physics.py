@@ -1,0 +1,154 @@
+"""Pinned physics-inspired models. Not silicon validation."""
+
+from __future__ import annotations
+
+import math
+from dataclasses import dataclass
+from typing import Any
+
+
+SOFTWARE = "linklab 0.1.0"
+
+
+@dataclass(frozen=True)
+class LaneSample:
+    lane: int
+    t_ms: int
+    snr_db: float
+    ber: float
+    eye_open_ui: float
+    fec_uncorrectable: float
+    flaps: int
+    domain: str  # electrical | optical
+    impairment: str
+
+
+def ber_from_snr_db(snr_db: float, pam4: bool = True) -> float:
+    """Approximate Q-function style BER vs SNR. Teaching curve, not a PAM4 standard."""
+    # Convert rough SNR to sigma; clamp for numerics.
+    x = max(snr_db, 0.0)
+    # Higher SNR → lower BER. PAM4 is harsher than NRZ in this toy model.
+    scale = 1.35 if pam4 else 1.0
+    z = (x / scale - 6.0) / 2.2
+    # erfc-like tail
+    ber = 0.5 * math.erfc(z / math.sqrt(2.0))
+    return float(min(max(ber, 1e-15), 0.5))
+
+
+def eye_from_snr(snr_db: float) -> float:
+    """Eye opening proxy in UI units (0..1)."""
+    return float(min(max((snr_db - 8.0) / 20.0, 0.0), 1.0))
+
+
+def fec_residual(ber: float, coding_gain_db: float = 6.0) -> float:
+    """Toy RS/FEC residual uncorrectable rate after coding gain."""
+    # Map coding gain to effective BER reduction (very rough).
+    factor = 10 ** (-coding_gain_db / 5.0)
+    return float(min(ber * factor, 0.5))
+
+
+def software_loss_is_not_ber(packet_loss_pct: float) -> dict[str, Any]:
+    return {
+        "claim": "software_packet_loss_equals_optical_ber",
+        "valid": False,
+        "packet_loss_pct": packet_loss_pct,
+        "reason": (
+            "tc netem / TCP retransmits are L3/L4 software impairments. "
+            "Optical/electrical BER is a physical-layer symbol error process "
+            "before (and after) FEC. Credo PILOT eye/SNR/lane BER telemetry "
+            "must not be collapsed into rx_drop."
+        ),
+    }
+
+
+def simulate_lane(
+    lane: int,
+    n: int = 24,
+    base_snr_db: float = 24.0,
+    impairment: str = "healthy",
+    domain: str = "electrical",
+    seed: int = 7,
+) -> list[LaneSample]:
+    # Deterministic LCG
+    state = (seed * 1103515245 + lane * 12345) & 0x7FFFFFFF
+    rows: list[LaneSample] = []
+    flaps = 0
+    for i in range(n):
+        state = (1103515245 * state + 12345) & 0x7FFFFFFF
+        noise = ((state % 1000) / 1000.0 - 0.5) * 0.6
+        snr = base_snr_db + noise
+        if impairment == "snr_fade" and i >= 8:
+            snr -= 7.0 + 0.15 * (i - 8)
+        elif impairment == "burst_errors" and i in (10, 11, 12):
+            snr -= 12.0
+        elif impairment == "flap" and i in (9, 14, 18):
+            flaps += 1
+            snr = 3.0
+        elif impairment == "optical_oma_drop" and domain == "optical" and i >= 8:
+            snr -= 9.0  # stand-in for OMA / TDECQ degradation
+        elif impairment == "healthy":
+            pass
+        ber = ber_from_snr_db(snr, pam4=True)
+        eye = eye_from_snr(snr)
+        fec_u = fec_residual(ber, coding_gain_db=6.5 if domain == "optical" else 5.5)
+        rows.append(LaneSample(
+            lane=lane, t_ms=1_700_000 + i * 1000, snr_db=snr, ber=ber,
+            eye_open_ui=eye, fec_uncorrectable=fec_u, flaps=flaps,
+            domain=domain, impairment=impairment,
+        ))
+    return rows
+
+
+def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
+    if not rows:
+        return {"label": "insufficient_evidence", "notes": "no samples"}
+    tail = rows[-6:]
+    mean_snr = sum(r.snr_db for r in tail) / len(tail)
+    mean_ber = sum(r.ber for r in tail) / len(tail)
+    mean_eye = sum(r.eye_open_ui for r in tail) / len(tail)
+    flaps = max(r.flaps for r in rows)
+    head_snr = sum(r.snr_db for r in rows[:6]) / 6.0
+
+    evidence = {
+        "snr_drop": mean_snr < head_snr - 3.0,
+        "ber_hot": mean_ber > 1e-5,
+        "eye_closing": mean_eye < 0.35,
+        "flapping": flaps >= 2,
+    }
+    # Flaps first: short deep fades are classified as flaps, not steady SI.
+    if evidence["flapping"]:
+        label = "link_flap"
+        notes = "Repeated lane flaps. Distinct from a sustained SNR fade."
+    elif evidence["snr_drop"] and evidence["ber_hot"]:
+        label = "signal_integrity_degrade"
+        notes = "SNR fade with elevated BER. Domain=" + rows[-1].domain + "."
+    elif evidence["eye_closing"] and evidence["ber_hot"]:
+        label = "eye_closure"
+        notes = "Eye opening collapsed with BER rise."
+    elif mean_snr >= 18 and mean_ber <= 1e-5:
+        label = "healthy"
+        notes = "Lane SNR/BER within teaching thresholds."
+    else:
+        label = "insufficient_evidence"
+        notes = "Degraded but rules do not separate flap vs SI."
+    return {
+        "label": label,
+        "notes": notes,
+        "evidence": evidence,
+        "mean_snr_db": mean_snr,
+        "mean_ber": mean_ber,
+        "mean_eye_ui": mean_eye,
+        "flaps": flaps,
+        "domain": rows[-1].domain,
+        "impairment_truth": rows[-1].impairment,  # evaluation only
+    }
+
+
+def coding_gain_demo(pre_fec_ber: float = 1e-4) -> dict[str, Any]:
+    post = fec_residual(pre_fec_ber, coding_gain_db=7.0)
+    return {
+        "pre_fec_ber": pre_fec_ber,
+        "post_fec_ber": post,
+        "approx_gain_db": 7.0,
+        "notes": "FEC reduces residual errors; it does not turn optical BER into TCP retransmits.",
+    }

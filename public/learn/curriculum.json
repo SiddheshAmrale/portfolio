@@ -1,0 +1,226 @@
+{
+  "software": "portfolio learn 0.1.0",
+  "disclaimer": "Guided practical learning over the labs in this repo. Concepts map to Credo PILOT, Broadcom/Marvell photonics vocabulary, Oklo I&C integrity, and Databricks/Netflix data engineering themes. Teaching models are not production silicon or NQA-1 software.",
+  "tracks": [
+    {
+      "id": "credo-pilot",
+      "title": "Credo PILOT & connectivity telemetry",
+      "target_roles": ["Credo Senior Software / Data Engineer (PILOT)", "datacenter reliability"],
+      "keywords": ["DuckDB", "OLAP", "Python", "telemetry", "eye quality", "SNR", "lane BER", "SerDes", "retimer", "AEC", "link flaps", "data pipelines", "React"],
+      "lessons": [
+        {
+          "id": "obs-schema",
+          "title": "Observation identity & time",
+          "must_know": "Every metric needs run/source/interface identity, observation_time vs arrival_time, scrape_seq, collector_epoch, and collection_status. Missing is not zero.",
+          "why": "Credo PILOT ingests hardware telemetry into local/cloud pipelines. If identity collapses, you invent rates and false alerts.",
+          "practice": {
+            "lab": "/labs/telemetry",
+            "task": "Open gaps and late_samples_after_restart. Confirm missing stays missing and rates use observation_time.",
+            "pass": "You can explain why arrival-time intervals are wrong after delivery delay."
+          },
+          "check": ["What fields are required on an Observation?", "Why is collection_status=missing different from value=0?"]
+        },
+        {
+          "id": "counters-vs-snmp",
+          "title": "rx_errs ≠ TcpRetransSegs ≠ optical BER",
+          "must_know": "/proc/net/dev columns stay separate. TcpRetransSegs is host TCP. Optical/electrical BER is physical layer. Never sum them into one 'errors' series.",
+          "why": "PILOT lane BER / eye / SNR must stay distinct from OS packet counters — this is the #1 category error in portfolios.",
+          "practice": {
+            "lab": "/labs/link",
+            "task": "Open Lane for 'Software loss ≠ optical BER'. Read the diagnosis reason aloud.",
+            "pass": "You refuse to equate netem loss with optical BER in an interview."
+          },
+          "check": ["Name three distinct error concepts and their layers."]
+        },
+        {
+          "id": "live-netns",
+          "title": "Real impairments must traverse the path",
+          "must_know": "Same-host TCP can bypass veth/netem. Client and server in separate netns force packets across the impaired link. Ground truth stays in a sidecar; diagnose() never reads it.",
+          "why": "Elite evidence: live Ubuntu CI with confirmed delay/loss/cpu, not only constructed fixtures.",
+          "practice": {
+            "lab": "/labs/incident",
+            "task": "Open a live Linux delay case. Confirm impairment confirmed and latency moved (~46→350ms).",
+            "pass": "You can describe netns-veth path and impairment_confirmed gate."
+          },
+          "check": ["Why did early CI show delay with no RTT change?", "Where does ground truth live?"]
+        },
+        {
+          "id": "evidence-rules",
+          "title": "Frozen evidence rules & interventions",
+          "must_know": "Rules freeze on a calibration split. CPU restriction can look like network to a naive operator. Interventions should help only when the cause matches.",
+          "why": "PILOT's value is rigorous insights — not vibes dashboards.",
+          "practice": {
+            "lab": "/labs/incident",
+            "task": "Compare live CPU vs naive baseline. Run Intervention on a delay case.",
+            "pass": "You can state accuracy_when_diagnosed vs network_false_attr."
+          },
+          "check": ["What does insufficient_evidence mean for mixed impairments?"]
+        }
+      ]
+    },
+    {
+      "id": "photonics-serdes",
+      "title": "SerDes, silicon photonics & SI vocabulary",
+      "target_roles": ["Broadcom DSP/validation", "Marvell photonic fabric / optical validation"],
+      "keywords": ["PAM4", "BER", "FEC", "CTLE", "DFE", "FFE", "CDR", "eye", "TDECQ", "OMA", "PIC", "CPO"],
+      "lessons": [
+        {
+          "id": "snr-ber-eye",
+          "title": "SNR, BER, eye opening",
+          "must_know": "Lower SNR raises BER and closes the eye. Teaching curves are not silicon characterization, but the monotonic relationship is interview-critical.",
+          "why": "Validation engineers reason in eye/jitter/BER/link margin daily.",
+          "practice": {
+            "lab": "/labs/link",
+            "task": "Investigate an SNR-fade lane before revealing ground truth.",
+            "pass": "You can narrate SNR↓ → BER↑ → eye↓ without peeking."
+          },
+          "check": ["What label should a sustained fade get vs flaps?"]
+        },
+        {
+          "id": "fec-gain",
+          "title": "FEC coding gain",
+          "must_know": "FEC reduces residual uncorrectable errors; it does not convert optical BER into TCP retransmits.",
+          "why": "Optical links live with pre/post-FEC BER. Software stacks see a different layer.",
+          "practice": {
+            "lab": "/labs/link",
+            "task": "Open the not_netem / FEC demo case.",
+            "pass": "You can explain pre-FEC vs post-FEC in one sentence."
+          },
+          "check": ["Does FEC make netem loss 'optical'?"]
+        },
+        {
+          "id": "optical-domain",
+          "title": "Optical-domain impairment",
+          "must_know": "Optical cases use domain=optical (OMA/TDECQ-style fade stand-in). Electrical and optical share BER language but different physics knobs.",
+          "why": "Marvell photonic fabric roles mix SerDes + PIC measurements.",
+          "practice": {
+            "lab": "/labs/link",
+            "task": "Open an optical OMA-style case and compare to electrical fade.",
+            "pass": "You note domain in the diagnosis notes."
+          },
+          "check": ["Name two optical metrics you would measure on a real bench."]
+        }
+      ]
+    },
+    {
+      "id": "databricks-netflix",
+      "title": "Lakehouse & experimentation data engineering",
+      "target_roles": ["Databricks DE", "Netflix Commerce / Experimentation DE"],
+      "keywords": ["medallion", "Delta Lake", "CDC", "SCD2", "data contracts", "watermark", "Iceberg", "Spark", "allocation", "data health"],
+      "lessons": [
+        {
+          "id": "medallion",
+          "title": "Bronze → Silver → Gold",
+          "must_know": "Bronze is append-only raw. Silver is cleansed/conformed (SCD2 dims). Gold is curated aggregates for consumers.",
+          "why": "Nearly every Databricks posting lists medallion architecture.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Run Clean medallion run. Inspect Layers tab.",
+            "pass": "You can point to bronze quarantine vs gold rows."
+          },
+          "check": ["What belongs in bronze vs gold?"]
+        },
+        {
+          "id": "contracts",
+          "title": "Data contracts & quarantine",
+          "must_know": "Null keys, duplicate event_ids, and illegal types quarantine visibly. Silent drops are a pipeline smell.",
+          "why": "Netflix and Databricks both emphasize data health / expectations.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Open Contract quarantine. Read FAIL expectations.",
+            "pass": "You refuse silent discard of bad events."
+          },
+          "check": ["List three bronze expectations."]
+        },
+        {
+          "id": "scd2",
+          "title": "CDC / SCD2 as-of joins",
+          "must_know": "Gold attribution uses the dimension version valid at event_time, not the current plan.",
+          "why": "APPLY CHANGES / SCD2 is a Databricks Professional exam theme.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Open SCD2 as-of. Confirm early converts stay on free plan after upgrade.",
+            "pass": "You can draw valid_from/valid_to on a whiteboard."
+          },
+          "check": ["What happens if you join to is_current only?"]
+        },
+        {
+          "id": "late-data",
+          "title": "Late-arriving facts & watermarks",
+          "must_know": "Late converts past the watermark are counted for ops visibility; policies are explicit.",
+          "why": "Streaming/batch correctness depends on event-time vs processing-time.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Open Late-arriving facts. Check late_events ≥ 1.",
+            "pass": "You can define watermark in one sentence."
+          },
+          "check": ["Event time vs arrival time — which drives the day bucket?"]
+        },
+        {
+          "id": "exp-health",
+          "title": "Experiment allocation uniqueness",
+          "must_know": "(experiment_id, user_id) must be unique in silver enrollment or causal analysis is garbage.",
+          "why": "Netflix Experimentation Platform DE explicitly cares about allocation data health.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Compare Experiment allocation health vs Broken allocation uniqueness.",
+            "pass": "You fail the pipeline when uniqueness breaks."
+          },
+          "check": ["Why is duplicate allocation a hard failure?"]
+        }
+      ]
+    },
+    {
+      "id": "oklo-smr",
+      "title": "Advanced fission instrumentation integrity",
+      "target_roles": ["Oklo I&C / controls / software data platforms"],
+      "keywords": ["instrumentation", "trip setpoint", "missing data", "SCADA", "traceability", "CI/CD for analysis"],
+      "lessons": [
+        {
+          "id": "missing-null",
+          "title": "Missing ≠ zero (safety)",
+          "must_know": "Zero-filling a coolant temperature channel is a safety data bug. Means and trips must ignore or flag it.",
+          "why": "Oklo I&C and fuel-fab data roles store high-fidelity process data — integrity first.",
+          "practice": {
+            "lab": "/labs/smr",
+            "task": "Compare Missing samples stay missing vs Zero-fill anti-pattern.",
+            "pass": "You spot zero-fill suspicion and mean distortion."
+          },
+          "check": ["Why is 0°C as 'ok' coolant suspicious?"]
+        },
+        {
+          "id": "trips",
+          "title": "Trip setpoints on trusted samples",
+          "must_know": "Trips fire only on status=ok values. Stale/failed channels must not invent crossings.",
+          "why": "Protective functions require trustworthy measurement state.",
+          "practice": {
+            "lab": "/labs/smr",
+            "task": "Open High-temp trip and Sensor failed. Compare trip results.",
+            "pass": "You can explain why failed channels withhold values."
+          },
+          "check": ["Should a stale frozen value keep re-firing trips?"]
+        }
+      ]
+    },
+    {
+      "id": "regression-aa",
+      "title": "Release regression & A/A discipline",
+      "target_roles": ["any reliability / DE role shipping analysis changes"],
+      "keywords": ["A/A", "primary metric", "effect size", "repeatability"],
+      "lessons": [
+        {
+          "id": "aa",
+          "title": "Declare the metric before comparing",
+          "must_know": "A/A must not alarm. Deliberate regressions must. Collector changes can look like product changes if analysis drifts.",
+          "why": "Prevents self-fooling when you 'improve' a pipeline.",
+          "practice": {
+            "lab": "/labs/regression",
+            "task": "Run A vs A, then Deliberate regression.",
+            "pass": "You state primary metric and threshold before looking at B."
+          },
+          "check": ["What is an A/A false alarm?"]
+        }
+      ]
+    }
+  ]
+}

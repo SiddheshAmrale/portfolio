@@ -1,0 +1,46 @@
+name: labs
+
+on:
+  push:
+    paths:
+      - 'forge/**'
+      - 'link/**'
+      - 'smr/**'
+      - 'pilot/**'
+      - 'src/labs/**'
+      - 'public/learn/**'
+      - '.github/workflows/labs.yml'
+  pull_request:
+    paths:
+      - 'forge/**'
+      - 'link/**'
+      - 'smr/**'
+      - 'pilot/**'
+      - 'src/labs/**'
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install packages
+        run: python -m pip install -e "./pilot[dev]" -e "./forge[dev]" -e "./link[dev]" -e "./smr[dev]"
+      - name: Fixture tests
+        run: python -m pytest -q forge/tests link/tests smr/tests pilot/tests
+      - name: Build static cases
+        run: |
+          python -m forge build-cases --out public/forge
+          python -m link build-cases --out public/link
+          python -m smr build-cases --out public/smr
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lab-cases
+          path: |
+            public/forge/
+            public/link/
+            public/smr/
+            public/learn/

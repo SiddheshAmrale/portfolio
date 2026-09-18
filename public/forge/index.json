@@ -1,0 +1,72 @@
+{
+  "software": "forge 0.1.0",
+  "cases": [
+    {
+      "id": "happy_path",
+      "title": "Clean medallion run",
+      "theme": "Databricks medallion",
+      "question": "When contracts pass, bronze\u2192silver\u2192gold should be reproducible and quarantine empty."
+    },
+    {
+      "id": "contract_quarantine",
+      "title": "Contract quarantine",
+      "theme": "Data contracts / quality",
+      "question": "Duplicates, null keys, and illegal event types must quarantine \u2014 not silently inflate gold."
+    },
+    {
+      "id": "late_arriving",
+      "title": "Late-arriving facts",
+      "theme": "Watermarks / freshness",
+      "question": "A convert that arrives after the watermark must still be visible and counted as late for ops."
+    },
+    {
+      "id": "scd2_as_of",
+      "title": "SCD2 as-of join",
+      "theme": "CDC / SCD2",
+      "question": "Gold plan attribution must use the user dimension version valid at event_time, not current plan."
+    },
+    {
+      "id": "experiment_healthy",
+      "title": "Experiment allocation health",
+      "theme": "Netflix experimentation platform",
+      "question": "Silver enrollment must be unique per (experiment,user); gold shows conversion by cell."
+    },
+    {
+      "id": "experiment_dup_alloc",
+      "title": "Broken allocation uniqueness",
+      "theme": "Netflix data health",
+      "question": "Duplicate (experiment,user) allocations must fail data-health checks before analysis."
+    }
+  ],
+  "keywords": [
+    "medallion",
+    "Delta Lake",
+    "CDC",
+    "SCD2",
+    "data contracts",
+    "late-arriving data",
+    "watermark",
+    "experiment allocation",
+    "data health",
+    "DuckDB",
+    "Parquet"
+  ],
+  "duckdb_gold_by_plan": [
+    {
+      "plan": "free",
+      "converts": 2.0
+    },
+    {
+      "plan": "pro",
+      "converts": 2.0
+    }
+  ],
+  "parquet": {
+    "bronze": "public\\forge\\parquet\\happy_path\\bronze.parquet",
+    "silver": "public\\forge\\parquet\\happy_path\\silver_users.parquet",
+    "gold": "public\\forge\\parquet\\happy_path\\gold.parquet",
+    "gold_query": "[{\"plan\": \"free\", \"converts\": 2.0}, {\"plan\": \"pro\", \"converts\": 2.0}]"
+  },
+  "disclaimer": "Runnable lakehouse teaching system. Not Databricks Runtime or Netflix production.",
+  "reproduce": "pip install -e ./forge && python -m pytest -q && python -m forge build-cases"
+}

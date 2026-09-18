@@ -24,8 +24,10 @@
     "test": "react-scripts test",
     "workbench": "tsx src/labs/cli.ts",
     "workbench:test": "cross-env CI=true react-scripts test --watchAll=false --testPathPattern=workbench.test",
-    "pilot:test": "python -m pytest -q --rootdir=pilot",
+    "pilot:test": "python -m pytest -q pilot/tests",
     "pilot:cases": "python -m pilot build-cases --out public/pilot",
+    "labs:test": "python -m pytest -q forge/tests link/tests smr/tests pilot/tests",
+    "labs:cases": "python -m forge build-cases --out public/forge && python -m link build-cases --out public/link && python -m smr build-cases --out public/smr",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

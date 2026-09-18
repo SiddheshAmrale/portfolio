@@ -1,0 +1,42 @@
+{
+  "software": "smr 0.1.0",
+  "cases": [
+    {
+      "id": "healthy",
+      "title": "Healthy coolant channel"
+    },
+    {
+      "id": "missing_gap",
+      "title": "Missing samples stay missing"
+    },
+    {
+      "id": "zero_filled_bug",
+      "title": "Zero-fill anti-pattern"
+    },
+    {
+      "id": "stale",
+      "title": "Stale channel"
+    },
+    {
+      "id": "trip_high",
+      "title": "High-temp trip"
+    },
+    {
+      "id": "sensor_fail",
+      "title": "Sensor failed"
+    }
+  ],
+  "keywords": [
+    "instrumentation",
+    "controls",
+    "SCADA",
+    "missing data",
+    "trip setpoint",
+    "advanced fission",
+    "SMR",
+    "data integrity",
+    "NQA-1 awareness"
+  ],
+  "disclaimer": "Not nuclear-qualified software. Interview-aligned invariants only.",
+  "reproduce": "pip install -e ./smr && python -m pytest -q && python -m smr build-cases"
+}
