@@ -135,6 +135,33 @@ def test_snmp_tcp_parse():
     assert tcp["TcpInSegs"] == 10
 
 
+def test_collect_linux_custom_paths(tmp_path):
+    dev = tmp_path / "dev"
+    snmp = tmp_path / "snmp"
+    dev.write_text(
+        "Inter-|   Receive                                                |  Transmit\n"
+        " face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed\n"
+        "    lo: 1 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0\n"
+        "pilot1: 1000 10 0 0 0 0 0 0 2000 20 0 0 0 0 0 0\n"
+    )
+    snmp.write_text(
+        "Ip: 1 2\n"
+        "Tcp: RtoAlgorithm RtoMin InSegs OutSegs RetransSegs InErrs OutRsts\n"
+        "Tcp: 1 200 10 11 12 13 14\n"
+    )
+    rows = collect_linux(
+        "pid-net", "linux-live", 3, 0,
+        net_dev_path=str(dev), net_snmp_path=str(snmp),
+    )
+    rx = next(r for r in rows if r.metric == "rx_bytes" and r.interface == "pilot1")
+    assert rx.value == 1000
+    assert rx.collection_status == "ok"
+    assert "pilot1" in rx.source_ref
+    retrans = next(r for r in rows if r.metric == "TcpRetransSegs")
+    assert retrans.value == 12
+    assert retrans.interface == "host"
+
+
 def test_duckdb_reads_parquet(tmp_path):
     rows = quality_baseline(8)
     path = tmp_path / "obs.parquet"

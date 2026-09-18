@@ -25,7 +25,7 @@ from .traces import condition_trace, quality_baseline
 from . import linux
 
 
-SOFTWARE = "pilot 0.2.0"
+SOFTWARE = "pilot 0.2.1"
 
 
 def _dump_rows(rows: Sequence[Observation], limit: int | None = None) -> list[dict[str, Any]]:
@@ -190,6 +190,7 @@ def incident_cases() -> list[dict[str, Any]]:
             "diagnosed_pct": eval_cal.diagnosed_pct,
         },
         "linux_eval": None,
+        "linux_unconfirmed": 0,
         "interventions": intervention_cases(),
         "disclaimer": "Rules frozen on the calibration split. Ground truth is not an input to diagnose(). Constructed traces are fixtures. Live Linux runs, when present, are labeled linux-live.",
         "cases": cases,
@@ -232,7 +233,7 @@ def pack_linux_incidents(linux_dir: str | Path) -> dict[str, Any] | None:
             "title": "Live Linux: " + cond,
             "software": SOFTWARE,
             "source": "linux-live",
-            "disclaimer": "Live Ubuntu veth+netem+cgroup. Software packet loss is not optical BER/FEC. Injector label is not an input to diagnose().",
+            "disclaimer": "Live Ubuntu netns+veth+netem+cgroup. Packets traverse a veth. Software packet loss is not optical BER/FEC. Injector label is not an input to diagnose().",
             "reproduce": "python -m pilot run-linux --out public/pilot/linux && python -m pilot eval-linux --dir public/pilot/linux",
             "ground_truth": cond,
             "impairment_confirmed": chosen.get("impairment_confirmed"),
@@ -258,6 +259,10 @@ def pack_linux_incidents(linux_dir: str | Path) -> dict[str, Any] | None:
             "rx_iface": iface,
         })
     ev = evaluate_linux_dir(root)
+    unconfirmed = 0
+    for line in truth_path.read_text(encoding="utf-8").splitlines():
+        if line.strip() and not json.loads(line).get("impairment_confirmed", True):
+            unconfirmed += 1
     return {
         "cases": cases,
         "eval": {
@@ -267,6 +272,7 @@ def pack_linux_incidents(linux_dir: str | Path) -> dict[str, Any] | None:
             "network_false_attr": ev.network_false_attr,
             "missed_impaired": ev.missed_impaired,
             "insufficient": ev.insufficient,
+            "unconfirmed": unconfirmed,
             "rows": [r.__dict__ for r in ev.rows],
         },
     }
@@ -362,10 +368,10 @@ def _quality_from_linux(linux_dir: Path) -> dict[str, Any] | None:
     return {
         "id": "linux_live_healthy",
         "title": "linux live healthy",
-        "question": "Real /proc/net/dev and TcpRetransSegs from a live Ubuntu veth workload.",
+        "question": "Real /proc/<server-pid>/net/dev and TcpRetransSegs from a live Ubuntu netns+veth workload.",
         "software": SOFTWARE,
         "linux_proc_available": True,
-        "disclaimer": "Live Linux collection. Columns are not collapsed. This is not netem-impaired.",
+        "disclaimer": "Live Linux collection from the server netns. Columns are not collapsed. This is not netem-impaired.",
         "reproduce": "python -m pilot run-linux",
         "original_rows": _dump_rows(focused),
         "original_rates_rx_bytes": rx,

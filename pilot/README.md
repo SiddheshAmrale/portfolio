@@ -5,12 +5,12 @@ Python software for connectivity-telemetry investigations: **data quality**, **i
 ```bash
 pip install -e "./pilot[dev]"
 python -m pytest -q
-python -m pilot run-linux --out public/pilot/linux      # Linux only: veth + netem + cgroup
+python -m pilot run-linux --out public/pilot/linux      # Linux only: netns + veth + netem + cgroup
 python -m pilot eval-linux --dir public/pilot/linux
 python -m pilot build-cases --out public/pilot
 ```
 
-GitHub Actions runs the live experiments on `ubuntu-latest`. Constructed traces remain the unit-test fixture and the calibration split. Live runs are a separate evaluation. Software netem is **not** optical BER/FEC.
+GitHub Actions runs the live experiments on `ubuntu-latest`. Client and server are in separate network namespaces so TCP crosses the veth; otherwise the kernel delivers locally and netem never sees the packets. Constructed traces remain the unit-test fixture and the calibration split. Live runs are a separate evaluation. Software netem is **not** optical BER/FEC.
 
 ## What is in an observation
 
@@ -23,10 +23,10 @@ Ground truth for live experiments is `public/pilot/linux/ground_truth.jsonl`. It
 | Condition | Injector | Must not be an input to `diagnose()` |
 |---|---|---|
 | healthy | none | yes |
-| delay | `tc netem delay 80ms` on a veth pair | yes |
+| delay | `tc netem delay 80ms` on the netns veth | yes |
 | loss | `tc netem loss 15%` | yes |
 | cpu | cgroup v2 `cpu.max` on the server process | yes |
-| stale | collector pauses network scrapes | yes |
+| stale | delay plus withheld `/proc/net` scrapes | yes |
 | mixed | loss + cpu | yes |
 
 A run is counted for accuracy only if the workload actually moved (`impairment_confirmed`). Frozen rules were not retuned on the live split.

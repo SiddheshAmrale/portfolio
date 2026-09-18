@@ -28,7 +28,7 @@ const projects: ProjectCard[] = [
   {
     id: 'incident',
     title: 'Network Incident Diagnosis Lab',
-    description: 'Flagship: unnamed recorded incidents with application, TcpRetransSegs, and host CPU timelines. Frozen evidence rules, no injector labels, held-out evaluation, and interventions that should help versus ones that should not. Software loss is not optical BER.',
+    description: 'Flagship: unnamed recorded incidents with application, TcpRetransSegs, and host CPU timelines. Frozen evidence rules, no injector labels, held-out evaluation, and live Ubuntu netns+veth+netem+cgroup cases. Software loss is not optical BER.',
     category: 'telemetry',
     technologies: ['Diagnosis', 'Evidence', 'Held-out', 'Interventions'],
     path: '/labs/incident',

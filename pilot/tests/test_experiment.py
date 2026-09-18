@@ -11,6 +11,13 @@ def test_confirm_healthy_is_true():
     assert ok is True
 
 
+def test_confirm_stale_uses_missing_rx():
+    ok, _ = confirm_impairment("stale", [20, 21], [21, 22], False)
+    assert ok is False
+    ok2, _ = confirm_impairment("stale", [20, 21], [90, 100], True)
+    assert ok2 is True
+
+
 def test_confirm_delay_requires_workload_move():
     ok, _ = confirm_impairment("delay", [20, 21], [21, 22], False)
     assert ok is False

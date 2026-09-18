@@ -118,11 +118,15 @@ def parse_proc_net_snmp_tcp(text: str) -> dict[str, int]:
     return wanted
 
 
-def collect_linux(run_id: str, source_id: str, seq: int, epoch: int) -> list[Observation]:
+def collect_linux(run_id: str, source_id: str, seq: int, epoch: int,
+                  net_dev_path: str | None = None, net_snmp_path: str | None = None) -> list[Observation]:
     t_obs = _now_ms()
     t_arr = t_obs
     rows: list[Observation] = []
-    if not linux_available():
+    dev_path = net_dev_path or PROC_NET_DEV_PATH
+    snmp_path = net_snmp_path or PROC_NET_SNMP_PATH
+    available = os.path.exists(dev_path) and os.path.exists(snmp_path)
+    if not available:
         for metric in PROC_NET_DEV:
             unit = "B" if metric.endswith("bytes") else "pkt"
             rows.append(Observation(
@@ -130,7 +134,7 @@ def collect_linux(run_id: str, source_id: str, seq: int, epoch: int) -> list[Obs
                 metric=metric, value=None, unit=unit, metric_type="counter",
                 observation_time_ms=t_obs, arrival_time_ms=t_arr, scrape_seq=seq,
                 collector_epoch=epoch, collection_status="unsupported",
-                source_ref="linux:" + PROC_NET_DEV_PATH + "#eth0." + metric,
+                source_ref="linux:" + dev_path + "#eth0." + metric,
                 notes="host has no /proc/net/dev; not recorded as zero",
             ))
         for metric in PROC_NET_SNMP_TCP:
@@ -139,14 +143,13 @@ def collect_linux(run_id: str, source_id: str, seq: int, epoch: int) -> list[Obs
                 metric=metric, value=None, unit="seg", metric_type="counter",
                 observation_time_ms=t_obs, arrival_time_ms=t_arr, scrape_seq=seq,
                 collector_epoch=epoch, collection_status="unsupported",
-                source_ref="linux:" + PROC_NET_SNMP_PATH,
+                source_ref="linux:" + snmp_path,
                 notes="host has no /proc/net/snmp; not recorded as zero",
             ))
         for metric, unit in (("proc_cpu_percent", "%"), ("collector_lag_ms", "ms"), ("app_latency_ms", "ms")):
-            mtype = "gauge"
             rows.append(Observation(
                 run_id=run_id, source_id=source_id, interface="collector",
-                metric=metric, value=None, unit=unit, metric_type=mtype,
+                metric=metric, value=None, unit=unit, metric_type="gauge",
                 observation_time_ms=t_obs, arrival_time_ms=t_arr, scrape_seq=seq,
                 collector_epoch=epoch, collection_status="unsupported",
                 source_ref="linux:/proc",
@@ -154,7 +157,7 @@ def collect_linux(run_id: str, source_id: str, seq: int, epoch: int) -> list[Obs
             ))
         return rows
 
-    with open(PROC_NET_DEV_PATH, "r", encoding="utf-8") as f:
+    with open(dev_path, "r", encoding="utf-8") as f:
         dev = parse_proc_net_dev(f.read())
     for iface, metrics in dev.items():
         for metric, value in metrics.items():
@@ -164,10 +167,10 @@ def collect_linux(run_id: str, source_id: str, seq: int, epoch: int) -> list[Obs
                 metric=metric, value=float(value), unit=unit, metric_type="counter",
                 observation_time_ms=t_obs, arrival_time_ms=t_arr, scrape_seq=seq,
                 collector_epoch=epoch, collection_status="ok",
-                source_ref="linux:" + PROC_NET_DEV_PATH + "#" + iface + "." + metric,
+                source_ref="linux:" + dev_path + "#" + iface + "." + metric,
             ))
 
-    with open(PROC_NET_SNMP_PATH, "r", encoding="utf-8") as f:
+    with open(snmp_path, "r", encoding="utf-8") as f:
         tcp = parse_proc_net_snmp_tcp(f.read())
     for metric, value in tcp.items():
         rows.append(Observation(
@@ -175,6 +178,6 @@ def collect_linux(run_id: str, source_id: str, seq: int, epoch: int) -> list[Obs
             metric=metric, value=float(value), unit="seg", metric_type="counter",
             observation_time_ms=t_obs, arrival_time_ms=t_arr, scrape_seq=seq,
             collector_epoch=epoch, collection_status="ok",
-            source_ref="linux:" + PROC_NET_SNMP_PATH + "#" + metric,
+            source_ref="linux:" + snmp_path + "#" + metric,
         ))
     return rows

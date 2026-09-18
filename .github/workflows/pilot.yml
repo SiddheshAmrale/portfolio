@@ -26,6 +26,13 @@ jobs:
           python-version: '3.12'
       - name: Install
         run: python -m pip install -e "./pilot[dev]"
+      - name: Network namespaces and netem
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iproute2
+          sudo modprobe sch_netem
+          ip -V
+          tc -V
       - name: Fixture tests
         run: python -m pytest -q
         working-directory: pilot

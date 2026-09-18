@@ -2,28 +2,31 @@
 
 Ground truth is written to a sidecar file. Observations never include the
 injector label. Software netem on a veth pair is not an optical impairment.
+
+The client and server run in separate network namespaces so TCP actually
+traverses the veth. Same-host sockets would otherwise bypass netem.
 """
 
 from __future__ import annotations
 
-import multiprocessing
+import ctypes
 import hashlib
+import http.client
 import json
+import multiprocessing
 import os
 import random
 import subprocess
 import threading
 import time
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Optional
-from urllib.error import URLError
-from urllib.request import urlopen
 
 from . import linux
 from .diagnosis import diagnose, naive_network_blame, time_to_detect
-from .evaluate import _map_truth, EvalReport, EvalRow
+from .evaluate import EvalReport, EvalRow, _map_truth
 from .schema import Observation, counter, gauge, missing
 from .store import read_parquet, write_parquet
 
@@ -32,8 +35,11 @@ VETH_B = "pilot1"
 ADDR_A = "10.200.42.1"
 ADDR_B = "10.200.42.2"
 PORT = 18080
+NS_C = "pilotc"
+NS_S = "pilots"
+CLONE_NEWNET = 0x40000000
 CGROUP = "/sys/fs/cgroup/pilot-exp"
-SOFTWARE = "pilot 0.2.0"
+SOFTWARE = "pilot 0.2.1"
 CONDITIONS = ("healthy", "delay", "loss", "cpu", "stale", "mixed")
 
 
@@ -72,13 +78,17 @@ def _sudo(args: list[str], input_text: str | None = None) -> subprocess.Complete
     return subprocess.run(cmd, input=input_text, text=True, capture_output=True, check=False)
 
 
+def _ns(ns: str, args: list[str]) -> subprocess.CompletedProcess:
+    return _sudo(["ip", "netns", "exec", ns, *args])
+
+
 def _burn(n: int = 12000) -> None:
     h = b"pilot"
     for _ in range(n):
         h = hashlib.sha256(h).digest()
 
 
-def _make_handler(stats: AppStats):
+def _make_handler():
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, fmt: str, *args: Any) -> None:
             return
@@ -88,49 +98,78 @@ def _make_handler(stats: AppStats):
             body = b"ok"
             self.send_response(200)
             self.send_header("Content-Length", str(len(body)))
+            self.send_header("Connection", "keep-alive")
             self.end_headers()
             self.wfile.write(body)
 
     return Handler
 
 
-def _server_entry(host: str, port: int) -> None:
-    stats = AppStats()
-    server = ThreadingHTTPServer((host, port), _make_handler(stats))
+def _setns(ns: str) -> None:
+    libc = ctypes.CDLL("libc.so.6", use_errno=True)
+    fd = os.open("/var/run/netns/" + ns, os.O_RDONLY)
+    try:
+        if libc.setns(fd, CLONE_NEWNET) != 0:
+            err = ctypes.get_errno()
+            raise OSError(err, "setns " + ns)
+    finally:
+        os.close(fd)
+
+
+def _server_in_ns(host: str, port: int) -> None:
+    _setns(NS_S)
+    server = ThreadingHTTPServer((host, port), _make_handler())
+    server.allow_reuse_address = True
     server.serve_forever()
 
 
-def setup_veth() -> None:
-    teardown_veth()
+def teardown_netns() -> None:
+    _ns(NS_C, ["tc", "qdisc", "del", "dev", VETH_A, "root"])
+    _ns(NS_S, ["tc", "qdisc", "del", "dev", VETH_B, "root"])
+    _sudo(["ip", "netns", "del", NS_C])
+    _sudo(["ip", "netns", "del", NS_S])
+    _sudo(["ip", "link", "del", VETH_A])
+    _sudo(["ip", "link", "del", VETH_B])
+
+
+def setup_netns() -> None:
+    teardown_netns()
+    for ns in (NS_C, NS_S):
+        r = _sudo(["ip", "netns", "add", ns])
+        if r.returncode != 0:
+            raise RuntimeError("ip netns add " + ns + " failed: " + (r.stderr or r.stdout))
     r = _sudo(["ip", "link", "add", VETH_A, "type", "veth", "peer", "name", VETH_B])
     if r.returncode != 0:
         raise RuntimeError("ip link add veth failed: " + (r.stderr or r.stdout))
-    for dev, addr in ((VETH_A, ADDR_A), (VETH_B, ADDR_B)):
-        _sudo(["ip", "addr", "add", addr + "/24", "dev", dev])
-        r = _sudo(["ip", "link", "set", dev, "up"])
+    r = _sudo(["ip", "link", "set", VETH_A, "netns", NS_C])
+    if r.returncode != 0:
+        raise RuntimeError("move " + VETH_A + " failed: " + (r.stderr or r.stdout))
+    r = _sudo(["ip", "link", "set", VETH_B, "netns", NS_S])
+    if r.returncode != 0:
+        raise RuntimeError("move " + VETH_B + " failed: " + (r.stderr or r.stdout))
+    for ns, dev, addr in ((NS_C, VETH_A, ADDR_A), (NS_S, VETH_B, ADDR_B)):
+        r = _ns(ns, ["ip", "addr", "add", addr + "/24", "dev", dev])
         if r.returncode != 0:
-            raise RuntimeError("ip link set up failed for " + dev + ": " + (r.stderr or ""))
-
-
-def teardown_veth() -> None:
-    _sudo(["tc", "qdisc", "del", "dev", VETH_A, "root"])
-    _sudo(["tc", "qdisc", "del", "dev", VETH_B, "root"])
-    _sudo(["ip", "link", "del", VETH_A])
+            raise RuntimeError("addr add failed: " + (r.stderr or r.stdout))
+        _ns(ns, ["ip", "link", "set", "lo", "up"])
+        r = _ns(ns, ["ip", "link", "set", dev, "up"])
+        if r.returncode != 0:
+            raise RuntimeError("link up failed for " + dev + ": " + (r.stderr or ""))
 
 
 def apply_netem(delay_ms: int = 0, loss_pct: float = 0.0) -> None:
-    for dev in (VETH_A, VETH_B):
-        args = ["tc", "qdisc", "replace", "dev", dev, "root", "netem"]
-        if delay_ms:
-            args += ["delay", str(delay_ms) + "ms"]
-        if loss_pct:
-            args += ["loss", str(loss_pct) + "%"]
+    for ns, dev in ((NS_C, VETH_A), (NS_S, VETH_B)):
         if delay_ms or loss_pct:
-            r = _sudo(args)
+            args = ["tc", "qdisc", "replace", "dev", dev, "root", "netem"]
+            if delay_ms:
+                args += ["delay", str(delay_ms) + "ms"]
+            if loss_pct:
+                args += ["loss", str(loss_pct) + "%"]
+            r = _ns(ns, args)
             if r.returncode != 0:
-                raise RuntimeError("netem failed on " + dev + ": " + (r.stderr or r.stdout))
+                raise RuntimeError("netem failed on " + ns + "/" + dev + ": " + (r.stderr or r.stdout))
         else:
-            _sudo(["tc", "qdisc", "del", "dev", dev, "root"])
+            _ns(ns, ["tc", "qdisc", "del", "dev", dev, "root"])
 
 
 def setup_cgroup(pid: int, quota_us: int = 20000, period_us: int = 100000) -> bool:
@@ -146,24 +185,74 @@ def setup_cgroup(pid: int, quota_us: int = 20000, period_us: int = 100000) -> bo
 
 
 def clear_cgroup(pid: int) -> None:
-    # Move back to the root cgroup when possible.
     _sudo(["tee", "/sys/fs/cgroup/cgroup.procs"], input_text=str(pid) + "\n")
     _sudo(["rmdir", CGROUP])
 
 
-def _client_loop(url: str, stats: AppStats, stop: threading.Event) -> None:
+def _client_loop(host: str, port: int, stats: AppStats, stop: threading.Event) -> None:
+    _setns(NS_C)
+    conn: http.client.HTTPConnection | None = None
     while not stop.is_set():
         t0 = time.perf_counter()
         ok = False
         n = 0
         try:
-            with urlopen(url, timeout=2.0) as resp:
-                n = len(resp.read())
-                ok = resp.status == 200
-        except (URLError, TimeoutError, OSError):
+            if conn is None:
+                conn = http.client.HTTPConnection(host, port, timeout=2.0)
+            conn.request("GET", "/")
+            resp = conn.getresponse()
+            n = len(resp.read())
+            ok = resp.status == 200
+        except (TimeoutError, OSError, http.client.HTTPException):
             ok = False
+            if conn is not None:
+                try:
+                    conn.close()
+                except Exception:
+                    pass
+                conn = None
         dt = (time.perf_counter() - t0) * 1000.0
         stats.record(dt, n, ok)
+    if conn is not None:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def _wait_ready(host: str, port: int, timeout_s: float = 5.0) -> None:
+    ready = threading.Event()
+    err: dict[str, str] = {"e": "timeout"}
+
+    def probe() -> None:
+        try:
+            _setns(NS_C)
+        except OSError as e:
+            err["e"] = str(e)
+            return
+        t0 = time.time()
+        while time.time() - t0 < timeout_s:
+            conn = None
+            try:
+                conn = http.client.HTTPConnection(host, port, timeout=0.4)
+                conn.request("GET", "/")
+                conn.getresponse().read()
+                ready.set()
+                return
+            except (TimeoutError, OSError, http.client.HTTPException) as e:
+                err["e"] = str(e)
+                time.sleep(0.05)
+            finally:
+                if conn is not None:
+                    try:
+                        conn.close()
+                    except Exception:
+                        pass
+
+    t = threading.Thread(target=probe, daemon=True)
+    t.start()
+    if not ready.wait(timeout_s + 0.5):
+        raise RuntimeError("server not reachable via netns veth: " + err["e"])
 
 
 def _mean(xs: list[float]) -> Optional[float]:
@@ -189,7 +278,12 @@ def scrape(run_id: str, seq: int, epoch: int, stats: AppStats, server_pid: int,
            prev_ticks: Optional[int], prev_t_ms: Optional[int],
            stale: bool) -> tuple[list[Observation], Optional[int], int]:
     t_obs = linux._now_ms()
-    rows = linux.collect_linux(run_id, "linux-live", seq, epoch)
+    net_dev = "/proc/" + str(server_pid) + "/net/dev"
+    net_snmp = "/proc/" + str(server_pid) + "/net/snmp"
+    rows = linux.collect_linux(
+        run_id, "linux-live", seq, epoch,
+        net_dev_path=net_dev, net_snmp_path=net_snmp,
+    )
     t_arr = linux._now_ms()
     req, to, nb, lat = stats.snapshot()
     ticks = linux.read_pid_ticks(server_pid)
@@ -233,19 +327,25 @@ def scrape(run_id: str, seq: int, epoch: int, stats: AppStats, server_pid: int,
 def run_one(run_id: str, condition: str, duration_s: float = 7.0, warmup_s: float = 1.6,
             interval_s: float = 0.2) -> dict[str, Any]:
     stats = AppStats()
-    setup_veth()
+    setup_netns()
     ctx = multiprocessing.get_context("fork")
-    proc = ctx.Process(target=_server_entry, args=(ADDR_B, PORT), daemon=True)
+    proc = ctx.Process(target=_server_in_ns, args=(ADDR_B, PORT), daemon=True)
     proc.start()
     server_pid = proc.pid
     if not server_pid:
+        teardown_netns()
         raise RuntimeError("server process failed to start")
-    time.sleep(0.2)
+    try:
+        _wait_ready(ADDR_B, PORT)
+    except Exception:
+        proc.terminate()
+        proc.join(timeout=3)
+        teardown_netns()
+        raise
     stop = threading.Event()
-    url = "http://" + ADDR_B + ":" + str(PORT) + "/"
     workers = []
     for _ in range(4):
-        t = threading.Thread(target=_client_loop, args=(url, stats, stop), daemon=True)
+        t = threading.Thread(target=_client_loop, args=(ADDR_B, PORT, stats, stop), daemon=True)
         t.start()
         workers.append(t)
 
@@ -272,6 +372,8 @@ def run_one(run_id: str, condition: str, duration_s: float = 7.0, warmup_s: floa
                     cgroup_ok = setup_cgroup(server_pid)
                 elif condition == "cpu":
                     cgroup_ok = setup_cgroup(server_pid)
+                elif condition == "stale":
+                    apply_netem(delay_ms=80)
                 elif condition == "healthy":
                     pass
             stale = condition == "stale" and applied and elapsed < warmup_s + 2.2
@@ -281,12 +383,14 @@ def run_one(run_id: str, condition: str, duration_s: float = 7.0, warmup_s: floa
             time.sleep(interval_s)
     finally:
         stop.set()
+        for t in workers:
+            t.join(timeout=1.0)
         proc.terminate()
         proc.join(timeout=3)
         apply_netem(0, 0)
         if cgroup_ok:
             clear_cgroup(server_pid)
-        teardown_veth()
+        teardown_netns()
 
     warmup = stats.window(0, n_warmup or max(1, len(stats.latencies) // 4))
     impaired = stats.window(n_warmup, len(stats.latencies))
@@ -295,13 +399,13 @@ def run_one(run_id: str, condition: str, duration_s: float = 7.0, warmup_s: floa
     if condition == "cpu" and not cgroup_ok:
         confirmed, confirm_detail = False, "cgroup cpu.max setup failed"
 
-    # Diagnosis never receives condition.
     d = diagnose(rows)
     return {
         "run_id": run_id,
         "software": SOFTWARE,
         "linux_proc_available": True,
-        "condition": condition,  # sidecar only
+        "path": "netns-veth",
+        "condition": condition,
         "diagnosis": d.label,
         "baseline_diagnosis": naive_network_blame(rows),
         "time_to_detect_seq": time_to_detect(rows),
@@ -362,7 +466,8 @@ def run_linux_suite(out_dir: str | Path, repeats: int = 2, seed: int = 7,
         "seed": seed,
         "repeats": repeats,
         "duration_s": duration_s,
-        "disclaimer": "Live Linux veth+netem+cgroup. Software packet loss is not optical BER/FEC. Ground truth is ground_truth.jsonl only.",
+        "path": "netns-veth",
+        "disclaimer": "Live Linux netns+veth+netem+cgroup. Packets traverse a veth; software packet loss is not optical BER/FEC. Ground truth is ground_truth.jsonl only.",
         "runs": manifest,
     }, indent=2), encoding="utf-8")
     return out
@@ -372,7 +477,6 @@ def evaluate_linux_dir(linux_dir: str | Path) -> EvalReport:
     """Apply frozen rules to live runs. Ground truth is read only here."""
     root = Path(linux_dir)
     rows: list[EvalRow] = []
-    unconfirmed = 0
     for line in (root / "ground_truth.jsonl").read_text(encoding="utf-8").splitlines():
         if not line.strip():
             continue
@@ -380,7 +484,6 @@ def evaluate_linux_dir(linux_dir: str | Path) -> EvalReport:
         obs = read_parquet(root / "runs" / truth["run_id"] / "obs.parquet")
         pred = diagnose(obs).label
         if not truth.get("impairment_confirmed", True):
-            unconfirmed += 1
             continue
         rows.append(EvalRow(truth["run_id"], _map_truth(truth["condition"]), pred, "linux-live"))
     n = len(rows)

@@ -24,7 +24,8 @@ const IncidentLab: React.FC = function () {
   const selected: IncidentCase | null = data && data.cases[idx] ? data.cases[idx] : null;
   const intervention = useMemo(function () {
     if (!data || !selected) return null;
-    return data.interventions.find(function (i) { return i.condition === selected.id; }) || null;
+    const key = selected.id.replace(/^linux-/, '');
+    return data.interventions.find(function (i) { return i.condition === selected.id || i.condition === key; }) || null;
   }, [data, selected]);
 
   if (loading) {
@@ -68,7 +69,7 @@ const IncidentLab: React.FC = function () {
         </div>
 
         <p className="text-xs text-white/45 leading-relaxed">
-          {data.disclaimer} Live Linux cases, when present, come from GitHub-hosted Ubuntu (veth + netem + cgroup). Constructed fixtures stay for calibration. Software loss is not optical BER. diagnose() never receives the injector label.
+          {data.disclaimer} Live Linux cases, when present, come from GitHub-hosted Ubuntu (netns + veth + netem + cgroup). Packets traverse the veth. Constructed fixtures stay for calibration. Software loss is not optical BER. diagnose() never receives the injector label.
         </p>
 
         {view === 'investigate' ? (
@@ -80,6 +81,13 @@ const IncidentLab: React.FC = function () {
                 <Kpi label="Pilot diagnosis" value={selected.diagnosis.label} />
                 <Kpi label="Time to detect" value={selected.time_to_detect_seq === null ? 'never' : 'seq ' + selected.time_to_detect_seq} />
               </div>
+              {selected.source === 'linux-live' ? (
+                <p className={'text-xs ' + (selected.impairment_confirmed === false ? 'text-amber-200/90' : 'text-white/45')}>
+                  {selected.impairment_confirmed === false
+                    ? 'Live run shown, excluded from accuracy: ' + (selected.confirm_detail || 'impairment not confirmed')
+                    : 'Live netns veth path. ' + (selected.confirm_detail || 'impairment confirmed')}
+                </p>
+              ) : null}
               <Panel title="Application latency (ms)">
                 <Spark values={lat} color={ACCENT} height={72} />
               </Panel>
@@ -159,6 +167,9 @@ const IncidentLab: React.FC = function () {
               <div className="space-y-3 text-sm text-white/75">
                 <p>Condition: <span className="text-white font-semibold">{selected.title}</span> ({selected.ground_truth})</p>
                 <p>Naive baseline called it <code>{selected.baseline_diagnosis}</code>. Frozen rules called it <code>{selected.diagnosis.label}</code>.</p>
+                {selected.source === 'linux-live' ? (
+                  <p>Impairment confirmed: {String(selected.impairment_confirmed)}{selected.confirm_detail ? ' — ' + selected.confirm_detail : ''}</p>
+                ) : null}
                 <p className="text-white/45">{selected.disclaimer}</p>
               </div>
             ) : (
@@ -207,6 +218,9 @@ const IncidentLab: React.FC = function () {
                   <Kpi label="Accuracy when diagnosed" value={fmtPct(data.linux_eval.accuracy_when_diagnosed)} />
                   <Kpi label="Network false attr." value={String(data.linux_eval.network_false_attr)} tone={data.linux_eval.network_false_attr ? 'bad' : 'ok'} />
                 </div>
+                {typeof data.linux_eval.unconfirmed === 'number' && data.linux_eval.unconfirmed > 0 ? (
+                  <p className="text-xs text-amber-200/80 mb-3">{data.linux_eval.unconfirmed} live runs excluded because the impairment did not move the workload.</p>
+                ) : null}
                 <ul className="text-sm font-mono space-y-1">
                   {data.linux_eval.rows.map(function (r) {
                     const ok = r.predicted === r.truth;

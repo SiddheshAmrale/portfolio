@@ -72,7 +72,7 @@ def main(argv: list[str] | None = None) -> int:
         print("python -m pilot eval-linux --dir public/pilot/linux")
         print("python -m pilot build-cases --out public/pilot")
         print("case:", args.case_id)
-        print("Pinned software: pilot 0.2.0. Constructed fixtures plus live Linux when /proc exists.")
+        print("Pinned software: pilot 0.2.1. Constructed fixtures plus live Linux when /proc exists.")
         return 0
     if args.cmd == "collect-once":
         rows = collect_linux(args.run_id, "local", 1, 0)

@@ -126,6 +126,7 @@ export type IncidentPayload = {
     network_false_attr: number;
     missed_impaired: number;
     insufficient: number;
+    unconfirmed?: number;
     rows: EvalRow[];
   } | null;
   cases: IncidentCase[];
