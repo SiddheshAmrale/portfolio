@@ -8,22 +8,26 @@ from .integrity import SOFTWARE, TripSetpoint, evaluate_trips, integrity_report,
 
 
 def all_cases() -> list[dict[str, Any]]:
-    trips = [TripSetpoint("coolant_temp", high=330.0, action="high_temp_alarm")]
+    trips = [
+        TripSetpoint("coolant_temp", high=330.0, action="high_temp_alarm"),
+        TripSetpoint("neutron_flux", high=1.2e6, action="high_flux_alarm"),
+    ]
     modes = [
-        ("healthy", "Healthy coolant channel", "ok samples; trip stays quiet."),
-        ("missing_gap", "Missing samples stay missing", "Gaps must be null, not zero."),
-        ("zero_filled_bug", "Zero-fill anti-pattern", "Treating missing as 0 destroys trip logic and means."),
-        ("stale", "Stale channel", "Frozen values must be marked stale."),
-        ("trip_high", "High-temp trip", "Crossing setpoint fires the alarm on ok samples only."),
-        ("sensor_fail", "Sensor failed", "Failed status withholds values."),
+        ("healthy", "Healthy coolant channel", "ok samples; trip stays quiet.", "coolant_temp", 300.0, "C"),
+        ("missing_gap", "Missing samples stay missing", "Gaps must be null, not zero.", "coolant_temp", 300.0, "C"),
+        ("zero_filled_bug", "Zero-fill anti-pattern", "Treating missing as 0 destroys trip logic and means.", "coolant_temp", 300.0, "C"),
+        ("stale", "Stale channel", "Frozen values must be marked stale.", "coolant_temp", 300.0, "C"),
+        ("trip_high", "High-temp trip", "Crossing setpoint fires the alarm on ok samples only.", "coolant_temp", 300.0, "C"),
+        ("sensor_fail", "Sensor failed", "Failed status withholds values.", "coolant_temp", 300.0, "C"),
+        ("trip_high", "High neutron flux trip", "Same integrity rules on a second process channel.", "neutron_flux", 8.0e5, "n/cm2/s"),
     ]
     cases = []
-    for mode, title, question in modes:
-        rows = simulate_channel("coolant_temp", mode=mode, base=300.0, unit="C")
+    for mode, title, question, channel, base, unit in modes:
+        rows = simulate_channel(channel, mode=mode, base=base, unit=unit)
         report = integrity_report(rows)
-        trip = evaluate_trips(rows, trips)
+        trip = evaluate_trips(rows, [t for t in trips if t.channel == channel])
         cases.append({
-            "id": mode,
+            "id": mode + "_" + channel,
             "title": title,
             "question": question,
             "software": SOFTWARE,
@@ -34,6 +38,8 @@ def all_cases() -> list[dict[str, Any]]:
             "series": [{"t": r.t_ms, "v": r.value, "status": r.status} for r in rows],
             "integrity": report,
             "trips": trip,
+            "channel": channel,
+            "unit": unit,
         })
     return cases
 

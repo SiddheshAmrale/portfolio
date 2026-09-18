@@ -2,28 +2,32 @@
   "software": "smr 0.1.0",
   "cases": [
     {
-      "id": "healthy",
+      "id": "healthy_coolant_temp",
       "title": "Healthy coolant channel"
     },
     {
-      "id": "missing_gap",
+      "id": "missing_gap_coolant_temp",
       "title": "Missing samples stay missing"
     },
     {
-      "id": "zero_filled_bug",
+      "id": "zero_filled_bug_coolant_temp",
       "title": "Zero-fill anti-pattern"
     },
     {
-      "id": "stale",
+      "id": "stale_coolant_temp",
       "title": "Stale channel"
     },
     {
-      "id": "trip_high",
+      "id": "trip_high_coolant_temp",
       "title": "High-temp trip"
     },
     {
-      "id": "sensor_fail",
+      "id": "sensor_fail_coolant_temp",
       "title": "Sensor failed"
+    },
+    {
+      "id": "trip_high_neutron_flux",
+      "title": "High neutron flux trip"
     }
   ],
   "keywords": [

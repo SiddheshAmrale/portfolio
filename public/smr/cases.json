@@ -1,6 +1,6 @@
 [
   {
-    "id": "healthy",
+    "id": "healthy_coolant_temp",
     "title": "Healthy coolant channel",
     "question": "ok samples; trip stays quiet.",
     "software": "smr 0.1.0",
@@ -289,10 +289,12 @@
         "high": 330.0,
         "low": null
       }
-    ]
+    ],
+    "channel": "coolant_temp",
+    "unit": "C"
   },
   {
-    "id": "missing_gap",
+    "id": "missing_gap_coolant_temp",
     "title": "Missing samples stay missing",
     "question": "Gaps must be null, not zero.",
     "software": "smr 0.1.0",
@@ -581,10 +583,12 @@
         "high": 330.0,
         "low": null
       }
-    ]
+    ],
+    "channel": "coolant_temp",
+    "unit": "C"
   },
   {
-    "id": "zero_filled_bug",
+    "id": "zero_filled_bug_coolant_temp",
     "title": "Zero-fill anti-pattern",
     "question": "Treating missing as 0 destroys trip logic and means.",
     "software": "smr 0.1.0",
@@ -873,10 +877,12 @@
         "high": 330.0,
         "low": null
       }
-    ]
+    ],
+    "channel": "coolant_temp",
+    "unit": "C"
   },
   {
-    "id": "stale",
+    "id": "stale_coolant_temp",
     "title": "Stale channel",
     "question": "Frozen values must be marked stale.",
     "software": "smr 0.1.0",
@@ -1165,10 +1171,12 @@
         "high": 330.0,
         "low": null
       }
-    ]
+    ],
+    "channel": "coolant_temp",
+    "unit": "C"
   },
   {
-    "id": "trip_high",
+    "id": "trip_high_coolant_temp",
     "title": "High-temp trip",
     "question": "Crossing setpoint fires the alarm on ok samples only.",
     "software": "smr 0.1.0",
@@ -1457,10 +1465,12 @@
         "high": 330.0,
         "low": null
       }
-    ]
+    ],
+    "channel": "coolant_temp",
+    "unit": "C"
   },
   {
-    "id": "sensor_fail",
+    "id": "sensor_fail_coolant_temp",
     "title": "Sensor failed",
     "question": "Failed status withholds values.",
     "software": "smr 0.1.0",
@@ -1749,6 +1759,302 @@
         "high": 330.0,
         "low": null
       }
-    ]
+    ],
+    "channel": "coolant_temp",
+    "unit": "C"
+  },
+  {
+    "id": "trip_high_neutron_flux",
+    "title": "High neutron flux trip",
+    "question": "Same integrity rules on a second process channel.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching model for advanced-fission I&C data integrity. Not NQA-1 software. Not Oklo plant data.",
+    "theme": "Oklo / SMR instrumentation",
+    "ground_truth": "trip_high",
+    "samples": [
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1800000,
+        "value": 799999.02,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1801000,
+        "value": 800000.24,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1802000,
+        "value": 800000.5,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1803000,
+        "value": 800000.6,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1804000,
+        "value": 799999.98,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1805000,
+        "value": 799999.44,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1806000,
+        "value": 799999.22,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1807000,
+        "value": 800000.36,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1808000,
+        "value": 800000.22,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1809000,
+        "value": 799999.92,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1810000,
+        "value": 800040.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1811000,
+        "value": 800042.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1812000,
+        "value": 800044.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1813000,
+        "value": 800046.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1814000,
+        "value": 800048.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1815000,
+        "value": 800050.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1816000,
+        "value": 800052.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1817000,
+        "value": 800054.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1818000,
+        "value": 800056.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      },
+      {
+        "channel": "neutron_flux",
+        "t_ms": 1819000,
+        "value": 800058.0,
+        "unit": "n/cm2/s",
+        "status": "ok",
+        "source_ref": "smr:sim#neutron_flux"
+      }
+    ],
+    "series": [
+      {
+        "t": 1800000,
+        "v": 799999.02,
+        "status": "ok"
+      },
+      {
+        "t": 1801000,
+        "v": 800000.24,
+        "status": "ok"
+      },
+      {
+        "t": 1802000,
+        "v": 800000.5,
+        "status": "ok"
+      },
+      {
+        "t": 1803000,
+        "v": 800000.6,
+        "status": "ok"
+      },
+      {
+        "t": 1804000,
+        "v": 799999.98,
+        "status": "ok"
+      },
+      {
+        "t": 1805000,
+        "v": 799999.44,
+        "status": "ok"
+      },
+      {
+        "t": 1806000,
+        "v": 799999.22,
+        "status": "ok"
+      },
+      {
+        "t": 1807000,
+        "v": 800000.36,
+        "status": "ok"
+      },
+      {
+        "t": 1808000,
+        "v": 800000.22,
+        "status": "ok"
+      },
+      {
+        "t": 1809000,
+        "v": 799999.92,
+        "status": "ok"
+      },
+      {
+        "t": 1810000,
+        "v": 800040.0,
+        "status": "ok"
+      },
+      {
+        "t": 1811000,
+        "v": 800042.0,
+        "status": "ok"
+      },
+      {
+        "t": 1812000,
+        "v": 800044.0,
+        "status": "ok"
+      },
+      {
+        "t": 1813000,
+        "v": 800046.0,
+        "status": "ok"
+      },
+      {
+        "t": 1814000,
+        "v": 800048.0,
+        "status": "ok"
+      },
+      {
+        "t": 1815000,
+        "v": 800050.0,
+        "status": "ok"
+      },
+      {
+        "t": 1816000,
+        "v": 800052.0,
+        "status": "ok"
+      },
+      {
+        "t": 1817000,
+        "v": 800054.0,
+        "status": "ok"
+      },
+      {
+        "t": 1818000,
+        "v": 800056.0,
+        "status": "ok"
+      },
+      {
+        "t": 1819000,
+        "v": 800058.0,
+        "status": "ok"
+      }
+    ],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": 800024.475,
+      "naive_mean": 800024.475,
+      "stale_count": 0,
+      "failed_count": 0,
+      "zero_filled_suspicion": false,
+      "notes": "Missing must remain null. Zero-filling coolant temperature is a safety data bug."
+    },
+    "trips": [
+      {
+        "channel": "neutron_flux",
+        "action": "high_flux_alarm",
+        "fired": false,
+        "at_ms": null,
+        "high": 1200000.0,
+        "low": null
+      }
+    ],
+    "channel": "neutron_flux",
+    "unit": "n/cm2/s"
   }
 ]

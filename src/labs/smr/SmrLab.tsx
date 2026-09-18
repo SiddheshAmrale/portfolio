@@ -12,6 +12,8 @@ type SmrCase = {
   question: string;
   software: string;
   disclaimer: string;
+  unit?: string;
+  channel?: string;
   series: { t: number; v: number | null; status: string }[];
   integrity: {
     missing_visible: boolean;
@@ -73,7 +75,7 @@ const SmrLab: React.FC = function () {
                 <Kpi label="Safe mean" value={fmtOpt(selected.integrity.safe_mean, 1)} />
                 <Kpi label="Naive mean" value={fmtOpt(selected.integrity.naive_mean, 1)} tone={selected.integrity.zero_filled_suspicion ? 'bad' : 'muted'} />
               </div>
-              <Panel title="Coolant temperature (missing plotted as 0 only for spark — status is source of truth)">
+              <Panel title={'Series (' + (selected.unit || '') + ')'}>
                 <Spark values={spark} color={ACCENT} height={72} />
               </Panel>
               <Panel title="Question"><p className="text-sm text-white/80">{selected.question}</p></Panel>
