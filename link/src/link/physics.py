@@ -21,6 +21,7 @@ class LaneSample:
     flaps: int
     domain: str  # electrical | optical
     impairment: str
+    jitter_ui: float = 0.05
 
 
 def ber_from_snr_db(snr_db: float, pam4: bool = True) -> float:
@@ -91,10 +92,11 @@ def simulate_lane(
         ber = ber_from_snr_db(snr, pam4=True)
         eye = eye_from_snr(snr)
         fec_u = fec_residual(ber, coding_gain_db=6.5 if domain == "optical" else 5.5)
+        jitter = float(min(max(0.35 - eye * 0.28 + abs(noise) * 0.02, 0.02), 0.45))
         rows.append(LaneSample(
             lane=lane, t_ms=1_700_000 + i * 1000, snr_db=snr, ber=ber,
             eye_open_ui=eye, fec_uncorrectable=fec_u, flaps=flaps,
-            domain=domain, impairment=impairment,
+            domain=domain, impairment=impairment, jitter_ui=jitter,
         ))
     return rows
 

@@ -98,6 +98,17 @@ def test_watermark_marks_late():
     assert rows[1]["late"] is True
 
 
+def test_medallion_rerun_idempotent_counts():
+    raw = [
+        {"event_id": "e1", "user_id": "u0", "event_type": "convert", "event_time_ms": 100, "arrival_time_ms": 110, "value": 1.0},
+    ]
+    changes = [UserChange("u0", "free", "us", 50)]
+    run1, p1 = run_medallion(raw, changes, name="a")
+    run2, p2 = run_medallion(raw, changes, name="b")
+    assert run1.gold_rows == run2.gold_rows
+    assert p1["gold"] == p2["gold"]
+
+
 def test_gold_uses_historical_plan():
     run, payload = run_medallion(
         [{

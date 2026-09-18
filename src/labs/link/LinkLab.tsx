@@ -18,6 +18,7 @@ type LinkCase = {
   snr: { t: number; v: number }[];
   ber: { t: number; v: number }[];
   eye: { t: number; v: number }[];
+  jitter?: { t: number; v: number }[];
   fec_demo?: { pre_fec_ber: number; post_fec_ber: number; notes: string; curve?: { snr_db: number; pre_fec_ber: number; post_fec_ber: number }[] };
 };
 
@@ -79,6 +80,9 @@ const LinkLab: React.FC = function () {
                 <Panel title="BER"><Spark values={selected.ber.map(function (p) { return p.v; })} color="#fb7185" height={56} /></Panel>
                 <Panel title="Eye opening (UI)"><Spark values={selected.eye.map(function (p) { return p.v; })} color="#fbbf24" height={56} /></Panel>
               </div>
+              {selected.jitter && selected.jitter.length ? (
+                <Panel title="Jitter proxy (UI)"><Spark values={selected.jitter.map(function (p) { return p.v; })} color="#a78bfa" height={48} /></Panel>
+              ) : null}
               {selected.fec_demo ? (
                 <Panel title="FEC coding gain demo">
                   <p className="text-sm text-white/70">pre {selected.fec_demo.pre_fec_ber} → post {selected.fec_demo.post_fec_ber}</p>

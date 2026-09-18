@@ -31,13 +31,14 @@ def _pack(rows, title: str, question: str) -> dict[str, Any]:
             {
                 "lane": r.lane, "t_ms": r.t_ms, "snr_db": r.snr_db, "ber": r.ber,
                 "eye_open_ui": r.eye_open_ui, "fec_uncorrectable": r.fec_uncorrectable,
-                "flaps": r.flaps, "domain": r.domain,
+                "flaps": r.flaps, "domain": r.domain, "jitter_ui": r.jitter_ui,
             }
             for r in rows
         ],
         "snr": [{"t": r.t_ms, "v": r.snr_db} for r in rows],
         "ber": [{"t": r.t_ms, "v": r.ber} for r in rows],
         "eye": [{"t": r.t_ms, "v": r.eye_open_ui} for r in rows],
+        "jitter": [{"t": r.t_ms, "v": r.jitter_ui} for r in rows],
     }
 
 
