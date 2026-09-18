@@ -182,12 +182,32 @@ def case_experiment_dup_alloc() -> dict[str, Any]:
     }
 
 
+def case_schema_evolution() -> dict[str, Any]:
+    """New optional column appears mid-stream — silver must tolerate evolution."""
+    raw = _events_clean()
+    for r in raw[6:]:
+        r["device_fw"] = "1.2.0"  # newly added field
+    run, payload = run_medallion(raw, _user_changes(), name="schema_evolution")
+    return {
+        "id": "schema_evolution",
+        "title": "Schema evolution (additive)",
+        "question": "Additive optional fields must not break bronze ingest when core contract still holds.",
+        "theme": "Schema evolution",
+        "software": SOFTWARE,
+        "disclaimer": "Additive evolution only. Breaking renames are a different (failing) contract story.",
+        **payload,
+        "run": run.to_dict(),
+        "note": "device_fw appears on later events; event_id/user_id/event_type/time remain required.",
+    }
+
+
 def all_cases() -> list[dict[str, Any]]:
     return [
         case_happy_path(),
         case_contract_quarantine(),
         case_late_arriving(),
         case_scd2_as_of(),
+        case_schema_evolution(),
         case_experiment_healthy(),
         case_experiment_dup_alloc(),
     ]

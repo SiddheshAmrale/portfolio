@@ -157,6 +157,18 @@
           "check": ["Event time vs arrival time — which drives the day bucket?"]
         },
         {
+          "id": "schema-evo",
+          "title": "Additive schema evolution",
+          "must_know": "New optional columns can appear mid-stream if the core contract (keys, types) still holds. Renames/breaks need a new version.",
+          "why": "Databricks Auto Loader / Delta schema evolution themes.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Open Schema evolution (additive). Confirm quarantine stays empty while device_fw appears later.",
+            "pass": "You can separate additive evolution from breaking changes."
+          },
+          "check": ["Would renaming event_id to id pass the bronze contract?"]
+        },
+        {
           "id": "exp-health",
           "title": "Experiment allocation uniqueness",
           "must_know": "(experiment_id, user_id) must be unique in silver enrollment or causal analysis is garbage.",

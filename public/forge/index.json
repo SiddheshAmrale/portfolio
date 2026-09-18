@@ -26,6 +26,12 @@
       "question": "Gold plan attribution must use the user dimension version valid at event_time, not current plan."
     },
     {
+      "id": "schema_evolution",
+      "title": "Schema evolution (additive)",
+      "theme": "Schema evolution",
+      "question": "Additive optional fields must not break bronze ingest when core contract still holds."
+    },
+    {
       "id": "experiment_healthy",
       "title": "Experiment allocation health",
       "theme": "Netflix experimentation platform",
