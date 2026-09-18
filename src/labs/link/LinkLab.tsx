@@ -18,7 +18,7 @@ type LinkCase = {
   snr: { t: number; v: number }[];
   ber: { t: number; v: number }[];
   eye: { t: number; v: number }[];
-  fec_demo?: { pre_fec_ber: number; post_fec_ber: number; notes: string };
+  fec_demo?: { pre_fec_ber: number; post_fec_ber: number; notes: string; curve?: { snr_db: number; pre_fec_ber: number; post_fec_ber: number }[] };
 };
 
 type LinkIndex = { eval?: { n: number; accuracy: number; rows: { id: string; truth: string; predicted: string; ok: boolean }[] } };
@@ -83,6 +83,12 @@ const LinkLab: React.FC = function () {
                 <Panel title="FEC coding gain demo">
                   <p className="text-sm text-white/70">pre {selected.fec_demo.pre_fec_ber} → post {selected.fec_demo.post_fec_ber}</p>
                   <p className="text-xs text-white/45 mt-2">{selected.fec_demo.notes}</p>
+                  {selected.fec_demo.curve ? (
+                    <div className="mt-3">
+                      <Spark values={selected.fec_demo.curve.map(function (p: { post_fec_ber: number }) { return Math.log10(p.post_fec_ber); })} color="#38bdf8" height={48} />
+                      <p className="text-[10px] text-white/35 mt-1">log10(post-FEC BER) vs rising SNR</p>
+                    </div>
+                  ) : null}
                 </Panel>
               ) : null}
             </div>

@@ -146,9 +146,18 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
 
 def coding_gain_demo(pre_fec_ber: float = 1e-4) -> dict[str, Any]:
     post = fec_residual(pre_fec_ber, coding_gain_db=7.0)
+    curve = []
+    for snr in (10, 12, 14, 16, 18, 20, 22, 24):
+        pre = ber_from_snr_db(float(snr))
+        curve.append({
+            "snr_db": snr,
+            "pre_fec_ber": pre,
+            "post_fec_ber": fec_residual(pre, coding_gain_db=7.0),
+        })
     return {
         "pre_fec_ber": pre_fec_ber,
         "post_fec_ber": post,
         "approx_gain_db": 7.0,
+        "curve": curve,
         "notes": "FEC reduces residual errors; it does not turn optical BER into TCP retransmits.",
     }

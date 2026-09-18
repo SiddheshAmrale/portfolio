@@ -3381,6 +3381,48 @@
       "pre_fec_ber": 0.0001,
       "post_fec_ber": 3.981071705534973e-06,
       "approx_gain_db": 7.0,
+      "curve": [
+        {
+          "snr_db": 10,
+          "pre_fec_ber": 0.26117386609841,
+          "post_fec_ber": 0.010397518885495598
+        },
+        {
+          "snr_db": 12,
+          "pre_fec_ber": 0.09456935202127309,
+          "post_fec_ber": 0.0037648737154266695
+        },
+        {
+          "snr_db": 14,
+          "pre_fec_ber": 0.02348714238769738,
+          "post_fec_ber": 0.0009350399800353318
+        },
+        {
+          "snr_db": 16,
+          "pre_fec_ber": 0.003907813798698012,
+          "post_fec_ber": 0.00015557286944495796
+        },
+        {
+          "snr_db": 18,
+          "pre_fec_ber": 0.00042906033319683925,
+          "post_fec_ber": 1.708119952457345e-05
+        },
+        {
+          "snr_db": 20,
+          "pre_fec_ber": 3.078206417483211e-05,
+          "post_fec_ber": 1.2254560472438587e-06
+        },
+        {
+          "snr_db": 22,
+          "pre_fec_ber": 1.433432627556638e-06,
+          "post_fec_ber": 5.706598075356384e-08
+        },
+        {
+          "snr_db": 24,
+          "pre_fec_ber": 4.312608680002559e-08,
+          "post_fec_ber": 1.7168804393002719e-09
+        }
+      ],
       "notes": "FEC reduces residual errors; it does not turn optical BER into TCP retransmits."
     }
   }

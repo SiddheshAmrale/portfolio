@@ -32,6 +32,8 @@ type Curriculum = {
 const LearnLab: React.FC = function () {
   const { data, error, loading } = usePilotJson<Curriculum>('/learn/curriculum.json');
   const scorecard = usePilotJson<{ verdict: string; rows: { area: string; level: string; evidence: string; gap?: string }[] }>('/learn/scorecard.json');
+  const research = usePilotJson<{ sources: { company: string; role?: string; product?: string; theme?: string; url: string; keywords: string[] }[]; portfolio_mapping: Record<string, string[]> }>('/learn/research.json');
+  const scripts = usePilotJson<{ scripts: { company: string; talk_track: string }[] }>('/learn/interview-scripts.json');
   const [trackId, setTrackId] = useState('credo-pilot');
   const [lessonIdx, setLessonIdx] = useState(0);
   const [done, setDone] = useState<Record<string, boolean>>({});
@@ -58,6 +60,8 @@ const LearnLab: React.FC = function () {
         { id: 'lesson', label: 'Lesson' },
         { id: 'map', label: 'Track map' },
         { id: 'keywords', label: 'Keywords' },
+        { id: 'research', label: 'Job research' },
+        { id: 'scripts', label: 'Talk tracks' },
         { id: 'scorecard', label: 'Scorecard' }
       ]}
       view={view}
@@ -159,6 +163,50 @@ const LearnLab: React.FC = function () {
                 return <span key={k} className="text-xs px-2 py-1 rounded border border-white/15 text-white/70">{k}</span>;
               })}
             </div>
+          </Panel>
+        ) : null}
+
+        {view === 'research' ? (
+          <Panel title="Postings researched for this portfolio">
+            {research.data ? (
+              <ul className="space-y-4">
+                {research.data.sources.map(function (s, i) {
+                  return (
+                    <li key={i} className="border-b border-white/5 pb-3">
+                      <a href={s.url} target="_blank" rel="noreferrer" className="text-pink-300 hover:underline font-semibold">
+                        {s.company}{s.role ? ' · ' + s.role : ''}{s.product ? ' · ' + s.product : ''}{s.theme ? ' · ' + s.theme : ''}
+                      </a>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {s.keywords.map(function (k) {
+                          return <span key={k} className="text-[10px] px-1.5 py-0.5 rounded border border-white/10 text-white/55">{k}</span>;
+                        })}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text-sm text-white/45">Loading research…</p>
+            )}
+          </Panel>
+        ) : null}
+
+        {view === 'scripts' ? (
+          <Panel title="2-minute talk tracks">
+            {scripts.data ? (
+              <ul className="space-y-4">
+                {scripts.data.scripts.map(function (s) {
+                  return (
+                    <li key={s.company} className="border-b border-white/5 pb-3">
+                      <div className="text-pink-300 font-semibold mb-1">{s.company}</div>
+                      <p className="text-sm text-white/75 leading-relaxed">{s.talk_track}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text-sm text-white/45">Loading scripts…</p>
+            )}
           </Panel>
         ) : null}
 
