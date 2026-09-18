@@ -1,33 +1,34 @@
 {
   "run_id": "live-cpu-1",
-  "software": "pilot 0.2.0",
+  "software": "pilot 0.2.1",
   "linux_proc_available": true,
+  "path": "netns-veth",
   "condition": "cpu",
   "diagnosis": "receiver_cpu",
   "baseline_diagnosis": "network",
-  "time_to_detect_seq": 10,
+  "time_to_detect_seq": 11,
   "impairment_confirmed": true,
-  "confirm_detail": "latency 20.9 -> 104.2 ms",
+  "confirm_detail": "latency 45.9 -> 105.0 ms",
   "cgroup_ok": true,
-  "n_obs": 3292,
-  "warmup_latency_ms": 20.85842611437941,
-  "impaired_latency_ms": 104.22770983720902,
+  "n_obs": 1372,
+  "warmup_latency_ms": 45.92756513768178,
+  "impaired_latency_ms": 105.04173547976859,
   "notes": "Latency rose with receiver CPU heat or cgroup throttle and without a retransmission increase.",
   "evidence": [
     {
       "name": "app_latency_high",
       "present": true,
-      "detail": "tail app_latency_ms=111.3 head=18.2"
+      "detail": "tail app_latency_ms=101.9 head=38.4"
     },
     {
       "name": "receiver_cpu_hot",
       "present": false,
-      "detail": "mean proc_cpu_percent=20.5"
+      "detail": "mean proc_cpu_percent=19.9"
     },
     {
       "name": "receiver_cpu_throttled",
       "present": true,
-      "detail": "cgroup throttled_usec/s=866972"
+      "detail": "cgroup throttled_usec/s=703150"
     },
     {
       "name": "retrans_rate_up",

@@ -1,33 +1,34 @@
 {
   "run_id": "live-cpu-0",
-  "software": "pilot 0.2.0",
+  "software": "pilot 0.2.1",
   "linux_proc_available": true,
+  "path": "netns-veth",
   "condition": "cpu",
   "diagnosis": "receiver_cpu",
   "baseline_diagnosis": "network",
-  "time_to_detect_seq": 11,
+  "time_to_detect_seq": 10,
   "impairment_confirmed": true,
-  "confirm_detail": "latency 21.0 -> 109.8 ms",
+  "confirm_detail": "latency 45.4 -> 103.4 ms",
   "cgroup_ok": true,
-  "n_obs": 3100,
-  "warmup_latency_ms": 20.96840724509807,
-  "impaired_latency_ms": 109.83756744848486,
+  "n_obs": 1372,
+  "warmup_latency_ms": 45.42100285714307,
+  "impaired_latency_ms": 103.37428426436767,
   "notes": "Latency rose with receiver CPU heat or cgroup throttle and without a retransmission increase.",
   "evidence": [
     {
       "name": "app_latency_high",
       "present": true,
-      "detail": "tail app_latency_ms=101.6 head=17.5"
+      "detail": "tail app_latency_ms=85.4 head=38.3"
     },
     {
       "name": "receiver_cpu_hot",
       "present": false,
-      "detail": "mean proc_cpu_percent=20.5"
+      "detail": "mean proc_cpu_percent=19.9"
     },
     {
       "name": "receiver_cpu_throttled",
       "present": true,
-      "detail": "cgroup throttled_usec/s=891556"
+      "detail": "cgroup throttled_usec/s=734368"
     },
     {
       "name": "retrans_rate_up",
@@ -37,7 +38,7 @@
     {
       "name": "telemetry_stale_or_missing",
       "present": false,
-      "detail": "collector_lag_ms=1; rx missing=False"
+      "detail": "collector_lag_ms=0; rx missing=False"
     },
     {
       "name": "network_rates_uncertain",

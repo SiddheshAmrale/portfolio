@@ -1,5 +1,5 @@
 {
-  "software": "pilot 0.2.0",
+  "software": "pilot 0.2.1",
   "disclaimer": "Repeated independent constructed runs. Not firmware. Primary metric declared before comparison.",
   "reproduce": "python -m pilot reproduce regression",
   "aa": {

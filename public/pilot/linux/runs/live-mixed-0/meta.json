@@ -1,38 +1,39 @@
 {
   "run_id": "live-mixed-0",
-  "software": "pilot 0.2.0",
+  "software": "pilot 0.2.1",
   "linux_proc_available": true,
+  "path": "netns-veth",
   "condition": "mixed",
-  "diagnosis": "receiver_cpu",
+  "diagnosis": "network_loss",
   "baseline_diagnosis": "network",
-  "time_to_detect_seq": 11,
+  "time_to_detect_seq": 10,
   "impairment_confirmed": true,
-  "confirm_detail": "latency 21.0 -> 104.9 ms",
+  "confirm_detail": "latency 45.7 -> 186.3 ms",
   "cgroup_ok": true,
-  "n_obs": 3292,
-  "warmup_latency_ms": 20.962038460784488,
-  "impaired_latency_ms": 104.87624027906969,
-  "notes": "Latency rose with receiver CPU heat or cgroup throttle and without a retransmission increase.",
+  "n_obs": 1372,
+  "warmup_latency_ms": 45.65265362589916,
+  "impaired_latency_ms": 186.33930271000025,
+  "notes": "Latency rose with a TcpRetransSegs rate increase. Software loss, not optical BER.",
   "evidence": [
     {
       "name": "app_latency_high",
       "present": true,
-      "detail": "tail app_latency_ms=103.0 head=19.3"
+      "detail": "tail app_latency_ms=185.4 head=38.3"
     },
     {
       "name": "receiver_cpu_hot",
       "present": false,
-      "detail": "mean proc_cpu_percent=19.9"
+      "detail": "mean proc_cpu_percent=10.0"
     },
     {
       "name": "receiver_cpu_throttled",
-      "present": true,
-      "detail": "cgroup throttled_usec/s=816585"
+      "present": false,
+      "detail": "cgroup throttled_usec/s=0"
     },
     {
       "name": "retrans_rate_up",
-      "present": false,
-      "detail": "pilot TcpRetransSegs/s=0.00"
+      "present": true,
+      "detail": "pilot TcpRetransSegs/s=8.71"
     },
     {
       "name": "telemetry_stale_or_missing",

@@ -1,5 +1,5 @@
 {
-  "software": "pilot 0.2.0",
+  "software": "pilot 0.2.1",
   "quality": [
     {
       "id": "baseline",
@@ -39,7 +39,7 @@
     {
       "id": "linux_live_healthy",
       "title": "linux live healthy",
-      "question": "Real /proc/net/dev and TcpRetransSegs from a live Ubuntu veth workload."
+      "question": "Real /proc/<server-pid>/net/dev and TcpRetransSegs from a live Ubuntu netns+veth workload."
     }
   ],
   "incident": [

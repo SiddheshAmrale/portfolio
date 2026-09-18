@@ -1,28 +1,29 @@
 {
   "run_id": "live-loss-0",
-  "software": "pilot 0.2.0",
+  "software": "pilot 0.2.1",
   "linux_proc_available": true,
+  "path": "netns-veth",
   "condition": "loss",
-  "diagnosis": "healthy",
-  "baseline_diagnosis": "healthy",
-  "time_to_detect_seq": null,
-  "impairment_confirmed": false,
-  "confirm_detail": "workload did not move: 21.0 -> 20.9 ms",
+  "diagnosis": "network_loss",
+  "baseline_diagnosis": "network",
+  "time_to_detect_seq": 12,
+  "impairment_confirmed": true,
+  "confirm_detail": "latency 45.5 -> 169.9 ms",
   "cgroup_ok": false,
-  "n_obs": 3270,
-  "warmup_latency_ms": 21.045496210526355,
-  "impaired_latency_ms": 20.936377224442126,
-  "notes": "Application latency stays below the frozen threshold relative to the run head.",
+  "n_obs": 1350,
+  "warmup_latency_ms": 45.4779262142857,
+  "impaired_latency_ms": 169.85344513636343,
+  "notes": "Latency rose with a TcpRetransSegs rate increase. Software loss, not optical BER.",
   "evidence": [
     {
       "name": "app_latency_high",
-      "present": false,
-      "detail": "tail app_latency_ms=20.3 head=17.4"
+      "present": true,
+      "detail": "tail app_latency_ms=305.8 head=38.4"
     },
     {
       "name": "receiver_cpu_hot",
-      "present": true,
-      "detail": "mean proc_cpu_percent=102.5"
+      "present": false,
+      "detail": "mean proc_cpu_percent=11.8"
     },
     {
       "name": "receiver_cpu_throttled",
@@ -31,8 +32,8 @@
     },
     {
       "name": "retrans_rate_up",
-      "present": false,
-      "detail": "pilot TcpRetransSegs/s=0.00"
+      "present": true,
+      "detail": "pilot TcpRetransSegs/s=5.60"
     },
     {
       "name": "telemetry_stale_or_missing",

@@ -1,12 +1,12 @@
-{"run_id": "live-delay-1", "condition": "delay", "impairment_confirmed": false, "confirm_detail": "workload did not move: 21.8 -> 21.4 ms"}
-{"run_id": "live-mixed-1", "condition": "mixed", "impairment_confirmed": true, "confirm_detail": "latency 20.9 -> 107.9 ms"}
-{"run_id": "live-cpu-0", "condition": "cpu", "impairment_confirmed": true, "confirm_detail": "latency 21.0 -> 109.8 ms"}
+{"run_id": "live-delay-1", "condition": "delay", "impairment_confirmed": true, "confirm_detail": "latency 46.0 -> 353.8 ms"}
+{"run_id": "live-mixed-1", "condition": "mixed", "impairment_confirmed": true, "confirm_detail": "latency 45.7 -> 175.2 ms"}
+{"run_id": "live-cpu-0", "condition": "cpu", "impairment_confirmed": true, "confirm_detail": "latency 45.4 -> 103.4 ms"}
 {"run_id": "live-stale-1", "condition": "stale", "impairment_confirmed": true, "confirm_detail": "stale missing_rx=True"}
-{"run_id": "live-loss-1", "condition": "loss", "impairment_confirmed": false, "confirm_detail": "workload did not move: 20.9 -> 20.9 ms"}
+{"run_id": "live-loss-1", "condition": "loss", "impairment_confirmed": true, "confirm_detail": "latency 45.7 -> 233.6 ms"}
 {"run_id": "live-stale-0", "condition": "stale", "impairment_confirmed": true, "confirm_detail": "stale missing_rx=True"}
-{"run_id": "live-cpu-1", "condition": "cpu", "impairment_confirmed": true, "confirm_detail": "latency 20.9 -> 104.2 ms"}
-{"run_id": "live-delay-0", "condition": "delay", "impairment_confirmed": false, "confirm_detail": "workload did not move: 20.9 -> 21.1 ms"}
-{"run_id": "live-healthy-0", "condition": "healthy", "impairment_confirmed": true, "confirm_detail": "healthy; mean latency 20.9 ms"}
-{"run_id": "live-healthy-1", "condition": "healthy", "impairment_confirmed": true, "confirm_detail": "healthy; mean latency 21.0 ms"}
-{"run_id": "live-loss-0", "condition": "loss", "impairment_confirmed": false, "confirm_detail": "workload did not move: 21.0 -> 20.9 ms"}
-{"run_id": "live-mixed-0", "condition": "mixed", "impairment_confirmed": true, "confirm_detail": "latency 21.0 -> 104.9 ms"}
+{"run_id": "live-cpu-1", "condition": "cpu", "impairment_confirmed": true, "confirm_detail": "latency 45.9 -> 105.0 ms"}
+{"run_id": "live-delay-0", "condition": "delay", "impairment_confirmed": true, "confirm_detail": "latency 45.4 -> 353.7 ms"}
+{"run_id": "live-healthy-0", "condition": "healthy", "impairment_confirmed": true, "confirm_detail": "healthy; mean latency 46.0 ms"}
+{"run_id": "live-healthy-1", "condition": "healthy", "impairment_confirmed": true, "confirm_detail": "healthy; mean latency 46.0 ms"}
+{"run_id": "live-loss-0", "condition": "loss", "impairment_confirmed": true, "confirm_detail": "latency 45.5 -> 169.9 ms"}
+{"run_id": "live-mixed-0", "condition": "mixed", "impairment_confirmed": true, "confirm_detail": "latency 45.7 -> 186.3 ms"}
