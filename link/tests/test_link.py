@@ -29,6 +29,12 @@ def test_optical_case_present():
     ids = {c["id"] for c in all_cases()}
     assert any("optical" in i for i in ids)
     assert "not_netem" in ids
+    assert "jitter_dominated_electrical" in ids
+
+
+def test_jitter_diagnosed():
+    d = diagnose_lane(simulate_lane(6, impairment="jitter_dominated"))
+    assert d["label"] == "jitter_limited"
 
 
 def test_build(tmp_path):

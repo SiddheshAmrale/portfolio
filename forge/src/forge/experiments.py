@@ -77,17 +77,57 @@ def gold_experiment_metrics(
     return out
 
 
-def experiment_health(enrollment: Sequence[dict[str, Any]], checks: Sequence[ExpectationResult]) -> dict[str, Any]:
+def sample_ratio(enrollment: Sequence[dict[str, Any]], expected: dict[str, float] | None = None) -> dict[str, Any]:
+    """Per-cell allocation share vs expected traffic split (SRM / sample-ratio check)."""
+    counts: dict[str, float] = {}
+    for r in enrollment:
+        cell = str(r["cell"])
+        counts[cell] = counts.get(cell, 0.0) + 1.0
+    total = sum(counts.values()) or 1.0
+    observed = {c: n / total for c, n in sorted(counts.items())}
+    if expected is None:
+        expected = {c: 1.0 / len(counts) for c in counts} if counts else {}
+    # Chi-square-ish absolute deviation; teaching threshold.
+    max_abs_dev = 0.0
+    for c, share in observed.items():
+        exp = expected.get(c, 0.0)
+        max_abs_dev = max(max_abs_dev, abs(share - exp))
+    skewed = max_abs_dev > 0.12  # >12pp off expected share
+    return {
+        "observed_share": observed,
+        "expected_share": expected,
+        "max_abs_deviation": max_abs_dev,
+        "sample_ratio_ok": not skewed,
+        "notes": (
+            "Sample-ratio mismatch (SRM) means the allocator or pipeline is biased — "
+            "do not trust conversion lifts until shares match the design."
+        ),
+    }
+
+
+def experiment_health(
+    enrollment: Sequence[dict[str, Any]],
+    checks: Sequence[ExpectationResult],
+    *,
+    lag_slo_ms: int = 5_000,
+    expected_share: dict[str, float] | None = None,
+) -> dict[str, Any]:
     hard = [c for c in checks if not c.passed]
     max_lag = max((int(r["lag_ms"]) for r in enrollment), default=0)
+    lag_ok = max_lag <= lag_slo_ms
+    ratio = sample_ratio(enrollment, expected_share)
+    healthy = len(hard) == 0 and lag_ok and bool(ratio["sample_ratio_ok"])
     return {
-        "healthy": len(hard) == 0,
+        "healthy": healthy,
         "hard_failures": [c.__dict__ for c in hard],
         "n_enrollment": len(enrollment),
         "peak_allocation_lag_ms": max_lag,
+        "lag_slo_ms": lag_slo_ms,
+        "lag_slo_ok": lag_ok,
+        "sample_ratio": ratio,
         "notes": (
             "Duplicate (experiment,user) allocations break causal analysis. "
-            "This is the Netflix experimentation-platform data-health theme."
+            "Lag SLOs and sample-ratio (SRM) are Netflix-style data-health gates."
         ),
     }
 
@@ -95,10 +135,15 @@ def experiment_health(enrollment: Sequence[dict[str, Any]], checks: Sequence[Exp
 def run_experiment_case(
     allocs: Sequence[Allocation],
     outcomes: Sequence[Outcome],
+    *,
+    lag_slo_ms: int = 5_000,
+    expected_share: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     enrollment, checks = silver_enrollment(allocs)
     metrics = gold_experiment_metrics(enrollment, outcomes)
-    health = experiment_health(enrollment, checks)
+    health = experiment_health(
+        enrollment, checks, lag_slo_ms=lag_slo_ms, expected_share=expected_share,
+    )
     return {
         "software": SOFTWARE,
         "enrollment": enrollment,

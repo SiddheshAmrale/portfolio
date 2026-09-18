@@ -12,25 +12,25 @@
     {
       "area": "Databricks / Netflix DE",
       "level": "strong-teaching",
-      "evidence": "Forge medallion, SCD2, contracts, late data, experiment allocation health, DuckDB over Parquet.",
-      "gap": "Not Spark on a real Databricks workspace / Iceberg catalog."
+      "evidence": "Forge medallion, SCD2, contracts, late data, schema evolution, experiment uniqueness, lag SLO, sample-ratio (SRM), DuckDB over Parquet.",
+      "gap": "Not Spark on a real Databricks workspace / Iceberg catalog / Unity Catalog."
     },
     {
       "area": "Broadcom / Marvell / photonics",
       "level": "vocabulary-elite",
-      "evidence": "Link lab: SNR/BER/eye/FEC/flaps; electrical vs optical; explicit netem≠BER.",
+      "evidence": "Link lab: SNR/BER/eye/FEC/flaps/jitter; electrical vs optical; explicit netem≠BER.",
       "gap": "Not BERT/DCA/PIC bench automation."
     },
     {
       "area": "Oklo / SMR I&C",
       "level": "integrity-teaching",
-      "evidence": "Missing≠zero, trip setpoints, stale/failed channels.",
+      "evidence": "Missing≠zero, trip setpoints, stale/failed, coolant + neutron flux channels.",
       "gap": "Not NQA-1 or plant SCADA."
     },
     {
       "area": "Learning UX",
       "level": "strong",
-      "evidence": "Guided academy with must-know, practice links, self-checks, keyword maps from real postings."
+      "evidence": "Guided academy with must-know, practice links, self-checks, keyword maps from real postings + Netflix XP / Databricks exam themes."
     }
   ]
 }

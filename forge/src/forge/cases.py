@@ -201,6 +201,55 @@ def case_schema_evolution() -> dict[str, Any]:
     }
 
 
+def case_experiment_lag_slo() -> dict[str, Any]:
+    t0 = 1_700_100_000_000
+    allocs = [
+        Allocation("a1", "u1", "exp_signup", "control", t0, t0 + 20),
+        Allocation("a2", "u2", "exp_signup", "treatment", t0 + 10, t0 + 40),
+        Allocation("a3", "u3", "exp_signup", "control", t0 + 20, t0 + 90_000),  # late arrival
+        Allocation("a4", "u4", "exp_signup", "treatment", t0 + 30, t0 + 60),
+    ]
+    outcomes = [
+        Outcome("u1", "exp_signup", False, t0 + 1000),
+        Outcome("u2", "exp_signup", True, t0 + 1100),
+        Outcome("u3", "exp_signup", False, t0 + 1200),
+        Outcome("u4", "exp_signup", True, t0 + 1300),
+    ]
+    payload = run_experiment_case(allocs, outcomes, lag_slo_ms=5_000)
+    return {
+        "id": "experiment_lag_slo",
+        "title": "Allocation lag SLO breach",
+        "question": "Peak allocation lag past the SLO must fail health even when uniqueness is clean.",
+        "theme": "Netflix data health / freshness",
+        "software": SOFTWARE,
+        "disclaimer": "Teaching lag SLO. Not Netflix production SLIs.",
+        **payload,
+    }
+
+
+def case_experiment_sample_ratio() -> dict[str, Any]:
+    t0 = 1_700_100_000_000
+    # 80/20 instead of designed 50/50 — classic SRM / sample-ratio mismatch
+    allocs = [
+        Allocation("a" + str(i), "u" + str(i), "exp_signup", "control" if i < 8 else "treatment", t0 + i, t0 + i + 10)
+        for i in range(10)
+    ]
+    outcomes = [Outcome("u" + str(i), "exp_signup", i % 2 == 0, t0 + 1000 + i) for i in range(10)]
+    payload = run_experiment_case(
+        allocs, outcomes,
+        expected_share={"control": 0.5, "treatment": 0.5},
+    )
+    return {
+        "id": "experiment_sample_ratio",
+        "title": "Sample-ratio mismatch (SRM)",
+        "question": "When observed cell shares diverge from the designed split, conversion lifts are untrustworthy.",
+        "theme": "Netflix experimentation / SRM",
+        "software": SOFTWARE,
+        "disclaimer": "SRM teaching gate. Chi-square production tests are richer; the invariant is the same.",
+        **payload,
+    }
+
+
 def all_cases() -> list[dict[str, Any]]:
     return [
         case_happy_path(),
@@ -210,6 +259,8 @@ def all_cases() -> list[dict[str, Any]]:
         case_schema_evolution(),
         case_experiment_healthy(),
         case_experiment_dup_alloc(),
+        case_experiment_lag_slo(),
+        case_experiment_sample_ratio(),
     ]
 
 
@@ -226,7 +277,7 @@ def build(out_dir: str | Path) -> Path:
         "keywords": [
             "medallion", "Delta Lake", "CDC", "SCD2", "data contracts",
             "late-arriving data", "watermark", "experiment allocation",
-            "data health", "DuckDB", "Parquet",
+            "sample ratio", "SRM", "lag SLO", "data health", "DuckDB", "Parquet",
         ],
         "duckdb_gold_by_plan": json.loads(parquet_meta.get("gold_query", "[]")),
         "parquet": parquet_meta,

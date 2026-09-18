@@ -7,15 +7,15 @@
     },
     {
       "company": "Databricks / Netflix DE",
-      "talk_track": "Lakehouse Forge is a runnable medallion system: bronze quarantine on contracts, silver SCD2 dimensions, gold as-of aggregates, late-arriving facts past a watermark, and experiment allocation uniqueness as a hard data-health check. Cases persist to Parquet and DuckDB aggregates gold by plan — the same failure modes those postings list, without requiring a rented cluster for the interview story."
+      "talk_track": "Lakehouse Forge is a runnable medallion system: bronze quarantine on contracts, silver SCD2 dimensions, gold as-of aggregates, late-arriving facts past a watermark, additive schema evolution, and Netflix-style experiment data health — allocation uniqueness, lag SLOs, and sample-ratio (SRM) gates before you trust conversion lifts. Cases persist to Parquet and DuckDB aggregates gold by plan — the same failure modes those postings list, without requiring a rented cluster for the interview story."
     },
     {
       "company": "Broadcom / Marvell",
-      "talk_track": "I am not claiming post-silicon ownership, but I can speak PAM4/BER/FEC/eye/SNR and why validation automation matters. The Link Integrity lab forces the category error interviewers care about: tc netem is not optical BER, and FEC residual is not TCP retransmit."
+      "talk_track": "I am not claiming post-silicon ownership, but I can speak PAM4/BER/FEC/eye/SNR/jitter and why validation automation matters. The Link Integrity lab forces the category error interviewers care about: tc netem is not optical BER, FEC residual is not TCP retransmit, and jitter-limited eye closure is not the same as an SNR fade."
     },
     {
       "company": "Oklo",
-      "talk_track": "For I&C and process-data roles I demo safety-critical integrity: missing samples stay null, zero-filling coolant temperature is flagged as a bug, and trip setpoints only fire on trusted ok samples. Explicitly not NQA-1 software — the invariant is the point."
+      "talk_track": "For I&C and process-data roles I demo safety-critical integrity across channels: missing samples stay null, zero-filling coolant temperature is flagged as a bug, and trip setpoints only fire on trusted ok samples for both temperature and neutron flux. Explicitly not NQA-1 software — the invariant is the point."
     }
   ]
 }

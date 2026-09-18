@@ -15,15 +15,27 @@
     },
     {
       "company": "Databricks",
-      "theme": "Data Engineer / Professional cert themes",
+      "theme": "Data Engineer Professional (exam guide July 3, 2026)",
       "url": "https://www.databricks.com/sites/default/files/2026-07/databricks-certified-data-engineer-professional-exam-guide-july-3-2026.pdf",
-      "keywords": ["Delta Lake", "medallion", "Auto Loader", "Structured Streaming", "CDC", "Lakeflow", "Unity Catalog", "PySpark", "Jobs"]
+      "keywords": ["Delta Lake", "medallion", "Auto Loader", "Structured Streaming", "AUTO CDC", "SCD2", "Lakeflow", "Unity Catalog", "PySpark", "Jobs", "Asset Bundles", "observability"]
+    },
+    {
+      "company": "Databricks",
+      "theme": "AUTO CDC / SCD2 docs",
+      "url": "https://docs.databricks.com/aws/en/ldp/cdc",
+      "keywords": ["SCD Type 2", "START_AT", "END_AT", "sequencing", "deduplication", "late/out-of-order"]
     },
     {
       "company": "Netflix",
-      "role": "Experimentation / Commerce Data Engineering",
+      "role": "Data Engineer 5, Experimentation Platform",
       "url": "https://workvista.synergize.co/remote-jobs/data-engineer-5-experimentation-platform",
-      "keywords": ["Spark", "Flink", "Iceberg", "Kafka", "data contracts", "data health", "allocation events", "observability"]
+      "keywords": ["Spark", "Iceberg", "allocation events", "silver layer", "data contracts", "data health", "trustworthy analysis"]
+    },
+    {
+      "company": "Netflix",
+      "theme": "Experimentation platform allocation",
+      "url": "https://netflixtechblog.com/its-all-a-bout-testing-the-netflix-experimentation-platform-4e1ca458c15",
+      "keywords": ["batch vs real-time allocation", "stratified sampling", "cell homogeneity", "country", "device type"]
     },
     {
       "company": "Broadcom",
@@ -46,9 +58,9 @@
   ],
   "portfolio_mapping": {
     "pilot": ["Credo PILOT telemetry", "DuckDB", "live netns evidence"],
-    "link": ["SerDes/photonics vocabulary", "BER≠netem"],
-    "forge": ["Databricks medallion/CDC", "Netflix experiment health"],
-    "smr": ["Oklo I&C missing≠zero", "trip integrity"],
+    "link": ["SerDes/photonics vocabulary", "BER≠netem", "jitter-limited eye"],
+    "forge": ["Databricks medallion/CDC/SCD2", "Netflix allocation uniqueness + SRM + lag SLO"],
+    "smr": ["Oklo I&C missing≠zero", "multi-channel trips"],
     "learn": ["guided practice across all"]
   }
 }

@@ -42,6 +42,18 @@
       "title": "Broken allocation uniqueness",
       "theme": "Netflix data health",
       "question": "Duplicate (experiment,user) allocations must fail data-health checks before analysis."
+    },
+    {
+      "id": "experiment_lag_slo",
+      "title": "Allocation lag SLO breach",
+      "theme": "Netflix data health / freshness",
+      "question": "Peak allocation lag past the SLO must fail health even when uniqueness is clean."
+    },
+    {
+      "id": "experiment_sample_ratio",
+      "title": "Sample-ratio mismatch (SRM)",
+      "theme": "Netflix experimentation / SRM",
+      "question": "When observed cell shares diverge from the designed split, conversion lifts are untrustworthy."
     }
   ],
   "keywords": [
@@ -53,6 +65,9 @@
     "late-arriving data",
     "watermark",
     "experiment allocation",
+    "sample ratio",
+    "SRM",
+    "lag SLO",
     "data health",
     "DuckDB",
     "Parquet"

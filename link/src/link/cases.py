@@ -56,6 +56,8 @@ def all_cases() -> list[dict[str, Any]]:
               "Optical OMA/TDECQ-style fade", "Optical-domain impairment with FEC residual."),
         _pack(simulate_lane(5, impairment="healthy", domain="optical"),
               "Healthy optical lane", "Optical healthy baseline."),
+        _pack(simulate_lane(6, impairment="jitter_dominated", domain="electrical"),
+              "Jitter-limited lane", "Eye closes from jitter rise with only mild SNR change."),
     ]
     cases.append({
         "id": "not_netem",
@@ -97,6 +99,7 @@ def build(out_dir: str | Path) -> Path:
             "burst_errors": "signal_integrity_degrade",
             "flap": "link_flap",
             "optical_oma_drop": "signal_integrity_degrade",
+            "jitter_dominated": "jitter_limited",
         }.get(c["ground_truth"], "insufficient_evidence")
         scored.append({"id": c["id"], "truth": expect, "predicted": pred, "ok": pred == expect})
     index = {

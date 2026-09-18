@@ -87,12 +87,19 @@ def simulate_lane(
             snr = 3.0
         elif impairment == "optical_oma_drop" and domain == "optical" and i >= 8:
             snr -= 9.0  # stand-in for OMA / TDECQ degradation
+        elif impairment == "jitter_dominated" and i >= 8:
+            snr -= 1.5  # mild SNR change; jitter is the story
         elif impairment == "healthy":
             pass
         ber = ber_from_snr_db(snr, pam4=True)
         eye = eye_from_snr(snr)
         fec_u = fec_residual(ber, coding_gain_db=6.5 if domain == "optical" else 5.5)
         jitter = float(min(max(0.35 - eye * 0.28 + abs(noise) * 0.02, 0.02), 0.45))
+        if impairment == "jitter_dominated" and i >= 8:
+            jitter = float(min(0.18 + 0.025 * (i - 8) + abs(noise) * 0.01, 0.48))
+            eye = float(max(0.42 - 0.04 * (i - 8) - abs(noise) * 0.02, 0.08))
+            ber = ber_from_snr_db(snr - 4.0, pam4=True)
+            fec_u = fec_residual(ber, coding_gain_db=5.5)
         rows.append(LaneSample(
             lane=lane, t_ms=1_700_000 + i * 1000, snr_db=snr, ber=ber,
             eye_open_ui=eye, fec_uncorrectable=fec_u, flaps=flaps,
@@ -108,19 +115,25 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
     mean_snr = sum(r.snr_db for r in tail) / len(tail)
     mean_ber = sum(r.ber for r in tail) / len(tail)
     mean_eye = sum(r.eye_open_ui for r in tail) / len(tail)
+    mean_jitter = sum(r.jitter_ui for r in tail) / len(tail)
     flaps = max(r.flaps for r in rows)
     head_snr = sum(r.snr_db for r in rows[:6]) / 6.0
+    head_jitter = sum(r.jitter_ui for r in rows[:6]) / 6.0
 
     evidence = {
         "snr_drop": mean_snr < head_snr - 3.0,
         "ber_hot": mean_ber > 1e-5,
         "eye_closing": mean_eye < 0.35,
         "flapping": flaps >= 2,
+        "jitter_rise": mean_jitter > head_jitter + 0.06 and mean_jitter > 0.18,
     }
     # Flaps first: short deep fades are classified as flaps, not steady SI.
     if evidence["flapping"]:
         label = "link_flap"
         notes = "Repeated lane flaps. Distinct from a sustained SNR fade."
+    elif evidence["jitter_rise"] and evidence["eye_closing"] and not evidence["snr_drop"]:
+        label = "jitter_limited"
+        notes = "Jitter rise closes the eye with only mild SNR change. Domain=" + rows[-1].domain + "."
     elif evidence["snr_drop"] and evidence["ber_hot"]:
         label = "signal_integrity_degrade"
         notes = "SNR fade with elevated BER. Domain=" + rows[-1].domain + "."
@@ -140,6 +153,7 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
         "mean_snr_db": mean_snr,
         "mean_ber": mean_ber,
         "mean_eye_ui": mean_eye,
+        "mean_jitter_ui": mean_jitter,
         "flaps": flaps,
         "domain": rows[-1].domain,
         "impairment_truth": rows[-1].impairment,  # evaluation only

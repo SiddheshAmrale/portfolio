@@ -24,7 +24,19 @@ type ForgeCase = {
   quarantine?: unknown[];
   gold?: { day: string; plan: string; value: number }[];
   silver_users?: { user_id: string; plan: string; version: number; is_current: boolean }[];
-  health?: { healthy: boolean; peak_allocation_lag_ms: number; notes: string };
+  health?: {
+    healthy: boolean;
+    peak_allocation_lag_ms: number;
+    lag_slo_ms?: number;
+    lag_slo_ok?: boolean;
+    sample_ratio?: {
+      sample_ratio_ok: boolean;
+      max_abs_deviation: number;
+      observed_share: Record<string, number>;
+      notes: string;
+    };
+    notes: string;
+  };
   metrics?: { cell: string; conversion_rate: number; allocated: number }[];
   checks?: { name: string; passed: boolean; detail: string }[];
 };
@@ -97,6 +109,18 @@ const ForgeLab: React.FC = function () {
                       return <li key={m.cell} className="text-white/70">{m.cell}: rate {m.conversion_rate.toFixed(2)} (n={m.allocated})</li>;
                     })}
                   </ul>
+                </Panel>
+              ) : null}
+              {selected.health && selected.health.sample_ratio ? (
+                <Panel title="Data-health gates (allocation)">
+                  <ul className="text-sm font-mono space-y-1">
+                    <li className="text-white/70">peak lag: {selected.health.peak_allocation_lag_ms} ms · SLO {selected.health.lag_slo_ms || '—'} · {selected.health.lag_slo_ok === false ? 'FAIL' : 'ok'}</li>
+                    <li className="text-white/70">sample ratio: {selected.health.sample_ratio.sample_ratio_ok ? 'ok' : 'SRM FAIL'} · max |dev| {(selected.health.sample_ratio.max_abs_deviation * 100).toFixed(1)}pp</li>
+                    {Object.keys(selected.health.sample_ratio.observed_share).map(function (cell) {
+                      return <li key={cell} className="text-white/55">{cell} share {(selected.health!.sample_ratio!.observed_share[cell] * 100).toFixed(0)}%</li>;
+                    })}
+                  </ul>
+                  <p className="text-xs text-white/45 mt-2">{selected.health.sample_ratio.notes}</p>
                 </Panel>
               ) : null}
             </div>

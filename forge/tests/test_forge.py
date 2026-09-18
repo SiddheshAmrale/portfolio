@@ -71,11 +71,37 @@ def test_experiment_healthy():
     assert rates["treatment"] == 1.0
 
 
+def test_experiment_lag_slo_fails():
+    allocs = [
+        Allocation("a1", "u1", "e", "control", 1, 2),
+        Allocation("a2", "u2", "e", "treatment", 3, 50_000),
+    ]
+    out = run_experiment_case(allocs, [], lag_slo_ms=5_000)
+    assert out["health"]["lag_slo_ok"] is False
+    assert out["health"]["healthy"] is False
+
+
+def test_sample_ratio_mismatch():
+    allocs = [
+        Allocation("a" + str(i), "u" + str(i), "e", "control" if i < 8 else "treatment", i, i + 1)
+        for i in range(10)
+    ]
+    out = run_experiment_case(
+        allocs, [],
+        expected_share={"control": 0.5, "treatment": 0.5},
+    )
+    assert out["health"]["sample_ratio"]["sample_ratio_ok"] is False
+    assert out["health"]["healthy"] is False
+
+
 def test_late_events_counted(tmp_path):
     cases = {c["id"]: c for c in all_cases()}
     late = cases["late_arriving"]
     assert late["run"]["late_events"] >= 1
     assert any(g["value"] >= 5 for g in late["gold"])
+    assert "experiment_sample_ratio" in cases
+    assert cases["experiment_sample_ratio"]["health"]["healthy"] is False
+    assert cases["experiment_lag_slo"]["health"]["healthy"] is False
 
 
 def test_build_writes(tmp_path):

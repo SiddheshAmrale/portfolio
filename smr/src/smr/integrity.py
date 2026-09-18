@@ -64,7 +64,11 @@ def simulate_channel(
             status = "stale"
             value = base  # frozen
         elif mode == "trip_high" and i >= 10:
-            value = base + 40 + (i - 10) * 2
+            # Scale excursion with channel magnitude so flux and temp both trip.
+            if abs(base) >= 1_000:
+                value = base * 1.65 + (i - 10) * abs(base) * 0.02
+            else:
+                value = base + 40 + (i - 10) * 2
         elif mode == "sensor_fail" and i >= 12:
             status = "failed"
             value = None

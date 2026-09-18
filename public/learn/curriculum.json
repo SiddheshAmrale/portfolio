@@ -99,6 +99,18 @@
             "pass": "You note domain in the diagnosis notes."
           },
           "check": ["Name two optical metrics you would measure on a real bench."]
+        },
+        {
+          "id": "jitter",
+          "title": "Jitter-limited eye closure",
+          "must_know": "Jitter can close the eye and raise BER with only mild SNR change. Do not force every eye-closure story into 'SNR fade'.",
+          "why": "Broadcom/Marvell validation talks FFE/DFE/CDR and jitter budgets separately from mean SNR.",
+          "practice": {
+            "lab": "/labs/link",
+            "task": "Open Jitter-limited lane. Confirm diagnosis label is jitter_limited.",
+            "pass": "You can separate jitter-rise from SNR-fade in one sentence."
+          },
+          "check": ["What evidence separates jitter_limited from signal_integrity_degrade?"]
         }
       ]
     },
@@ -172,13 +184,25 @@
           "id": "exp-health",
           "title": "Experiment allocation uniqueness",
           "must_know": "(experiment_id, user_id) must be unique in silver enrollment or causal analysis is garbage.",
-          "why": "Netflix Experimentation Platform DE explicitly cares about allocation data health.",
+          "why": "Netflix Experimentation Platform DE explicitly cares about allocation data health — Spark pipelines over billions of allocation events into Iceberg silver.",
           "practice": {
             "lab": "/labs/forge",
             "task": "Compare Experiment allocation health vs Broken allocation uniqueness.",
             "pass": "You fail the pipeline when uniqueness breaks."
           },
           "check": ["Why is duplicate allocation a hard failure?"]
+        },
+        {
+          "id": "srm-lag",
+          "title": "Sample-ratio (SRM) & allocation lag SLO",
+          "must_know": "Cell shares must match the designed split (sample-ratio / SRM). Peak allocation lag past an SLO fails health even when uniqueness is clean. Netflix uses stratified sampling so cells stay homogeneous across country/device — share skew breaks that.",
+          "why": "Trustworthy experiment analysis needs data contracts + data health, not just conversion rates.",
+          "practice": {
+            "lab": "/labs/forge",
+            "task": "Open Sample-ratio mismatch (SRM) and Allocation lag SLO breach. Read the data-health gates panel.",
+            "pass": "You refuse to ship a lift when SRM or lag SLO fails."
+          },
+          "check": ["What does a 80/20 observed vs 50/50 design mean for lifts?", "Why measure allocation lag separately from uniqueness?"]
         }
       ]
     },
@@ -211,6 +235,18 @@
             "pass": "You can explain why failed channels withhold values."
           },
           "check": ["Should a stale frozen value keep re-firing trips?"]
+        },
+        {
+          "id": "multi-channel",
+          "title": "Multi-channel process integrity",
+          "must_know": "The same missing≠zero and trip-on-ok rules apply across channels (coolant temperature and neutron flux). Channel identity stays in the series.",
+          "why": "Reactor data platforms and SCADA historians hold many tags; integrity is per-channel, not a global fill.",
+          "practice": {
+            "lab": "/labs/smr",
+            "task": "Open High neutron flux trip. Confirm unit and channel labels.",
+            "pass": "You treat flux and temperature as separate trusted streams."
+          },
+          "check": ["Why share trip logic but not fill values across channels?"]
         }
       ]
     },

@@ -13,13 +13,18 @@ def test_zero_fill_suspicion():
     rep = integrity_report(rows)
     assert rep["zero_filled_suspicion"] is True
     assert safe_mean(rows) is not None
-    # naive mean pulled down by zeros
     assert rep["naive_mean"] < rep["safe_mean"]
 
 
 def test_trip_fires():
     rows = simulate_channel("coolant_temp", mode="trip_high", base=300)
     trips = evaluate_trips(rows, [TripSetpoint("coolant_temp", high=330)])
+    assert trips[0]["fired"] is True
+
+
+def test_flux_trip_fires():
+    rows = simulate_channel("neutron_flux", mode="trip_high", base=8.0e5, unit="n/cm2/s")
+    trips = evaluate_trips(rows, [TripSetpoint("neutron_flux", high=1.2e6)])
     assert trips[0]["fired"] is True
 
 
@@ -30,4 +35,4 @@ def test_stale_marked():
 
 def test_build(tmp_path):
     assert (build(tmp_path) / "cases.json").exists()
-    assert len(all_cases()) >= 5
+    assert len(all_cases()) >= 6

@@ -1855,7 +1855,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1810000,
-        "value": 800040.0,
+        "value": 1320000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1863,7 +1863,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1811000,
-        "value": 800042.0,
+        "value": 1336000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1871,7 +1871,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1812000,
-        "value": 800044.0,
+        "value": 1352000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1879,7 +1879,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1813000,
-        "value": 800046.0,
+        "value": 1368000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1887,7 +1887,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1814000,
-        "value": 800048.0,
+        "value": 1384000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1895,7 +1895,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1815000,
-        "value": 800050.0,
+        "value": 1400000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1903,7 +1903,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1816000,
-        "value": 800052.0,
+        "value": 1416000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1911,7 +1911,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1817000,
-        "value": 800054.0,
+        "value": 1432000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1919,7 +1919,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1818000,
-        "value": 800056.0,
+        "value": 1448000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1927,7 +1927,7 @@
       {
         "channel": "neutron_flux",
         "t_ms": 1819000,
-        "value": 800058.0,
+        "value": 1464000.0,
         "unit": "n/cm2/s",
         "status": "ok",
         "source_ref": "smr:sim#neutron_flux"
@@ -1986,59 +1986,59 @@
       },
       {
         "t": 1810000,
-        "v": 800040.0,
+        "v": 1320000.0,
         "status": "ok"
       },
       {
         "t": 1811000,
-        "v": 800042.0,
+        "v": 1336000.0,
         "status": "ok"
       },
       {
         "t": 1812000,
-        "v": 800044.0,
+        "v": 1352000.0,
         "status": "ok"
       },
       {
         "t": 1813000,
-        "v": 800046.0,
+        "v": 1368000.0,
         "status": "ok"
       },
       {
         "t": 1814000,
-        "v": 800048.0,
+        "v": 1384000.0,
         "status": "ok"
       },
       {
         "t": 1815000,
-        "v": 800050.0,
+        "v": 1400000.0,
         "status": "ok"
       },
       {
         "t": 1816000,
-        "v": 800052.0,
+        "v": 1416000.0,
         "status": "ok"
       },
       {
         "t": 1817000,
-        "v": 800054.0,
+        "v": 1432000.0,
         "status": "ok"
       },
       {
         "t": 1818000,
-        "v": 800056.0,
+        "v": 1448000.0,
         "status": "ok"
       },
       {
         "t": 1819000,
-        "v": 800058.0,
+        "v": 1464000.0,
         "status": "ok"
       }
     ],
     "integrity": {
       "missing_visible": false,
-      "safe_mean": 800024.475,
-      "naive_mean": 800024.475,
+      "safe_mean": 1095999.975,
+      "naive_mean": 1095999.975,
       "stale_count": 0,
       "failed_count": 0,
       "zero_filled_suspicion": false,
@@ -2048,8 +2048,8 @@
       {
         "channel": "neutron_flux",
         "action": "high_flux_alarm",
-        "fired": false,
-        "at_ms": null,
+        "fired": true,
+        "at_ms": 1810000,
         "high": 1200000.0,
         "low": null
       }

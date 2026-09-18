@@ -1500,7 +1500,22 @@
       "hard_failures": [],
       "n_enrollment": 4,
       "peak_allocation_lag_ms": 30,
-      "notes": "Duplicate (experiment,user) allocations break causal analysis. This is the Netflix experimentation-platform data-health theme."
+      "lag_slo_ms": 5000,
+      "lag_slo_ok": true,
+      "sample_ratio": {
+        "observed_share": {
+          "control": 0.5,
+          "treatment": 0.5
+        },
+        "expected_share": {
+          "control": 0.5,
+          "treatment": 0.5
+        },
+        "max_abs_deviation": 0.0,
+        "sample_ratio_ok": true,
+        "notes": "Sample-ratio mismatch (SRM) means the allocator or pipeline is biased \u2014 do not trust conversion lifts until shares match the design."
+      },
+      "notes": "Duplicate (experiment,user) allocations break causal analysis. Lag SLOs and sample-ratio (SRM) are Netflix-style data-health gates."
     },
     "checks": [
       {
@@ -1587,7 +1602,22 @@
       ],
       "n_enrollment": 3,
       "peak_allocation_lag_ms": 30,
-      "notes": "Duplicate (experiment,user) allocations break causal analysis. This is the Netflix experimentation-platform data-health theme."
+      "lag_slo_ms": 5000,
+      "lag_slo_ok": true,
+      "sample_ratio": {
+        "observed_share": {
+          "control": 0.6666666666666666,
+          "treatment": 0.3333333333333333
+        },
+        "expected_share": {
+          "control": 0.5,
+          "treatment": 0.5
+        },
+        "max_abs_deviation": 0.16666666666666669,
+        "sample_ratio_ok": false,
+        "notes": "Sample-ratio mismatch (SRM) means the allocator or pipeline is biased \u2014 do not trust conversion lifts until shares match the design."
+      },
+      "notes": "Duplicate (experiment,user) allocations break causal analysis. Lag SLOs and sample-ratio (SRM) are Netflix-style data-health gates."
     },
     "checks": [
       {
@@ -1600,6 +1630,268 @@
         "name": "unique:experiment_id,user_id",
         "passed": false,
         "detail": "1 duplicate keys",
+        "severity": "error"
+      },
+      {
+        "name": "unique:allocation_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "id": "experiment_lag_slo",
+    "title": "Allocation lag SLO breach",
+    "question": "Peak allocation lag past the SLO must fail health even when uniqueness is clean.",
+    "theme": "Netflix data health / freshness",
+    "software": "forge 0.1.0",
+    "disclaimer": "Teaching lag SLO. Not Netflix production SLIs.",
+    "enrollment": [
+      {
+        "allocation_id": "a1",
+        "user_id": "u1",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000000,
+        "arrival_time_ms": 1700100000020,
+        "lag_ms": 20
+      },
+      {
+        "allocation_id": "a2",
+        "user_id": "u2",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000010,
+        "arrival_time_ms": 1700100000040,
+        "lag_ms": 30
+      },
+      {
+        "allocation_id": "a3",
+        "user_id": "u3",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000020,
+        "arrival_time_ms": 1700100090000,
+        "lag_ms": 89980
+      },
+      {
+        "allocation_id": "a4",
+        "user_id": "u4",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000030,
+        "arrival_time_ms": 1700100000060,
+        "lag_ms": 30
+      }
+    ],
+    "metrics": [
+      {
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated": 2.0,
+        "converted": 0.0,
+        "conversion_rate": 0.0
+      },
+      {
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated": 2.0,
+        "converted": 2.0,
+        "conversion_rate": 1.0
+      }
+    ],
+    "health": {
+      "healthy": false,
+      "hard_failures": [],
+      "n_enrollment": 4,
+      "peak_allocation_lag_ms": 89980,
+      "lag_slo_ms": 5000,
+      "lag_slo_ok": false,
+      "sample_ratio": {
+        "observed_share": {
+          "control": 0.5,
+          "treatment": 0.5
+        },
+        "expected_share": {
+          "control": 0.5,
+          "treatment": 0.5
+        },
+        "max_abs_deviation": 0.0,
+        "sample_ratio_ok": true,
+        "notes": "Sample-ratio mismatch (SRM) means the allocator or pipeline is biased \u2014 do not trust conversion lifts until shares match the design."
+      },
+      "notes": "Duplicate (experiment,user) allocations break causal analysis. Lag SLOs and sample-ratio (SRM) are Netflix-style data-health gates."
+    },
+    "checks": [
+      {
+        "name": "non_null:allocation_id",
+        "passed": true,
+        "detail": "0 null values in allocation_id",
+        "severity": "error"
+      },
+      {
+        "name": "unique:experiment_id,user_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
+        "severity": "error"
+      },
+      {
+        "name": "unique:allocation_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
+        "severity": "error"
+      }
+    ]
+  },
+  {
+    "id": "experiment_sample_ratio",
+    "title": "Sample-ratio mismatch (SRM)",
+    "question": "When observed cell shares diverge from the designed split, conversion lifts are untrustworthy.",
+    "theme": "Netflix experimentation / SRM",
+    "software": "forge 0.1.0",
+    "disclaimer": "SRM teaching gate. Chi-square production tests are richer; the invariant is the same.",
+    "enrollment": [
+      {
+        "allocation_id": "a0",
+        "user_id": "u0",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000000,
+        "arrival_time_ms": 1700100000010,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a1",
+        "user_id": "u1",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000001,
+        "arrival_time_ms": 1700100000011,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a2",
+        "user_id": "u2",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000002,
+        "arrival_time_ms": 1700100000012,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a3",
+        "user_id": "u3",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000003,
+        "arrival_time_ms": 1700100000013,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a4",
+        "user_id": "u4",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000004,
+        "arrival_time_ms": 1700100000014,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a5",
+        "user_id": "u5",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000005,
+        "arrival_time_ms": 1700100000015,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a6",
+        "user_id": "u6",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000006,
+        "arrival_time_ms": 1700100000016,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a7",
+        "user_id": "u7",
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated_at_ms": 1700100000007,
+        "arrival_time_ms": 1700100000017,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a8",
+        "user_id": "u8",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000008,
+        "arrival_time_ms": 1700100000018,
+        "lag_ms": 10
+      },
+      {
+        "allocation_id": "a9",
+        "user_id": "u9",
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated_at_ms": 1700100000009,
+        "arrival_time_ms": 1700100000019,
+        "lag_ms": 10
+      }
+    ],
+    "metrics": [
+      {
+        "experiment_id": "exp_signup",
+        "cell": "control",
+        "allocated": 8.0,
+        "converted": 4.0,
+        "conversion_rate": 0.5
+      },
+      {
+        "experiment_id": "exp_signup",
+        "cell": "treatment",
+        "allocated": 2.0,
+        "converted": 1.0,
+        "conversion_rate": 0.5
+      }
+    ],
+    "health": {
+      "healthy": false,
+      "hard_failures": [],
+      "n_enrollment": 10,
+      "peak_allocation_lag_ms": 10,
+      "lag_slo_ms": 5000,
+      "lag_slo_ok": true,
+      "sample_ratio": {
+        "observed_share": {
+          "control": 0.8,
+          "treatment": 0.2
+        },
+        "expected_share": {
+          "control": 0.5,
+          "treatment": 0.5
+        },
+        "max_abs_deviation": 0.30000000000000004,
+        "sample_ratio_ok": false,
+        "notes": "Sample-ratio mismatch (SRM) means the allocator or pipeline is biased \u2014 do not trust conversion lifts until shares match the design."
+      },
+      "notes": "Duplicate (experiment,user) allocations break causal analysis. Lag SLOs and sample-ratio (SRM) are Netflix-style data-health gates."
+    },
+    "checks": [
+      {
+        "name": "non_null:allocation_id",
+        "passed": true,
+        "detail": "0 null values in allocation_id",
+        "severity": "error"
+      },
+      {
+        "name": "unique:experiment_id,user_id",
+        "passed": true,
+        "detail": "0 duplicate keys",
         "severity": "error"
       },
       {
