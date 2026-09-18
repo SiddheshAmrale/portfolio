@@ -1,4 +1,4 @@
-from link.physics import ber_from_snr_db, diagnose_lane, simulate_lane, software_loss_is_not_ber
+from link.physics import ber_from_snr_db, diagnose_lane, fec_histogram, simulate_lane, software_loss_is_not_ber
 from link.cases import all_cases, build
 
 
@@ -49,6 +49,15 @@ def test_link_health_score_fade_lower():
     assert faded < healthy
 
 
+def test_fec_histogram_counts():
+    rows = simulate_lane(1, impairment="snr_fade")
+    hist = fec_histogram(rows)
+    assert hist["n"] == len(rows)
+    assert sum(hist["counts"]) == len(rows)
+
+
 def test_build(tmp_path):
     out = build(tmp_path)
     assert (out / "cases.json").exists()
+    cases = all_cases()
+    assert any(c.get("fec_histogram") for c in cases if c["id"] != "not_netem")

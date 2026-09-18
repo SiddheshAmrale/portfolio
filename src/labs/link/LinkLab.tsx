@@ -20,6 +20,7 @@ type LinkCase = {
   eye: { t: number; v: number }[];
   jitter?: { t: number; v: number }[];
   fec_demo?: { pre_fec_ber: number; post_fec_ber: number; notes: string; curve?: { snr_db: number; pre_fec_ber: number; post_fec_ber: number }[] };
+  fec_histogram?: { bins_le: number[]; counts: number[]; notes: string };
 };
 
 type LinkIndex = { eval?: { n: number; accuracy: number; rows: { id: string; truth: string; predicted: string; ok: boolean }[] } };
@@ -94,6 +95,16 @@ const LinkLab: React.FC = function () {
                       <p className="text-[10px] text-white/35 mt-1">log10(post-FEC BER) vs rising SNR</p>
                     </div>
                   ) : null}
+                </Panel>
+              ) : null}
+              {selected.fec_histogram ? (
+                <Panel title="FEC uncorrectable histogram (teaching)">
+                  <ul className="text-xs font-mono space-y-1">
+                    {selected.fec_histogram.bins_le.map(function (edge, i) {
+                      return <li key={edge} className="text-white/65">≤ {edge}: {selected.fec_histogram!.counts[i]}</li>;
+                    })}
+                  </ul>
+                  <p className="text-xs text-white/45 mt-2">{selected.fec_histogram.notes}</p>
                 </Panel>
               ) : null}
             </div>

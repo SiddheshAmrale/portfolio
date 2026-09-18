@@ -215,3 +215,28 @@ def coding_gain_demo(pre_fec_ber: float = 1e-4) -> dict[str, Any]:
         "curve": curve,
         "notes": "FEC reduces residual errors; it does not turn optical BER into TCP retransmits.",
     }
+
+
+def fec_histogram(rows: list[LaneSample], bins: tuple[float, ...] = (1e-12, 1e-9, 1e-6, 1e-3, 0.5)) -> dict[str, Any]:
+    """Teaching FEC uncorrectable histogram bins (Credo PILOT FEC histogram theme)."""
+    edges = list(bins)
+    counts = [0 for _ in range(len(edges))]
+    for r in rows:
+        v = r.fec_uncorrectable
+        placed = False
+        for i, edge in enumerate(edges):
+            if v <= edge:
+                counts[i] += 1
+                placed = True
+                break
+        if not placed:
+            counts[-1] += 1
+    return {
+        "bins_le": edges,
+        "counts": counts,
+        "n": len(rows),
+        "notes": (
+            "FEC histogram bins summarize residual uncorrectable activity across a window. "
+            "Population outliers matter for cluster observability — not a single TCP counter."
+        ),
+    }

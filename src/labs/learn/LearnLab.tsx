@@ -34,6 +34,7 @@ const LearnLab: React.FC = function () {
   const scorecard = usePilotJson<{ verdict: string; rows: { area: string; level: string; evidence: string; gap?: string }[] }>('/learn/scorecard.json');
   const research = usePilotJson<{ sources: { company: string; role?: string; product?: string; theme?: string; url: string; keywords: string[] }[]; portfolio_mapping: Record<string, string[]> }>('/learn/research.json');
   const scripts = usePilotJson<{ scripts: { company: string; talk_track: string }[] }>('/learn/interview-scripts.json');
+  const glossary = usePilotJson<{ cards: { term: string; def: string; track: string }[] }>('/learn/glossary.json');
   const [trackId, setTrackId] = useState('credo-pilot');
   const [lessonIdx, setLessonIdx] = useState(0);
   const [done, setDone] = useState<Record<string, boolean>>(function () {
@@ -73,6 +74,7 @@ const LearnLab: React.FC = function () {
         { id: 'lesson', label: 'Lesson' },
         { id: 'map', label: 'Track map' },
         { id: 'keywords', label: 'Keywords' },
+        { id: 'glossary', label: 'Glossary' },
         { id: 'research', label: 'Job research' },
         { id: 'scripts', label: 'Talk tracks' },
         { id: 'scorecard', label: 'Scorecard' }
@@ -195,6 +197,28 @@ const LearnLab: React.FC = function () {
                 return <span key={k} className="text-xs px-2 py-1 rounded border border-white/15 text-white/70">{k}</span>;
               })}
             </div>
+          </Panel>
+        ) : null}
+
+        {view === 'glossary' ? (
+          <Panel title="Must-know glossary">
+            {glossary.data ? (
+              <ul className="space-y-3">
+                {(glossary.data.cards.filter(function (c) { return c.track === track.id; }).length
+                  ? glossary.data.cards.filter(function (c) { return c.track === track.id; })
+                  : glossary.data.cards
+                ).map(function (c) {
+                  return (
+                    <li key={c.term} className="border-b border-white/5 pb-2">
+                      <div className="text-pink-300 font-semibold text-sm">{c.term}</div>
+                      <p className="text-sm text-white/70 mt-1">{c.def}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text-sm text-white/45">Loading glossary…</p>
+            )}
           </Panel>
         ) : null}
 

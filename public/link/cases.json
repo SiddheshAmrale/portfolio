@@ -35,6 +35,24 @@
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
     },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
+    },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
       {
@@ -730,6 +748,24 @@
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
+    },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        8,
+        16,
+        0
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -1427,6 +1463,24 @@
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
     },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        21,
+        0,
+        3
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
+    },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
       {
@@ -2122,6 +2176,24 @@
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
+    },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        21,
+        0,
+        3
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
@@ -2819,6 +2891,24 @@
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
     },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        8,
+        16,
+        0
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
+    },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
       {
@@ -3515,6 +3605,24 @@
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
     },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
+    },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [
       {
@@ -4210,6 +4318,24 @@
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
       }
+    },
+    "fec_histogram": {
+      "bins_le": [
+        1e-12,
+        1e-09,
+        1e-06,
+        0.001,
+        0.5
+      ],
+      "counts": [
+        0,
+        0,
+        8,
+        16,
+        0
+      ],
+      "n": 24,
+      "notes": "FEC histogram bins summarize residual uncorrectable activity across a window. Population outliers matter for cluster observability \u2014 not a single TCP counter."
     },
     "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
     "samples": [

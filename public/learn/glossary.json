@@ -1,0 +1,20 @@
+{
+  "title": "Must-know glossary (interview flashcards)",
+  "disclaimer": "Short definitions for verbal practice. Teaching models in this repo are not production silicon or plant software.",
+  "cards": [
+    {"term": "observation_time vs arrival_time", "def": "When the metric happened vs when the collector received it. Rates and watermarks use event/observation time.", "track": "credo-pilot"},
+    {"term": "collection_status=missing", "def": "No trustworthy sample. Never coerce to 0 for means, trips, or BER.", "track": "credo-pilot"},
+    {"term": "netem ≠ optical BER", "def": "tc/netem and TcpRetransSegs are L3/L4. Lane BER/SNR/eye are physical-layer. Keep them separate.", "track": "photonics-serdes"},
+    {"term": "pre-FEC vs post-FEC BER", "def": "FEC coding gain lowers residual uncorrectables; it does not turn optical errors into TCP drops.", "track": "photonics-serdes"},
+    {"term": "Link Health Score", "def": "Composite of SNR/BER/eye/jitter/flaps for triage. Teaching weights ≠ Credo product FOM.", "track": "photonics-serdes"},
+    {"term": "medallion bronze/silver/gold", "def": "Raw append → cleansed/conformed (SCD2) → curated aggregates for consumers.", "track": "databricks-netflix"},
+    {"term": "SCD2 as-of", "def": "Join facts to the dimension version valid at event_time, not is_current only.", "track": "databricks-netflix"},
+    {"term": "AUTO CDC sequencing", "def": "Apply changes by change/sequence time, not feed arrival order.", "track": "databricks-netflix"},
+    {"term": "data contract quarantine", "def": "Null keys, duplicate ids, illegal types fail visibly. Silent drops are a smell.", "track": "databricks-netflix"},
+    {"term": "allocation uniqueness", "def": "(experiment_id, user_id) must be unique in silver enrollment or causal analysis is garbage.", "track": "databricks-netflix"},
+    {"term": "sample-ratio / SRM", "def": "Observed cell shares must match the designed split before trusting lifts.", "track": "databricks-netflix"},
+    {"term": "allocation lag SLO", "def": "Peak allocate→arrive lag past SLO fails health even if uniqueness is clean.", "track": "databricks-netflix"},
+    {"term": "missing ≠ zero (I&C)", "def": "Zero-filling coolant temperature is a safety data bug. Trips only on status=ok.", "track": "oklo-smr"},
+    {"term": "A/A discipline", "def": "Declare primary metric before comparing. A/A must not alarm; deliberate regressions must.", "track": "regression-aa"}
+  ]
+}

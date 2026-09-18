@@ -10,6 +10,7 @@ from .physics import (
     SOFTWARE,
     coding_gain_demo,
     diagnose_lane,
+    fec_histogram,
     simulate_lane,
     software_loss_is_not_ber,
 )
@@ -26,6 +27,7 @@ def _pack(rows, title: str, question: str) -> dict[str, Any]:
         "domain": rows[0].domain,
         "ground_truth": truth,
         "diagnosis": d,
+        "fec_histogram": fec_histogram(rows),
         "disclaimer": "Teaching model with pinned seed. Not BERT/DCA/PIC silicon data.",
         "samples": [
             {
