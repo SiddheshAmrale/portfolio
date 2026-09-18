@@ -35,9 +35,44 @@
       "id": "ambiguous_discontinuity",
       "title": "ambiguous discontinuity",
       "question": "An unexplained counter drop is uncertain, not an invented rate."
+    },
+    {
+      "id": "linux_live_healthy",
+      "title": "linux live healthy",
+      "question": "Real /proc/net/dev and TcpRetransSegs from a live Ubuntu veth workload."
     }
   ],
   "incident": [
+    {
+      "id": "linux-healthy",
+      "title": "Live Linux: healthy",
+      "source": "linux-live"
+    },
+    {
+      "id": "linux-delay",
+      "title": "Live Linux: delay",
+      "source": "linux-live"
+    },
+    {
+      "id": "linux-loss",
+      "title": "Live Linux: loss",
+      "source": "linux-live"
+    },
+    {
+      "id": "linux-cpu",
+      "title": "Live Linux: cpu",
+      "source": "linux-live"
+    },
+    {
+      "id": "linux-stale",
+      "title": "Live Linux: stale",
+      "source": "linux-live"
+    },
+    {
+      "id": "linux-mixed",
+      "title": "Live Linux: mixed",
+      "source": "linux-live"
+    },
     {
       "id": "healthy_high",
       "title": "Healthy service under higher load",
@@ -69,6 +104,6 @@
       "source": "constructed"
     }
   ],
-  "linux": false,
+  "linux": true,
   "reproduce": "pip install -e ./pilot && python -m pytest -q && python -m pilot run-linux && python -m pilot build-cases"
 }

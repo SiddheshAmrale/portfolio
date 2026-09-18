@@ -1,0 +1,49 @@
+{
+  "run_id": "live-mixed-0",
+  "software": "pilot 0.2.0",
+  "linux_proc_available": true,
+  "condition": "mixed",
+  "diagnosis": "receiver_cpu",
+  "baseline_diagnosis": "network",
+  "time_to_detect_seq": 11,
+  "impairment_confirmed": true,
+  "confirm_detail": "latency 21.0 -> 104.9 ms",
+  "cgroup_ok": true,
+  "n_obs": 3292,
+  "warmup_latency_ms": 20.962038460784488,
+  "impaired_latency_ms": 104.87624027906969,
+  "notes": "Latency rose with receiver CPU heat or cgroup throttle and without a retransmission increase.",
+  "evidence": [
+    {
+      "name": "app_latency_high",
+      "present": true,
+      "detail": "tail app_latency_ms=103.0 head=19.3"
+    },
+    {
+      "name": "receiver_cpu_hot",
+      "present": false,
+      "detail": "mean proc_cpu_percent=19.9"
+    },
+    {
+      "name": "receiver_cpu_throttled",
+      "present": true,
+      "detail": "cgroup throttled_usec/s=816585"
+    },
+    {
+      "name": "retrans_rate_up",
+      "present": false,
+      "detail": "pilot TcpRetransSegs/s=0.00"
+    },
+    {
+      "name": "telemetry_stale_or_missing",
+      "present": false,
+      "detail": "collector_lag_ms=1; rx missing=False"
+    },
+    {
+      "name": "network_rates_uncertain",
+      "present": false,
+      "detail": "recent retrans classifications include ambiguous/reorder/missing"
+    }
+  ],
+  "missing_evidence": []
+}

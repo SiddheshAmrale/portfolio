@@ -1,0 +1,81 @@
+{
+  "software": "pilot 0.2.0",
+  "seed": 7,
+  "repeats": 2,
+  "duration_s": 6.0,
+  "disclaimer": "Live Linux veth+netem+cgroup. Software packet loss is not optical BER/FEC. Ground truth is ground_truth.jsonl only.",
+  "runs": [
+    {
+      "run_id": "live-delay-1",
+      "parquet": "public/pilot/linux/runs/live-delay-1/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-delay-1/meta.json",
+      "n_obs": 2790
+    },
+    {
+      "run_id": "live-mixed-1",
+      "parquet": "public/pilot/linux/runs/live-mixed-1/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-mixed-1/meta.json",
+      "n_obs": 2812
+    },
+    {
+      "run_id": "live-cpu-0",
+      "parquet": "public/pilot/linux/runs/live-cpu-0/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-cpu-0/meta.json",
+      "n_obs": 3100
+    },
+    {
+      "run_id": "live-stale-1",
+      "parquet": "public/pilot/linux/runs/live-stale-1/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-stale-1/meta.json",
+      "n_obs": 3226
+    },
+    {
+      "run_id": "live-loss-1",
+      "parquet": "public/pilot/linux/runs/live-loss-1/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-loss-1/meta.json",
+      "n_obs": 3270
+    },
+    {
+      "run_id": "live-stale-0",
+      "parquet": "public/pilot/linux/runs/live-stale-0/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-stale-0/meta.json",
+      "n_obs": 3226
+    },
+    {
+      "run_id": "live-cpu-1",
+      "parquet": "public/pilot/linux/runs/live-cpu-1/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-cpu-1/meta.json",
+      "n_obs": 3292
+    },
+    {
+      "run_id": "live-delay-0",
+      "parquet": "public/pilot/linux/runs/live-delay-0/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-delay-0/meta.json",
+      "n_obs": 3270
+    },
+    {
+      "run_id": "live-healthy-0",
+      "parquet": "public/pilot/linux/runs/live-healthy-0/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-healthy-0/meta.json",
+      "n_obs": 3270
+    },
+    {
+      "run_id": "live-healthy-1",
+      "parquet": "public/pilot/linux/runs/live-healthy-1/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-healthy-1/meta.json",
+      "n_obs": 3270
+    },
+    {
+      "run_id": "live-loss-0",
+      "parquet": "public/pilot/linux/runs/live-loss-0/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-loss-0/meta.json",
+      "n_obs": 3270
+    },
+    {
+      "run_id": "live-mixed-0",
+      "parquet": "public/pilot/linux/runs/live-mixed-0/obs.parquet",
+      "meta": "public/pilot/linux/runs/live-mixed-0/meta.json",
+      "n_obs": 3292
+    }
+  ]
+}

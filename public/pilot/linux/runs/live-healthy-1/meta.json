@@ -1,0 +1,49 @@
+{
+  "run_id": "live-healthy-1",
+  "software": "pilot 0.2.0",
+  "linux_proc_available": true,
+  "condition": "healthy",
+  "diagnosis": "healthy",
+  "baseline_diagnosis": "healthy",
+  "time_to_detect_seq": null,
+  "impairment_confirmed": true,
+  "confirm_detail": "healthy; mean latency 21.0 ms",
+  "cgroup_ok": false,
+  "n_obs": 3270,
+  "warmup_latency_ms": 20.989418108552467,
+  "impaired_latency_ms": 20.9581552272187,
+  "notes": "Application latency stays below the frozen threshold relative to the run head.",
+  "evidence": [
+    {
+      "name": "app_latency_high",
+      "present": false,
+      "detail": "tail app_latency_ms=19.8 head=18.5"
+    },
+    {
+      "name": "receiver_cpu_hot",
+      "present": true,
+      "detail": "mean proc_cpu_percent=102.6"
+    },
+    {
+      "name": "receiver_cpu_throttled",
+      "present": false,
+      "detail": "cgroup throttled_usec/s=none"
+    },
+    {
+      "name": "retrans_rate_up",
+      "present": false,
+      "detail": "pilot TcpRetransSegs/s=0.00"
+    },
+    {
+      "name": "telemetry_stale_or_missing",
+      "present": false,
+      "detail": "collector_lag_ms=1; rx missing=False"
+    },
+    {
+      "name": "network_rates_uncertain",
+      "present": false,
+      "detail": "recent retrans classifications include ambiguous/reorder/missing"
+    }
+  ],
+  "missing_evidence": []
+}
