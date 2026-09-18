@@ -31,6 +31,7 @@ type Curriculum = {
 
 const LearnLab: React.FC = function () {
   const { data, error, loading } = usePilotJson<Curriculum>('/learn/curriculum.json');
+  const scorecard = usePilotJson<{ verdict: string; rows: { area: string; level: string; evidence: string; gap?: string }[] }>('/learn/scorecard.json');
   const [trackId, setTrackId] = useState('credo-pilot');
   const [lessonIdx, setLessonIdx] = useState(0);
   const [done, setDone] = useState<Record<string, boolean>>({});
@@ -56,7 +57,8 @@ const LearnLab: React.FC = function () {
       views={[
         { id: 'lesson', label: 'Lesson' },
         { id: 'map', label: 'Track map' },
-        { id: 'keywords', label: 'Keywords' }
+        { id: 'keywords', label: 'Keywords' },
+        { id: 'scorecard', label: 'Scorecard' }
       ]}
       view={view}
       onView={setView}
@@ -157,6 +159,29 @@ const LearnLab: React.FC = function () {
                 return <span key={k} className="text-xs px-2 py-1 rounded border border-white/15 text-white/70">{k}</span>;
               })}
             </div>
+          </Panel>
+        ) : null}
+
+        {view === 'scorecard' ? (
+          <Panel title="Honest elite scorecard">
+            {scorecard.data ? (
+              <div className="space-y-4">
+                <p className="text-sm text-white/80">{scorecard.data.verdict}</p>
+                <ul className="space-y-3">
+                  {scorecard.data.rows.map(function (r) {
+                    return (
+                      <li key={r.area} className="border-b border-white/5 pb-3">
+                        <div className="text-white font-semibold">{r.area} <span className="text-xs text-pink-300/80 font-mono ml-2">{r.level}</span></div>
+                        <p className="text-sm text-white/65 mt-1">{r.evidence}</p>
+                        {r.gap ? <p className="text-xs text-amber-200/70 mt-1">Gap: {r.gap}</p> : null}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : (
+              <p className="text-sm text-white/45">Loading scorecard…</p>
+            )}
           </Panel>
         ) : null}
       </div>

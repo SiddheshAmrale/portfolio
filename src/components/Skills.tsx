@@ -48,11 +48,23 @@ const Skills: React.FC = () => {
     {
       title: "Databases",
       skills: [
+        { name: "DuckDB", icon: <FaCloud size={24} /> },
         { name: "MySQL", icon: <SiMysql size={24} /> },
         { name: "PostgreSQL", icon: <SiPostgresql size={24} /> },
         { name: "Cosmos DB", icon: <FaCloud size={24} /> },
         { name: "Oracle", icon: <FaCloud size={24} /> },
         { name: "NoSQL", icon: <SiMongodb size={24} /> }
+      ]
+    },
+    {
+      title: "Systems & connectivity",
+      skills: [
+        { name: "Telemetry / PILOT", icon: <FaCloud size={24} /> },
+        { name: "SerDes / BER vocabulary", icon: <FaBrain size={24} /> },
+        { name: "Lakehouse / CDC", icon: <FaCloud size={24} /> },
+        { name: "Parquet", icon: <FaCloud size={24} /> },
+        { name: "Data contracts", icon: <FaGit size={24} /> },
+        { name: "Linux /proc & netns", icon: <FaPython size={24} /> }
       ]
     }
   ];

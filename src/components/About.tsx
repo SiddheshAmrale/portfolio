@@ -6,23 +6,23 @@ const About: React.FC = () => {
   const features = [
     {
       icon: <FaCode size={40} />,
-      title: "AI Cloud Full Stack Development",
-      description: "Experienced in AI, cloud technologies, and full-stack development, creating innovative solutions."
+      title: "Connectivity telemetry",
+      description: "Credo-PILOT-shaped work: Linux observations, DuckDB/Parquet pipelines, evidence rules, and live netns impairments — not demo dashboards."
     },
     {
       icon: <FaRocket size={40} />,
-      title: "Performance Optimization",
-      description: "Focused on creating fast, efficient, and scalable applications that deliver exceptional user experiences."
+      title: "Lakehouse data engineering",
+      description: "Medallion layers, CDC/SCD2, contracts, late data, and experiment allocation health aligned to Databricks/Netflix DE themes."
     },
     {
       icon: <FaLightbulb size={40} />,
-      title: "Problem Solving",
-      description: "Creative approach to solving complex technical challenges with innovative solutions."
+      title: "Measurement honesty",
+      description: "Software loss is not optical BER. Missing is not zero. Teaching models state their limits in the UI."
     },
     {
       icon: <FaUsers size={40} />,
-      title: "Team Collaboration",
-      description: "Strong communication skills and experience working in agile development teams."
+      title: "Guided practice",
+      description: "A practical academy walks every must-know concept with tasks inside the labs — built for interview depth, not buzzwords."
     }
   ];
 

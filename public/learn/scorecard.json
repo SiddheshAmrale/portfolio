@@ -1,0 +1,36 @@
+{
+  "title": "Honest elite scorecard",
+  "updated": "2026-09-18",
+  "verdict": "Strong interview-grade portfolio for Credo PILOT / lakehouse DE / SI vocabulary — not literally 'best in the world' silicon or Netflix production.",
+  "rows": [
+    {
+      "area": "Credo PILOT",
+      "level": "strong",
+      "evidence": "Live Ubuntu netns+veth+netem+cgroup; DuckDB/Parquet; diagnose() never sees injector labels; 12/12 impairments confirmed on latest CI.",
+      "gap": "Not Credo ASIC eye/SNR silicon; live accuracy_when_diagnosed ~78% with honest near-misses."
+    },
+    {
+      "area": "Databricks / Netflix DE",
+      "level": "strong-teaching",
+      "evidence": "Forge medallion, SCD2, contracts, late data, experiment allocation health, DuckDB over Parquet.",
+      "gap": "Not Spark on a real Databricks workspace / Iceberg catalog."
+    },
+    {
+      "area": "Broadcom / Marvell / photonics",
+      "level": "vocabulary-elite",
+      "evidence": "Link lab: SNR/BER/eye/FEC/flaps; electrical vs optical; explicit netem≠BER.",
+      "gap": "Not BERT/DCA/PIC bench automation."
+    },
+    {
+      "area": "Oklo / SMR I&C",
+      "level": "integrity-teaching",
+      "evidence": "Missing≠zero, trip setpoints, stale/failed channels.",
+      "gap": "Not NQA-1 or plant SCADA."
+    },
+    {
+      "area": "Learning UX",
+      "level": "strong",
+      "evidence": "Guided academy with must-know, practice links, self-checks, keyword maps from real postings."
+    }
+  ]
+}

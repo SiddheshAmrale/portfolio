@@ -87,6 +87,17 @@ def test_build_writes(tmp_path):
     assert idx["duckdb_gold_by_plan"]
 
 
+def test_watermark_marks_late():
+    from forge.streaming import Event, classify_late
+    events = [
+        Event("a", 1000, 1050, 1),
+        Event("b", 2000, 8000, 1),
+    ]
+    rows = classify_late(events, allowed_lateness_ms=1000)
+    assert rows[0]["late"] is False
+    assert rows[1]["late"] is True
+
+
 def test_gold_uses_historical_plan():
     run, payload = run_medallion(
         [{
