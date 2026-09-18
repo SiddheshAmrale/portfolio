@@ -1,0 +1,56 @@
+name: pilot
+
+on:
+  push:
+    paths:
+      - 'pilot/**'
+      - '.github/workflows/pilot.yml'
+      - 'src/labs/pilot/**'
+  pull_request:
+    paths:
+      - 'pilot/**'
+      - '.github/workflows/pilot.yml'
+      - 'src/labs/pilot/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install
+        run: python -m pip install -e "./pilot[dev]"
+      - name: Fixture tests
+        run: python -m pytest -q
+        working-directory: pilot
+      - name: Live Linux experiments
+        run: sudo -E env "PATH=$PATH" python -m pilot run-linux --out public/pilot/linux --repeats 2 --duration 6 --seed 7
+      - name: Evaluate live runs
+        run: python -m pilot eval-linux --dir public/pilot/linux
+      - name: Build website cases
+        run: python -m pilot build-cases --out public/pilot --linux public/pilot/linux
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pilot-linux-cases
+          path: |
+            public/pilot/
+            !public/pilot/**/*.parquet
+          include-hidden-files: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pilot-linux-parquet
+          path: public/pilot/linux
+      - name: Record live cases on master
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Record live Linux experiment cases
+          file_pattern: public/pilot/**

@@ -16,6 +16,36 @@ interface ProjectCard {
 
 const projects: ProjectCard[] = [
   {
+    id: 'telemetry',
+    title: 'Telemetry Data Quality Lab',
+    description: 'Linux-shaped counters through Parquet and DuckDB. Replay duplicates, reorder, gaps, delay, restart, unit change, and ambiguous drops. Naive rates and Prometheus increase() are compared with a classifier that withholds invented values. At least one operational alert changes after data quality.',
+    category: 'telemetry',
+    technologies: ['Python', 'Parquet', 'DuckDB', 'Counters'],
+    path: '/labs/telemetry',
+    accent: 'from-sky-800 to-black',
+    evidence: 'Python + live Ubuntu CI'
+  },
+  {
+    id: 'incident',
+    title: 'Network Incident Diagnosis Lab',
+    description: 'Flagship: unnamed recorded incidents with application, TcpRetransSegs, and host CPU timelines. Frozen evidence rules, no injector labels, held-out evaluation, and interventions that should help versus ones that should not. Software loss is not optical BER.',
+    category: 'telemetry',
+    technologies: ['Diagnosis', 'Evidence', 'Held-out', 'Interventions'],
+    path: '/labs/incident',
+    accent: 'from-rose-800 to-black',
+    evidence: 'Python + live Ubuntu CI'
+  },
+  {
+    id: 'regression',
+    title: 'Release Regression Analyzer',
+    description: 'Declared primary metric, A-versus-A false-alarm check, collector/analysis version comparison, and a planted latency regression. Repeated independent runs — not one long trace treated as many samples.',
+    category: 'telemetry',
+    technologies: ['A/A', 'Effect size', 'Repeatability'],
+    path: '/labs/regression',
+    accent: 'from-violet-800 to-black',
+    evidence: 'Python + live Ubuntu CI'
+  },
+  {
     id: 'inference',
     title: 'Inference Runtime Workbench',
     description: 'Pinned-baseline discrete-event study of cancel/retry slot leaks and noisy-neighbor tail latency. Cooperative cancel at kernel boundaries plus interactive isolation, with held-out load and a case where isolation starves batch jobs.',
@@ -59,6 +89,7 @@ const projects: ProjectCard[] = [
 
 const categories = [
   { id: 'all', name: 'All labs' },
+  { id: 'telemetry', name: 'Telemetry' },
   { id: 'systems', name: 'AI systems' },
   { id: 'quantum', name: 'Quantum' },
   { id: 'security', name: 'Security' },
@@ -82,7 +113,7 @@ const Projects: React.FC = () => {
           </h2>
           <div className="w-24 h-1 bg-netflix-red mx-auto mb-8" />
           <p className="text-xl text-netflix-light-gray max-w-4xl mx-auto">
-            Each investigation launches as its own full-screen app. The same engines run without this site: <code className="text-white/80">npm run workbench</code> and <code className="text-white/80">npm run workbench:test</code>. They are independent investigations (baseline, intervention, held-out, failure cases), not cluster measurements.
+            Each investigation launches as its own full-screen app. Three telemetry labs are viewers over pinned Python experiments (<code className="text-white/80">npm run pilot:test</code>, <code className="text-white/80">npm run pilot:cases</code>). The four TypeScript workbenches still run with <code className="text-white/80">npm run workbench</code>. They are independent investigations, not production cluster measurements.
           </p>
         </div>
 

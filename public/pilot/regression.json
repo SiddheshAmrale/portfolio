@@ -1,0 +1,125 @@
+{
+  "software": "pilot 0.2.0",
+  "disclaimer": "Repeated independent constructed runs. Not firmware. Primary metric declared before comparison.",
+  "reproduce": "python -m pilot reproduce regression",
+  "aa": {
+    "primary_metric": "app_latency_ms",
+    "meaningful_delta": 5.0,
+    "decision": "no_practically_meaningful_difference",
+    "effect": 0.0,
+    "detail": "median(A_repeat) - median(A) = 0.000 app_latency_ms; threshold=5.0",
+    "aa_false_alarm": false,
+    "a": {
+      "name": "A",
+      "n": 8,
+      "values": [
+        20.31927868859809,
+        21.07996165197341,
+        20.192979962002944,
+        20.565599279834704,
+        20.766802173930593,
+        20.87526845907572,
+        20.589660541522157,
+        20.586303606622995
+      ],
+      "median": 20.587982074072578,
+      "mean": 20.621981795445077
+    },
+    "b": {
+      "name": "A_repeat",
+      "n": 8,
+      "values": [
+        20.31927868859809,
+        21.07996165197341,
+        20.192979962002944,
+        20.565599279834704,
+        20.766802173930593,
+        20.87526845907572,
+        20.589660541522157,
+        20.586303606622995
+      ],
+      "median": 20.587982074072578,
+      "mean": 20.621981795445077
+    }
+  },
+  "collector_naive_vs_pilot": {
+    "primary_metric": "peak_abs_rx_bytes_per_s",
+    "meaningful_delta": 1000.0,
+    "decision": "improvement_supported",
+    "effect": -8959992.0,
+    "detail": "median(pilot_rate) - median(naive_rate) = -8959992.000 peak_abs_rx_bytes_per_s; threshold=1000.0",
+    "aa_false_alarm": false,
+    "a": {
+      "name": "naive_rate",
+      "n": 8,
+      "values": [
+        9079992.0,
+        9079992.0,
+        9079992.0,
+        9079992.0,
+        9079992.0,
+        9079992.0,
+        9079992.0,
+        9079992.0
+      ],
+      "median": 9079992.0,
+      "mean": 9079992.0
+    },
+    "b": {
+      "name": "pilot_rate",
+      "n": 8,
+      "values": [
+        120000.0,
+        120000.0,
+        120000.0,
+        120000.0,
+        120000.0,
+        120000.0,
+        120000.0,
+        120000.0
+      ],
+      "median": 120000.0,
+      "mean": 120000.0
+    }
+  },
+  "deliberate_regression": {
+    "primary_metric": "app_latency_ms",
+    "meaningful_delta": 10.0,
+    "decision": "regression_supported",
+    "effect": 40.07463285730901,
+    "detail": "median(regressed) - median(baseline) = 40.075 app_latency_ms; threshold=10.0",
+    "aa_false_alarm": false,
+    "a": {
+      "name": "baseline",
+      "n": 8,
+      "values": [
+        20.746659495563556,
+        21.362992618215735,
+        21.64396344620919,
+        21.086019798780804,
+        20.73477451677191,
+        20.85973061614657,
+        21.154449633394577,
+        21.308371357204564
+      ],
+      "median": 21.12023471608769,
+      "mean": 21.112120185285864
+    },
+    "b": {
+      "name": "regressed",
+      "n": 8,
+      "values": [
+        60.611202825052295,
+        61.43082913199013,
+        61.21966645709224,
+        61.311322956677216,
+        61.334195794134494,
+        60.95196584311871,
+        61.17006868970118,
+        60.461642056825404
+      ],
+      "median": 61.19486757339671,
+      "mean": 61.061361719323955
+    }
+  }
+}

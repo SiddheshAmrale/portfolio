@@ -1,0 +1,74 @@
+{
+  "software": "pilot 0.2.0",
+  "quality": [
+    {
+      "id": "baseline",
+      "title": "baseline",
+      "question": "Pinned healthy trace. Naive and pilot agree when the series is clean."
+    },
+    {
+      "id": "duplicates",
+      "title": "duplicates",
+      "question": "Replaying the same scrape must not inflate bytes/s."
+    },
+    {
+      "id": "out_of_order",
+      "title": "out of order",
+      "question": "Late/out-of-order arrivals keep observation_time for the interval."
+    },
+    {
+      "id": "gaps",
+      "title": "gaps",
+      "question": "Dropped scrapes stay missing, not zero."
+    },
+    {
+      "id": "late_samples_after_restart",
+      "title": "late samples after restart",
+      "question": "Delivery delay with preserved observation timestamps, plus a collector restart."
+    },
+    {
+      "id": "unit_change",
+      "title": "unit change",
+      "question": "Unit change without a new metric id is not a traffic spike."
+    },
+    {
+      "id": "ambiguous_discontinuity",
+      "title": "ambiguous discontinuity",
+      "question": "An unexplained counter drop is uncertain, not an invented rate."
+    }
+  ],
+  "incident": [
+    {
+      "id": "healthy_high",
+      "title": "Healthy service under higher load",
+      "source": "constructed"
+    },
+    {
+      "id": "delay",
+      "title": "Added delay (userspace model, not netem)",
+      "source": "constructed"
+    },
+    {
+      "id": "loss",
+      "title": "Injected loss (userspace model, not optical BER)",
+      "source": "constructed"
+    },
+    {
+      "id": "cpu",
+      "title": "Receiver CPU restriction (busy thread model, not cgroup)",
+      "source": "constructed"
+    },
+    {
+      "id": "stale",
+      "title": "Interrupted telemetry",
+      "source": "constructed"
+    },
+    {
+      "id": "mixed",
+      "title": "CPU restriction plus loss \u2014 should be insufficient evidence",
+      "source": "constructed"
+    }
+  ],
+  "linux": false,
+  "reproduce": "pip install -e ./pilot && python -m pytest -q && python -m pilot run-linux && python -m pilot build-cases"
+}

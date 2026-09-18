@@ -29,6 +29,12 @@ Thumbs.db
 logs
 *.log
 
+# Python
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
 # Runtime data
 pids
 *.pid

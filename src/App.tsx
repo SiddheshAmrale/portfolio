@@ -13,6 +13,9 @@ import InferenceLab from './labs/inference/InferenceLab';
 import QuantumLab from './labs/quantum/QuantumLab';
 import PqcLab from './labs/pqc/PqcLab';
 import FleetLab from './labs/fleet/FleetLab';
+import TelemetryLab from './labs/pilot/TelemetryLab';
+import IncidentLab from './labs/pilot/IncidentLab';
+import RegressionLab from './labs/pilot/RegressionLab';
 
 const HomePage: React.FC = () => {
   const location = useLocation();
@@ -55,6 +58,9 @@ function AppShell() {
           <Route path="/labs/quantum" element={<QuantumLab />} />
           <Route path="/labs/pqc" element={<PqcLab />} />
           <Route path="/labs/fleet" element={<FleetLab />} />
+          <Route path="/labs/telemetry" element={<TelemetryLab />} />
+          <Route path="/labs/incident" element={<IncidentLab />} />
+          <Route path="/labs/regression" element={<RegressionLab />} />
         </Routes>
       </main>
       {isWorkbench ? null : <Footer />}
