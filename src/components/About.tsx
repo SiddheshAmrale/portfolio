@@ -7,22 +7,22 @@ const About: React.FC = () => {
     {
       icon: <FaCode size={40} />,
       title: "Connectivity telemetry",
-      description: "Credo-PILOT-shaped work: Linux observations, DuckDB/Parquet pipelines, evidence rules, and live netns impairments — not demo dashboards."
+      description: "Linux observations, DuckDB/Parquet pipelines, evidence rules, and live netns impairments — not demo dashboards."
     },
     {
       icon: <FaRocket size={40} />,
       title: "Lakehouse data engineering",
-      description: "Medallion layers, CDC/SCD2, contracts, freshness SLAs, and Netflix-style experiment health (uniqueness, SRM, lag SLO) — runnable offline."
+      description: "Medallion layers, CDC/SCD2, contracts, freshness SLAs, and experiment allocation health — runnable offline with a step-through Run button."
     },
     {
       icon: <FaLightbulb size={40} />,
       title: "Measurement honesty",
-      description: "Software loss is not optical BER. Missing is not zero. Physics results need git identity. Teaching models state their limits in /learn."
+      description: "Software loss is not optical BER. Missing is not zero. Physics results need git identity. Limits are stated in /learn."
     },
     {
       icon: <FaUsers size={40} />,
       title: "Guided practice",
-      description: "A practical academy with 21 must-know lessons, glossary, practice path, and near-misses — built for interview depth, not buzzwords."
+      description: "A practical academy with lessons, glossary, practice path, and near-misses — for interview depth, not buzzwords."
     }
   ];
 

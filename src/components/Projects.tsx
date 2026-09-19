@@ -18,9 +18,9 @@ const projects: ProjectCard[] = [
   {
     id: 'learn',
     title: 'Guided Practical Academy',
-    description: 'Must-know concepts with hands-on tasks across every lab: Credo PILOT telemetry, SerDes/photonics + Link Health Score, Databricks/Netflix lakehouse + SRM/lag SLO, Oklo I&C + physics-result reproducibility. Glossary flashcards and job-research tabs included.',
+    description: 'Hands-on tracks over the labs: telemetry identity, SerDes/FEC vocabulary, lakehouse medallion + experiment health, and instrumentation integrity. Includes glossary and a practice path.',
     category: 'learn',
-    technologies: ['Curriculum', 'Glossary', 'Keywords'],
+    technologies: ['Curriculum', 'Glossary', 'Practice'],
     path: '/learn',
     accent: 'from-pink-800 to-black',
     evidence: 'Interactive tracks'
@@ -28,9 +28,9 @@ const projects: ProjectCard[] = [
   {
     id: 'forge',
     title: 'Lakehouse Forge',
-    description: 'Elite Databricks/Netflix DE project: medallion Bronze→Silver→Gold, CDC/SCD2 as-of + out-of-order sequencing, contract quarantine, late facts, schema evolution, experiment uniqueness, lag SLO, and sample-ratio (SRM) gates — runnable Python + DuckDB/Parquet.',
+    description: 'Runnable medallion Bronze→Silver→Gold with CDC/SCD2, contract quarantine, late facts, freshness SLA, and experiment allocation health (uniqueness, lag, sample ratio). Python + DuckDB/Parquet — click Run pipeline in the lab.',
     category: 'data',
-    technologies: ['Medallion', 'SCD2', 'SRM', 'Contracts'],
+    technologies: ['Medallion', 'SCD2', 'Contracts', 'DuckDB'],
     path: '/labs/forge',
     accent: 'from-emerald-800 to-black',
     evidence: 'Python + pytest'
@@ -38,9 +38,9 @@ const projects: ProjectCard[] = [
   {
     id: 'link',
     title: 'Link Integrity Lab',
-    description: 'Credo/Broadcom/Marvell vocabulary: per-lane SNR, BER, eye, jitter, FEC residual + histogram, Link Health Score, flaps vs SI fade vs jitter-limited, electrical vs optical. Explicitly teaches software packet loss ≠ optical BER.',
+    description: 'Per-lane SNR, BER, eye, jitter, FEC, and equalization teaching models. Forces the category error: software packet loss is not optical BER. Click Diagnose after reading the charts.',
     category: 'connectivity',
-    technologies: ['SerDes', 'BER', 'FEC', 'Health Score'],
+    technologies: ['SerDes', 'BER', 'FEC', 'Diagnosis'],
     path: '/labs/link',
     accent: 'from-cyan-800 to-black',
     evidence: 'Python teaching models'
@@ -48,9 +48,9 @@ const projects: ProjectCard[] = [
   {
     id: 'smr',
     title: 'SMR Instrumentation Integrity',
-    description: 'Oklo-aligned: missing≠zero, multi-channel trips (coolant + neutron flux), and a physics-result store with design/git identity + A/A reproducibility. Teaching model — not NQA-1 plant software.',
+    description: 'Process-channel integrity: missing≠zero, trip setpoints on trusted samples, plus a physics-result store with design/git identity. Teaching model — not nuclear-qualified software.',
     category: 'energy',
-    technologies: ['I&C', 'Physics store', 'Integrity'],
+    technologies: ['I&C', 'Trips', 'Integrity'],
     path: '/labs/smr',
     accent: 'from-lime-800 to-black',
     evidence: 'Python + pytest'

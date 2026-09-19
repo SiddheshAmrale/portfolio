@@ -314,7 +314,7 @@ const LearnLab: React.FC = function () {
         ) : null}
 
         {view === 'scorecard' ? (
-          <Panel title="Honest elite scorecard">
+          <Panel title="Honest scorecard">
             {scorecard.data ? (
               <div className="space-y-4">
                 <p className="text-sm text-white/80">{scorecard.data.verdict}</p>
