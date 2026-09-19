@@ -14,6 +14,7 @@
     {"term": "allocation uniqueness", "def": "(experiment_id, user_id) must be unique in silver enrollment or causal analysis is garbage.", "track": "databricks-netflix"},
     {"term": "sample-ratio / SRM", "def": "Observed cell shares must match the designed split before trusting lifts.", "track": "databricks-netflix"},
     {"term": "allocation lag SLO", "def": "Peak allocate→arrive lag past SLO fails health even if uniqueness is clean.", "track": "databricks-netflix"},
+    {"term": "physics-result identity", "def": "design_id + analysis code + git_sha (+ params). Missing keff stays null; A/A requires same sha within keff tolerance.", "track": "oklo-smr"},
     {"term": "missing ≠ zero (I&C)", "def": "Zero-filling coolant temperature is a safety data bug. Trips only on status=ok.", "track": "oklo-smr"},
     {"term": "A/A discipline", "def": "Declare primary metric before comparing. A/A must not alarm; deliberate regressions must.", "track": "regression-aa"}
   ]

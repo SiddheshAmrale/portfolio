@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from .integrity import SOFTWARE, TripSetpoint, evaluate_trips, integrity_report, simulate_channel
+from .physics_store import demo_cases as physics_demo_cases
 
 
 def all_cases() -> list[dict[str, Any]]:
@@ -41,6 +42,29 @@ def all_cases() -> list[dict[str, Any]]:
             "channel": channel,
             "unit": unit,
         })
+    for p in physics_demo_cases():
+        cases.append({
+            "id": p["id"],
+            "title": p["title"],
+            "question": p["question"],
+            "software": SOFTWARE,
+            "disclaimer": "Teaching physics-result store. Not Oklo plant multiphysics or NQA-1.",
+            "theme": p["theme"],
+            "ground_truth": p["id"],
+            "samples": [],
+            "series": [],
+            "integrity": {
+                "missing_visible": bool(p["compare"]["b"]["missing_fields"]),
+                "safe_mean": None,
+                "naive_mean": None,
+                "zero_filled_suspicion": False,
+                "stale_count": 0,
+                "failed_count": 0 if p["compare"]["a"]["ok"] else 1,
+                "notes": p["compare"]["notes"],
+            },
+            "trips": [],
+            "physics": p,
+        })
     return cases
 
 
@@ -54,6 +78,7 @@ def build(out_dir: str | Path) -> Path:
         "keywords": [
             "instrumentation", "controls", "SCADA", "missing data", "trip setpoint",
             "advanced fission", "SMR", "data integrity", "NQA-1 awareness",
+            "reactor data", "physics results", "CI/CD multiphysics", "reproducibility",
         ],
         "disclaimer": "Not nuclear-qualified software. Interview-aligned invariants only.",
         "reproduce": "pip install -e ./smr && python -m pytest -q && python -m smr build-cases",

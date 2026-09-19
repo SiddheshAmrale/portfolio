@@ -15,7 +15,7 @@
     },
     {
       "company": "Oklo",
-      "talk_track": "For I&C and process-data roles I demo safety-critical integrity across channels: missing samples stay null, zero-filling coolant temperature is flagged as a bug, and trip setpoints only fire on trusted ok samples for both temperature and neutron flux. Explicitly not NQA-1 software — the invariant is the point."
+      "talk_track": "For Oklo software and I&C themes I demo two integrity layers: process channels where missing stays null and trips only fire on trusted ok samples (coolant + neutron flux), and a physics-result store where design_id/code/git_sha identify a run, missing keff fails validation, and A/A reproducibility requires the same revision within tolerance. Explicitly not NQA-1 — the invariants are the interview point."
     }
   ]
 }

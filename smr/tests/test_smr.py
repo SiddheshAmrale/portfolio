@@ -1,5 +1,6 @@
 from smr.integrity import integrity_report, missing_visible, safe_mean, simulate_channel, evaluate_trips, TripSetpoint
 from smr.cases import all_cases, build
+from smr.physics_store import PhysicsResult, compare_runs, validate_result
 
 
 def test_missing_not_zero():
@@ -33,6 +34,26 @@ def test_stale_marked():
     assert any(r.status == "stale" for r in rows)
 
 
+def test_physics_repro_ok():
+    a = PhysicsResult("r1", "d", "code", "sha", {}, 1.0, 500.0, "ok")
+    b = PhysicsResult("r2", "d", "code", "sha", {}, 1.0002, 500.1, "ok")
+    assert compare_runs(a, b)["reproducible"] is True
+
+
+def test_physics_missing_keff():
+    a = PhysicsResult("r1", "d", "code", "sha", {}, 1.0, 500.0, "ok")
+    b = PhysicsResult("r2", "d", "code", "sha", {}, None, 500.0, "missing_field")
+    assert validate_result(b)["ok"] is False
+    assert compare_runs(a, b)["reproducible"] is False
+
+
+def test_physics_code_drift():
+    a = PhysicsResult("r1", "d", "code", "sha1", {}, 1.0, 500.0, "ok")
+    b = PhysicsResult("r2", "d", "code", "sha2", {}, 1.0, 500.0, "ok")
+    assert compare_runs(a, b)["reproducible"] is False
+    assert compare_runs(a, b)["same_code_revision"] is False
+
+
 def test_build(tmp_path):
     assert (build(tmp_path) / "cases.json").exists()
-    assert len(all_cases()) >= 6
+    assert len(all_cases()) >= 9

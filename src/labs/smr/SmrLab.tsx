@@ -25,6 +25,19 @@ type SmrCase = {
     notes: string;
   };
   trips: { channel: string; fired: boolean; at_ms: number | null; high: number | null }[];
+  physics?: {
+    compare: {
+      reproducible: boolean;
+      same_design: boolean;
+      same_code_revision: boolean;
+      delta_keff: number | null;
+      keff_tol: number;
+      a: { ok: boolean; missing_fields: string[]; manifest_hash: string };
+      b: { ok: boolean; missing_fields: string[]; manifest_hash: string };
+      notes: string;
+    };
+    results: { run_id: string; design_id: string; git_sha: string; keff: number | null; peak_temp_c: number | null; status: string; manifest_hash: string }[];
+  };
 };
 
 const SmrLab: React.FC = function () {
@@ -46,6 +59,7 @@ const SmrLab: React.FC = function () {
       views={[
         { id: 'case', label: 'Case' },
         { id: 'trips', label: 'Trips' },
+        { id: 'physics', label: 'Physics store' },
         { id: 'reproduce', label: 'Reproduce' }
       ]}
       view={view}
@@ -75,10 +89,21 @@ const SmrLab: React.FC = function () {
                 <Kpi label="Safe mean" value={fmtOpt(selected.integrity.safe_mean, 1)} />
                 <Kpi label="Naive mean" value={fmtOpt(selected.integrity.naive_mean, 1)} tone={selected.integrity.zero_filled_suspicion ? 'bad' : 'muted'} />
               </div>
-              <Panel title={'Series (' + (selected.unit || '') + ')'}>
-                <Spark values={spark} color={ACCENT} height={72} />
-              </Panel>
+              {selected.series && selected.series.length ? (
+                <Panel title={'Series (' + (selected.unit || '') + ')'}>
+                  <Spark values={spark} color={ACCENT} height={72} />
+                </Panel>
+              ) : null}
               <Panel title="Question"><p className="text-sm text-white/80">{selected.question}</p></Panel>
+              {selected.physics ? (
+                <Panel title="Physics compare">
+                  <ul className="text-sm font-mono space-y-1">
+                    <li className="text-white/70">reproducible: {selected.physics.compare.reproducible ? 'yes' : 'no'}</li>
+                    <li className="text-white/70">same design: {selected.physics.compare.same_design ? 'yes' : 'no'} · same sha: {selected.physics.compare.same_code_revision ? 'yes' : 'no'}</li>
+                    <li className="text-white/70">Δkeff: {selected.physics.compare.delta_keff === null ? '—' : selected.physics.compare.delta_keff} (tol {selected.physics.compare.keff_tol})</li>
+                  </ul>
+                </Panel>
+              ) : null}
             </div>
             <Panel title="Integrity notes">
               <p className="text-sm text-white/65">{selected.integrity.notes}</p>
@@ -98,6 +123,31 @@ const SmrLab: React.FC = function () {
                 );
               })}
             </ul>
+          </Panel>
+        ) : null}
+
+        {view === 'physics' ? (
+          <Panel title="Reactor physics-result store">
+            {selected.physics ? (
+              <div className="space-y-3">
+                <p className="text-sm text-white/65">{selected.physics.compare.notes}</p>
+                <ul className="text-xs font-mono space-y-2">
+                  {selected.physics.results.map(function (r) {
+                    return (
+                      <li key={r.run_id} className="border-b border-white/5 pb-2 text-white/70">
+                        {r.run_id} · {r.design_id} · sha {r.git_sha} · keff={r.keff === null ? 'null' : r.keff} · {r.status} · hash {r.manifest_hash}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p className="text-sm font-mono text-white/80">
+                  A ok={String(selected.physics.compare.a.ok)} missing=[{selected.physics.compare.a.missing_fields.join(',')}] ·
+                  B ok={String(selected.physics.compare.b.ok)} missing=[{selected.physics.compare.b.missing_fields.join(',')}]
+                </p>
+              </div>
+            ) : (
+              <p className="text-sm text-white/45">Select a physics-store case (Reproducible physics A/A, Missing keff, Code revision drift).</p>
+            )}
           </Panel>
         ) : null}
 

@@ -63,10 +63,16 @@
     },
     {
       "company": "Oklo",
-      "roles": ["Software Engineer", "I&C", "Controls Fuel Fab"],
+      "roles": ["Senior Software Engineer"],
       "url": "https://job-boards.greenhouse.io/oklo/jobs/5739483004",
-      "keywords": ["reactor data platforms", "CI/CD for multiphysics", "instrumentation", "SCADA", "SQL process data", "traceability"]
-    }
+      "keywords": ["reactor data platforms", "physics results", "CI/CD for multiphysics", "Python", "reproducibility", "visualization", "large data pipelines", "SQA"]
+    },
+    {
+      "company": "Oklo",
+      "roles": ["Instrumentation and Controls Engineer"],
+      "url": "https://job-boards.greenhouse.io/oklo/jobs/6127042004",
+      "keywords": ["instrumentation", "neutron instrumentation", "SCADA", "data acquisition", "PLC/DCS", "temperature", "pressure", "radiation", "Python"]
+    },
   ],
   "portfolio_mapping": {
     "pilot": ["Credo PILOT telemetry", "DuckDB", "live netns evidence"],

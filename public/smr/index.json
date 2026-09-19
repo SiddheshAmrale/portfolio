@@ -28,6 +28,18 @@
     {
       "id": "trip_high_neutron_flux",
       "title": "High neutron flux trip"
+    },
+    {
+      "id": "physics_repro_ok",
+      "title": "Reproducible physics A/A"
+    },
+    {
+      "id": "physics_missing_keff",
+      "title": "Missing keff stays missing"
+    },
+    {
+      "id": "physics_code_drift",
+      "title": "Code revision drift"
     }
   ],
   "keywords": [
@@ -39,7 +51,11 @@
     "advanced fission",
     "SMR",
     "data integrity",
-    "NQA-1 awareness"
+    "NQA-1 awareness",
+    "reactor data",
+    "physics results",
+    "CI/CD multiphysics",
+    "reproducibility"
   ],
   "disclaimer": "Not nuclear-qualified software. Interview-aligned invariants only.",
   "reproduce": "pip install -e ./smr && python -m pytest -q && python -m smr build-cases"

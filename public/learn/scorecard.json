@@ -24,8 +24,8 @@
     {
       "area": "Oklo / SMR I&C",
       "level": "integrity-teaching",
-      "evidence": "Missing≠zero, trip setpoints, stale/failed, coolant + neutron flux channels.",
-      "gap": "Not NQA-1 or plant SCADA."
+      "evidence": "Missing≠zero, trip setpoints, multi-channel flux/temp, physics-result store with git identity + A/A reproducibility.",
+      "gap": "Not NQA-1, plant SCADA, or real multiphysics kernels."
     },
     {
       "area": "Learning UX",

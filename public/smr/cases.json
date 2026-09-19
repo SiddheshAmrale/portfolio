@@ -2056,5 +2056,244 @@
     ],
     "channel": "neutron_flux",
     "unit": "n/cm2/s"
+  },
+  {
+    "id": "physics_repro_ok",
+    "title": "Reproducible physics A/A",
+    "question": "Same design + git_sha must reproduce keff within tolerance.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching physics-result store. Not Oklo plant multiphysics or NQA-1.",
+    "theme": "Oklo reactor data / CI multiphysics",
+    "ground_truth": "physics_repro_ok",
+    "samples": [],
+    "series": [],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": null,
+      "naive_mean": null,
+      "zero_filled_suspicion": false,
+      "stale_count": 0,
+      "failed_count": 0,
+      "notes": "Oklo-style reactor data platforms store physics results with CI/CD identity. A/A reruns on the same design+sha must match within tolerance."
+    },
+    "trips": [],
+    "physics": {
+      "id": "physics_repro_ok",
+      "title": "Reproducible physics A/A",
+      "question": "Same design + git_sha must reproduce keff within tolerance.",
+      "theme": "Oklo reactor data / CI multiphysics",
+      "compare": {
+        "same_design": true,
+        "same_code_revision": true,
+        "delta_keff": 9.999999999998899e-05,
+        "keff_tol": 0.0005,
+        "reproducible": true,
+        "a": {
+          "run_id": "r1",
+          "ok": true,
+          "missing_fields": [],
+          "manifest_hash": "e05983578ca5f426",
+          "notes": "Physics results need identity (design, code, git_sha) and required fields. Missing keff must stay null \u2014 not zero \u2014 for reproducibility gates."
+        },
+        "b": {
+          "run_id": "r2",
+          "ok": true,
+          "missing_fields": [],
+          "manifest_hash": "b7b01de429b2e705",
+          "notes": "Physics results need identity (design, code, git_sha) and required fields. Missing keff must stay null \u2014 not zero \u2014 for reproducibility gates."
+        },
+        "notes": "Oklo-style reactor data platforms store physics results with CI/CD identity. A/A reruns on the same design+sha must match within tolerance."
+      },
+      "results": [
+        {
+          "run_id": "r1",
+          "design_id": "core_v3",
+          "code": "neutronics_toy",
+          "git_sha": "abc1234",
+          "params": {
+            "enrichment": 0.19,
+            "power_mw": 15
+          },
+          "keff": 1.0452,
+          "peak_temp_c": 512.0,
+          "status": "ok",
+          "manifest_hash": "e05983578ca5f426"
+        },
+        {
+          "run_id": "r2",
+          "design_id": "core_v3",
+          "code": "neutronics_toy",
+          "git_sha": "abc1234",
+          "params": {
+            "enrichment": 0.19,
+            "power_mw": 15
+          },
+          "keff": 1.0453,
+          "peak_temp_c": 511.8,
+          "status": "ok",
+          "manifest_hash": "b7b01de429b2e705"
+        }
+      ]
+    }
+  },
+  {
+    "id": "physics_missing_keff",
+    "title": "Missing keff stays missing",
+    "question": "A physics result without keff must fail validation \u2014 not store 0.0.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching physics-result store. Not Oklo plant multiphysics or NQA-1.",
+    "theme": "Oklo reactor data integrity",
+    "ground_truth": "physics_missing_keff",
+    "samples": [],
+    "series": [],
+    "integrity": {
+      "missing_visible": true,
+      "safe_mean": null,
+      "naive_mean": null,
+      "zero_filled_suspicion": false,
+      "stale_count": 0,
+      "failed_count": 0,
+      "notes": "Oklo-style reactor data platforms store physics results with CI/CD identity. A/A reruns on the same design+sha must match within tolerance."
+    },
+    "trips": [],
+    "physics": {
+      "id": "physics_missing_keff",
+      "title": "Missing keff stays missing",
+      "question": "A physics result without keff must fail validation \u2014 not store 0.0.",
+      "theme": "Oklo reactor data integrity",
+      "compare": {
+        "same_design": true,
+        "same_code_revision": true,
+        "delta_keff": null,
+        "keff_tol": 0.0005,
+        "reproducible": false,
+        "a": {
+          "run_id": "r1",
+          "ok": true,
+          "missing_fields": [],
+          "manifest_hash": "e05983578ca5f426",
+          "notes": "Physics results need identity (design, code, git_sha) and required fields. Missing keff must stay null \u2014 not zero \u2014 for reproducibility gates."
+        },
+        "b": {
+          "run_id": "r3",
+          "ok": false,
+          "missing_fields": [
+            "keff"
+          ],
+          "manifest_hash": "6dc13157109e708a",
+          "notes": "Physics results need identity (design, code, git_sha) and required fields. Missing keff must stay null \u2014 not zero \u2014 for reproducibility gates."
+        },
+        "notes": "Oklo-style reactor data platforms store physics results with CI/CD identity. A/A reruns on the same design+sha must match within tolerance."
+      },
+      "results": [
+        {
+          "run_id": "r1",
+          "design_id": "core_v3",
+          "code": "neutronics_toy",
+          "git_sha": "abc1234",
+          "params": {
+            "enrichment": 0.19,
+            "power_mw": 15
+          },
+          "keff": 1.0452,
+          "peak_temp_c": 512.0,
+          "status": "ok",
+          "manifest_hash": "e05983578ca5f426"
+        },
+        {
+          "run_id": "r3",
+          "design_id": "core_v3",
+          "code": "neutronics_toy",
+          "git_sha": "abc1234",
+          "params": {
+            "enrichment": 0.19,
+            "power_mw": 15
+          },
+          "keff": null,
+          "peak_temp_c": 512.0,
+          "status": "missing_field",
+          "manifest_hash": "6dc13157109e708a"
+        }
+      ]
+    }
+  },
+  {
+    "id": "physics_code_drift",
+    "title": "Code revision drift",
+    "question": "Different git_sha is not an A/A \u2014 flag as non-reproducible comparison.",
+    "software": "smr 0.1.0",
+    "disclaimer": "Teaching physics-result store. Not Oklo plant multiphysics or NQA-1.",
+    "theme": "Oklo multiphysics CI/CD",
+    "ground_truth": "physics_code_drift",
+    "samples": [],
+    "series": [],
+    "integrity": {
+      "missing_visible": false,
+      "safe_mean": null,
+      "naive_mean": null,
+      "zero_filled_suspicion": false,
+      "stale_count": 0,
+      "failed_count": 0,
+      "notes": "Oklo-style reactor data platforms store physics results with CI/CD identity. A/A reruns on the same design+sha must match within tolerance."
+    },
+    "trips": [],
+    "physics": {
+      "id": "physics_code_drift",
+      "title": "Code revision drift",
+      "question": "Different git_sha is not an A/A \u2014 flag as non-reproducible comparison.",
+      "theme": "Oklo multiphysics CI/CD",
+      "compare": {
+        "same_design": true,
+        "same_code_revision": false,
+        "delta_keff": 0.005800000000000027,
+        "keff_tol": 0.0005,
+        "reproducible": false,
+        "a": {
+          "run_id": "r1",
+          "ok": true,
+          "missing_fields": [],
+          "manifest_hash": "e05983578ca5f426",
+          "notes": "Physics results need identity (design, code, git_sha) and required fields. Missing keff must stay null \u2014 not zero \u2014 for reproducibility gates."
+        },
+        "b": {
+          "run_id": "r4",
+          "ok": true,
+          "missing_fields": [],
+          "manifest_hash": "700ec1f80e829432",
+          "notes": "Physics results need identity (design, code, git_sha) and required fields. Missing keff must stay null \u2014 not zero \u2014 for reproducibility gates."
+        },
+        "notes": "Oklo-style reactor data platforms store physics results with CI/CD identity. A/A reruns on the same design+sha must match within tolerance."
+      },
+      "results": [
+        {
+          "run_id": "r1",
+          "design_id": "core_v3",
+          "code": "neutronics_toy",
+          "git_sha": "abc1234",
+          "params": {
+            "enrichment": 0.19,
+            "power_mw": 15
+          },
+          "keff": 1.0452,
+          "peak_temp_c": 512.0,
+          "status": "ok",
+          "manifest_hash": "e05983578ca5f426"
+        },
+        {
+          "run_id": "r4",
+          "design_id": "core_v3",
+          "code": "neutronics_toy",
+          "git_sha": "def9999",
+          "params": {
+            "enrichment": 0.19,
+            "power_mw": 15
+          },
+          "keff": 1.051,
+          "peak_temp_c": 520.0,
+          "status": "ok",
+          "manifest_hash": "700ec1f80e829432"
+        }
+      ]
+    }
   }
 ]

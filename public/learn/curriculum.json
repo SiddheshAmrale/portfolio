@@ -240,13 +240,25 @@
           "id": "multi-channel",
           "title": "Multi-channel process integrity",
           "must_know": "The same missing≠zero and trip-on-ok rules apply across channels (coolant temperature and neutron flux). Channel identity stays in the series.",
-          "why": "Reactor data platforms and SCADA historians hold many tags; integrity is per-channel, not a global fill.",
+          "why": "Reactor data platforms and SCADA historians hold many tags; integrity is per-channel, not a global fill. Oklo I&C roles span neutron instrumentation and process measurement.",
           "practice": {
             "lab": "/labs/smr",
             "task": "Open High neutron flux trip. Confirm unit and channel labels.",
             "pass": "You treat flux and temperature as separate trusted streams."
           },
           "check": ["Why share trip logic but not fill values across channels?"]
+        },
+        {
+          "id": "physics-store",
+          "title": "Physics-result store & reproducibility",
+          "must_know": "Reactor physics results need design_id + code + git_sha identity. Missing keff stays null. A/A reruns on the same sha must match within tolerance; different shas are code drift, not A/A.",
+          "why": "Oklo Software Engineer postings emphasize storing reactor data/physics results, multiphysics CI/CD, and reproducible analysis pipelines.",
+          "practice": {
+            "lab": "/labs/smr",
+            "task": "Open Reproducible physics A/A, Missing keff stays missing, and Code revision drift. Use Physics store tab.",
+            "pass": "You can explain manifest identity and why keff=null fails validation."
+          },
+          "check": ["What fields identify a physics result?", "Why is a different git_sha not an A/A?"]
         }
       ]
     },
