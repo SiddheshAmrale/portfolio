@@ -171,14 +171,14 @@
         {
           "id": "late-data",
           "title": "Late-arriving facts & watermarks",
-          "must_know": "Late converts past the watermark are counted for ops visibility; policies are explicit.",
-          "why": "Streaming/batch correctness depends on event-time vs processing-time.",
+          "must_know": "Late converts past the watermark are counted for ops visibility; policies are explicit. Separately, a bronze freshness SLA measures peak event→arrival lag.",
+          "why": "Streaming/batch correctness depends on event-time vs processing-time; Databricks monitoring themes include freshness.",
           "practice": {
             "lab": "/labs/forge",
-            "task": "Open Late-arriving facts. Check late_events ≥ 1.",
-            "pass": "You can define watermark in one sentence."
+            "task": "Open Late-arriving facts (late_events ≥ 1) and Bronze freshness SLA (FAIL freshness_lag_ms).",
+            "pass": "You can define watermark vs freshness SLA in one sentence each."
           },
-          "check": ["Event time vs arrival time — which drives the day bucket?"]
+          "check": ["Event time vs arrival time — which drives the day bucket?", "What does a freshness SLA measure?"]
         },
         {
           "id": "schema-evo",

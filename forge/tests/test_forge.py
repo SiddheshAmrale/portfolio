@@ -113,6 +113,15 @@ def test_build_writes(tmp_path):
     assert idx["duckdb_gold_by_plan"]
 
 
+def test_freshness_sla_fails():
+    cases = {c["id"]: c for c in all_cases()}
+    fresh = cases["freshness_sla"]
+    results = []
+    for c in fresh["run"]["contracts"]:
+        results.extend(c["results"])
+    assert any(r["name"] == "freshness_lag_ms" and r["passed"] is False for r in results)
+
+
 def test_out_of_order_cdc_as_of():
     cases = {c["id"]: c for c in all_cases()}
     ooo = cases["out_of_order_cdc"]

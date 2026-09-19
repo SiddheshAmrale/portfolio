@@ -1601,6 +1601,304 @@
     "note": "Feed order is pro-then-free; sorted apply yields free\u2192pro history."
   },
   {
+    "id": "freshness_sla",
+    "title": "Bronze freshness SLA",
+    "question": "Peak event\u2192arrival lag past the SLA must surface as a freshness expectation failure.",
+    "theme": "Freshness / observability",
+    "software": "forge 0.1.0",
+    "disclaimer": "Teaching freshness SLA. Not a Databricks Jobs monitor.",
+    "bronze": [
+      {
+        "event_id": "e0",
+        "user_id": "u0",
+        "event_type": "convert",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e1",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700003600000,
+        "arrival_time_ms": 1700003600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e2",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700007200000,
+        "arrival_time_ms": 1700007200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e3",
+        "user_id": "u3",
+        "event_type": "convert",
+        "event_time_ms": 1700010800000,
+        "arrival_time_ms": 1700010800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e4",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700014400000,
+        "arrival_time_ms": 1700014400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e5",
+        "user_id": "u1",
+        "event_type": "view",
+        "event_time_ms": 1700018000000,
+        "arrival_time_ms": 1700018000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e6",
+        "user_id": "u2",
+        "event_type": "convert",
+        "event_time_ms": 1700021600000,
+        "arrival_time_ms": 1700021600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e7",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700025200000,
+        "arrival_time_ms": 1700025200050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e8",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700028800000,
+        "arrival_time_ms": 1700028800050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e9",
+        "user_id": "u1",
+        "event_type": "convert",
+        "event_time_ms": 1700032400000,
+        "arrival_time_ms": 1700032400050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e10",
+        "user_id": "u2",
+        "event_type": "view",
+        "event_time_ms": 1700036000000,
+        "arrival_time_ms": 1700036000050,
+        "value": 1.0
+      },
+      {
+        "event_id": "e11",
+        "user_id": "u3",
+        "event_type": "view",
+        "event_time_ms": 1700039600000,
+        "arrival_time_ms": 1700039600050,
+        "value": 1.0
+      },
+      {
+        "event_id": "stale_arr",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1700000000000,
+        "arrival_time_ms": 1700000120000,
+        "value": 1.0
+      }
+    ],
+    "quarantine": [],
+    "silver_users": [
+      {
+        "user_id": "u0",
+        "plan": "free",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700018000000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u0",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700018000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "us-west",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": 1700028800000,
+        "is_current": false,
+        "version": 1
+      },
+      {
+        "user_id": "u1",
+        "plan": "free",
+        "region": "eu",
+        "valid_from_ms": 1700028800000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 2
+      },
+      {
+        "user_id": "u2",
+        "plan": "pro",
+        "region": "eu",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      },
+      {
+        "user_id": "u3",
+        "plan": "pro",
+        "region": "us-east",
+        "valid_from_ms": 1700000000000,
+        "valid_to_ms": null,
+        "is_current": true,
+        "version": 1
+      }
+    ],
+    "gold": [
+      {
+        "day": "d19675",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "free",
+        "value": 1.0
+      },
+      {
+        "day": "d19676",
+        "metric": "converts",
+        "plan": "pro",
+        "value": 2.0
+      }
+    ],
+    "run": {
+      "name": "freshness_sla",
+      "bronze_in": 13,
+      "bronze_rejected": 0,
+      "silver_users": 6,
+      "gold_rows": 3,
+      "late_events": 0,
+      "contracts": [
+        {
+          "table": "bronze.events",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:event_id",
+              "passed": true,
+              "detail": "0 null values in event_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:event_time_ms",
+              "passed": true,
+              "detail": "0 null values in event_time_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:event_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            },
+            {
+              "name": "in_set:event_type",
+              "passed": true,
+              "detail": "0 values outside ['alloc', 'click', 'convert', 'sensor', 'view']",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "silver.users_scd2",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:user_id",
+              "passed": true,
+              "detail": "0 null values in user_id",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:valid_from_ms",
+              "passed": true,
+              "detail": "0 null values in valid_from_ms",
+              "severity": "error"
+            },
+            {
+              "name": "unique:user_id",
+              "passed": true,
+              "detail": "0 duplicate keys",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "gold.daily_metrics",
+          "ok": true,
+          "results": [
+            {
+              "name": "non_null:day",
+              "passed": true,
+              "detail": "0 null values in day",
+              "severity": "error"
+            },
+            {
+              "name": "non_null:metric",
+              "passed": true,
+              "detail": "0 null values in metric",
+              "severity": "error"
+            },
+            {
+              "name": "range:value",
+              "passed": true,
+              "detail": "0 out of range [0.0,None]",
+              "severity": "error"
+            }
+          ]
+        },
+        {
+          "table": "bronze.freshness",
+          "ok": true,
+          "results": [
+            {
+              "name": "freshness_lag_ms",
+              "passed": false,
+              "detail": "peak_lag_ms=120000 sla=30000",
+              "severity": "warn"
+            }
+          ]
+        }
+      ],
+      "notes": "Freshness SLA is a warn-level contract: peak event\u2192arrival lag must stay under the SLA."
+    }
+  },
+  {
     "id": "experiment_healthy",
     "title": "Experiment allocation health",
     "question": "Silver enrollment must be unique per (experiment,user); gold shows conversion by cell.",

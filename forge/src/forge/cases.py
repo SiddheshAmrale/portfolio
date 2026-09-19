@@ -291,6 +291,37 @@ def case_out_of_order_cdc() -> dict[str, Any]:
     }
 
 
+def case_freshness_sla() -> dict[str, Any]:
+    """Bronze freshness SLA on event→arrival lag (warn-severity expectation)."""
+    from .contracts import ContractReport, expect_freshness
+
+    raw = _events_clean()
+    raw.append({
+        "event_id": "stale_arr",
+        "user_id": "u0",
+        "event_type": "view",
+        "event_time_ms": 1_700_000_000_000,
+        "arrival_time_ms": 1_700_000_000_000 + 120_000,  # 2 min lag
+        "value": 1.0,
+    })
+    run, payload = run_medallion(raw, _user_changes(), name="freshness_sla")
+    fresh = expect_freshness(payload["bronze"], "event_time_ms", "arrival_time_ms", max_lag_ms=30_000)
+    extra = ContractReport("bronze.freshness")
+    extra.results.append(fresh)
+    run.contracts.append(extra)
+    run.notes = "Freshness SLA is a warn-level contract: peak event→arrival lag must stay under the SLA."
+    return {
+        "id": "freshness_sla",
+        "title": "Bronze freshness SLA",
+        "question": "Peak event→arrival lag past the SLA must surface as a freshness expectation failure.",
+        "theme": "Freshness / observability",
+        "software": SOFTWARE,
+        "disclaimer": "Teaching freshness SLA. Not a Databricks Jobs monitor.",
+        **payload,
+        "run": run.to_dict(),
+    }
+
+
 def all_cases() -> list[dict[str, Any]]:
     return [
         case_happy_path(),
@@ -299,6 +330,7 @@ def all_cases() -> list[dict[str, Any]]:
         case_scd2_as_of(),
         case_schema_evolution(),
         case_out_of_order_cdc(),
+        case_freshness_sla(),
         case_experiment_healthy(),
         case_experiment_dup_alloc(),
         case_experiment_lag_slo(),

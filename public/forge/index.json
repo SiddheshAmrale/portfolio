@@ -38,6 +38,12 @@
       "question": "CDC must apply by sequencing/change time, not arrival order \u2014 early convert stays on free."
     },
     {
+      "id": "freshness_sla",
+      "title": "Bronze freshness SLA",
+      "theme": "Freshness / observability",
+      "question": "Peak event\u2192arrival lag past the SLA must surface as a freshness expectation failure."
+    },
+    {
       "id": "experiment_healthy",
       "title": "Experiment allocation health",
       "theme": "Netflix experimentation platform",
