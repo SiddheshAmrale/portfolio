@@ -72,13 +72,13 @@
       "roles": ["Instrumentation and Controls Engineer"],
       "url": "https://job-boards.greenhouse.io/oklo/jobs/6127042004",
       "keywords": ["instrumentation", "neutron instrumentation", "SCADA", "data acquisition", "PLC/DCS", "temperature", "pressure", "radiation", "Python"]
-    },
+    }
   ],
   "portfolio_mapping": {
     "pilot": ["Credo PILOT telemetry", "DuckDB", "live netns evidence"],
-    "link": ["SerDes/photonics vocabulary", "BER≠netem", "jitter-limited eye"],
-    "forge": ["Databricks medallion/CDC/SCD2", "Netflix allocation uniqueness + SRM + lag SLO"],
-    "smr": ["Oklo I&C missing≠zero", "multi-channel trips"],
+    "link": ["SerDes/photonics vocabulary", "BER≠netem", "jitter-limited eye", "Link Health Score", "CTLE/FFE"],
+    "forge": ["Databricks medallion/CDC/SCD2", "Netflix allocation uniqueness + SRM + lag SLO", "freshness SLA"],
+    "smr": ["Oklo I&C missing≠zero", "multi-channel trips", "physics-result store"],
     "learn": ["guided practice across all"]
   }
 }

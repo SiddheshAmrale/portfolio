@@ -36,6 +36,26 @@ jobs:
           python -m forge build-cases --out public/forge
           python -m link build-cases --out public/link
           python -m smr build-cases --out public/smr
+      - name: Validate learn JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('public/learn')
+          required = [
+            'curriculum.json', 'research.json', 'scorecard.json',
+            'interview-scripts.json', 'glossary.json', 'near-misses.json',
+            'practice-path.json',
+          ]
+          for name in required:
+              p = root / name
+              assert p.exists(), name
+              json.loads(p.read_text(encoding='utf-8'))
+          cur = json.loads((root / 'curriculum.json').read_text(encoding='utf-8'))
+          assert len(cur['tracks']) >= 5
+          assert sum(len(t['lessons']) for t in cur['tracks']) >= 20
+          print('learn json ok', len(cur['tracks']), 'tracks')
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: lab-cases

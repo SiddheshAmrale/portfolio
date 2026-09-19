@@ -15,7 +15,9 @@ const Skills: React.FC = () => {
         { name: "LangChain", icon: <FaRobot size={24} /> },
         { name: "Hugging Face", icon: <FaBrain size={24} /> },
         { name: "Azure OpenAI", icon: <SiOpenai size={24} /> },
-        { name: "Databricks", icon: <FaCloud size={24} /> }
+        { name: "Databricks", icon: <FaCloud size={24} /> },
+        { name: "DuckDB", icon: <FaCloud size={24} /> },
+        { name: "Parquet", icon: <FaCloud size={24} /> }
       ]
     },
     {
