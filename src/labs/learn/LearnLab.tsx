@@ -35,6 +35,7 @@ const LearnLab: React.FC = function () {
   const research = usePilotJson<{ sources: { company: string; role?: string; product?: string; theme?: string; url: string; keywords: string[] }[]; portfolio_mapping: Record<string, string[]> }>('/learn/research.json');
   const scripts = usePilotJson<{ scripts: { company: string; talk_track: string }[] }>('/learn/interview-scripts.json');
   const glossary = usePilotJson<{ cards: { term: string; def: string; track: string }[] }>('/learn/glossary.json');
+  const nearMisses = usePilotJson<{ items: { area: string; near_miss: string; lesson: string }[] }>('/learn/near-misses.json');
   const [trackId, setTrackId] = useState('credo-pilot');
   const [lessonIdx, setLessonIdx] = useState(0);
   const [done, setDone] = useState<Record<string, boolean>>(function () {
@@ -75,6 +76,7 @@ const LearnLab: React.FC = function () {
         { id: 'map', label: 'Track map' },
         { id: 'keywords', label: 'Keywords' },
         { id: 'glossary', label: 'Glossary' },
+        { id: 'limits', label: 'Near-misses' },
         { id: 'research', label: 'Job research' },
         { id: 'scripts', label: 'Talk tracks' },
         { id: 'scorecard', label: 'Scorecard' }
@@ -218,6 +220,26 @@ const LearnLab: React.FC = function () {
               </ul>
             ) : (
               <p className="text-sm text-white/45">Loading glossary…</p>
+            )}
+          </Panel>
+        ) : null}
+
+        {view === 'limits' ? (
+          <Panel title="Honest near-misses (say these first)">
+            {nearMisses.data ? (
+              <ul className="space-y-4">
+                {nearMisses.data.items.map(function (item) {
+                  return (
+                    <li key={item.area} className="border-b border-white/5 pb-3">
+                      <div className="text-pink-300 font-semibold">{item.area}</div>
+                      <p className="text-sm text-white/70 mt-1">{item.near_miss}</p>
+                      <p className="text-xs text-amber-200/70 mt-1">Lesson: {item.lesson}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="text-sm text-white/45">Loading near-misses…</p>
             )}
           </Panel>
         ) : null}

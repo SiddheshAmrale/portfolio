@@ -1,0 +1,32 @@
+{
+  "title": "Honest near-misses & limits",
+  "updated": "2026-09-18",
+  "purpose": "Elite portfolios state failure modes. Use these in interviews before claiming perfection.",
+  "items": [
+    {
+      "area": "PILOT live Linux",
+      "near_miss": "accuracy_when_diagnosed ≈ 78% on confirmed impairments; mixed loss+cpu often returns insufficient_evidence by design.",
+      "lesson": "Withholding is better than a confident wrong network attribution."
+    },
+    {
+      "area": "Same-host TCP",
+      "near_miss": "Early CI showed delay injectors with unchanged RTT because localhost bypassed veth/netem.",
+      "lesson": "Client and server must be in separate netns so packets traverse the impaired path."
+    },
+    {
+      "area": "Forge / Databricks",
+      "near_miss": "DuckDB+Parquet teaches medallion/CDC/SRM invariants without Spark, Unity Catalog, or Iceberg catalogs.",
+      "lesson": "Say 'teaching lakehouse' — not 'I ran Netflix ExP'."
+    },
+    {
+      "area": "Link / photonics",
+      "near_miss": "SNR/BER/eye/jitter/FEC/Link Health Score are pinned teaching curves, not BERT/DCA/PIC characterization.",
+      "lesson": "Vocabulary + category errors (netem≠BER) are the elite signal; claim silicon only if you have bench data."
+    },
+    {
+      "area": "SMR / Oklo",
+      "near_miss": "I&C integrity + physics-result store are didactic. Not NQA-1, SCADA, or real multiphysics kernels.",
+      "lesson": "Lead with missing≠zero and reproducibility identity — the invariants Oklo postings care about."
+    }
+  ]
+}

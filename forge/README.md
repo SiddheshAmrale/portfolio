@@ -15,10 +15,12 @@ python -m forge build-cases --out public/forge
 | Posting theme | Forge demonstration |
 |---|---|
 | Medallion / Delta Lake | Append-only bronze, cleansed silver, curated gold |
-| CDC / APPLY CHANGES | SCD2 dimensions with valid_from / valid_to |
+| CDC / AUTO CDC / SCD2 | SCD2 dimensions with valid_from / valid_to; out-of-order sequencing |
 | Late-arriving data | Watermark vs arrival; gold recomputes when late facts appear |
-| Data contracts | Schema + null + uniqueness + range expectations |
-| Netflix experiments | Allocation events → silver enrollment → gold metrics with health checks |
+| Schema evolution | Additive optional columns mid-stream without breaking contracts |
+| Data contracts | Schema + null + uniqueness + enum expectations → quarantine |
+| Netflix experiments | Allocation → silver enrollment → gold metrics |
+| Data health | Uniqueness, lag SLO, sample-ratio (SRM) gates before trusting lifts |
 | Observability | Pipeline run report: rows in/out, rejects, freshness lag |
 
 Software packet-loss analogies and optical BER are **out of scope** here — see the Link Integrity lab.
