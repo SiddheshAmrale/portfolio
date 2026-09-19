@@ -7,6 +7,7 @@
     {"term": "netem ≠ optical BER", "def": "tc/netem and TcpRetransSegs are L3/L4. Lane BER/SNR/eye are physical-layer. Keep them separate.", "track": "photonics-serdes"},
     {"term": "pre-FEC vs post-FEC BER", "def": "FEC coding gain lowers residual uncorrectables; it does not turn optical errors into TCP drops.", "track": "photonics-serdes"},
     {"term": "Link Health Score", "def": "Composite of SNR/BER/eye/jitter/flaps for triage. Teaching weights ≠ Credo product FOM.", "track": "photonics-serdes"},
+    {"term": "CTLE / Rx FFE", "def": "Equalization state visible in PILOT-style dashboards. Adapting taps during fade are context, not silicon claims.", "track": "photonics-serdes"},
     {"term": "medallion bronze/silver/gold", "def": "Raw append → cleansed/conformed (SCD2) → curated aggregates for consumers.", "track": "databricks-netflix"},
     {"term": "SCD2 as-of", "def": "Join facts to the dimension version valid at event_time, not is_current only.", "track": "databricks-netflix"},
     {"term": "AUTO CDC sequencing", "def": "Apply changes by change/sequence time, not feed arrival order.", "track": "databricks-netflix"},

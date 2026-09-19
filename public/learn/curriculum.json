@@ -111,6 +111,18 @@
             "pass": "You can separate jitter-rise from SNR-fade in one sentence."
           },
           "check": ["What evidence separates jitter_limited from signal_integrity_degrade?"]
+        },
+        {
+          "id": "eq-state",
+          "title": "Equalization state (CTLE / FFE)",
+          "must_know": "PILOT-style link health includes equalization context (CTLE, Rx FFE taps). Adapting EQ during a fade is visibility — not proof you measured silicon FOM.",
+          "why": "Credo Toucan + PILOT surfaces CTLE/VGA/Rx FFE and LTSSM alongside SNR/BER.",
+          "practice": {
+            "lab": "/labs/link",
+            "task": "On an SNR-fade lane, read Equalization state — CTLE rises and adapting=true.",
+            "pass": "You mention EQ state as supporting context after SNR/BER/eye."
+          },
+          "check": ["Name two EQ knobs PILOT/validation dashboards often show."]
         }
       ]
     },

@@ -1,0 +1,15 @@
+{
+  "title": "Recommended practice path (2–4 hours)",
+  "steps": [
+    {"n": 1, "track": "credo-pilot", "lesson": "obs-schema", "lab": "/labs/telemetry", "why": "Identity + missing≠zero is the foundation for every later lab."},
+    {"n": 2, "track": "credo-pilot", "lesson": "live-netns", "lab": "/labs/incident", "why": "Live Ubuntu evidence is the Credo PILOT differentiator."},
+    {"n": 3, "track": "photonics-serdes", "lesson": "counters-vs-snmp", "lab": "/labs/link", "why": "Kill the netem=BER category error before vocabulary."},
+    {"n": 4, "track": "photonics-serdes", "lesson": "snr-ber-eye", "lab": "/labs/link", "why": "SNR/BER/eye/health score/EQ state — Broadcom/Marvell talk track."},
+    {"n": 5, "track": "databricks-netflix", "lesson": "medallion", "lab": "/labs/forge", "why": "Bronze→Silver→Gold is on nearly every Databricks posting."},
+    {"n": 6, "track": "databricks-netflix", "lesson": "srm-lag", "lab": "/labs/forge", "why": "Netflix ExP data health: uniqueness + SRM + lag SLO."},
+    {"n": 7, "track": "oklo-smr", "lesson": "missing-null", "lab": "/labs/smr", "why": "Safety integrity before physics store."},
+    {"n": 8, "track": "oklo-smr", "lesson": "physics-store", "lab": "/labs/smr", "why": "Oklo software: physics-result identity + A/A reproducibility."},
+    {"n": 9, "track": "regression-aa", "lesson": "aa", "lab": "/labs/regression", "why": "Close with A/A discipline so you never fool yourself."},
+    {"n": 10, "track": "any", "lesson": "limits", "lab": "/learn", "why": "Read Near-misses + Scorecard before interviews."}
+  ]
+}

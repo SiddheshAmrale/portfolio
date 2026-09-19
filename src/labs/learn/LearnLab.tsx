@@ -36,6 +36,7 @@ const LearnLab: React.FC = function () {
   const scripts = usePilotJson<{ scripts: { company: string; talk_track: string }[] }>('/learn/interview-scripts.json');
   const glossary = usePilotJson<{ cards: { term: string; def: string; track: string }[] }>('/learn/glossary.json');
   const nearMisses = usePilotJson<{ items: { area: string; near_miss: string; lesson: string }[] }>('/learn/near-misses.json');
+  const practicePath = usePilotJson<{ steps: { n: number; track: string; lesson: string; lab: string; why: string }[] }>('/learn/practice-path.json');
   const [trackId, setTrackId] = useState('credo-pilot');
   const [lessonIdx, setLessonIdx] = useState(0);
   const [done, setDone] = useState<Record<string, boolean>>(function () {
@@ -73,6 +74,7 @@ const LearnLab: React.FC = function () {
       accent={ACCENT}
       views={[
         { id: 'lesson', label: 'Lesson' },
+        { id: 'path', label: 'Practice path' },
         { id: 'map', label: 'Track map' },
         { id: 'keywords', label: 'Keywords' },
         { id: 'glossary', label: 'Glossary' },
@@ -189,6 +191,29 @@ const LearnLab: React.FC = function () {
                 return <li key={l.id}>{l.title} → <code className="text-white/50">{l.practice.lab}</code></li>;
               })}
             </ol>
+          </Panel>
+        ) : null}
+
+        {view === 'path' ? (
+          <Panel title="Recommended practice path (2–4 hours)">
+            {practicePath.data ? (
+              <ol className="space-y-3">
+                {practicePath.data.steps.map(function (s) {
+                  return (
+                    <li key={s.n} className="border-b border-white/5 pb-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-pink-300 text-xs">#{s.n}</span>
+                        <Link to={s.lab} className="text-sm text-white hover:underline">{s.lab}</Link>
+                        <span className="text-[10px] text-white/40 font-mono">{s.track}/{s.lesson}</span>
+                      </div>
+                      <p className="text-xs text-white/55 mt-1">{s.why}</p>
+                    </li>
+                  );
+                })}
+              </ol>
+            ) : (
+              <p className="text-sm text-white/45">Loading practice path…</p>
+            )}
           </Panel>
         ) : null}
 

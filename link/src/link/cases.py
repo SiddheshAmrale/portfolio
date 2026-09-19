@@ -34,6 +34,7 @@ def _pack(rows, title: str, question: str) -> dict[str, Any]:
                 "lane": r.lane, "t_ms": r.t_ms, "snr_db": r.snr_db, "ber": r.ber,
                 "eye_open_ui": r.eye_open_ui, "fec_uncorrectable": r.fec_uncorrectable,
                 "flaps": r.flaps, "domain": r.domain, "jitter_ui": r.jitter_ui,
+                "ctle_db": r.ctle_db, "ffe_tap1": r.ffe_tap1,
             }
             for r in rows
         ],

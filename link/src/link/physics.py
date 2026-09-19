@@ -22,6 +22,27 @@ class LaneSample:
     domain: str  # electrical | optical
     impairment: str
     jitter_ui: float = 0.05
+    ctle_db: float = 6.0
+    ffe_tap1: float = 0.15
+
+
+def equalization_state(rows: list[LaneSample]) -> dict[str, Any]:
+    """Teaching EQ snapshot (Credo Toucan/PILOT CTLE/FFE theme). Not silicon adaptation."""
+    if not rows:
+        return {"ctle_db": None, "ffe_tap1": None, "adapting": False}
+    tail = rows[-4:]
+    mean_ctle = sum(r.ctle_db for r in tail) / len(tail)
+    mean_ffe = sum(r.ffe_tap1 for r in tail) / len(tail)
+    head_ctle = sum(r.ctle_db for r in rows[:4]) / min(4, len(rows))
+    return {
+        "ctle_db": round(mean_ctle, 2),
+        "ffe_tap1": round(mean_ffe, 3),
+        "adapting": abs(mean_ctle - head_ctle) > 1.5,
+        "notes": (
+            "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. "
+            "Teaching values track impairment; not real adaptive SerDes taps."
+        ),
+    }
 
 
 def ber_from_snr_db(snr_db: float, pam4: bool = True) -> float:
@@ -95,15 +116,26 @@ def simulate_lane(
         eye = eye_from_snr(snr)
         fec_u = fec_residual(ber, coding_gain_db=6.5 if domain == "optical" else 5.5)
         jitter = float(min(max(0.35 - eye * 0.28 + abs(noise) * 0.02, 0.02), 0.45))
+        ctle = 6.0 + abs(noise) * 0.2
+        ffe = 0.15 + abs(noise) * 0.01
         if impairment == "jitter_dominated" and i >= 8:
             jitter = float(min(0.18 + 0.025 * (i - 8) + abs(noise) * 0.01, 0.48))
             eye = float(max(0.42 - 0.04 * (i - 8) - abs(noise) * 0.02, 0.08))
             ber = ber_from_snr_db(snr - 4.0, pam4=True)
             fec_u = fec_residual(ber, coding_gain_db=5.5)
+            ctle = 9.0 + 0.3 * (i - 8)
+            ffe = 0.28 + 0.01 * (i - 8)
+        elif impairment in ("snr_fade", "optical_oma_drop") and i >= 8:
+            ctle = 8.0 + 0.25 * (i - 8)
+            ffe = 0.22 + 0.008 * (i - 8)
+        elif impairment == "flap" and i in (9, 14, 18):
+            ctle = 12.0
+            ffe = 0.4
         rows.append(LaneSample(
             lane=lane, t_ms=1_700_000 + i * 1000, snr_db=snr, ber=ber,
             eye_open_ui=eye, fec_uncorrectable=fec_u, flaps=flaps,
             domain=domain, impairment=impairment, jitter_ui=jitter,
+            ctle_db=float(ctle), ffe_tap1=float(ffe),
         ))
     return rows
 
@@ -183,6 +215,7 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
         label = "insufficient_evidence"
         notes = "Degraded but rules do not separate flap vs SI."
     health = link_health_score(rows)
+    eq = equalization_state(rows)
     return {
         "label": label,
         "notes": notes,
@@ -194,6 +227,7 @@ def diagnose_lane(rows: list[LaneSample]) -> dict[str, Any]:
         "flaps": flaps,
         "domain": rows[-1].domain,
         "link_health": health,
+        "equalization": eq,
         "impairment_truth": rows[-1].impairment,  # evaluation only
     }
 

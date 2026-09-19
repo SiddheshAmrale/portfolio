@@ -107,6 +107,16 @@ const LinkLab: React.FC = function () {
                   <p className="text-xs text-white/45 mt-2">{selected.fec_histogram.notes}</p>
                 </Panel>
               ) : null}
+              {(selected.diagnosis as { equalization?: { ctle_db?: number; ffe_tap1?: number; adapting?: boolean; notes?: string } }).equalization ? (
+                <Panel title="Equalization state (CTLE / FFE)">
+                  <p className="text-sm font-mono text-white/70">
+                    CTLE {String((selected.diagnosis as { equalization: { ctle_db: number } }).equalization.ctle_db)} dB ·
+                    FFE tap1 {String((selected.diagnosis as { equalization: { ffe_tap1: number } }).equalization.ffe_tap1)} ·
+                    {(selected.diagnosis as { equalization: { adapting: boolean } }).equalization.adapting ? ' adapting' : ' steady'}
+                  </p>
+                  <p className="text-xs text-white/45 mt-2">{(selected.diagnosis as { equalization: { notes: string } }).equalization.notes}</p>
+                </Panel>
+              ) : null}
             </div>
             <Panel title="Question">
               <p className="text-sm text-white/80">{selected.question}</p>

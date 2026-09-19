@@ -56,6 +56,12 @@ def test_fec_histogram_counts():
     assert sum(hist["counts"]) == len(rows)
 
 
+def test_equalization_adapts_on_fade():
+    d = diagnose_lane(simulate_lane(1, impairment="snr_fade"))
+    assert d["equalization"]["ctle_db"] is not None
+    assert d["equalization"]["adapting"] is True
+
+
 def test_build(tmp_path):
     out = build(tmp_path)
     assert (out / "cases.json").exists()

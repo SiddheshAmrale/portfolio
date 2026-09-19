@@ -33,6 +33,12 @@
           "flap": 1.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 6.03,
+        "ffe_tap1": 0.151,
+        "adapting": false,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -64,7 +70,9 @@
         "fec_uncorrectable": 2.6767055990769245e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12679199999999993
+        "jitter_ui": 0.12679199999999993,
+        "ctle_db": 6.0264,
+        "ffe_tap1": 0.15131999999999998
       },
       {
         "lane": 0,
@@ -75,7 +83,9 @@
         "fec_uncorrectable": 2.5329364255706465e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12696839999999995
+        "jitter_ui": 0.12696839999999995,
+        "ctle_db": 6.03228,
+        "ffe_tap1": 0.151614
       },
       {
         "lane": 0,
@@ -86,7 +96,9 @@
         "fec_uncorrectable": 3.737023698402433e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12759119999999996
+        "jitter_ui": 0.12759119999999996,
+        "ctle_db": 6.00936,
+        "ffe_tap1": 0.150468
       },
       {
         "lane": 0,
@@ -97,7 +109,9 @@
         "fec_uncorrectable": 4.080274564527467e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12920279999999998
+        "jitter_ui": 0.12920279999999998,
+        "ctle_db": 6.01884,
+        "ffe_tap1": 0.150942
       },
       {
         "lane": 0,
@@ -108,7 +122,9 @@
         "fec_uncorrectable": 3.1890265105223026e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12623039999999996
+        "jitter_ui": 0.12623039999999996,
+        "ctle_db": 6.00768,
+        "ffe_tap1": 0.150384
       },
       {
         "lane": 0,
@@ -119,7 +135,9 @@
         "fec_uncorrectable": 4.125841690993837e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12940679999999996
+        "jitter_ui": 0.12940679999999996,
+        "ctle_db": 6.02004,
+        "ffe_tap1": 0.151002
       },
       {
         "lane": 0,
@@ -130,7 +148,9 @@
         "fec_uncorrectable": 4.03071333362377e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12897839999999994
+        "jitter_ui": 0.12897839999999994,
+        "ctle_db": 6.01752,
+        "ffe_tap1": 0.15087599999999998
       },
       {
         "lane": 0,
@@ -141,7 +161,9 @@
         "fec_uncorrectable": 4.807249701478239e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13222199999999995
+        "jitter_ui": 0.13222199999999995,
+        "ctle_db": 6.0366,
+        "ffe_tap1": 0.15183
       },
       {
         "lane": 0,
@@ -152,7 +174,9 @@
         "fec_uncorrectable": 4.7807625966405965e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13211999999999993
+        "jitter_ui": 0.13211999999999993,
+        "ctle_db": 6.036,
+        "ffe_tap1": 0.1518
       },
       {
         "lane": 0,
@@ -163,7 +187,9 @@
         "fec_uncorrectable": 3.0871016258469634e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12633479999999994
+        "jitter_ui": 0.12633479999999994,
+        "ctle_db": 6.01116,
+        "ffe_tap1": 0.150558
       },
       {
         "lane": 0,
@@ -174,7 +200,9 @@
         "fec_uncorrectable": 5.052110754217022e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13313999999999998
+        "jitter_ui": 0.13313999999999998,
+        "ctle_db": 6.042,
+        "ffe_tap1": 0.15209999999999999
       },
       {
         "lane": 0,
@@ -185,7 +213,9 @@
         "fec_uncorrectable": 4.3805431686202935e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13050839999999994
+        "jitter_ui": 0.13050839999999994,
+        "ctle_db": 6.02652,
+        "ffe_tap1": 0.151326
       },
       {
         "lane": 0,
@@ -196,7 +226,9 @@
         "fec_uncorrectable": 3.1323958142430037e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12628799999999998
+        "jitter_ui": 0.12628799999999998,
+        "ctle_db": 6.0096,
+        "ffe_tap1": 0.15048
       },
       {
         "lane": 0,
@@ -207,7 +239,9 @@
         "fec_uncorrectable": 2.4321070961471483e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12709799999999993
+        "jitter_ui": 0.12709799999999993,
+        "ctle_db": 6.0366,
+        "ffe_tap1": 0.15183
       },
       {
         "lane": 0,
@@ -218,7 +252,9 @@
         "fec_uncorrectable": 3.0017735559619853e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12642479999999998
+        "jitter_ui": 0.12642479999999998,
+        "ctle_db": 6.01416,
+        "ffe_tap1": 0.15070799999999998
       },
       {
         "lane": 0,
@@ -229,7 +265,9 @@
         "fec_uncorrectable": 5.683768714903012e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13532279999999997
+        "jitter_ui": 0.13532279999999997,
+        "ctle_db": 6.05484,
+        "ffe_tap1": 0.152742
       },
       {
         "lane": 0,
@@ -240,7 +278,9 @@
         "fec_uncorrectable": 2.0780553794484838e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12759839999999995
+        "jitter_ui": 0.12759839999999995,
+        "ctle_db": 6.05328,
+        "ffe_tap1": 0.152664
       },
       {
         "lane": 0,
@@ -251,7 +291,9 @@
         "fec_uncorrectable": 4.65043108831993e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13160999999999995
+        "jitter_ui": 0.13160999999999995,
+        "ctle_db": 6.033,
+        "ffe_tap1": 0.15165
       },
       {
         "lane": 0,
@@ -262,7 +304,9 @@
         "fec_uncorrectable": 2.008477334283864e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12770639999999994
+        "jitter_ui": 0.12770639999999994,
+        "ctle_db": 6.05688,
+        "ffe_tap1": 0.152844
       },
       {
         "lane": 0,
@@ -273,7 +317,9 @@
         "fec_uncorrectable": 3.066411166213906e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12635639999999995
+        "jitter_ui": 0.12635639999999995,
+        "ctle_db": 6.01188,
+        "ffe_tap1": 0.150594
       },
       {
         "lane": 0,
@@ -284,7 +330,9 @@
         "fec_uncorrectable": 3.5820402568874104e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12681599999999998
+        "jitter_ui": 0.12681599999999998,
+        "ctle_db": 6.0048,
+        "ffe_tap1": 0.15023999999999998
       },
       {
         "lane": 0,
@@ -295,7 +343,9 @@
         "fec_uncorrectable": 4.839221682304511e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13234439999999995
+        "jitter_ui": 0.13234439999999995,
+        "ctle_db": 6.03732,
+        "ffe_tap1": 0.151866
       },
       {
         "lane": 0,
@@ -306,7 +356,9 @@
         "fec_uncorrectable": 3.2831722011157465e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12613679999999997
+        "jitter_ui": 0.12613679999999997,
+        "ctle_db": 6.00456,
+        "ffe_tap1": 0.150228
       },
       {
         "lane": 0,
@@ -317,7 +369,9 @@
         "fec_uncorrectable": 5.887072766370338e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13597559999999995
+        "jitter_ui": 0.13597559999999995,
+        "ctle_db": 6.05868,
+        "ffe_tap1": 0.152934
       }
     ],
     "snr": [
@@ -747,6 +801,12 @@
           "flap": 1.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 11.38,
+        "ffe_tap1": 0.328,
+        "adapting": true,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -778,7 +838,9 @@
         "fec_uncorrectable": 4.125841690993837e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12940679999999996
+        "jitter_ui": 0.12940679999999996,
+        "ctle_db": 6.02004,
+        "ffe_tap1": 0.151002
       },
       {
         "lane": 1,
@@ -789,7 +851,9 @@
         "fec_uncorrectable": 2.092248636963842e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12757679999999996
+        "jitter_ui": 0.12757679999999996,
+        "ctle_db": 6.05256,
+        "ffe_tap1": 0.15262799999999999
       },
       {
         "lane": 1,
@@ -800,7 +864,9 @@
         "fec_uncorrectable": 3.1641296311278766e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12625559999999994
+        "jitter_ui": 0.12625559999999994,
+        "ctle_db": 6.00852,
+        "ffe_tap1": 0.150426
       },
       {
         "lane": 1,
@@ -811,7 +877,9 @@
         "fec_uncorrectable": 2.9285779618246544e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12650399999999995
+        "jitter_ui": 0.12650399999999995,
+        "ctle_db": 6.0168,
+        "ffe_tap1": 0.15084
       },
       {
         "lane": 1,
@@ -822,7 +890,9 @@
         "fec_uncorrectable": 3.3461782059702583e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12607559999999998
+        "jitter_ui": 0.12607559999999998,
+        "ctle_db": 6.00252,
+        "ffe_tap1": 0.15012599999999998
       },
       {
         "lane": 1,
@@ -833,7 +903,9 @@
         "fec_uncorrectable": 4.463829712809076e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13085519999999998
+        "jitter_ui": 0.13085519999999998,
+        "ctle_db": 6.02856,
+        "ffe_tap1": 0.151428
       },
       {
         "lane": 1,
@@ -844,7 +916,9 @@
         "fec_uncorrectable": 5.415281253615305e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13442519999999997
+        "jitter_ui": 0.13442519999999997,
+        "ctle_db": 6.04956,
+        "ffe_tap1": 0.152478
       },
       {
         "lane": 1,
@@ -855,7 +929,9 @@
         "fec_uncorrectable": 2.4569435897543154e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12706559999999995
+        "jitter_ui": 0.12706559999999995,
+        "ctle_db": 6.03552,
+        "ffe_tap1": 0.151776
       },
       {
         "lane": 1,
@@ -866,7 +942,9 @@
         "fec_uncorrectable": 9.381339719565563e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.2247812
+        "jitter_ui": 0.2247812,
+        "ctle_db": 8.0,
+        "ffe_tap1": 0.22
       },
       {
         "lane": 1,
@@ -877,7 +955,9 @@
         "fec_uncorrectable": 0.00013203540524318178,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.22711999999999996
+        "jitter_ui": 0.22711999999999996,
+        "ctle_db": 8.25,
+        "ffe_tap1": 0.228
       },
       {
         "lane": 1,
@@ -888,7 +968,9 @@
         "fec_uncorrectable": 0.00017891018164490304,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.23376919999999995
+        "jitter_ui": 0.23376919999999995,
+        "ctle_db": 8.5,
+        "ffe_tap1": 0.236
       },
       {
         "lane": 1,
@@ -899,7 +981,9 @@
         "fec_uncorrectable": 0.00013818109916953955,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.23166799999999993
+        "jitter_ui": 0.23166799999999993,
+        "ctle_db": 8.75,
+        "ffe_tap1": 0.244
       },
       {
         "lane": 1,
@@ -910,7 +994,9 @@
         "fec_uncorrectable": 0.00021093209557609106,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.23311400000000002
+        "jitter_ui": 0.23311400000000002,
+        "ctle_db": 9.0,
+        "ffe_tap1": 0.252
       },
       {
         "lane": 1,
@@ -921,7 +1007,9 @@
         "fec_uncorrectable": 0.00022018516346668379,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.23502559999999997
+        "jitter_ui": 0.23502559999999997,
+        "ctle_db": 9.25,
+        "ffe_tap1": 0.26
       },
       {
         "lane": 1,
@@ -932,7 +1020,9 @@
         "fec_uncorrectable": 0.0003115898391741211,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.24012919999999996
+        "jitter_ui": 0.24012919999999996,
+        "ctle_db": 9.5,
+        "ffe_tap1": 0.268
       },
       {
         "lane": 1,
@@ -943,7 +1033,9 @@
         "fec_uncorrectable": 0.0002893563340717903,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.23941999999999997
+        "jitter_ui": 0.23941999999999997,
+        "ctle_db": 9.75,
+        "ffe_tap1": 0.276
       },
       {
         "lane": 1,
@@ -954,7 +1046,9 @@
         "fec_uncorrectable": 0.0004491609992055927,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.24681799999999993
+        "jitter_ui": 0.24681799999999993,
+        "ctle_db": 10.0,
+        "ffe_tap1": 0.28400000000000003
       },
       {
         "lane": 1,
@@ -965,7 +1059,9 @@
         "fec_uncorrectable": 0.00034504148163197983,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.24436159999999996
+        "jitter_ui": 0.24436159999999996,
+        "ctle_db": 10.25,
+        "ffe_tap1": 0.29200000000000004
       },
       {
         "lane": 1,
@@ -976,7 +1072,9 @@
         "fec_uncorrectable": 0.0005891135359419225,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.25056919999999994
+        "jitter_ui": 0.25056919999999994,
+        "ctle_db": 10.5,
+        "ffe_tap1": 0.3
       },
       {
         "lane": 1,
@@ -987,7 +1085,9 @@
         "fec_uncorrectable": 0.0007205614491677835,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.2550152
+        "jitter_ui": 0.2550152,
+        "ctle_db": 10.75,
+        "ffe_tap1": 0.308
       },
       {
         "lane": 1,
@@ -998,7 +1098,9 @@
         "fec_uncorrectable": 0.000838602966456092,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.25774759999999997
+        "jitter_ui": 0.25774759999999997,
+        "ctle_db": 11.0,
+        "ffe_tap1": 0.316
       },
       {
         "lane": 1,
@@ -1009,7 +1111,9 @@
         "fec_uncorrectable": 0.0009711092695514287,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.26039840000000003
+        "jitter_ui": 0.26039840000000003,
+        "ctle_db": 11.25,
+        "ffe_tap1": 0.324
       },
       {
         "lane": 1,
@@ -1020,7 +1124,9 @@
         "fec_uncorrectable": 0.0007587294628947064,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.25436119999999995
+        "jitter_ui": 0.25436119999999995,
+        "ctle_db": 11.5,
+        "ffe_tap1": 0.332
       },
       {
         "lane": 1,
@@ -1031,7 +1137,9 @@
         "fec_uncorrectable": 0.0009184005400431087,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.2560759999999999
+        "jitter_ui": 0.2560759999999999,
+        "ctle_db": 11.75,
+        "ffe_tap1": 0.33999999999999997
       }
     ],
     "snr": [
@@ -1461,6 +1569,12 @@
           "flap": 1.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 6.03,
+        "ffe_tap1": 0.151,
+        "adapting": false,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -1492,7 +1606,9 @@
         "fec_uncorrectable": 3.083643851769096e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12633839999999996
+        "jitter_ui": 0.12633839999999996,
+        "ctle_db": 6.01128,
+        "ffe_tap1": 0.150564
       },
       {
         "lane": 2,
@@ -1503,7 +1619,9 @@
         "fec_uncorrectable": 2.573231646587007e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12691799999999998
+        "jitter_ui": 0.12691799999999998,
+        "ctle_db": 6.0306,
+        "ffe_tap1": 0.15153
       },
       {
         "lane": 2,
@@ -1514,7 +1632,9 @@
         "fec_uncorrectable": 5.50540269317838e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13473119999999994
+        "jitter_ui": 0.13473119999999994,
+        "ctle_db": 6.05136,
+        "ffe_tap1": 0.15256799999999998
       },
       {
         "lane": 2,
@@ -1525,7 +1645,9 @@
         "fec_uncorrectable": 4.3322556940711275e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13030439999999996
+        "jitter_ui": 0.13030439999999996,
+        "ctle_db": 6.02532,
+        "ffe_tap1": 0.15126599999999998
       },
       {
         "lane": 2,
@@ -1536,7 +1658,9 @@
         "fec_uncorrectable": 5.187593307157389e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13362959999999993
+        "jitter_ui": 0.13362959999999993,
+        "ctle_db": 6.04488,
+        "ffe_tap1": 0.152244
       },
       {
         "lane": 2,
@@ -1547,7 +1671,9 @@
         "fec_uncorrectable": 3.2648606933439225e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12615479999999993
+        "jitter_ui": 0.12615479999999993,
+        "ctle_db": 6.00516,
+        "ffe_tap1": 0.150258
       },
       {
         "lane": 2,
@@ -1558,7 +1684,9 @@
         "fec_uncorrectable": 4.930930235543934e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13269119999999995
+        "jitter_ui": 0.13269119999999995,
+        "ctle_db": 6.03936,
+        "ffe_tap1": 0.151968
       },
       {
         "lane": 2,
@@ -1569,7 +1697,9 @@
         "fec_uncorrectable": 3.8425058105668424e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12810119999999997
+        "jitter_ui": 0.12810119999999997,
+        "ctle_db": 6.01236,
+        "ffe_tap1": 0.150618
       },
       {
         "lane": 2,
@@ -1580,7 +1710,9 @@
         "fec_uncorrectable": 4.604358751376517e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13142639999999997
+        "jitter_ui": 0.13142639999999997,
+        "ctle_db": 6.03192,
+        "ffe_tap1": 0.15159599999999998
       },
       {
         "lane": 2,
@@ -1591,7 +1723,9 @@
         "fec_uncorrectable": 4.246633258589161e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12993719999999997
+        "jitter_ui": 0.12993719999999997,
+        "ctle_db": 6.02316,
+        "ffe_tap1": 0.151158
       },
       {
         "lane": 2,
@@ -1602,7 +1736,9 @@
         "fec_uncorrectable": 0.007098888822989324,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.2945616
+        "jitter_ui": 0.2945616,
+        "ctle_db": 6.01872,
+        "ffe_tap1": 0.150936
       },
       {
         "lane": 2,
@@ -1613,7 +1749,9 @@
         "fec_uncorrectable": 0.00665100073777562,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.2951988
+        "jitter_ui": 0.2951988,
+        "ctle_db": 6.03996,
+        "ffe_tap1": 0.151998
       },
       {
         "lane": 2,
@@ -1624,7 +1762,9 @@
         "fec_uncorrectable": 0.007925499046651555,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.29706
+        "jitter_ui": 0.29706,
+        "ctle_db": 6.018,
+        "ffe_tap1": 0.1509
       },
       {
         "lane": 2,
@@ -1635,7 +1775,9 @@
         "fec_uncorrectable": 5.136380458432229e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13344599999999998
+        "jitter_ui": 0.13344599999999998,
+        "ctle_db": 6.0438,
+        "ffe_tap1": 0.15219
       },
       {
         "lane": 2,
@@ -1646,7 +1788,9 @@
         "fec_uncorrectable": 2.7873372745325565e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12666239999999998
+        "jitter_ui": 0.12666239999999998,
+        "ctle_db": 6.02208,
+        "ffe_tap1": 0.151104
       },
       {
         "lane": 2,
@@ -1657,7 +1801,9 @@
         "fec_uncorrectable": 4.017298080818404e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12891719999999995
+        "jitter_ui": 0.12891719999999995,
+        "ctle_db": 6.01716,
+        "ffe_tap1": 0.150858
       },
       {
         "lane": 2,
@@ -1668,7 +1814,9 @@
         "fec_uncorrectable": 3.5581451123544514e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12669359999999993
+        "jitter_ui": 0.12669359999999993,
+        "ctle_db": 6.00408,
+        "ffe_tap1": 0.150204
       },
       {
         "lane": 2,
@@ -1679,7 +1827,9 @@
         "fec_uncorrectable": 3.1079272594538497e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12631319999999996
+        "jitter_ui": 0.12631319999999996,
+        "ctle_db": 6.01044,
+        "ffe_tap1": 0.150522
       },
       {
         "lane": 2,
@@ -1690,7 +1840,9 @@
         "fec_uncorrectable": 3.5029883977862666e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12640799999999994
+        "jitter_ui": 0.12640799999999994,
+        "ctle_db": 6.0024,
+        "ffe_tap1": 0.15012
       },
       {
         "lane": 2,
@@ -1701,7 +1853,9 @@
         "fec_uncorrectable": 4.409765230427964e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13063079999999994
+        "jitter_ui": 0.13063079999999994,
+        "ctle_db": 6.02724,
+        "ffe_tap1": 0.151362
       },
       {
         "lane": 2,
@@ -1712,7 +1866,9 @@
         "fec_uncorrectable": 2.7314789227507125e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12672719999999993
+        "jitter_ui": 0.12672719999999993,
+        "ctle_db": 6.02424,
+        "ffe_tap1": 0.15121199999999999
       },
       {
         "lane": 2,
@@ -1723,7 +1879,9 @@
         "fec_uncorrectable": 3.178333276673889e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.1262412
+        "jitter_ui": 0.1262412,
+        "ctle_db": 6.00804,
+        "ffe_tap1": 0.150402
       },
       {
         "lane": 2,
@@ -1734,7 +1892,9 @@
         "fec_uncorrectable": 1.9588940636345033e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.1277856
+        "jitter_ui": 0.1277856,
+        "ctle_db": 6.05952,
+        "ffe_tap1": 0.152976
       },
       {
         "lane": 2,
@@ -1745,7 +1905,9 @@
         "fec_uncorrectable": 4.2372213747351144e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12989639999999994
+        "jitter_ui": 0.12989639999999994,
+        "ctle_db": 6.02292,
+        "ffe_tap1": 0.151146
       }
     ],
     "snr": [
@@ -2175,6 +2337,12 @@
           "flap": 0.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 6.03,
+        "ffe_tap1": 0.152,
+        "adapting": false,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -2206,7 +2374,9 @@
         "fec_uncorrectable": 4.7439177577947715e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13197719999999993
+        "jitter_ui": 0.13197719999999993,
+        "ctle_db": 6.03516,
+        "ffe_tap1": 0.151758
       },
       {
         "lane": 3,
@@ -2217,7 +2387,9 @@
         "fec_uncorrectable": 2.1257325740386394e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12752639999999996
+        "jitter_ui": 0.12752639999999996,
+        "ctle_db": 6.05088,
+        "ffe_tap1": 0.15254399999999999
       },
       {
         "lane": 3,
@@ -2228,7 +2400,9 @@
         "fec_uncorrectable": 4.6710505788089336e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13169159999999996
+        "jitter_ui": 0.13169159999999996,
+        "ctle_db": 6.03348,
+        "ffe_tap1": 0.151674
       },
       {
         "lane": 3,
@@ -2239,7 +2413,9 @@
         "fec_uncorrectable": 3.111411400073202e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12630959999999994
+        "jitter_ui": 0.12630959999999994,
+        "ctle_db": 6.01032,
+        "ffe_tap1": 0.15051599999999998
       },
       {
         "lane": 3,
@@ -2250,7 +2426,9 @@
         "fec_uncorrectable": 2.6437584126688715e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12683159999999993
+        "jitter_ui": 0.12683159999999993,
+        "ctle_db": 6.02772,
+        "ffe_tap1": 0.151386
       },
       {
         "lane": 3,
@@ -2261,7 +2439,9 @@
         "fec_uncorrectable": 2.3804707926342565e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12716639999999993
+        "jitter_ui": 0.12716639999999993,
+        "ctle_db": 6.03888,
+        "ffe_tap1": 0.151944
       },
       {
         "lane": 3,
@@ -2272,7 +2452,9 @@
         "fec_uncorrectable": 2.172006807038748e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.127458
+        "jitter_ui": 0.127458,
+        "ctle_db": 6.0486,
+        "ffe_tap1": 0.15242999999999998
       },
       {
         "lane": 3,
@@ -2283,7 +2465,9 @@
         "fec_uncorrectable": 2.9089174540207206e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.1265256
+        "jitter_ui": 0.1265256,
+        "ctle_db": 6.01752,
+        "ffe_tap1": 0.15087599999999998
       },
       {
         "lane": 3,
@@ -2294,7 +2478,9 @@
         "fec_uncorrectable": 2.584858176516189e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12690359999999992
+        "jitter_ui": 0.12690359999999992,
+        "ctle_db": 6.03012,
+        "ffe_tap1": 0.151506
       },
       {
         "lane": 3,
@@ -2305,7 +2491,9 @@
         "fec_uncorrectable": 0.03971641173621407,
         "flaps": 1,
         "domain": "electrical",
-        "jitter_ui": 0.35403199999999996
+        "jitter_ui": 0.35403199999999996,
+        "ctle_db": 12.0,
+        "ffe_tap1": 0.4
       },
       {
         "lane": 3,
@@ -2316,7 +2504,9 @@
         "fec_uncorrectable": 2.6378103735986958e-09,
         "flaps": 1,
         "domain": "electrical",
-        "jitter_ui": 0.12683879999999992
+        "jitter_ui": 0.12683879999999992,
+        "ctle_db": 6.02796,
+        "ffe_tap1": 0.151398
       },
       {
         "lane": 3,
@@ -2327,7 +2517,9 @@
         "fec_uncorrectable": 3.687393328683713e-09,
         "flaps": 1,
         "domain": "electrical",
-        "jitter_ui": 0.12734639999999997
+        "jitter_ui": 0.12734639999999997,
+        "ctle_db": 6.00792,
+        "ffe_tap1": 0.150396
       },
       {
         "lane": 3,
@@ -2338,7 +2530,9 @@
         "fec_uncorrectable": 3.1079272594538497e-09,
         "flaps": 1,
         "domain": "electrical",
-        "jitter_ui": 0.12631319999999996
+        "jitter_ui": 0.12631319999999996,
+        "ctle_db": 6.01044,
+        "ffe_tap1": 0.150522
       },
       {
         "lane": 3,
@@ -2349,7 +2543,9 @@
         "fec_uncorrectable": 2.9816372601236993e-09,
         "flaps": 1,
         "domain": "electrical",
-        "jitter_ui": 0.12644639999999996
+        "jitter_ui": 0.12644639999999996,
+        "ctle_db": 6.01488,
+        "ffe_tap1": 0.150744
       },
       {
         "lane": 3,
@@ -2360,7 +2556,9 @@
         "fec_uncorrectable": 0.03971641173621407,
         "flaps": 2,
         "domain": "electrical",
-        "jitter_ui": 0.355508
+        "jitter_ui": 0.355508,
+        "ctle_db": 12.0,
+        "ffe_tap1": 0.4
       },
       {
         "lane": 3,
@@ -2371,7 +2569,9 @@
         "fec_uncorrectable": 5.867718150920773e-09,
         "flaps": 2,
         "domain": "electrical",
-        "jitter_ui": 0.13591439999999996
+        "jitter_ui": 0.13591439999999996,
+        "ctle_db": 6.05832,
+        "ffe_tap1": 0.152916
       },
       {
         "lane": 3,
@@ -2382,7 +2582,9 @@
         "fec_uncorrectable": 2.6556934947939203e-09,
         "flaps": 2,
         "domain": "electrical",
-        "jitter_ui": 0.1268172
+        "jitter_ui": 0.1268172,
+        "ctle_db": 6.02724,
+        "ffe_tap1": 0.151362
       },
       {
         "lane": 3,
@@ -2393,7 +2595,9 @@
         "fec_uncorrectable": 2.1450988149252053e-09,
         "flaps": 2,
         "domain": "electrical",
-        "jitter_ui": 0.12749759999999993
+        "jitter_ui": 0.12749759999999993,
+        "ctle_db": 6.04992,
+        "ffe_tap1": 0.152496
       },
       {
         "lane": 3,
@@ -2404,7 +2608,9 @@
         "fec_uncorrectable": 0.03971641173621407,
         "flaps": 3,
         "domain": "electrical",
-        "jitter_ui": 0.352796
+        "jitter_ui": 0.352796,
+        "ctle_db": 12.0,
+        "ffe_tap1": 0.4
       },
       {
         "lane": 3,
@@ -2415,7 +2621,9 @@
         "fec_uncorrectable": 3.687393328683713e-09,
         "flaps": 3,
         "domain": "electrical",
-        "jitter_ui": 0.12734639999999997
+        "jitter_ui": 0.12734639999999997,
+        "ctle_db": 6.00792,
+        "ffe_tap1": 0.150396
       },
       {
         "lane": 3,
@@ -2426,7 +2634,9 @@
         "fec_uncorrectable": 2.0153322320079426e-09,
         "flaps": 3,
         "domain": "electrical",
-        "jitter_ui": 0.12769559999999996
+        "jitter_ui": 0.12769559999999996,
+        "ctle_db": 6.05652,
+        "ffe_tap1": 0.152826
       },
       {
         "lane": 3,
@@ -2437,7 +2647,9 @@
         "fec_uncorrectable": 3.695620510209578e-09,
         "flaps": 3,
         "domain": "electrical",
-        "jitter_ui": 0.12738719999999998
+        "jitter_ui": 0.12738719999999998,
+        "ctle_db": 6.00816,
+        "ffe_tap1": 0.150408
       },
       {
         "lane": 3,
@@ -2448,7 +2660,9 @@
         "fec_uncorrectable": 4.65043108831993e-09,
         "flaps": 3,
         "domain": "electrical",
-        "jitter_ui": 0.13160999999999995
+        "jitter_ui": 0.13160999999999995,
+        "ctle_db": 6.033,
+        "ffe_tap1": 0.15165
       },
       {
         "lane": 3,
@@ -2459,7 +2673,9 @@
         "fec_uncorrectable": 4.232523006635463e-09,
         "flaps": 3,
         "domain": "electrical",
-        "jitter_ui": 0.12987599999999996
+        "jitter_ui": 0.12987599999999996,
+        "ctle_db": 6.0228,
+        "ffe_tap1": 0.15114
       }
     ],
     "snr": [
@@ -2889,6 +3105,12 @@
           "flap": 1.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 11.38,
+        "ffe_tap1": 0.328,
+        "adapting": true,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -2920,7 +3142,9 @@
         "fec_uncorrectable": 1.5087783543788763e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12715199999999996
+        "jitter_ui": 0.12715199999999996,
+        "ctle_db": 6.0384,
+        "ffe_tap1": 0.15192
       },
       {
         "lane": 4,
@@ -2931,7 +3155,9 @@
         "fec_uncorrectable": 3.3943193891583994e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13430279999999997
+        "jitter_ui": 0.13430279999999997,
+        "ctle_db": 6.04884,
+        "ffe_tap1": 0.152442
       },
       {
         "lane": 4,
@@ -2942,7 +3168,9 @@
         "fec_uncorrectable": 2.498378483748069e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12865199999999996
+        "jitter_ui": 0.12865199999999996,
+        "ctle_db": 6.0156,
+        "ffe_tap1": 0.15078
       },
       {
         "lane": 4,
@@ -2953,7 +3181,9 @@
         "fec_uncorrectable": 2.9019412618209598e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13140599999999994
+        "jitter_ui": 0.13140599999999994,
+        "ctle_db": 6.0318,
+        "ffe_tap1": 0.15159
       },
       {
         "lane": 4,
@@ -2964,7 +3194,9 @@
         "fec_uncorrectable": 1.7507990422105896e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12667679999999995
+        "jitter_ui": 0.12667679999999995,
+        "ctle_db": 6.02256,
+        "ffe_tap1": 0.15112799999999998
       },
       {
         "lane": 4,
@@ -2975,7 +3207,9 @@
         "fec_uncorrectable": 3.3497640920556307e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13405799999999993
+        "jitter_ui": 0.13405799999999993,
+        "ctle_db": 6.0474,
+        "ffe_tap1": 0.15237
       },
       {
         "lane": 4,
@@ -2986,7 +3220,9 @@
         "fec_uncorrectable": 1.8519607708099825e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12649679999999996
+        "jitter_ui": 0.12649679999999996,
+        "ctle_db": 6.01656,
+        "ffe_tap1": 0.150828
       },
       {
         "lane": 4,
@@ -2997,7 +3233,9 @@
         "fec_uncorrectable": 2.8636559080202737e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13116119999999998
+        "jitter_ui": 0.13116119999999998,
+        "ctle_db": 6.03036,
+        "ffe_tap1": 0.15151799999999999
       },
       {
         "lane": 4,
@@ -3008,7 +3246,9 @@
         "fec_uncorrectable": 0.00040275813064911503,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2534976
+        "jitter_ui": 0.2534976,
+        "ctle_db": 8.0,
+        "ffe_tap1": 0.22
       },
       {
         "lane": 4,
@@ -3019,7 +3259,9 @@
         "fec_uncorrectable": 0.0006511192614141778,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2617716
+        "jitter_ui": 0.2617716,
+        "ctle_db": 8.25,
+        "ffe_tap1": 0.228
       },
       {
         "lane": 4,
@@ -3030,7 +3272,9 @@
         "fec_uncorrectable": 0.0006048452602402768,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2588952
+        "jitter_ui": 0.2588952,
+        "ctle_db": 8.5,
+        "ffe_tap1": 0.236
       },
       {
         "lane": 4,
@@ -3041,7 +3285,9 @@
         "fec_uncorrectable": 0.0006463917201398891,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.26148599999999994
+        "jitter_ui": 0.26148599999999994,
+        "ctle_db": 8.75,
+        "ffe_tap1": 0.244
       },
       {
         "lane": 4,
@@ -3052,7 +3298,9 @@
         "fec_uncorrectable": 0.0005130250001739731,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2525712
+        "jitter_ui": 0.2525712,
+        "ctle_db": 9.0,
+        "ffe_tap1": 0.252
       },
       {
         "lane": 4,
@@ -3063,7 +3311,9 @@
         "fec_uncorrectable": 0.0005149560017221922,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.25271399999999994
+        "jitter_ui": 0.25271399999999994,
+        "ctle_db": 9.25,
+        "ffe_tap1": 0.26
       },
       {
         "lane": 4,
@@ -3074,7 +3324,9 @@
         "fec_uncorrectable": 0.0005337614017113209,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2540808
+        "jitter_ui": 0.2540808,
+        "ctle_db": 9.5,
+        "ffe_tap1": 0.268
       },
       {
         "lane": 4,
@@ -3085,7 +3337,9 @@
         "fec_uncorrectable": 0.0006504420734937685,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2617308
+        "jitter_ui": 0.2617308,
+        "ctle_db": 9.75,
+        "ffe_tap1": 0.276
       },
       {
         "lane": 4,
@@ -3096,7 +3350,9 @@
         "fec_uncorrectable": 0.00038699360239067513,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2537568
+        "jitter_ui": 0.2537568,
+        "ctle_db": 10.0,
+        "ffe_tap1": 0.28400000000000003
       },
       {
         "lane": 4,
@@ -3107,7 +3363,9 @@
         "fec_uncorrectable": 0.00047959080265728803,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2523492
+        "jitter_ui": 0.2523492,
+        "ctle_db": 10.25,
+        "ffe_tap1": 0.29200000000000004
       },
       {
         "lane": 4,
@@ -3118,7 +3376,9 @@
         "fec_uncorrectable": 0.0003874240642070037,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.25374959999999996
+        "jitter_ui": 0.25374959999999996,
+        "ctle_db": 10.5,
+        "ffe_tap1": 0.3
       },
       {
         "lane": 4,
@@ -3129,7 +3389,9 @@
         "fec_uncorrectable": 0.00048011038335471696,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.25234199999999996
+        "jitter_ui": 0.25234199999999996,
+        "ctle_db": 10.75,
+        "ffe_tap1": 0.308
       },
       {
         "lane": 4,
@@ -3140,7 +3402,9 @@
         "fec_uncorrectable": 0.0004808906769854249,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.2523312
+        "jitter_ui": 0.2523312,
+        "ctle_db": 11.0,
+        "ffe_tap1": 0.316
       },
       {
         "lane": 4,
@@ -3151,7 +3415,9 @@
         "fec_uncorrectable": 0.000396341877236532,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.253602
+        "jitter_ui": 0.253602,
+        "ctle_db": 11.25,
+        "ffe_tap1": 0.324
       },
       {
         "lane": 4,
@@ -3162,7 +3428,9 @@
         "fec_uncorrectable": 0.0005180032387808223,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.25293839999999995
+        "jitter_ui": 0.25293839999999995,
+        "ctle_db": 11.5,
+        "ffe_tap1": 0.332
       },
       {
         "lane": 4,
@@ -3173,7 +3441,9 @@
         "fec_uncorrectable": 0.0003932766778752667,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.25365239999999994
+        "jitter_ui": 0.25365239999999994,
+        "ctle_db": 11.75,
+        "ffe_tap1": 0.33999999999999997
       }
     ],
     "snr": [
@@ -3603,6 +3873,12 @@
           "flap": 1.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 6.02,
+        "ffe_tap1": 0.151,
+        "adapting": false,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -3634,7 +3910,9 @@
         "fec_uncorrectable": 3.4394477090039965e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13454759999999996
+        "jitter_ui": 0.13454759999999996,
+        "ctle_db": 6.05028,
+        "ffe_tap1": 0.15251399999999998
       },
       {
         "lane": 5,
@@ -3645,7 +3923,9 @@
         "fec_uncorrectable": 1.3627010363135535e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12747599999999998
+        "jitter_ui": 0.12747599999999998,
+        "ctle_db": 6.0492,
+        "ffe_tap1": 0.15245999999999998
       },
       {
         "lane": 5,
@@ -3656,7 +3936,9 @@
         "fec_uncorrectable": 1.4242355317954197e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12733559999999997
+        "jitter_ui": 0.12733559999999997,
+        "ctle_db": 6.04452,
+        "ffe_tap1": 0.152226
       },
       {
         "lane": 5,
@@ -3667,7 +3949,9 @@
         "fec_uncorrectable": 2.0854889924821124e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12611519999999993
+        "jitter_ui": 0.12611519999999993,
+        "ctle_db": 6.00384,
+        "ffe_tap1": 0.150192
       },
       {
         "lane": 5,
@@ -3678,7 +3962,9 @@
         "fec_uncorrectable": 2.7213728410738015e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13022279999999992
+        "jitter_ui": 0.13022279999999992,
+        "ctle_db": 6.02484,
+        "ffe_tap1": 0.151242
       },
       {
         "lane": 5,
@@ -3689,7 +3975,9 @@
         "fec_uncorrectable": 2.4543141207641223e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12832559999999998
+        "jitter_ui": 0.12832559999999998,
+        "ctle_db": 6.01368,
+        "ffe_tap1": 0.15068399999999998
       },
       {
         "lane": 5,
@@ -3700,7 +3988,9 @@
         "fec_uncorrectable": 2.495602171038045e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12863159999999996
+        "jitter_ui": 0.12863159999999996,
+        "ctle_db": 6.01548,
+        "ffe_tap1": 0.150774
       },
       {
         "lane": 5,
@@ -3711,7 +4001,9 @@
         "fec_uncorrectable": 1.4617784200520291e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12725279999999994
+        "jitter_ui": 0.12725279999999994,
+        "ctle_db": 6.04176,
+        "ffe_tap1": 0.152088
       },
       {
         "lane": 5,
@@ -3722,7 +4014,9 @@
         "fec_uncorrectable": 2.3291820030273117e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12736679999999992
+        "jitter_ui": 0.12736679999999992,
+        "ctle_db": 6.00804,
+        "ffe_tap1": 0.150402
       },
       {
         "lane": 5,
@@ -3733,7 +4027,9 @@
         "fec_uncorrectable": 1.4129960900058572e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12736079999999994
+        "jitter_ui": 0.12736079999999994,
+        "ctle_db": 6.04536,
+        "ffe_tap1": 0.152268
       },
       {
         "lane": 5,
@@ -3744,7 +4040,9 @@
         "fec_uncorrectable": 2.8891247707219248e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13132439999999998
+        "jitter_ui": 0.13132439999999998,
+        "ctle_db": 6.03132,
+        "ffe_tap1": 0.151566
       },
       {
         "lane": 5,
@@ -3755,7 +4053,9 @@
         "fec_uncorrectable": 1.247267326005776e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12775679999999995
+        "jitter_ui": 0.12775679999999995,
+        "ctle_db": 6.05856,
+        "ffe_tap1": 0.152928
       },
       {
         "lane": 5,
@@ -3766,7 +4066,9 @@
         "fec_uncorrectable": 2.534743729058557e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12891719999999995
+        "jitter_ui": 0.12891719999999995,
+        "ctle_db": 6.01716,
+        "ffe_tap1": 0.150858
       },
       {
         "lane": 5,
@@ -3777,7 +4079,9 @@
         "fec_uncorrectable": 1.2963694223085666e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12763439999999995
+        "jitter_ui": 0.12763439999999995,
+        "ctle_db": 6.05448,
+        "ffe_tap1": 0.152724
       },
       {
         "lane": 5,
@@ -3788,7 +4092,9 @@
         "fec_uncorrectable": 1.623599406462933e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12691799999999998
+        "jitter_ui": 0.12691799999999998,
+        "ctle_db": 6.0306,
+        "ffe_tap1": 0.15153
       },
       {
         "lane": 5,
@@ -3799,7 +4105,9 @@
         "fec_uncorrectable": 1.7666172606360726e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12664799999999996
+        "jitter_ui": 0.12664799999999996,
+        "ctle_db": 6.0216,
+        "ffe_tap1": 0.15108
       },
       {
         "lane": 5,
@@ -3810,7 +4118,9 @@
         "fec_uncorrectable": 1.3829205804753322e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12742919999999996
+        "jitter_ui": 0.12742919999999996,
+        "ctle_db": 6.04764,
+        "ffe_tap1": 0.152382
       },
       {
         "lane": 5,
@@ -3821,7 +4131,9 @@
         "fec_uncorrectable": 2.7670006313191626e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13052879999999994
+        "jitter_ui": 0.13052879999999994,
+        "ctle_db": 6.02664,
+        "ffe_tap1": 0.151332
       },
       {
         "lane": 5,
@@ -3832,7 +4144,9 @@
         "fec_uncorrectable": 2.8891247707219248e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13132439999999998
+        "jitter_ui": 0.13132439999999998,
+        "ctle_db": 6.03132,
+        "ffe_tap1": 0.151566
       },
       {
         "lane": 5,
@@ -3843,7 +4157,9 @@
         "fec_uncorrectable": 1.6217704460896643e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12692159999999994
+        "jitter_ui": 0.12692159999999994,
+        "ctle_db": 6.03072,
+        "ffe_tap1": 0.151536
       },
       {
         "lane": 5,
@@ -3854,7 +4170,9 @@
         "fec_uncorrectable": 2.9734213658079475e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.13185479999999994
+        "jitter_ui": 0.13185479999999994,
+        "ctle_db": 6.03444,
+        "ffe_tap1": 0.151722
       },
       {
         "lane": 5,
@@ -3865,7 +4183,9 @@
         "fec_uncorrectable": 2.2651619625563468e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.1268568
+        "jitter_ui": 0.1268568,
+        "ctle_db": 6.00504,
+        "ffe_tap1": 0.150252
       },
       {
         "lane": 5,
@@ -3876,7 +4196,9 @@
         "fec_uncorrectable": 1.7606692732077464e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12665879999999996
+        "jitter_ui": 0.12665879999999996,
+        "ctle_db": 6.02196,
+        "ffe_tap1": 0.15109799999999998
       },
       {
         "lane": 5,
@@ -3887,7 +4209,9 @@
         "fec_uncorrectable": 1.9153511988056004e-09,
         "flaps": 0,
         "domain": "optical",
-        "jitter_ui": 0.12638879999999994
+        "jitter_ui": 0.12638879999999994,
+        "ctle_db": 6.01296,
+        "ffe_tap1": 0.150648
       }
     ],
     "snr": [
@@ -4317,6 +4641,12 @@
           "flap": 1.0
         },
         "notes": "Composite Link Health Score teaching model inspired by PILOT-style cluster observability. Weights are didactic, not Credo product formulas."
+      },
+      "equalization": {
+        "ctle_db": 13.05,
+        "ffe_tap1": 0.415,
+        "adapting": true,
+        "notes": "Equalization state (CTLE / Rx FFE) is PILOT-visible link health context. Teaching values track impairment; not real adaptive SerDes taps."
       }
     },
     "fec_histogram": {
@@ -4348,7 +4678,9 @@
         "fec_uncorrectable": 2.7561696786564658e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12669839999999996
+        "jitter_ui": 0.12669839999999996,
+        "ctle_db": 6.02328,
+        "ffe_tap1": 0.151164
       },
       {
         "lane": 6,
@@ -4359,7 +4691,9 @@
         "fec_uncorrectable": 5.463166937857244e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.1345884
+        "jitter_ui": 0.1345884,
+        "ctle_db": 6.05052,
+        "ffe_tap1": 0.152526
       },
       {
         "lane": 6,
@@ -4370,7 +4704,9 @@
         "fec_uncorrectable": 5.829193374147402e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13579199999999994
+        "jitter_ui": 0.13579199999999994,
+        "ctle_db": 6.0576,
+        "ffe_tap1": 0.15288
       },
       {
         "lane": 6,
@@ -4381,7 +4717,9 @@
         "fec_uncorrectable": 4.882171179495132e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13250759999999998
+        "jitter_ui": 0.13250759999999998,
+        "ctle_db": 6.03828,
+        "ffe_tap1": 0.151914
       },
       {
         "lane": 6,
@@ -4392,7 +4730,9 @@
         "fec_uncorrectable": 4.52354067182768e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.13109999999999994
+        "jitter_ui": 0.13109999999999994,
+        "ctle_db": 6.03,
+        "ffe_tap1": 0.1515
       },
       {
         "lane": 6,
@@ -4403,7 +4743,9 @@
         "fec_uncorrectable": 2.8411073548167144e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12660119999999997
+        "jitter_ui": 0.12660119999999997,
+        "ctle_db": 6.02004,
+        "ffe_tap1": 0.151002
       },
       {
         "lane": 6,
@@ -4414,7 +4756,9 @@
         "fec_uncorrectable": 5.314868506281622e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.1340784
+        "jitter_ui": 0.1340784,
+        "ctle_db": 6.0475200000000005,
+        "ffe_tap1": 0.15237599999999998
       },
       {
         "lane": 6,
@@ -4425,7 +4769,9 @@
         "fec_uncorrectable": 3.6262521442043895e-09,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.12704039999999994
+        "jitter_ui": 0.12704039999999994,
+        "ctle_db": 6.00612,
+        "ffe_tap1": 0.150306
       },
       {
         "lane": 6,
@@ -4436,7 +4782,9 @@
         "fec_uncorrectable": 1.300332241946189e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.1827
+        "jitter_ui": 0.1827,
+        "ctle_db": 9.0,
+        "ffe_tap1": 0.28
       },
       {
         "lane": 6,
@@ -4447,7 +4795,9 @@
         "fec_uncorrectable": 1.534899319983781e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.20640999999999998
+        "jitter_ui": 0.20640999999999998,
+        "ctle_db": 9.3,
+        "ffe_tap1": 0.29000000000000004
       },
       {
         "lane": 6,
@@ -4458,7 +4808,9 @@
         "fec_uncorrectable": 1.6157230849200078e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.231008
+        "jitter_ui": 0.231008,
+        "ctle_db": 9.6,
+        "ffe_tap1": 0.30000000000000004
       },
       {
         "lane": 6,
@@ -4469,7 +4821,9 @@
         "fec_uncorrectable": 1.7161260907184265e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.255534
+        "jitter_ui": 0.255534,
+        "ctle_db": 9.9,
+        "ffe_tap1": 0.31000000000000005
       },
       {
         "lane": 6,
@@ -4480,7 +4834,9 @@
         "fec_uncorrectable": 2.23006132094776e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.281548
+        "jitter_ui": 0.281548,
+        "ctle_db": 10.2,
+        "ffe_tap1": 0.32
       },
       {
         "lane": 6,
@@ -4491,7 +4847,9 @@
         "fec_uncorrectable": 1.917176142502923e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.305342
+        "jitter_ui": 0.305342,
+        "ctle_db": 10.5,
+        "ffe_tap1": 0.33
       },
       {
         "lane": 6,
@@ -4502,7 +4860,9 @@
         "fec_uncorrectable": 2.457088985824447e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.332328
+        "jitter_ui": 0.332328,
+        "ctle_db": 10.8,
+        "ffe_tap1": 0.34
       },
       {
         "lane": 6,
@@ -4513,7 +4873,9 @@
         "fec_uncorrectable": 2.0766821600172784e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.35597799999999996
+        "jitter_ui": 0.35597799999999996,
+        "ctle_db": 11.1,
+        "ffe_tap1": 0.35000000000000003
       },
       {
         "lane": 6,
@@ -4524,7 +4886,9 @@
         "fec_uncorrectable": 2.374404788021141e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.382052
+        "jitter_ui": 0.382052,
+        "ctle_db": 11.4,
+        "ffe_tap1": 0.36000000000000004
       },
       {
         "lane": 6,
@@ -4535,7 +4899,9 @@
         "fec_uncorrectable": 1.692749903125066e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.405642
+        "jitter_ui": 0.405642,
+        "ctle_db": 11.7,
+        "ffe_tap1": 0.37
       },
       {
         "lane": 6,
@@ -4546,7 +4912,9 @@
         "fec_uncorrectable": 1.847371712971236e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.430048
+        "jitter_ui": 0.430048,
+        "ctle_db": 12.0,
+        "ffe_tap1": 0.38
       },
       {
         "lane": 6,
@@ -4557,7 +4925,9 @@
         "fec_uncorrectable": 1.3340119090176222e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.457502
+        "jitter_ui": 0.457502,
+        "ctle_db": 12.3,
+        "ffe_tap1": 0.39
       },
       {
         "lane": 6,
@@ -4568,7 +4938,9 @@
         "fec_uncorrectable": 1.8614219880863278e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.48
+        "jitter_ui": 0.48,
+        "ctle_db": 12.6,
+        "ffe_tap1": 0.4
       },
       {
         "lane": 6,
@@ -4579,7 +4951,9 @@
         "fec_uncorrectable": 2.098650299206099e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.48
+        "jitter_ui": 0.48,
+        "ctle_db": 12.9,
+        "ffe_tap1": 0.41000000000000003
       },
       {
         "lane": 6,
@@ -4590,7 +4964,9 @@
         "fec_uncorrectable": 1.3391855295631773e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.48
+        "jitter_ui": 0.48,
+        "ctle_db": 13.2,
+        "ffe_tap1": 0.42000000000000004
       },
       {
         "lane": 6,
@@ -4601,7 +4977,9 @@
         "fec_uncorrectable": 2.2051619540805993e-05,
         "flaps": 0,
         "domain": "electrical",
-        "jitter_ui": 0.48
+        "jitter_ui": 0.48,
+        "ctle_db": 13.5,
+        "ffe_tap1": 0.43000000000000005
       }
     ],
     "snr": [
