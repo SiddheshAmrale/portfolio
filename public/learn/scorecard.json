@@ -1,7 +1,7 @@
 {
   "title": "Honest elite scorecard",
   "updated": "2026-09-18",
-  "verdict": "Strong interview-grade portfolio for Credo PILOT / lakehouse DE / SI vocabulary — not literally 'best in the world' silicon or Netflix production.",
+  "verdict": "Strong interview-grade portfolio for Credo PILOT / lakehouse DE / SI vocabulary / Oklo integrity — not literally 'best in the world' silicon or Netflix production.",
   "rows": [
     {
       "area": "Credo PILOT",
@@ -12,25 +12,26 @@
     {
       "area": "Databricks / Netflix DE",
       "level": "strong-teaching",
-      "evidence": "Forge medallion, SCD2, contracts, late data, schema evolution, experiment uniqueness, lag SLO, sample-ratio (SRM), DuckDB over Parquet.",
+      "evidence": "Forge: medallion, SCD2, out-of-order CDC, contracts, late data, schema evolution, freshness SLA, experiment uniqueness, lag SLO, SRM, DuckDB over Parquet (11 cases).",
       "gap": "Not Spark on a real Databricks workspace / Iceberg catalog / Unity Catalog."
     },
     {
       "area": "Broadcom / Marvell / photonics",
       "level": "vocabulary-elite",
-      "evidence": "Link lab: SNR/BER/eye/FEC/flaps/jitter; electrical vs optical; explicit netem≠BER.",
+      "evidence": "Link lab: SNR/BER/eye/FEC histogram/jitter/CTLE-FFE/Link Health Score; electrical vs optical; explicit netem≠BER.",
       "gap": "Not BERT/DCA/PIC bench automation."
     },
     {
       "area": "Oklo / SMR I&C",
       "level": "integrity-teaching",
-      "evidence": "Missing≠zero, trip setpoints, multi-channel flux/temp, physics-result store with git identity + A/A reproducibility.",
+      "evidence": "Missing≠zero, multi-channel trips, physics-result store with git identity + A/A reproducibility (10 cases).",
       "gap": "Not NQA-1, plant SCADA, or real multiphysics kernels."
     },
     {
       "area": "Learning UX",
       "level": "strong",
-      "evidence": "Guided academy with must-know, practice links, self-checks, keyword maps from real postings + Netflix XP / Databricks exam themes."
+      "evidence": "21 lessons across 5 tracks, glossary, practice path, near-misses, job research, talk tracks, progress persistence."
     }
-  ]
+  ],
+  "test_bar": "65 pytest cases green across pilot/forge/link/smr; Learn JSON validated in CI."
 }
