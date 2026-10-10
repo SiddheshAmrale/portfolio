@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaPlay } from 'react-icons/fa';
+import { FaGithub, FaPlay } from 'react-icons/fa';
 import FloatingElements from './FloatingElements';
 
 interface ProjectCard {
@@ -9,12 +9,28 @@ interface ProjectCard {
   description: string;
   category: string;
   technologies: string[];
-  path: string;
+  /** In-site lab route. */
+  path?: string;
+  /** External link (e.g. a GitHub repo) for projects that live outside the site. */
+  href?: string;
+  /** Screenshot shown in the card header instead of the gradient. */
+  image?: string;
   accent: string;
   evidence: string;
 }
 
 const projects: ProjectCard[] = [
+  {
+    id: 'vela',
+    title: 'VELA Media Player',
+    description: 'A native, cross-platform media player in Rust on libmpv: plays virtually every format with GPU decoding, frame-exact seeking with thumbnail previews, subtitles, audio tracks, EQ and resume. Renders only when a frame or the UI changes — 5.6% CPU on HEVC playback vs 9.8% for stock mpv, ~0.3% idle, 2.2 MB binary.',
+    category: 'apps',
+    technologies: ['Rust', 'libmpv', 'OpenGL', 'egui', 'Win / macOS / Linux'],
+    href: 'https://github.com/SiddheshAmrale/vela',
+    image: '/vela/home.jpg',
+    accent: 'from-slate-800 to-black',
+    evidence: 'Desktop app · 85 end-to-end checks'
+  },
   {
     id: 'learn',
     title: 'Guided Practical Academy',
@@ -128,7 +144,8 @@ const projects: ProjectCard[] = [
 ];
 
 const categories = [
-  { id: 'all', name: 'All labs' },
+  { id: 'all', name: 'All projects' },
+  { id: 'apps', name: 'Desktop apps' },
   { id: 'learn', name: 'Learn' },
   { id: 'data', name: 'Lakehouse DE' },
   { id: 'connectivity', name: 'Link / SI' },
@@ -191,6 +208,9 @@ const Projects: React.FC = () => {
                 className="group relative overflow-hidden rounded-lg bg-netflix-black/50 border border-netflix-red/20 hover:border-netflix-red/50 transition-colors duration-300"
               >
                 <div className={'relative h-36 bg-gradient-to-br ' + project.accent}>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title + ' screenshot'} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  ) : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-netflix-black/80 to-transparent" />
                   <div className="absolute bottom-4 left-6 text-xs uppercase tracking-wide text-white/80">
                     {project.evidence}
@@ -212,13 +232,25 @@ const Projects: React.FC = () => {
                       );
                     })}
                   </div>
-                  <Link
-                    to={project.path}
-                    className="inline-flex items-center gap-2 bg-netflix-red hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-200"
-                  >
-                    <FaPlay size={12} />
-                    <span className="text-sm font-semibold">Launch app</span>
-                  </Link>
+                  {project.href ? (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-netflix-red hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-200"
+                    >
+                      <FaGithub size={14} />
+                      <span className="text-sm font-semibold">View on GitHub</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={project.path ?? '/'}
+                      className="inline-flex items-center gap-2 bg-netflix-red hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-all duration-200"
+                    >
+                      <FaPlay size={12} />
+                      <span className="text-sm font-semibold">Launch app</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             );
