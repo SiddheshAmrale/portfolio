@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ShaderBackdrop from './ShaderBackdrop';
+import Aurora from './Aurora';
 import AgentScene from './AgentScene';
 import { metrics, profile, roles } from './data';
 import { ArrowRight, Download, GitHub, LinkedIn } from './icons';
@@ -49,7 +49,7 @@ function Stage() {
         </div>
       </div>
       {/* Task log: a CSS-only ticker cycling through the agents' jobs */}
-      <figcaption className="mt-3 flex items-center gap-3 overflow-hidden rounded-2xl border border-line bg-ink-950/80 px-4 py-3 font-mono text-[12px] backdrop-blur" data-motion>
+      <figcaption className="mt-3 flex items-center gap-3 overflow-hidden rounded-2xl border border-line bg-ink-950/90 px-4 py-3 font-mono text-[12px]" data-motion>
         <span className="text-signal-cyan">❯</span>
         <span className="relative h-[18px] flex-1 overflow-hidden">
           <span className="log-ticker absolute inset-x-0 top-0">
@@ -72,12 +72,12 @@ export default function Hero() {
     <section id="top" className="relative isolate overflow-hidden">
       {/* Static gradient under the shader: what you see before / without WebGL */}
       <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(80%_60%_at_70%_20%,rgba(56,189,248,.10),transparent_60%),radial-gradient(60%_50%_at_10%_80%,rgba(129,140,248,.10),transparent_60%)]" />
-      <ShaderBackdrop className="absolute inset-0 -z-10 h-full w-full" />
+      <Aurora />
       <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-ink-950" />
 
       <div className="shell grid min-h-[100svh] items-center gap-14 pb-16 pt-28 lg:grid-cols-[1.15fr_.85fr] lg:gap-10 lg:pt-24">
-        <div className="intro order-2 lg:order-1">
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] py-1.5 pl-2 pr-3.5 font-mono text-[11px] tracking-[0.14em] text-fog-300 backdrop-blur">
+        <div className="intro">
+          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] py-1.5 pl-2 pr-3.5 font-mono text-[11px] tracking-[0.14em] text-fog-300">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/60" style={{ animation: 'pulse-dot 2s infinite' }} />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -126,7 +126,7 @@ export default function Hero() {
 
           <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-4">
             {metrics.map((m) => (
-              <div key={m.label} className="flex flex-col-reverse justify-end bg-ink-950/80 px-4 py-4 backdrop-blur">
+              <div key={m.label} className="flex flex-col-reverse justify-end bg-ink-950/90 px-4 py-4">
                 <dt className="mt-1 text-[11px] leading-snug text-fog-500">{m.label}</dt>
                 <dd className="text-2xl font-semibold tracking-tight text-fog-100">{m.value}</dd>
               </div>
@@ -134,7 +134,7 @@ export default function Hero() {
           </dl>
         </div>
 
-        <div className="order-1 sm:px-14 lg:order-2 lg:px-4" style={{ animation: 'rise 1.2s .2s var(--ease-out) both' }}>
+        <div className="sm:px-14 lg:px-4" style={{ animation: 'rise 1.2s .2s var(--ease-out) both' }}>
           <Stage />
         </div>
       </div>

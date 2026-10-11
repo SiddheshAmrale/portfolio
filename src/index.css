@@ -61,6 +61,12 @@
   section[id] {
     scroll-margin-top: 84px;
   }
+  /* Below-the-fold sections are skipped for style, layout and paint until
+     they approach the viewport: the initial render only does the hero. */
+  main > section:not(#top) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1100px;
+  }
 }
 
 @layer components {
@@ -254,55 +260,73 @@
 .arm-1 { transform-box: view-box; transform-origin: 110px 82px; animation: arm-1 4.2s var(--ease-in-out) infinite; }
 .arm-2 { transform-box: view-box; transform-origin: 110px 46px; animation: arm-2 4.2s var(--ease-in-out) infinite; }
 
+/* ---------- Hero aurora (compositor-only) ---------- */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+}
+/* Gradients fade to transparent themselves: no filter: blur() to re-rasterise. */
+.aurora-a {
+  width: 70vmax; height: 70vmax; left: 38%; top: -30%;
+  background: radial-gradient(closest-side, rgba(45, 212, 191, 0.20), rgba(45, 212, 191, 0.06) 55%, transparent);
+  animation: drift-a 26s var(--ease-in-out) infinite alternate;
+}
+.aurora-b {
+  width: 60vmax; height: 60vmax; left: -20%; top: 25%;
+  background: radial-gradient(closest-side, rgba(99, 102, 241, 0.20), rgba(99, 102, 241, 0.05) 55%, transparent);
+  animation: drift-b 32s var(--ease-in-out) infinite alternate;
+}
+.aurora-c {
+  width: 45vmax; height: 45vmax; left: 55%; top: 35%;
+  background: radial-gradient(closest-side, rgba(56, 189, 248, 0.14), transparent);
+  animation: drift-c 22s var(--ease-in-out) infinite alternate;
+}
+@keyframes drift-a { to { transform: translate3d(-12%, 10%, 0) scale(1.1); } }
+@keyframes drift-b { to { transform: translate3d(14%, -8%, 0) scale(0.92); } }
+@keyframes drift-c { to { transform: translate3d(-18%, -6%, 0) scale(1.15); } }
+
 /* ---------- Agent scene ---------- */
 .agent-scene {
   --lx: 0;
   --ly: 0;
 }
-.agent-scene .bot-label {
-  font: 600 8px 'JetBrains Mono', ui-monospace, monospace;
-  letter-spacing: 0.12em;
-  fill: #c4cad8;
-}
 @keyframes bot-float {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50% { transform: translate3d(0, -7px, 0); }
 }
-@keyframes bot-shadow {
-  0%, 100% { transform: scale(1); opacity: 0.35; }
-  50% { transform: scale(0.8); opacity: 0.2; }
+.bot-float { animation: bot-float 3.6s var(--ease-in-out) infinite; will-change: transform; }
+.bot-antenna > span, .bot-status { animation: pulse-dot 2.4s var(--ease-in-out) infinite; }
+@keyframes beam-fire {
+  0%, 100% { opacity: 0; }
+  8%, 22% { opacity: 1; }
+  40% { opacity: 0; }
 }
-.bot-float { animation: bot-float 3.6s var(--ease-in-out) infinite; }
-.bot-shadow { transform-box: fill-box; transform-origin: center; animation: bot-shadow 3.6s var(--ease-in-out) infinite; }
-@keyframes bot-blink {
-  0%, 90%, 100% { transform: scaleY(1); }
-  93% { transform: scaleY(0.15); }
-}
-.bot-eyes { transform-box: fill-box; transform-origin: center; animation: bot-blink 4.2s infinite; }
-@keyframes beam-out { to { stroke-dashoffset: -130; } }
-@keyframes beam-back { to { stroke-dashoffset: 186; } }
-.beam-out { animation: beam-out 1.7s linear infinite; }
-.beam-back { animation: beam-back 2.6s linear infinite; }
-.hub-glow { transform-box: fill-box; transform-origin: center; animation: pulse-dot 2.4s var(--ease-in-out) infinite; }
-.agent-scene svg {
+.beam-fire { opacity: 0; animation: beam-fire 3.6s var(--ease-in-out) infinite; will-change: opacity; }
+.scene-tilt {
   transform: perspective(1100px) rotateY(calc(var(--lx) * 4deg)) rotateX(calc(var(--ly) * -3deg));
   transition: transform 0.7s var(--ease-out);
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.core-spin { transform-box: view-box; animation: spin 26s linear infinite; }
-.core-spin-rev { transform-box: view-box; animation: spin 18s linear infinite reverse; }
+.core-spin { animation: spin 26s linear infinite; will-change: transform; }
+.core-spin-rev { animation: spin 18s linear infinite reverse; will-change: transform; }
+.core-glow { animation: core-glow 3s var(--ease-in-out) infinite; will-change: opacity, transform; }
+@keyframes core-glow {
+  0%, 100% { opacity: 0.55; scale: 0.94; }
+  50% { opacity: 1; scale: 1; }
+}
+.core-dot { animation: pulse-dot 2.4s var(--ease-in-out) infinite; }
 .agent-scene .core-code { font: 500 9px 'JetBrains Mono', ui-monospace, monospace; fill: #c4cad8; }
-.core-caret { animation: blink 1s steps(1) infinite; }
 @keyframes breathe {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(0, -2px, 0) scale(1.008); }
 }
-.portrait-3d { transform-box: fill-box; transform-origin: 50% 100%; animation: breathe 5s var(--ease-in-out) infinite; }
+.portrait-3d { transform-origin: 50% 100%; animation: breathe 5s var(--ease-in-out) infinite; will-change: transform; }
 @keyframes light-sweep {
-  0%, 60% { transform: translate3d(-420px, 0, 0); }
-  100% { transform: translate3d(420px, 0, 0); }
+  0%, 60% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(100%, 0, 0); }
 }
-.light-sweep { animation: light-sweep 7s var(--ease-in-out) infinite; mix-blend-mode: screen; }
+.light-sweep { animation: light-sweep 7s var(--ease-in-out) infinite; will-change: transform; }
 
 /* Load-in choreography for the hero (pure CSS: runs before hydration). */
 .intro > * {

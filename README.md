@@ -36,10 +36,12 @@ chunk; the home page never downloads lab code.
 
 **Motion, on a budget:**
 
-- Hero backdrop: one fragment shader (domain-warped aurora) at 35% resolution,
-  30 fps, paused off screen / in background tabs, skipped on software GPUs.
-- Agent scene: inline SVG + CSS keyframes (beams, floating agents, task log);
-  all compositor-friendly and paused while off screen (`[data-motion]`).
+- Every continuous animation is compositor-only (`transform` / `opacity` on
+  HTML layers): the hero aurora (drifting gradient blobs), the floating agents,
+  the beams firing, the command core. A WebGL shader and SVG-internal
+  animations were measured and removed: both cost main-thread time per frame.
+- Below-the-fold sections use `content-visibility: auto`; animated regions
+  pause while off screen (`[data-motion]`).
 - Scroll reveals via one IntersectionObserver; cursor spotlight via one
   delegated, rAF-throttled pointer listener. `prefers-reduced-motion` is honoured.
 
@@ -48,9 +50,9 @@ server, median of 3):
 
 | | Before (CRA, Netflix theme) | After |
 |---|---|---|
-| Performance | 71 | **93** |
-| Total Blocking Time | 1602 ms | **265 ms** |
-| Largest Contentful Paint | 2.36 s | **1.96 s** |
+| Performance | 71 | **99** |
+| Total Blocking Time | 1602 ms | **26 ms** |
+| Largest Contentful Paint | 2.36 s | **1.89 s** |
 | Accessibility | 82 | **97** |
 | Best Practices | 96 | **100** |
 | Home-page JS (gzip) | 140 KB (everything) | ~71 KB (labs lazy) |

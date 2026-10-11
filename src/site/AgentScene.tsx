@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Core, CoreDefs } from './Core';
+import { CoreOverlay, CorePanel } from './Core';
 
 // Drop a generated 3D portrait at src/assets/me/avatar-3d.(webp|png|jpg) and
 // the scene uses it (hashed, long-cached asset); otherwise a command core
@@ -11,10 +11,14 @@ const found = import.meta.glob('../assets/me/avatar-3d.{webp,png,jpg}', {
 }) as Record<string, string>;
 const PORTRAIT: string | undefined = Object.values(found)[0];
 
-// Illustrated, animated "me orchestrating AI agents" scene. One inline SVG:
-// every motion is a CSS keyframe on transform/opacity (paused off screen via
-// [data-motion]); the only script is a rAF-throttled pointer handler that lets
-// the eyes and head follow the cursor through two CSS variables.
+// "Orchestrator" scene: the agents, the beams that connect them to the centre
+// and the centre itself (3D portrait or command core).
+//
+// Every continuous animation here is compositor-only (transform / opacity on
+// HTML layers). Animations of SVG children run on the main thread every frame,
+// which showed up as long tasks, so the SVG parts are static: the room, the
+// faint beam lines and the terminal panel. Beams "fire" by fading a bright
+// overlay layer per beam; agents float as HTML layers.
 
 const AGENTS = [
   { x: 70, y: 96, label: 'RAG', d: 0 },
@@ -26,50 +30,62 @@ const AGENTS = [
 ];
 const HUB = PORTRAIT ? { x: 240, y: 330 } : { x: 240, y: 236 };
 
+const pct = (v: number, of: number) => `${(v / of) * 100}%`;
+
+function beamPath(a: (typeof AGENTS)[number]) {
+  const mx = (a.x + HUB.x) / 2;
+  const my = Math.min(a.y, HUB.y) - 30;
+  return `M${HUB.x} ${HUB.y} Q${mx} ${my} ${a.x} ${a.y + 4}`;
+}
+
 function Agent({ x, y, label, d }: (typeof AGENTS)[number]) {
-  const w = 16 + label.length * 6.2;
   return (
-    <g transform={`translate(${x} ${y})`}>
-      <g className="bot-float" style={{ animationDelay: `${-d}s` }}>
-        <ellipse cx="0" cy="34" rx="14" ry="3" fill="#000" opacity=".35" className="bot-shadow" style={{ animationDelay: `${-d}s` }} />
-        <line x1="0" y1="-22" x2="0" y2="-13" stroke="#5b6377" strokeWidth="2" />
-        <circle cx="0" cy="-24" r="3" fill="#5eead4" className="glyph-pulse" style={{ animationDelay: `${d * 0.5}s` }} />
-        <rect x="-19" y="-14" width="38" height="30" rx="13" fill="url(#botBody)" stroke="#2c3550" />
-        <rect x="-13" y="-7" width="26" height="14" rx="7" fill="#05070d" />
-        <g className="bot-eyes" style={{ animationDelay: `${d}s` }}>
+    <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: pct(x, 480), top: pct(y + 12, 520), width: '15%' }}>
+      <div className="bot-float flex flex-col items-center" style={{ animationDelay: `${-d}s` }}>
+        <span className="bot-antenna relative block h-[9%] w-full">
+          <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full bg-signal-cyan shadow-[0_0_10px_#5eead4]" style={{ animationDelay: `${d * 0.5}s` }} />
+        </span>
+        <svg viewBox="-24 -20 48 40" className="w-[64%]" aria-hidden>
+          <line x1="0" y1="-20" x2="0" y2="-13" stroke="#5b6377" strokeWidth="2" />
+          <rect x="-19" y="-14" width="38" height="30" rx="13" fill="url(#botBody)" stroke="#2c3550" />
+          <rect x="-13" y="-7" width="26" height="14" rx="7" fill="#05070d" />
           <rect x="-8" y="-3" width="5" height="6" rx="2" fill="#5eead4" />
           <rect x="3" y="-3" width="5" height="6" rx="2" fill="#5eead4" />
-        </g>
-        <rect x="-22" y="-2" width="4" height="9" rx="2" fill="#2c3550" />
-        <rect x="18" y="-2" width="4" height="9" rx="2" fill="#2c3550" />
-      </g>
-      <g transform="translate(0 44)">
-        <rect x={-w / 2} y="-8" width={w} height="16" rx="8" fill="#0a0d16" stroke="rgba(94,234,212,.45)" />
-        <circle cx={-w / 2 + 8} cy="0" r="2.2" fill="#34d399" className="glyph-pulse" style={{ animationDelay: `${d}s` }} />
-        <text x={-w / 2 + 14} y="3" className="bot-label">
+          <rect x="-22" y="-2" width="4" height="9" rx="2" fill="#2c3550" />
+          <rect x="18" y="-2" width="4" height="9" rx="2" fill="#2c3550" />
+        </svg>
+      </div>
+      <div className="mt-[6%] flex justify-center">
+        <span className="flex items-center gap-1 whitespace-nowrap rounded-full border border-signal-cyan/40 bg-ink-850 px-[0.6em] py-[0.25em] font-mono text-[clamp(7px,1.6vw,10px)] font-semibold tracking-[0.12em] text-fog-300">
+          <span className="bot-status h-[0.55em] w-[0.55em] rounded-full bg-emerald-400" style={{ animationDelay: `${d}s` }} />
           {label}
-        </text>
-      </g>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function BeamLines() {
+  return (
+    <g>
+      {AGENTS.map((a) => (
+        <path key={a.label} d={beamPath(a)} fill="none" stroke="rgba(94,234,212,.16)" strokeWidth="1.2" strokeDasharray="3 5" />
+      ))}
     </g>
   );
 }
 
-function Beams() {
+/** One bright overlay per beam; its opacity pulses in sequence. */
+function BeamFire() {
   return (
-    <g>
-      {AGENTS.map((a, i) => {
-        const mx = (a.x + HUB.x) / 2;
-        const my = Math.min(a.y, HUB.y) - 30;
-        const d = `M${HUB.x} ${HUB.y} Q${mx} ${my} ${a.x} ${a.y + 4}`;
-        return (
-          <g key={a.label}>
-            <path d={d} fill="none" stroke="rgba(94,234,212,.14)" strokeWidth="1.2" />
-            <path d={d} fill="none" stroke="#5eead4" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="5 60" className="beam-out" style={{ animationDelay: `${-i * 0.55}s` }} />
-            <path d={d} fill="none" stroke="#fbbf24" strokeWidth="1.4" strokeLinecap="round" strokeDasharray="3 90" className="beam-back" style={{ animationDelay: `${-i * 0.8 - 1}s` }} />
-          </g>
-        );
-      })}
-    </g>
+    <>
+      {AGENTS.map((a, i) => (
+        <svg key={a.label} viewBox="0 0 480 520" className="beam-fire absolute inset-0 h-full w-full" style={{ animationDelay: `${i * 0.6}s` }} aria-hidden>
+          <path d={beamPath(a)} fill="none" stroke={i % 2 ? '#fbbf24' : '#5eead4'} strokeWidth="1.8" strokeLinecap="round" />
+          <circle cx={a.x} cy={a.y + 4} r="4" fill={i % 2 ? '#fbbf24' : '#5eead4'} />
+        </svg>
+      ))}
+    </>
   );
 }
 
@@ -125,59 +141,68 @@ export default function AgentScene() {
     };
   }, []);
 
+  const label = PORTRAIT ? 'Siddhesh orchestrating a team of AI agents' : 'A command core orchestrating a team of AI agents';
+  // Layers, back to front: the static room (painted once), the portrait (an
+  // <img>, composited), the beams + agents (own promoted layer), and the core
+  // (HTML layers, composited). Keeping animated parts out of the room's SVG
+  // stops Chrome from repainting the whole scene every frame.
   return (
-    <div ref={ref} className="agent-scene relative" data-motion>
-      <svg viewBox="0 0 480 520" className="block h-auto w-full" role="img" aria-label={PORTRAIT ? 'Siddhesh orchestrating a team of AI agents' : 'A command core orchestrating a team of AI agents'}>
-        <defs>
-          <CoreDefs />
-          <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#0d1638" />
-            <stop offset="1" stopColor="#070a18" />
-          </linearGradient>
-          <linearGradient id="window" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#1e3a8a" />
-            <stop offset="1" stopColor="#0b1230" />
-          </linearGradient>
-          <linearGradient id="shelfGlow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#fbbf24" stopOpacity=".55" />
-            <stop offset="1" stopColor="#fbbf24" stopOpacity="0" />
-          </linearGradient>
-          <radialGradient id="lamp">
-            <stop offset="0" stopColor="#fbbf24" stopOpacity=".18" />
-            <stop offset="1" stopColor="#fbbf24" stopOpacity="0" />
-          </radialGradient>
-          
-          
-          
-          <linearGradient id="botBody" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#222a40" />
-            <stop offset="1" stopColor="#11162a" />
-          </linearGradient>
-          <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
-            <stop offset=".35" stopColor="#fff" stopOpacity="0" />
-            <stop offset=".5" stopColor="#a5f3fc" stopOpacity=".12" />
-            <stop offset=".65" stopColor="#fff" stopOpacity="0" />
-          </linearGradient>
-          <radialGradient id="hubGlow">
-            <stop offset="0" stopColor="#5eead4" stopOpacity=".55" />
-            <stop offset="1" stopColor="#5eead4" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <Room />
-        <Beams />
+    <div ref={ref} className="agent-scene relative" data-motion role="img" aria-label={label}>
+      <div className="scene-tilt relative">
+        <svg viewBox="0 0 480 520" className="block h-auto w-full" aria-hidden>
+          <defs>
+            <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#0d1638" />
+              <stop offset="1" stopColor="#070a18" />
+            </linearGradient>
+            <linearGradient id="window" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#1e3a8a" />
+              <stop offset="1" stopColor="#0b1230" />
+            </linearGradient>
+            <linearGradient id="shelfGlow" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#fbbf24" stopOpacity=".55" />
+              <stop offset="1" stopColor="#fbbf24" stopOpacity="0" />
+            </linearGradient>
+            <radialGradient id="lamp">
+              <stop offset="0" stopColor="#fbbf24" stopOpacity=".18" />
+              <stop offset="1" stopColor="#fbbf24" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <Room />
+          <BeamLines />
+          {PORTRAIT ? null : <CorePanel x={HUB.x} y={HUB.y} />}
+        </svg>
+
         {PORTRAIT ? (
-          <g className="portrait-3d">
-            <image href={PORTRAIT} x="40" y="60" width="400" height="460" preserveAspectRatio="xMidYMax meet" />
-            <rect x="40" y="60" width="400" height="460" fill="url(#sweep)" className="light-sweep" />
-          </g>
-        ) : (
-          <Core x={HUB.x} y={HUB.y} />
-        )}
-        {PORTRAIT ? <circle cx={HUB.x} cy={HUB.y} r="34" fill="url(#hubGlow)" className="hub-glow" /> : null}
+          <div className="absolute overflow-hidden" style={{ left: '8.3%', top: '11.5%', width: '83.4%', height: '88.5%' }}>
+            <img src={PORTRAIT} alt="" decoding="async" className="portrait-3d absolute inset-0 h-full w-full object-contain object-bottom" />
+            <div className="light-sweep absolute inset-y-0 left-0 w-full bg-[linear-gradient(100deg,transparent_35%,rgba(165,243,252,.12)_50%,transparent_65%)]" />
+          </div>
+        ) : null}
+
+        <BeamFire />
+        <svg width="0" height="0" className="absolute" aria-hidden>
+          <defs>
+            <linearGradient id="botBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#222a40" />
+              <stop offset="1" stopColor="#11162a" />
+            </linearGradient>
+          </defs>
+        </svg>
         {AGENTS.map((a) => (
           <Agent key={a.label} {...a} />
         ))}
-      </svg>
+
+        {PORTRAIT ? (
+          <div
+            aria-hidden
+            className="core-glow pointer-events-none absolute rounded-full bg-[radial-gradient(closest-side,rgba(94,234,212,.5),transparent)]"
+            style={{ left: `${(HUB.x / 480) * 100}%`, top: `${(HUB.y / 520) * 100}%`, width: '14%', aspectRatio: '1', transform: 'translate(-50%,-50%)' }}
+          />
+        ) : (
+          <CoreOverlay x={HUB.x} y={HUB.y} viewW={480} viewH={520} />
+        )}
+      </div>
     </div>
   );
 }
