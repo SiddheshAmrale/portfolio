@@ -1,6 +1,9 @@
+const path = require('path');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  // Absolute, forward-slash globs: work from any working directory, on Windows too.
+  content: [path.join(__dirname, 'index.html'), path.join(__dirname, 'src/**/*.{ts,tsx}')].map((p) => p.replace(/\\/g, '/')),
   theme: {
     extend: {
       colors: {
