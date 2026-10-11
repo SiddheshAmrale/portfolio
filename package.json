@@ -1,58 +1,47 @@
 {
-  "name": "siddhesh-netflix-portfolio",
-  "version": "1.0.0",
-  "description": "Siddhesh Amrale's Netflix-inspired Portfolio",
+  "name": "siddhesh-amrale-portfolio",
+  "version": "2.0.0",
+  "description": "Siddhesh Amrale - AI, data, cloud, performance and robotics AI engineering portfolio",
   "private": true,
-  "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "@types/node": "^16.18.0",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "@types/react-router-dom": "^5.3.3",
-    "framer-motion": "^10.16.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.11.0",
-    "react-router-dom": "^6.8.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.0",
-    "web-vitals": "^2.1.0"
+  "type": "module",
+  "engines": {
+    "node": ">=18.18"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc --noEmit && vite build && vite build --ssr src/entry-server.tsx --outDir build-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --outDir build",
+    "test": "vitest run",
     "workbench": "tsx src/labs/cli.ts",
-    "workbench:test": "cross-env CI=true react-scripts test --watchAll=false --testPathPattern=workbench.test",
+    "workbench:test": "vitest run src/labs/workbench.test.ts",
     "pilot:test": "python -m pytest -q pilot/tests",
     "pilot:cases": "python -m pilot build-cases --out public/pilot",
     "labs:test": "python -m pytest -q forge/tests link/tests smr/tests pilot/tests",
-    "labs:cases": "python -m forge build-cases --out public/forge && python -m link build-cases --out public/link && python -m smr build-cases --out public/smr",
-    "eject": "react-scripts eject"
+    "labs:cases": "python -m forge build-cases --out public/forge && python -m link build-cases --out public/link && python -m smr build-cases --out public/smr"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "cross-env": "^7.0.3",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^3.3.0",
-    "tsx": "^4.19.2"
+    "@fontsource-variable/inter": "^5.1.0",
+    "@fontsource/jetbrains-mono": "^5.1.0",
+    "@types/node": "^20.17.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "esbuild@0.21.5": true
   }
 }

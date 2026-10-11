@@ -1,6 +1,6 @@
 # Siddhesh Amrale — portfolio + systems workbench
 
-The recruiter-facing site is Netflix-themed. Technical substance for Credo / Broadcom / Marvell / Oklo / Databricks / Netflix DE:
+The recruiter-facing site is a prerendered, motion-designed single page (see below). Technical substance for Credo / Broadcom / Marvell / Oklo / Databricks / Netflix DE:
 
 | Package / route | Target theme | Reproduce |
 |---|---|---|
@@ -18,7 +18,7 @@ python -m pip install -e "./pilot[dev]" -e "./forge[dev]" -e "./link[dev]" -e ".
 npm run labs:test
 npm run labs:cases
 npm run workbench:test
-npm start
+npm run dev
 ```
 
 **Honest elite bar:** interview-grade with reproducible failure modes and live Linux evidence — not ASIC silicon, Databricks Runtime, Netflix ExP, or NQA-1 plant software. See `/learn` → Scorecard.
@@ -27,164 +27,46 @@ The older TypeScript workbenches still live in [`src/labs`](src/labs/README.md) 
 
 ---
 
-# 🎬 Siddhesh Amrale - Netflix-Inspired Portfolio
+# The site
 
-A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS, featuring a Netflix-inspired design with smooth animations and professional styling.
+**Stack:** React 18 + TypeScript + Tailwind on Vite. The home page is
+prerendered to static HTML at build time (`scripts/prerender.mjs`), so it
+paints before any JavaScript runs, then hydrates. Every lab is its own lazy
+chunk; the home page never downloads lab code.
 
-![Portfolio Preview](https://images.unsplash.com/photo-1467232004584-a241de8b6a40?w=1200&h=600&fit=crop)
+**Motion, on a budget:**
 
-## ✨ Features
+- Hero backdrop: one fragment shader (domain-warped aurora) at 35% resolution,
+  30 fps, paused off screen / in background tabs, skipped on software GPUs.
+- Agent scene: inline SVG + CSS keyframes (beams, floating agents, task log);
+  all compositor-friendly and paused while off screen (`[data-motion]`).
+- Scroll reveals via one IntersectionObserver; cursor spotlight via one
+  delegated, rAF-throttled pointer listener. `prefers-reduced-motion` is honoured.
 
-- **Netflix-Inspired Design**: Dark theme with red accents and modern UI
-- **Responsive Layout**: Optimized for all devices and screen sizes
-- **Smooth Animations**: Framer Motion powered animations and transitions
-- **Interactive Components**: Hover effects, scroll animations, and dynamic content
-- **Professional Sections**: Hero, About, Skills, Projects, and Contact
-- **Modern Tech Stack**: React 18, TypeScript, Tailwind CSS, Framer Motion
+**Performance** (Lighthouse mobile, simulated throttling, same compressing
+server, median of 3):
 
-## 🛠️ Tech Stack
+| | Before (CRA, Netflix theme) | After |
+|---|---|---|
+| Performance | 71 | **93** |
+| Total Blocking Time | 1602 ms | **265 ms** |
+| Largest Contentful Paint | 2.36 s | **1.96 s** |
+| Accessibility | 82 | **97** |
+| Best Practices | 96 | **100** |
+| Home-page JS (gzip) | 140 KB (everything) | ~71 KB (labs lazy) |
 
-- **Frontend**: React 18, TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: React Icons
-- **Routing**: React Router DOM
-- **Build Tool**: Create React App
+**3D portrait:** put a generated portrait at
+`src/assets/me/avatar-3d.webp` (or `.png` / `.jpg`, ideally a transparent
+cut-out) and the hero places it at the centre of the agent scene with parallax
+tilt, breathing and a light sweep. Without it, a holographic command core sits
+at the centre.
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (version 16 or higher)
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/siddhesh-netflix-portfolio.git
-   cd siddhesh-netflix-portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Start the development server**
-   ```bash
-   npm start
-   # or
-   yarn start
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:3000` to view the portfolio.
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── Navbar.tsx          # Navigation component
-│   ├── Hero.tsx           # Hero section
-│   ├── About.tsx          # About section
-│   ├── Skills.tsx         # Skills section
-│   ├── Projects.tsx       # Projects section
-│   ├── Contact.tsx        # Contact section
-│   └── Footer.tsx         # Footer component
-├── App.tsx                # Main app component
-├── index.tsx              # Entry point
-└── index.css              # Global styles
-```
-
-## 🎨 Customization
-
-### Colors
-The portfolio uses a Netflix-inspired color palette defined in `tailwind.config.js`:
-
-- `netflix-red`: #E50914
-- `netflix-black`: #141414
-- `netflix-dark`: #000000
-- `netflix-gray`: #808080
-- `netflix-light-gray`: #E5E5E5
-
-### Content Updates
-To customize the content for your own portfolio:
-
-1. **Personal Information**: Update the content in each component with your details
-2. **Projects**: Modify the projects array in `Projects.tsx`
-3. **Skills**: Update the skills data in `Skills.tsx`
-4. **Contact**: Change contact information in `Contact.tsx` and `Footer.tsx`
-
-### Styling
-- Modify `tailwind.config.js` for color scheme changes
-- Update `src/index.css` for custom animations and global styles
-- Component-specific styles are in the respective component files
-
-## 📱 Responsive Design
-
-The portfolio is fully responsive and optimized for:
-- Mobile devices (320px+)
-- Tablets (768px+)
-- Desktop (1024px+)
-- Large screens (1280px+)
-
-## 🎭 Animations
-
-The portfolio features smooth animations powered by Framer Motion:
-- Page load animations
-- Scroll-triggered animations
-- Hover effects
-- Smooth transitions
-
-## 🚀 Deployment
-
-### Build for Production
 ```bash
-npm run build
-# or
-yarn build
+npm run dev        # http://localhost:5173
+npm run build      # typecheck, client + SSR build, prerender -> build/
+npm run preview    # serve build/
 ```
 
-### Deploy to Netlify
-1. Push your code to GitHub
-2. Connect your repository to Netlify
-3. Set build command: `npm run build`
-4. Set publish directory: `build`
-
-### Deploy to Vercel
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📞 Contact
-
-- **Email**: siddhesh.amrale@email.com
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
-
-## 🙏 Acknowledgments
-
-- Inspired by Netflix's design language
-- Built with modern web technologies
-- Icons from React Icons
-- Images from Unsplash
-
----
-
-**Made with ❤️ by Siddhesh Amrale** 
+Deployed by Azure Static Web Apps (`.github/workflows/`), output `build/`.
+`public/staticwebapp.config.json` serves `app.html` as the SPA fallback for
+`/labs/*` and `/learn`, and long-caches hashed `/assets/*`.

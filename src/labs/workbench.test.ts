@@ -1,3 +1,4 @@
+import { beforeAll, describe, expect, it, test } from 'vitest';
 import {
   allChecksPassed,
   InvestigationReport,
@@ -8,7 +9,7 @@ import {
 import { compileCircuit, sampleCircuits } from './quantum/compiler';
 import { minBasisFidelity } from './quantum/statevector';
 
-jest.setTimeout(30000);
+// Timeout: vite.config.ts test.testTimeout (30 s).
 
 describe('systems workbench (headless)', function () {
   let reports: InvestigationReport[];
