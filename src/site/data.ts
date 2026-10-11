@@ -245,7 +245,7 @@ export const credentials = [
     issued: 'May 2024',
     id: 'DEEF9DCC1AE30BEF',
     focus: ['Azure Functions', 'Storage', 'Azure DevOps', 'API development'],
-    url: '', // verification link pending (generic Credly page was not this badge)
+    url: 'https://learn.microsoft.com/en-us/users/siddheshamrale-4796/credentials/deef9dcc1ae30bef',
   },
   {
     title: 'Azure Administrator Associate',
@@ -253,6 +253,6 @@ export const credentials = [
     issued: 'July 2022',
     id: '993640855',
     focus: ['Identity & governance', 'Virtual networks', 'Storage', 'Compute'],
-    url: '', // verification link pending (generic Credly page was not this badge)
+    url: 'https://www.credly.com/badges/c0c52dda-1f32-49a4-9bf9-4bc5010e3bda',
   },
 ];
