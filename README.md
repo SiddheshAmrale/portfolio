@@ -50,18 +50,16 @@ server, median of 3):
 
 | | Before (CRA, Netflix theme) | After |
 |---|---|---|
-| Performance | 71 | **95** |
-| Total Blocking Time | 1602 ms | **55 ms** |
-| Largest Contentful Paint | 2.36 s | **2.55 s** |
+| Performance | 71 | **96** |
+| Total Blocking Time | 1602 ms | **45 ms** |
+| Largest Contentful Paint | 2.36 s | **2.49 s** |
 | Accessibility | 82 | **97** |
 | Best Practices | 96 | **100** |
 | Home-page JS (gzip) | 140 KB (everything) | ~71 KB (labs lazy) |
 
-**3D portrait:** put a generated portrait at
-`src/assets/me/avatar-3d.webp` (or `.png` / `.jpg`, ideally a transparent
-cut-out) and the hero places it at the centre of the agent scene with parallax
-tilt, breathing and a light sweep. Without it, a holographic command core sits
-at the centre.
+**Portrait:** a head-and-shoulders 3D avatar at
+`src/assets/me/avatar-face.webp` sits in the command core at the centre of the
+agent scene. Remove it and the core shows the SA monogram instead.
 
 ```bash
 npm run dev        # http://localhost:5173

@@ -1,10 +1,9 @@
-// Centre of the agent scene when no 3D portrait is present: a holographic
-// command core. Built from HTML layers (each ring is its own small SVG) so the
+// Centre of the agent scene: a holographic command core showing either the
+// face portrait (src/assets/me/avatar-face.*) or the SA monogram. Built from HTML layers (each ring is its own small SVG) so the
 // rotations and the glow pulse are pure compositor work: animating these
 // inside the main SVG made Chrome repaint the whole scene every frame.
 
-
-export function CoreOverlay({ x, y, viewW, viewH }: { x: number; y: number; viewW: number; viewH: number }) {
+export function CoreOverlay({ x, y, viewW, viewH, face }: { x: number; y: number; viewW: number; viewH: number; face?: string }) {
   return (
     <div
       aria-hidden
@@ -35,12 +34,22 @@ export function CoreOverlay({ x, y, viewW, viewH }: { x: number; y: number; view
           <circle key={a} cx={70 * Math.cos((a * Math.PI) / 180)} cy={70 * Math.sin((a * Math.PI) / 180)} r="2.6" fill="#F2B530" />
         ))}
       </svg>
-      <svg viewBox="-130 -130 260 260" className="absolute inset-0 h-full w-full" style={{ width: '100%' }}>
-        <circle r="48" fill="#0a0d16" stroke="url(#coreRing)" strokeWidth="1.5" />
-        <text x="0" y="12" textAnchor="middle" fill="url(#coreRing)" fontFamily="Barlow, Bahnschrift, Arial, sans-serif" fontWeight="700" fontSize="34" letterSpacing="1">
-          SA
-        </text>
-      </svg>
+      {face ? (
+        // Face disc: r=62 of the 260-unit core, inside the inner ring (r=70).
+        <div
+          className="absolute overflow-hidden rounded-full border-2 border-gold/70 bg-[radial-gradient(circle_at_50%_35%,#2a2418,#0c0c0e_70%)] shadow-[0_0_40px_-6px_rgba(242,181,48,.55)]"
+          style={{ left: `${((130 - 62) / 260) * 100}%`, top: `${((130 - 62) / 260) * 100}%`, width: `${(124 / 260) * 100}%`, aspectRatio: '1' }}
+        >
+          <img src={face} alt="" decoding="async" className="h-full w-full object-cover" />
+        </div>
+      ) : (
+        <svg viewBox="-130 -130 260 260" className="absolute inset-0 h-full w-full">
+          <circle r="48" fill="#0a0d16" stroke="url(#coreRing)" strokeWidth="1.5" />
+          <text x="0" y="12" textAnchor="middle" fill="url(#coreRing)" fontFamily="Barlow, Bahnschrift, Arial, sans-serif" fontWeight="700" fontSize="34" letterSpacing="1">
+            SA
+          </text>
+        </svg>
+      )}
     </div>
   );
 }

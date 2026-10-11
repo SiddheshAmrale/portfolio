@@ -1,15 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { CoreOverlay, CorePanel } from './Core';
 
-// Drop a generated 3D portrait at src/assets/me/avatar-3d.(webp|png|jpg) and
-// the scene uses it (hashed, long-cached asset); otherwise a command core
-// sits at the centre of the agents.
-const found = import.meta.glob('../assets/me/avatar-3d.{webp,png,jpg}', {
+// Optional face portrait at src/assets/me/avatar-face.(webp|png|jpg): shown in
+// the command core (hashed, long-cached asset); otherwise the SA monogram.
+const found = import.meta.glob('../assets/me/avatar-face.{webp,png,jpg}', {
   eager: true,
   query: '?url',
   import: 'default',
 }) as Record<string, string>;
-const PORTRAIT: string | undefined = Object.values(found)[0];
+const FACE: string | undefined = Object.values(found)[0];
 
 // "Orchestrator" scene: the agents, the beams that connect them to the centre
 // and the centre itself (3D portrait or command core).
@@ -28,7 +27,7 @@ const AGENTS = [
   { x: 92, y: 420, label: 'EVAL', d: 2.4 },
   { x: 392, y: 424, label: 'ROBOTICS', d: 3 },
 ];
-const HUB = PORTRAIT ? { x: 240, y: 330 } : { x: 240, y: 236 };
+const HUB = { x: 240, y: 236 };
 
 const pct = (v: number, of: number) => `${(v / of) * 100}%`;
 
@@ -141,7 +140,7 @@ export default function AgentScene() {
     };
   }, []);
 
-  const label = PORTRAIT ? 'Siddhesh orchestrating a team of AI agents' : 'A command core orchestrating a team of AI agents';
+  const label = FACE ? 'Siddhesh orchestrating a team of AI agents' : 'A command core orchestrating a team of AI agents';
   // Layers, back to front: the static room (painted once), the portrait (an
   // <img>, composited), the beams + agents (own promoted layer), and the core
   // (HTML layers, composited). Keeping animated parts out of the room's SVG
@@ -170,42 +169,12 @@ export default function AgentScene() {
           </defs>
           <Room />
           <BeamLines />
-          {PORTRAIT ? null : <CorePanel x={HUB.x} y={HUB.y} />}
+          <CorePanel x={HUB.x} y={HUB.y} />
         </svg>
 
         {/* Beams fire behind the centre, so they never cross the portrait. */}
         <BeamFire />
-        {PORTRAIT ? (
-          <>
-            <div
-              aria-hidden
-              className="core-glow pointer-events-none absolute rounded-full bg-[radial-gradient(closest-side,rgba(242,181,48,.30),rgba(242,181,48,.06)_60%,transparent)]"
-              style={{ left: '50%', top: '52%', width: '70%', aspectRatio: '1', transform: 'translate(-50%,-50%)' }}
-            />
-            <div className="absolute overflow-hidden" style={{ left: '8.3%', top: '11.5%', width: '83.4%', height: '88.5%' }}>
-              <img src={PORTRAIT} alt="" decoding="async" className="portrait-3d absolute inset-0 h-full w-full object-contain object-bottom" />
-              {/* Light sweep clipped to the figure's own silhouette. */}
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  WebkitMaskImage: `url(${PORTRAIT})`,
-                  maskImage: `url(${PORTRAIT})`,
-                  WebkitMaskSize: 'contain',
-                  maskSize: 'contain',
-                  WebkitMaskPosition: 'bottom',
-                  maskPosition: 'bottom',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskRepeat: 'no-repeat',
-                }}
-              >
-                <div className="light-sweep absolute inset-y-0 left-0 w-full bg-[linear-gradient(100deg,transparent_38%,rgba(255,231,163,.16)_50%,transparent_62%)]" />
-              </div>
-            </div>
-          </>
-        ) : (
-          <CoreOverlay x={HUB.x} y={HUB.y} viewW={480} viewH={520} />
-        )}
+        <CoreOverlay x={HUB.x} y={HUB.y} viewW={480} viewH={520} face={FACE} />
         <svg width="0" height="0" className="absolute" aria-hidden>
           <defs>
             <linearGradient id="botBody" x1="0" y1="0" x2="0" y2="1">
