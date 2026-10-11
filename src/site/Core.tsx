@@ -3,7 +3,6 @@
 // rotations and the glow pulse are pure compositor work: animating these
 // inside the main SVG made Chrome repaint the whole scene every frame.
 
-const ring = (r: number) => `${(r * 2 * 100) / 260}%`;
 
 export function CoreOverlay({ x, y, viewW, viewH }: { x: number; y: number; viewW: number; viewH: number }) {
   return (
@@ -38,17 +37,10 @@ export function CoreOverlay({ x, y, viewW, viewH }: { x: number; y: number; view
       </svg>
       <svg viewBox="-130 -130 260 260" className="absolute inset-0 h-full w-full" style={{ width: '100%' }}>
         <circle r="48" fill="#0a0d16" stroke="url(#coreRing)" strokeWidth="1.5" />
-        <path
-          d="M-11 9.6c1.6 2.6 4.6 4.2 8.4 4.2 4.6 0 7.7-2.3 7.7-6 0-4-3-5.1-7.4-6.3-4.2-1.2-7.2-2.6-7.2-6.5 0-3.5 3-6 7.2-6 3.3 0 5.8 1.4 7.2 3.7"
-          fill="none"
-          stroke="url(#coreRing)"
-          strokeWidth="4"
-          strokeLinecap="round"
-          transform="translate(-2 -1)"
-        />
-        <circle cx="14" cy="11" r="3.4" fill="#F2B530" />
+        <text x="0" y="12" textAnchor="middle" fill="url(#coreRing)" fontFamily="Barlow, Bahnschrift, Arial, sans-serif" fontWeight="700" fontSize="34" letterSpacing="1">
+          SA
+        </text>
       </svg>
-      <span className="core-dot absolute rounded-full bg-gold" style={{ left: '55.4%', top: '54.2%', width: ring(3.4), height: ring(3.4), translate: '-50% -50%' }} />
     </div>
   );
 }

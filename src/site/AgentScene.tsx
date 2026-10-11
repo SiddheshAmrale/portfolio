@@ -173,14 +173,39 @@ export default function AgentScene() {
           {PORTRAIT ? null : <CorePanel x={HUB.x} y={HUB.y} />}
         </svg>
 
-        {PORTRAIT ? (
-          <div className="absolute overflow-hidden" style={{ left: '8.3%', top: '11.5%', width: '83.4%', height: '88.5%' }}>
-            <img src={PORTRAIT} alt="" decoding="async" className="portrait-3d absolute inset-0 h-full w-full object-contain object-bottom" />
-            <div className="light-sweep absolute inset-y-0 left-0 w-full bg-[linear-gradient(100deg,transparent_35%,rgba(165,243,252,.12)_50%,transparent_65%)]" />
-          </div>
-        ) : null}
-
+        {/* Beams fire behind the centre, so they never cross the portrait. */}
         <BeamFire />
+        {PORTRAIT ? (
+          <>
+            <div
+              aria-hidden
+              className="core-glow pointer-events-none absolute rounded-full bg-[radial-gradient(closest-side,rgba(242,181,48,.30),rgba(242,181,48,.06)_60%,transparent)]"
+              style={{ left: '50%', top: '52%', width: '70%', aspectRatio: '1', transform: 'translate(-50%,-50%)' }}
+            />
+            <div className="absolute overflow-hidden" style={{ left: '8.3%', top: '11.5%', width: '83.4%', height: '88.5%' }}>
+              <img src={PORTRAIT} alt="" decoding="async" className="portrait-3d absolute inset-0 h-full w-full object-contain object-bottom" />
+              {/* Light sweep clipped to the figure's own silhouette. */}
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  WebkitMaskImage: `url(${PORTRAIT})`,
+                  maskImage: `url(${PORTRAIT})`,
+                  WebkitMaskSize: 'contain',
+                  maskSize: 'contain',
+                  WebkitMaskPosition: 'bottom',
+                  maskPosition: 'bottom',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskRepeat: 'no-repeat',
+                }}
+              >
+                <div className="light-sweep absolute inset-y-0 left-0 w-full bg-[linear-gradient(100deg,transparent_38%,rgba(255,231,163,.16)_50%,transparent_62%)]" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <CoreOverlay x={HUB.x} y={HUB.y} viewW={480} viewH={520} />
+        )}
         <svg width="0" height="0" className="absolute" aria-hidden>
           <defs>
             <linearGradient id="botBody" x1="0" y1="0" x2="0" y2="1">
@@ -192,16 +217,6 @@ export default function AgentScene() {
         {AGENTS.map((a) => (
           <Agent key={a.label} {...a} />
         ))}
-
-        {PORTRAIT ? (
-          <div
-            aria-hidden
-            className="core-glow pointer-events-none absolute rounded-full bg-[radial-gradient(closest-side,rgba(242,181,48,.5),transparent)]"
-            style={{ left: `${(HUB.x / 480) * 100}%`, top: `${(HUB.y / 520) * 100}%`, width: '14%', aspectRatio: '1', transform: 'translate(-50%,-50%)' }}
-          />
-        ) : (
-          <CoreOverlay x={HUB.x} y={HUB.y} viewW={480} viewH={520} />
-        )}
       </div>
     </div>
   );

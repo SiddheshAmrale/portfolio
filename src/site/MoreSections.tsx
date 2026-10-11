@@ -47,21 +47,30 @@ export function Stack() {
   );
 }
 
+/** A card that is a link only when there is a verification URL. */
+function CardLink({ url, className, children }: { url: string; className: string; children: React.ReactNode }) {
+  return url ? (
+    <a href={url} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
+    </a>
+  ) : (
+    <div className={className}>{children}</div>
+  );
+}
+
 export function Credentials() {
   return (
     <section id="credentials" className="relative py-24 sm:py-28">
       <div className="shell">
         <SectionHead index="04" kicker="Credentials" title={<>Verified by Microsoft, <span className="text-fog-500">three times over.</span></>}>
-          Each credential links to its public verification record.
+          Verified credentials link to their public record on Microsoft Learn.
         </SectionHead>
 
         <ol className="relative grid gap-4 lg:grid-cols-3">
           {credentials.map((c, k) => (
             <li key={c.id} className="reveal" style={{ ['--d' as string]: `${k * 0.08}s` }}>
-              <a
-                href={c.url}
-                target="_blank"
-                rel="noopener noreferrer"
+              <CardLink
+                url={c.url}
                 className={'spot panel group flex h-full flex-col p-7 transition-colors duration-500 hover:border-fog-500/30' + (k === 0 ? ' beam' : '')}
               >
                 <div className="flex items-center justify-between">
@@ -82,11 +91,13 @@ export function Credentials() {
                 </div>
                 <div className="mt-auto flex items-center justify-between border-t border-line pt-5">
                   <span className="font-mono text-[10px] tracking-[0.1em] text-fog-700">ID {c.id}</span>
-                  <span className="inline-flex items-center gap-1 text-[13px] text-fog-300 transition-colors group-hover:text-white">
-                    Verify <ArrowUpRight size={14} />
-                  </span>
+                  {c.url ? (
+                    <span className="inline-flex items-center gap-1 text-[13px] text-fog-300 transition-colors group-hover:text-white">
+                      Verify <ArrowUpRight size={14} />
+                    </span>
+                  ) : null}
                 </div>
-              </a>
+              </CardLink>
             </li>
           ))}
         </ol>
@@ -137,7 +148,7 @@ export function Contact() {
             <GitHub size={16} /> GitHub
           </a>
           <a href={profile.resume} download className="inline-flex items-center gap-2 transition-colors hover:text-white">
-            <Download size={16} /> Résumé
+            <Download size={16} /> Resume
           </a>
           <a href={profile.phoneHref} className="inline-flex items-center gap-2 transition-colors hover:text-white">
             <Phone size={16} /> {profile.phone}

@@ -21,9 +21,10 @@ function Monogram() {
           <stop offset="1" stopColor="#d99a1e" />
         </linearGradient>
       </defs>
-      <rect x="1" y="1" width="30" height="30" rx="9" fill="#0a0d16" stroke={`url(#${id})`} strokeOpacity=".7" />
-      <path d="M11.5 19.6c.7 1.1 2 1.8 3.6 1.8 2 0 3.3-1 3.3-2.6 0-1.7-1.3-2.2-3.2-2.7-1.8-.5-3.1-1.1-3.1-2.8 0-1.5 1.3-2.6 3.1-2.6 1.4 0 2.5.6 3.1 1.6" stroke={`url(#${id})`} strokeWidth="1.8" fill="none" strokeLinecap="round" />
-      <circle cx="22.5" cy="20.5" r="1.4" fill="#ffd978" />
+      <rect x="1" y="1" width="30" height="30" rx="9" fill="#0a0a0c" stroke={`url(#${id})`} strokeOpacity=".75" />
+      <text x="16" y="20.6" textAnchor="middle" fill={`url(#${id})`} fontFamily="Barlow, Bahnschrift, Arial, sans-serif" fontWeight="700" fontSize="13" letterSpacing=".4">
+        SA
+      </text>
     </svg>
   );
 }
@@ -79,7 +80,7 @@ export function Nav() {
               Labs
             </Link>
             <a href={profile.resume} download className="btn-ghost hidden py-2 text-[13px] sm:inline-flex">
-              <Download size={14} /> Résumé
+              <Download size={14} /> Resume
             </a>
             <button
               type="button"
@@ -113,7 +114,7 @@ export function Nav() {
           ))}
           <li className="mt-8 flex gap-3">
             <a href={profile.resume} download tabIndex={open ? 0 : -1} className="btn-primary">
-              <Download /> Résumé
+              <Download /> Resume
             </a>
             <Link to="/learn" tabIndex={open ? 0 : -1} onClick={() => setOpen(false)} className="btn-ghost">
               Labs

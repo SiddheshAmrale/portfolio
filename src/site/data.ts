@@ -4,6 +4,7 @@
 export const profile = {
   name: 'Siddhesh Amrale',
   role: 'AI Cloud Engineer',
+  employer: 'Pittsburgh International Airport',
   location: 'Pittsburgh, PA',
   coords: '40.44°N 79.99°W',
   email: 'siddhesh.amrale@gmail.com',
@@ -233,7 +234,7 @@ export const credentials = [
   {
     title: 'Azure AI Engineer Associate',
     code: 'AI-104',
-    issued: 'January 2025',
+    issued: 'August 2025',
     id: 'EDA4C40E9F0219A6',
     focus: ['Azure AI Services', 'Azure ML', 'Cognitive Services', 'AI solution architecture'],
     url: 'https://learn.microsoft.com/api/credentials/share/en-us/SiddheshAmrale-4796/EDA4C40E9F0219A6?sharingId=35158B22038BBCBE',
@@ -244,7 +245,7 @@ export const credentials = [
     issued: 'May 2024',
     id: 'DEEF9DCC1AE30BEF',
     focus: ['Azure Functions', 'Storage', 'Azure DevOps', 'API development'],
-    url: 'https://www.credly.com/badges/azure-developer',
+    url: '', // verification link pending (generic Credly page was not this badge)
   },
   {
     title: 'Azure Administrator Associate',
@@ -252,6 +253,6 @@ export const credentials = [
     issued: 'July 2022',
     id: '993640855',
     focus: ['Identity & governance', 'Virtual networks', 'Storage', 'Compute'],
-    url: 'https://www.credly.com/badges/azure-administrator',
+    url: '', // verification link pending (generic Credly page was not this badge)
   },
 ];

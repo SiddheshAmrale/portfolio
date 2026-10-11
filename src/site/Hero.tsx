@@ -70,19 +70,21 @@ export default function Hero() {
   const [first, last] = profile.name.split(' ');
   return (
     <section id="top" className="relative isolate overflow-hidden">
-      {/* Static gradient under the shader: what you see before / without WebGL */}
-      <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(80%_60%_at_70%_20%,rgba(56,189,248,.10),transparent_60%),radial-gradient(60%_50%_at_10%_80%,rgba(94,234,212,.10),transparent_60%)]" />
+      {/* Static gradient under the aurora */}
+      <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(80%_60%_at_70%_20%,rgba(242,181,48,.07),transparent_60%),radial-gradient(60%_50%_at_10%_80%,rgba(148,163,184,.06),transparent_60%)]" />
       <Aurora />
       <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-ink-950" />
 
       <div className="shell grid min-h-[100svh] items-center gap-14 pb-16 pt-28 lg:grid-cols-[1.15fr_.85fr] lg:gap-10 lg:pt-24">
         <div className="intro">
-          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-white/[0.03] py-1.5 pl-2 pr-3.5 font-mono text-[11px] tracking-[0.14em] text-fog-300">
+          <div className="mb-7 inline-flex max-w-full items-center gap-2.5 rounded-full border border-line bg-white/[0.03] py-1.5 pl-2 pr-3.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-fog-300">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/60" style={{ animation: 'pulse-dot 2s infinite' }} />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            OPEN TO ROLES · {profile.location.toUpperCase()}
+            <span>
+              Open to new roles &amp; relocation<span className="hidden sm:inline"> · {profile.location}</span>
+            </span>
           </div>
 
           <h1 className="text-[clamp(3.1rem,9.5vw,7.4rem)] font-bold leading-[0.9] tracking-[-0.025em]">
@@ -101,11 +103,21 @@ export default function Hero() {
             Engineering <RoleCycler />
           </p>
 
-          <p className="mt-5 max-w-xl text-pretty text-[15px] leading-relaxed text-fog-300 sm:text-base">
-            {profile.role} building data platforms, AI services and cloud infrastructure where every claim has a
-            benchmark behind it — from a 2.2&nbsp;MB native media player to runnable labs for telemetry, lakehouse data
-            and GPU fleets.
-          </p>
+          <div className="mt-6 max-w-xl space-y-3 text-pretty text-[15px] leading-relaxed text-fog-300 sm:text-[16px]">
+            <p>
+              <span className="mr-2 inline-flex items-center gap-1.5 rounded-md border border-gold/30 bg-gold/10 px-2 py-0.5 align-[1px] text-[11px] font-semibold uppercase tracking-[0.14em] text-gold">
+                Now
+              </span>
+              {profile.role} at <span className="font-semibold text-fog-100">{profile.employer}</span>: building batch and
+              streaming data pipelines, AI/ML (sentiment analysis and RAG agents) and the cloud architecture behind them,
+              with end-to-end monitoring of success, failure, performance and model confidence across every pipeline and
+              app.
+            </p>
+            <p className="text-fog-500">
+              Off the clock, I build high-performance software and runnable systems labs, from a 2.2&nbsp;MB native media
+              player to telemetry, lakehouse and GPU-fleet workbenches.
+            </p>
+          </div>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href="#work" className="btn-primary group">
@@ -113,7 +125,7 @@ export default function Hero() {
               <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
             </a>
             <a href={profile.resume} download className="btn-ghost">
-              <Download /> Résumé
+              <Download /> Resume
             </a>
             <span className="mx-1 hidden h-6 w-px bg-line sm:block" />
             <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-full p-2.5 text-fog-300 transition-colors hover:bg-white/5 hover:text-white">
@@ -139,12 +151,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <a href="#disciplines" aria-label="Scroll to content" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-fog-500 transition-colors hover:text-fog-300 md:flex">
-        SCROLL
-        <span className="relative h-10 w-px overflow-hidden bg-line">
-          <span className="absolute inset-x-0 top-0 h-1/2 bg-gold" style={{ animation: 'scan 2.2s var(--ease-in-out) infinite' }} />
-        </span>
-      </a>
     </section>
   );
 }

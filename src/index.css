@@ -342,7 +342,6 @@
   0%, 100% { opacity: 0.55; scale: 0.94; }
   50% { opacity: 1; scale: 1; }
 }
-.core-dot { animation: pulse-dot 2.4s var(--ease-in-out) infinite; }
 .agent-scene .core-code { font: 500 9px 'JetBrains Mono', ui-monospace, monospace; fill: #c4cad8; }
 @keyframes breathe {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
