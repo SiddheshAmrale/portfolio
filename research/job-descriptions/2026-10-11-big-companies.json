@@ -1,0 +1,2387 @@
+{
+  "collected": "2026-10-11",
+  "window": "posted in the past 7 days",
+  "region": "United States",
+  "source": "LinkedIn job search, filtered by company",
+  "note": "Summaries paraphrased; follow a posting url for the full text. \"Not stated on LinkedIn\" = the LinkedIn description gives no pay.",
+  "roles": [
+    {
+      "n": 0,
+      "family": "Data Engineer",
+      "company": "Meta",
+      "title": "Data Engineer, Product Analytics",
+      "experience": "7+ yrs",
+      "pay": "$177K–$247K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Python",
+        "ETL",
+        "data modelling"
+      ],
+      "summary": "Large-scale data models, pipelines and dashboards for product teams across Meta apps; owns data quality and governance in its area.",
+      "postings": [
+        {
+          "id": "4120820999",
+          "location": "Menlo Park, CA",
+          "url": "https://www.linkedin.com/jobs/view/4120820999/"
+        },
+        {
+          "id": "4438700068",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4438700068/"
+        }
+      ]
+    },
+    {
+      "n": 1,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer, Marketing Insights and Technology",
+      "experience": "1+ yr",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Python",
+        "Spark",
+        "Airflow",
+        "Redshift"
+      ],
+      "summary": "Data integration, pipelines and data-lake work; data models serving analytics, BI and agentic workflows.",
+      "postings": [
+        {
+          "id": "4477839536",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4477839536/"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer, Amazon Customer Service",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Spark",
+        "Redshift"
+      ],
+      "summary": "Pipelines and schemas behind customer-service analytics (customer journeys, resolver efficiency).",
+      "postings": [
+        {
+          "id": "4468308815",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4468308815/"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer II, UTR Data Engineering",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "SQL",
+        "Airflow",
+        "Redshift"
+      ],
+      "summary": "Owns large parts of a young data architecture; sets team patterns, including how AI fits into data engineering; self-service data models.",
+      "postings": [
+        {
+          "id": "4468321612",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4468321612/"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer, Ring Agent Platforms",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Redshift",
+        "AI coding tools"
+      ],
+      "summary": "End-to-end data lifecycle feeding analysts, scientists and AI systems; daily use of AI development tools expected.",
+      "postings": [
+        {
+          "id": "4460330448",
+          "location": "Hawthorne, CA",
+          "url": "https://www.linkedin.com/jobs/view/4460330448/"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer II, PXT EXR-Ops Tech",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "ETL/ELT",
+        "Redshift"
+      ],
+      "summary": "Large-scale BI data structures and ETL for HR operations technology.",
+      "postings": [
+        {
+          "id": "4469211577",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4469211577/"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer II, Intelligent Talent Acquisition (ITA)",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "SQL",
+        "Java",
+        "Redshift",
+        "AWS"
+      ],
+      "summary": "Secure, scalable recruiting-data pipelines and analytical solutions on AWS.",
+      "postings": [
+        {
+          "id": "4478000129",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4478000129/"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer II, WW Ops Finance S&A",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "SQL",
+        "Spark",
+        "Airflow"
+      ],
+      "summary": "Source-of-truth network-topology and cost dataset for finance and operations.",
+      "postings": [
+        {
+          "id": "4469273262",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4469273262/"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "family": "Data Engineer",
+      "company": "Amazon (Leo)",
+      "title": "Sr. Data & Analytics Engineer, Amazon Leo",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "U.S. person only (export control)",
+      "skills": [
+        "Python",
+        "SQL",
+        "AWS",
+        "streaming"
+      ],
+      "summary": "Data infrastructure and tools linking battery development, test and manufacturing data for traceability and failure analysis.",
+      "postings": [
+        {
+          "id": "4468854109",
+          "location": "Redmond, WA",
+          "url": "https://www.linkedin.com/jobs/view/4468854109/"
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer, WW Pricing - Data & Analytics",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Redshift",
+        "ML data"
+      ],
+      "summary": "Data models and ML data infrastructure behind pricing algorithms.",
+      "postings": [
+        {
+          "id": "4477888678",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4477888678/"
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer, Marketing Tech BI, Stores Finance",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "SQL",
+        "Spark",
+        "Redshift",
+        "RAG/evals"
+      ],
+      "summary": "Owns pipelines and datasets in a finance domain, Redshift operations, and conversational/agentic analytics data products.",
+      "postings": [
+        {
+          "id": "4469530466",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4469530466/"
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer III, Amazon Manufacturing Services",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "PySpark",
+        "SQL",
+        "Redshift"
+      ],
+      "summary": "Small team owning pipelines, warehouse, dashboards and ML workflows for manufacturing throughput and quality.",
+      "postings": [
+        {
+          "id": "4469529451",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4469529451/"
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "family": "Data Engineer",
+      "company": "Amazon (Leo)",
+      "title": "Data Engineer, Leo Global Business and Customer Operations",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "U.S. person only (export control)",
+      "skills": [
+        "SQL",
+        "Redshift",
+        "data quality"
+      ],
+      "summary": "Platform pipelines ingesting dozens of source systems, quality standards and multi-tenancy.",
+      "postings": [
+        {
+          "id": "4468845458",
+          "location": "Arlington, VA",
+          "url": "https://www.linkedin.com/jobs/view/4468845458/"
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Geospatial Data Engineer, WW Sustainability",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "PySpark",
+        "Airflow",
+        "geospatial"
+      ],
+      "summary": "Ingestion, quality and metadata for sustainability geospatial data; consolidating unstructured sources with scientists.",
+      "postings": [
+        {
+          "id": "4468353953",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4468353953/"
+        },
+        {
+          "id": "4468369611",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4468369611/"
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Sr. Data Engineer, Amazon Digital Advertising",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Spark",
+        "SQL"
+      ],
+      "summary": "Ingestion pipelines for marketing data from agencies and ad-tech vendors; schema normalisation.",
+      "postings": [
+        {
+          "id": "4468310742",
+          "location": "Boulder, CO",
+          "url": "https://www.linkedin.com/jobs/view/4468310742/"
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Data Engineer Internship - 2027 (US)",
+      "experience": "Student",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "SQL"
+      ],
+      "summary": "12-week full-time internship for enrolled students.",
+      "postings": [
+        {
+          "id": "4477154784",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4477154784/"
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "family": "Data Engineer",
+      "company": "Amazon",
+      "title": "Manager, Data Engineering, GMT Global Operations",
+      "experience": "7+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "People management",
+        "SQL",
+        "Spark"
+      ],
+      "summary": "Leads data engineers and DBAs supporting Grocery reporting; owns the modernisation roadmap.",
+      "postings": [
+        {
+          "id": "4476102528",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4476102528/"
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "family": "Data Engineer",
+      "company": "Microsoft",
+      "title": "Senior Data Engineer",
+      "experience": "3+ yrs",
+      "pay": "$119.8K–$234.7K ($160.2K–$261K high-cost areas)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Azure",
+        "Databricks",
+        "Spark"
+      ],
+      "summary": "Infrastructure for clean-room, privacy-preserving data collaboration and identity resolution.",
+      "postings": [
+        {
+          "id": "4476714671",
+          "location": "Redmond, WA",
+          "url": "https://www.linkedin.com/jobs/view/4476714671/"
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "family": "Data Engineer",
+      "company": "AWS",
+      "title": "Data Engineer, AWS Infrastructure Supply Chain Intelligence",
+      "experience": "3+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "AWS",
+        "Redshift"
+      ],
+      "summary": "Datasets and infrastructure that supply-chain analysts and scientists build on.",
+      "postings": [
+        {
+          "id": "4477489727",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4477489727/"
+        },
+        {
+          "id": "4460532986",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4460532986/"
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "family": "Data Engineer",
+      "company": "AWS",
+      "title": "Data Engineer II, Product BI",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Redshift",
+        "streaming"
+      ],
+      "summary": "BI data infrastructure for AWS product teams.",
+      "postings": [
+        {
+          "id": "4477163418",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4477163418/"
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "family": "Data Engineer",
+      "company": "AWS",
+      "title": "Data Engineer II, AWS Marketplace and Partner Services",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Spark",
+        "Airflow",
+        "Redshift",
+        "GenAI"
+      ],
+      "summary": "Data infrastructure, models and pipelines feeding insights, customer features and ML.",
+      "postings": [
+        {
+          "id": "4476399883",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4476399883/"
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "family": "Data Engineer",
+      "company": "Meta",
+      "title": "Data Engineer, Meta Superintelligence Labs",
+      "experience": "7+ yrs",
+      "pay": "$177K–$247K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Python",
+        "data modelling"
+      ],
+      "summary": "Scalable data solutions for growth and strategy in Meta Superintelligence Labs.",
+      "postings": [
+        {
+          "id": "4476595059",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4476595059/"
+        },
+        {
+          "id": "4476581675",
+          "location": "Menlo Park, CA",
+          "url": "https://www.linkedin.com/jobs/view/4476581675/"
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "family": "Data Engineer",
+      "company": "Meta",
+      "title": "Data Engineer, Teen & Family Experience",
+      "experience": "4+ yrs",
+      "pay": "$147K–$208K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Python",
+        "ETL"
+      ],
+      "summary": "Data sets and pipelines for teen and family product teams.",
+      "postings": [
+        {
+          "id": "4466972992",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4466972992/"
+        },
+        {
+          "id": "4466992027",
+          "location": "Menlo Park, CA",
+          "url": "https://www.linkedin.com/jobs/view/4466992027/"
+        },
+        {
+          "id": "4475600951",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4475600951/"
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "family": "Data Engineer",
+      "company": "Meta",
+      "title": "Data Engineer, Analytics (Technical Leadership)",
+      "experience": "10+ yrs",
+      "pay": "$210K–$281K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Python",
+        "data warehousing"
+      ],
+      "summary": "Technical leadership for analytics data foundations.",
+      "postings": [
+        {
+          "id": "4351669392",
+          "location": "US (remote)",
+          "url": "https://www.linkedin.com/jobs/view/4351669392/"
+        },
+        {
+          "id": "4351649411",
+          "location": "Menlo Park, CA",
+          "url": "https://www.linkedin.com/jobs/view/4351649411/"
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "family": "Data Engineer",
+      "company": "Meta",
+      "title": "Data Engineer, MSL (Mobile Client)",
+      "experience": "7+ yrs",
+      "pay": "$177K–$247K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Client logging",
+        "SQL",
+        "Python"
+      ],
+      "summary": "Owns client-side logging and measurement for an iOS/Android AI app.",
+      "postings": [
+        {
+          "id": "4476597028",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4476597028/"
+        },
+        {
+          "id": "4476579823",
+          "location": "Menlo Park, CA",
+          "url": "https://www.linkedin.com/jobs/view/4476579823/"
+        },
+        {
+          "id": "4465575450",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4465575450/"
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "family": "Data Engineer",
+      "company": "Meta",
+      "title": "Data Engineer, Technical Leadership (Ranking, AI)",
+      "experience": "10+ yrs",
+      "pay": "$210K–$281K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "Python",
+        "ML data"
+      ],
+      "summary": "Sets the data-foundation vision for ranking and AI.",
+      "postings": [
+        {
+          "id": "4446632274",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4446632274/"
+        },
+        {
+          "id": "4446609819",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4446609819/"
+        },
+        {
+          "id": "4446608824",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4446608824/"
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "family": "Data Engineer",
+      "company": "IBM",
+      "title": "Data Engineer, Data Platforms (Google) [5 levels]",
+      "experience": "Mid-senior",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "GCP",
+        "BigQuery",
+        "Dataflow/Beam",
+        "Composer",
+        "dbt"
+      ],
+      "summary": "Consulting: batch and real-time GCP pipelines for warehouses and lakes.",
+      "postings": [
+        {
+          "id": "4473686383",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473686383/"
+        },
+        {
+          "id": "4473675833",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473675833/"
+        },
+        {
+          "id": "4473681538",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473681538/"
+        },
+        {
+          "id": "4474402402",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4474402402/"
+        },
+        {
+          "id": "4474403436",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4474403436/"
+        },
+        {
+          "id": "4473680556",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473680556/"
+        },
+        {
+          "id": "4473681537",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473681537/"
+        },
+        {
+          "id": "4474400657",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4474400657/"
+        },
+        {
+          "id": "4473691314",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473691314/"
+        },
+        {
+          "id": "4474407315",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4474407315/"
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "family": "Data Engineer",
+      "company": "IBM",
+      "title": "Data Engineer, Machine Learning [3 levels]",
+      "experience": "Mid-senior",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "ML",
+        "Tableau/Power BI"
+      ],
+      "summary": "Consulting: applies ML techniques to client business problems.",
+      "postings": [
+        {
+          "id": "4473694055",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473694055/"
+        },
+        {
+          "id": "4473684394",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473684394/"
+        },
+        {
+          "id": "4473679681",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473679681/"
+        },
+        {
+          "id": "4473675835",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473675835/"
+        },
+        {
+          "id": "4473687386",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473687386/"
+        },
+        {
+          "id": "4473683474",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473683474/"
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "family": "Data Engineer",
+      "company": "IBM",
+      "title": "Data Engineer, Business Intelligence [2 levels]",
+      "experience": "Mid-senior",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "BI platforms",
+        "Tableau"
+      ],
+      "summary": "Consulting: web-based BI reporting solutions and platform integration.",
+      "postings": [
+        {
+          "id": "4473677751",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4473677751/"
+        },
+        {
+          "id": "4473696035",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4473696035/"
+        },
+        {
+          "id": "4474095846",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4474095846/"
+        },
+        {
+          "id": "4474407320",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4474407320/"
+        }
+      ]
+    },
+    {
+      "n": 29,
+      "family": "Data Engineer",
+      "company": "Oracle",
+      "title": "Principal Data Engineer",
+      "experience": "Principal",
+      "pay": "$102.3K–$209.5K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "SQL",
+        "ETL",
+        "governance"
+      ],
+      "summary": "Finance/ops-facing data solutions; owns projects from requirements to production.",
+      "postings": [
+        {
+          "id": "4474422157",
+          "location": "US (remote)",
+          "url": "https://www.linkedin.com/jobs/view/4474422157/"
+        },
+        {
+          "id": "4474406852",
+          "location": "Nashville, TN",
+          "url": "https://www.linkedin.com/jobs/view/4474406852/"
+        }
+      ]
+    },
+    {
+      "n": 30,
+      "family": "Data Engineer",
+      "company": "Oracle",
+      "title": "Senior Data Engineer (Fusion)",
+      "experience": "Senior",
+      "pay": "$102.3K–$209.5K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "ETL",
+        "Oracle Fusion"
+      ],
+      "summary": "Requirements-to-pipeline work across many sources; flow troubleshooting and tuning.",
+      "postings": [
+        {
+          "id": "4466244592",
+          "location": "Cleveland, OH",
+          "url": "https://www.linkedin.com/jobs/view/4466244592/"
+        }
+      ]
+    },
+    {
+      "n": 31,
+      "family": "Data Engineer",
+      "company": "Salesforce",
+      "title": "Data Engineer (SMTS / LMTS), MDM",
+      "experience": "8+ yrs (LMTS)",
+      "pay": "$148.5K–$260.1K (up to $285.8K)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Java",
+        "Airflow",
+        "Kafka",
+        "multi-cloud"
+      ],
+      "summary": "Master data management: entity resolution, golden records, corporate hierarchies; AI developer tooling.",
+      "postings": [
+        {
+          "id": "4476110477",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4476110477/"
+        },
+        {
+          "id": "4476109610",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4476109610/"
+        },
+        {
+          "id": "4476126002",
+          "location": "Indianapolis, IN",
+          "url": "https://www.linkedin.com/jobs/view/4476126002/"
+        },
+        {
+          "id": "4476106773",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4476106773/"
+        }
+      ]
+    },
+    {
+      "n": 32,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Sr. Lead Software Engineer: Data Engineering",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Spark",
+        "Databricks",
+        "AWS"
+      ],
+      "summary": "Data platform design and governance (on-site, Columbus).",
+      "postings": [
+        {
+          "id": "4478039547",
+          "location": "Columbus, OH",
+          "url": "https://www.linkedin.com/jobs/view/4478039547/"
+        }
+      ]
+    },
+    {
+      "n": 33,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Lead Software Engineer, Data Engineering | Data Technology",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "PySpark",
+        "Snowflake",
+        "dbt",
+        "Airflow",
+        "Kafka/Flink",
+        "Iceberg"
+      ],
+      "summary": "Large-scale ETL and Python data applications (on-site, Columbus). Same text as #34.",
+      "postings": [
+        {
+          "id": "4458047736",
+          "location": "Columbus, OH",
+          "url": "https://www.linkedin.com/jobs/view/4458047736/"
+        }
+      ]
+    },
+    {
+      "n": 34,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Lead Software Engineer, Data Technology | Data Engineering",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "PySpark",
+        "Snowflake",
+        "dbt",
+        "Airflow",
+        "Kafka/Flink",
+        "Iceberg"
+      ],
+      "summary": "Second listing of #33 (on-site, Columbus).",
+      "postings": [
+        {
+          "id": "4459109346",
+          "location": "Columbus, OH",
+          "url": "https://www.linkedin.com/jobs/view/4459109346/"
+        }
+      ]
+    },
+    {
+      "n": 35,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Lead Software Engineer, Data Engineer/PySpark/Databricks",
+      "experience": "Lead",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "PySpark",
+        "Databricks",
+        "Snowflake",
+        "Airflow",
+        "Kafka"
+      ],
+      "summary": "Reusable data frameworks, mentoring (on-site, Houston).",
+      "postings": [
+        {
+          "id": "4478070282",
+          "location": "Houston, TX",
+          "url": "https://www.linkedin.com/jobs/view/4478070282/"
+        }
+      ]
+    },
+    {
+      "n": 36,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Lead Software Engineer, Data Engineer",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Airflow",
+        "Kinesis",
+        "Redshift",
+        "AWS"
+      ],
+      "summary": "Streaming and batch data engineering with data quality (on-site, Atlanta).",
+      "postings": [
+        {
+          "id": "4477121995",
+          "location": "Atlanta, GA",
+          "url": "https://www.linkedin.com/jobs/view/4477121995/"
+        }
+      ]
+    },
+    {
+      "n": 37,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Corporate Sector, Lead Data Engineer",
+      "experience": "8+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Java",
+        "Kubernetes"
+      ],
+      "summary": "Architecture for backup, recovery and immutable-data protection across data platforms (on-site, Houston).",
+      "postings": [
+        {
+          "id": "4476986263",
+          "location": "Houston, TX",
+          "url": "https://www.linkedin.com/jobs/view/4476986263/"
+        }
+      ]
+    },
+    {
+      "n": 38,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Lead Software Engineer: Data Engineering",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Spark/Scala",
+        "Databricks",
+        "AWS"
+      ],
+      "summary": "Production data engineering and streaming (on-site, Columbus).",
+      "postings": [
+        {
+          "id": "4467978549",
+          "location": "Columbus, OH",
+          "url": "https://www.linkedin.com/jobs/view/4467978549/"
+        }
+      ]
+    },
+    {
+      "n": 39,
+      "family": "Data Engineer",
+      "company": "JPMorganChase",
+      "title": "Sr Lead Software Engineer, Data Engineering",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "AWS",
+        "Databricks",
+        "Snowflake",
+        "Kafka",
+        "Delta"
+      ],
+      "summary": "Leads a Scrum team building data utilities (on-site, Wilmington).",
+      "postings": [
+        {
+          "id": "4478012793",
+          "location": "Wilmington, DE",
+          "url": "https://www.linkedin.com/jobs/view/4478012793/"
+        }
+      ]
+    },
+    {
+      "n": 40,
+      "family": "Data Engineer",
+      "company": "Capital One",
+      "title": "Data Engineer 4",
+      "experience": "4 yrs",
+      "pay": "$197.3K–$225.1K (NYC $215.2K–$245.6K)",
+      "work_authorisation": "No sponsorship",
+      "skills": [
+        "Spark",
+        "Databricks/Snowflake",
+        "AWS",
+        "Airflow"
+      ],
+      "summary": "Full-stack data engineering in agile teams.",
+      "postings": [
+        {
+          "id": "4475847977",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4475847977/"
+        },
+        {
+          "id": "4475862329",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4475862329/"
+        },
+        {
+          "id": "4476746494",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4476746494/"
+        }
+      ]
+    },
+    {
+      "n": 41,
+      "family": "Data Engineer",
+      "company": "Capital One",
+      "title": "Data Engineer 4 (Manager, IC), Finance Tech",
+      "experience": "4 yrs",
+      "pay": "$197.3K–$225.1K",
+      "work_authorisation": "No sponsorship",
+      "skills": [
+        "Spark",
+        "Databricks/Snowflake",
+        "AWS"
+      ],
+      "summary": "Individual-contributor manager level in Finance Tech data.",
+      "postings": [
+        {
+          "id": "4477655044",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4477655044/"
+        },
+        {
+          "id": "4477645494",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4477645494/"
+        },
+        {
+          "id": "4477655046",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4477655046/"
+        },
+        {
+          "id": "4477635986",
+          "location": "see posting",
+          "url": "https://www.linkedin.com/jobs/view/4477635986/"
+        }
+      ]
+    },
+    {
+      "n": 42,
+      "family": "Data Engineer",
+      "company": "Capital One",
+      "title": "Data Engineer 4, Intelligent Foundations and Experiences",
+      "experience": "4 yrs",
+      "pay": "$179.4K–$225.1K",
+      "work_authorisation": "No sponsorship",
+      "skills": [
+        "Spark",
+        "Databricks/Snowflake",
+        "AWS"
+      ],
+      "summary": "Data engineering for the IFX platform group.",
+      "postings": [
+        {
+          "id": "4476965617",
+          "location": "Richmond, VA",
+          "url": "https://www.linkedin.com/jobs/view/4476965617/"
+        },
+        {
+          "id": "4476964659",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4476964659/"
+        }
+      ]
+    },
+    {
+      "n": 43,
+      "family": "Data Engineer",
+      "company": "Capital One",
+      "title": "Data Engineer 5",
+      "experience": "6 yrs",
+      "pay": "$209K–$238.5K (NYC $229.9K–$262.4K)",
+      "work_authorisation": "Will consider sponsorship",
+      "skills": [
+        "Spark",
+        "Databricks/Snowflake",
+        "AWS",
+        "Airflow"
+      ],
+      "summary": "Senior data engineering in agile teams (8 postings).",
+      "postings": [
+        {
+          "id": "4478047069",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4478047069/"
+        },
+        {
+          "id": "4478036527",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4478036527/"
+        },
+        {
+          "id": "4476315076",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4476315076/"
+        },
+        {
+          "id": "4478031834",
+          "location": "Richmond, VA",
+          "url": "https://www.linkedin.com/jobs/view/4478031834/"
+        },
+        {
+          "id": "4478028886",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4478028886/"
+        },
+        {
+          "id": "4476317040",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4476317040/"
+        },
+        {
+          "id": "4476758072",
+          "location": "Richmond, VA",
+          "url": "https://www.linkedin.com/jobs/view/4476758072/"
+        },
+        {
+          "id": "4476750403",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4476750403/"
+        }
+      ]
+    },
+    {
+      "n": 44,
+      "family": "Data Engineer",
+      "company": "Capital One",
+      "title": "Shopping Tech, Data Engineer 5 (remote-eligible)",
+      "experience": "6 yrs",
+      "pay": "$209K–$238.5K",
+      "work_authorisation": "Will consider sponsorship",
+      "skills": [
+        "Spark",
+        "Databricks/Snowflake",
+        "AWS"
+      ],
+      "summary": "Senior data engineering for Capital One Shopping; remote-eligible.",
+      "postings": [
+        {
+          "id": "4477176978",
+          "location": "US (remote-eligible)",
+          "url": "https://www.linkedin.com/jobs/view/4477176978/"
+        }
+      ]
+    },
+    {
+      "n": 45,
+      "family": "Data Engineer",
+      "company": "Capital One",
+      "title": "Data Engineer 5, Insights Platform",
+      "experience": "6 yrs",
+      "pay": "$209K–$238.5K",
+      "work_authorisation": "Will consider sponsorship",
+      "skills": [
+        "Spark",
+        "Databricks/Snowflake",
+        "AWS"
+      ],
+      "summary": "Senior data engineering on the Insights Platform (Plano).",
+      "postings": [
+        {
+          "id": "4478037437",
+          "location": "Plano, TX",
+          "url": "https://www.linkedin.com/jobs/view/4478037437/"
+        }
+      ]
+    },
+    {
+      "n": 46,
+      "family": "Data Engineer",
+      "company": "Walmart",
+      "title": "Senior Data Engineer (Sam's Club)",
+      "experience": "6 yrs",
+      "pay": "$117K–$234K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Spark",
+        "Kafka",
+        "GCP/BigQuery",
+        "Azure"
+      ],
+      "summary": "Data solutions for Sam's Club customers, laying groundwork for agentic AI.",
+      "postings": [
+        {
+          "id": "4475197973",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4475197973/"
+        }
+      ]
+    },
+    {
+      "n": 47,
+      "family": "Data Engineer",
+      "company": "Walmart",
+      "title": "Staff, Data Engineer",
+      "experience": "4 yrs",
+      "pay": "$143K–$286K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "SQL",
+        "Kafka"
+      ],
+      "summary": "Scalable data solutions across domains under regulatory standards.",
+      "postings": [
+        {
+          "id": "4448812075",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4448812075/"
+        },
+        {
+          "id": "4466958574",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4466958574/"
+        }
+      ]
+    },
+    {
+      "n": 48,
+      "family": "Data Engineer",
+      "company": "Walmart",
+      "title": "Staff Data Engineer (Ads)",
+      "experience": "4 yrs",
+      "pay": "$143K–$286K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Spark",
+        "Scala",
+        "Airflow",
+        "Kafka",
+        "BigQuery"
+      ],
+      "summary": "High-scale advertising data platforms across streaming and batch.",
+      "postings": [
+        {
+          "id": "4475197979",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4475197979/"
+        }
+      ]
+    },
+    {
+      "n": 49,
+      "family": "Data Engineer",
+      "company": "Walmart",
+      "title": "Staff, Data Engineer, Customer Insights & GenAI",
+      "experience": "4 yrs",
+      "pay": "$110K–$220K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "GCP/BigQuery",
+        "LLM/RAG"
+      ],
+      "summary": "Leads data and platform initiatives for customer insights and GenAI (Bentonville).",
+      "postings": [
+        {
+          "id": "4433986674",
+          "location": "Bentonville, AR",
+          "url": "https://www.linkedin.com/jobs/view/4433986674/"
+        }
+      ]
+    },
+    {
+      "n": 50,
+      "family": "Data Engineer",
+      "company": "Walmart",
+      "title": "Principal Data Engineer (Ads)",
+      "experience": "5 yrs",
+      "pay": "$143K–$286K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Flink",
+        "Kafka",
+        "Spark",
+        "BigQuery"
+      ],
+      "summary": "Architects real-time to batch advertising data systems.",
+      "postings": [
+        {
+          "id": "4475728911",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4475728911/"
+        }
+      ]
+    },
+    {
+      "n": 51,
+      "family": "Forward Deployed Engineer",
+      "company": "Salesforce",
+      "title": "Forward Deployed Engineer (Mid/Senior)",
+      "experience": "3+ yrs (6–10 senior)",
+      "pay": "$88.97K–$287.91K (up to $316.75K)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Java",
+        "TypeScript",
+        "Agentforce"
+      ],
+      "summary": "Builds and deploys agentic AI (Agentforce) inside enterprise customer environments.",
+      "postings": [
+        {
+          "id": "4434062922",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4434062922/"
+        },
+        {
+          "id": "4434059992",
+          "location": "Denver, CO",
+          "url": "https://www.linkedin.com/jobs/view/4434059992/"
+        },
+        {
+          "id": "4434065745",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4434065745/"
+        },
+        {
+          "id": "4434083015",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4434083015/"
+        },
+        {
+          "id": "4434080046",
+          "location": "Washington, DC",
+          "url": "https://www.linkedin.com/jobs/view/4434080046/"
+        },
+        {
+          "id": "4434082011",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4434082011/"
+        },
+        {
+          "id": "4434077166",
+          "location": "Columbus, OH",
+          "url": "https://www.linkedin.com/jobs/view/4434077166/"
+        },
+        {
+          "id": "4434070379",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4434070379/"
+        },
+        {
+          "id": "4434081011",
+          "location": "Minneapolis, MN",
+          "url": "https://www.linkedin.com/jobs/view/4434081011/"
+        },
+        {
+          "id": "4434068425",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4434068425/"
+        }
+      ]
+    },
+    {
+      "n": 52,
+      "family": "Forward Deployed Engineer",
+      "company": "Salesforce",
+      "title": "Forward Deployed Engineer, Data 360",
+      "experience": "5+ yrs",
+      "pay": "$88.97K–$287.91K (up to $316.75K)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Data 360",
+        "streaming",
+        "Snowflake/Databricks/BigQuery"
+      ],
+      "summary": "Implements Salesforce's real-time data engine for customers and proves it with test data.",
+      "postings": [
+        {
+          "id": "4459004852",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4459004852/"
+        },
+        {
+          "id": "4459014804",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4459014804/"
+        },
+        {
+          "id": "4459021408",
+          "location": "Indianapolis, IN",
+          "url": "https://www.linkedin.com/jobs/view/4459021408/"
+        },
+        {
+          "id": "4459016746",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4459016746/"
+        },
+        {
+          "id": "4459012753",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4459012753/"
+        },
+        {
+          "id": "4458798955",
+          "location": "Atlanta, GA",
+          "url": "https://www.linkedin.com/jobs/view/4458798955/"
+        },
+        {
+          "id": "4458799949",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4458799949/"
+        },
+        {
+          "id": "4459017704",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4459017704/"
+        },
+        {
+          "id": "4459002861",
+          "location": "Denver, CO",
+          "url": "https://www.linkedin.com/jobs/view/4459002861/"
+        },
+        {
+          "id": "4459014800",
+          "location": "Dallas, TX",
+          "url": "https://www.linkedin.com/jobs/view/4459014800/"
+        },
+        {
+          "id": "4459010790",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4459010790/"
+        }
+      ]
+    },
+    {
+      "n": 53,
+      "family": "Forward Deployed Engineer",
+      "company": "Salesforce",
+      "title": "Forward Deployed Engineer, Public Sector, Nonprofit & Education",
+      "experience": "3+ yrs",
+      "pay": "$88.97K–$287.91K (up to $316.75K)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Agentforce",
+        "Python",
+        "TypeScript"
+      ],
+      "summary": "Agentic AI delivery for public-sector, nonprofit and education customers.",
+      "postings": [
+        {
+          "id": "4441696596",
+          "location": "Washington, DC area",
+          "url": "https://www.linkedin.com/jobs/view/4441696596/"
+        },
+        {
+          "id": "4441902363",
+          "location": "Washington, DC",
+          "url": "https://www.linkedin.com/jobs/view/4441902363/"
+        },
+        {
+          "id": "4441903356",
+          "location": "Richmond, VA",
+          "url": "https://www.linkedin.com/jobs/view/4441903356/"
+        },
+        {
+          "id": "4441697618",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4441697618/"
+        },
+        {
+          "id": "4441907245",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4441907245/"
+        },
+        {
+          "id": "4441912063",
+          "location": "Indianapolis, IN",
+          "url": "https://www.linkedin.com/jobs/view/4441912063/"
+        },
+        {
+          "id": "4441912064",
+          "location": "Denver, CO",
+          "url": "https://www.linkedin.com/jobs/view/4441912064/"
+        },
+        {
+          "id": "4441909207",
+          "location": "Washington, DC",
+          "url": "https://www.linkedin.com/jobs/view/4441909207/"
+        },
+        {
+          "id": "4441906258",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4441906258/"
+        },
+        {
+          "id": "4441912060",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4441912060/"
+        },
+        {
+          "id": "4441900444",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4441900444/"
+        },
+        {
+          "id": "4441912062",
+          "location": "Irvine, CA",
+          "url": "https://www.linkedin.com/jobs/view/4441912062/"
+        },
+        {
+          "id": "4441693854",
+          "location": "Dallas, TX",
+          "url": "https://www.linkedin.com/jobs/view/4441693854/"
+        }
+      ]
+    },
+    {
+      "n": 54,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer III, Generative AI, Google Cloud",
+      "experience": "5 yrs",
+      "pay": "$174K–$252K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Gemini/Vertex AI",
+        "RAG",
+        "agents",
+        "evals"
+      ],
+      "summary": "GenAI applications for Cloud customers; location options include **Pittsburgh, PA**.",
+      "postings": [
+        {
+          "id": "4456886943",
+          "location": "Pittsburgh, PA",
+          "url": "https://www.linkedin.com/jobs/view/4456886943/"
+        },
+        {
+          "id": "4439857485",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4439857485/"
+        }
+      ]
+    },
+    {
+      "n": 55,
+      "family": "Forward Deployed Engineer",
+      "company": "Databricks",
+      "title": "Sr. Forward Deployed Engineer, National Security",
+      "experience": "6+ yrs",
+      "pay": "$182K–$250K",
+      "work_authorisation": "U.S. citizen + Secret-clearance eligible",
+      "skills": [
+        "Databricks",
+        "Spark",
+        "Python",
+        "MLOps"
+      ],
+      "summary": "Builds data and AI solutions for federal national-security customers.",
+      "postings": [
+        {
+          "id": "4466976002",
+          "location": "US",
+          "url": "https://www.linkedin.com/jobs/view/4466976002/"
+        },
+        {
+          "id": "4456960381",
+          "location": "Washington, DC area",
+          "url": "https://www.linkedin.com/jobs/view/4456960381/"
+        }
+      ]
+    },
+    {
+      "n": 56,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "AI Outcome Customer Engineer II, Forward Deployed Engineering",
+      "experience": "5 yrs",
+      "pay": "$152K–$221K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Cloud-native architecture",
+        "Gemini/Vertex"
+      ],
+      "summary": "Customer-facing engineer driving AI outcomes on Google Cloud.",
+      "postings": [
+        {
+          "id": "4467847418",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4467847418/"
+        },
+        {
+          "id": "4467840613",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4467840613/"
+        },
+        {
+          "id": "4467849433",
+          "location": "Atlanta, GA",
+          "url": "https://www.linkedin.com/jobs/view/4467849433/"
+        },
+        {
+          "id": "4467850383",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4467850383/"
+        },
+        {
+          "id": "4467850380",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4467850380/"
+        },
+        {
+          "id": "4467862047",
+          "location": "Los Angeles, CA",
+          "url": "https://www.linkedin.com/jobs/view/4467862047/"
+        }
+      ]
+    },
+    {
+      "n": 57,
+      "family": "Forward Deployed Engineer",
+      "company": "OpenAI",
+      "title": "Forward Deployed Engineer, Legal (SF/NYC)",
+      "experience": "5+ yrs",
+      "pay": "$185K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "LLM apps",
+        "evals"
+      ],
+      "summary": "Embeds with legal practitioners; picks the first use case, prototypes, proves value.",
+      "postings": [
+        {
+          "id": "4458656232",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4458656232/"
+        },
+        {
+          "id": "4457994759",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4457994759/"
+        }
+      ]
+    },
+    {
+      "n": 58,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer IV, Applied AI, Google Cloud",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Gemini/Vertex",
+        "RAG",
+        "agents",
+        "Terraform"
+      ],
+      "summary": "Senior applied-AI deployments for Cloud customers.",
+      "postings": [
+        {
+          "id": "4465574887",
+          "location": "Irvine, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465574887/"
+        },
+        {
+          "id": "4465572938",
+          "location": "Addison, TX",
+          "url": "https://www.linkedin.com/jobs/view/4465572938/"
+        },
+        {
+          "id": "4465570898",
+          "location": "Boulder, CO",
+          "url": "https://www.linkedin.com/jobs/view/4465570898/"
+        },
+        {
+          "id": "4467886495",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4467886495/"
+        },
+        {
+          "id": "4465574884",
+          "location": "Atlanta, GA",
+          "url": "https://www.linkedin.com/jobs/view/4465574884/"
+        },
+        {
+          "id": "4465574885",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4465574885/"
+        },
+        {
+          "id": "4465567955",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465567955/"
+        }
+      ]
+    },
+    {
+      "n": 59,
+      "family": "Forward Deployed Engineer",
+      "company": "Databricks",
+      "title": "AI Engineer, Forward Deployed (U.S. Public Sector, Federal)",
+      "experience": "Not stated",
+      "pay": "$182K–$250K",
+      "work_authorisation": "U.S. citizen + Secret-clearance eligible",
+      "skills": [
+        "GenAI",
+        "RAG",
+        "agents",
+        "Databricks"
+      ],
+      "summary": "Builds GenAI solutions and owns production rollouts for federal customers.",
+      "postings": [
+        {
+          "id": "4458425505",
+          "location": "Washington, DC area",
+          "url": "https://www.linkedin.com/jobs/view/4458425505/"
+        }
+      ]
+    },
+    {
+      "n": 60,
+      "family": "Forward Deployed Engineer",
+      "company": "Databricks",
+      "title": "Sr. Forward Deployed Engineer, Digital Native Business",
+      "experience": "6+ yrs",
+      "pay": "$182K–$250K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Databricks",
+        "Spark",
+        "Python",
+        "TypeScript",
+        "MLOps"
+      ],
+      "summary": "Owns architecture end to end across data engineering, AI and app development for tech customers.",
+      "postings": [
+        {
+          "id": "4465258274",
+          "location": "California",
+          "url": "https://www.linkedin.com/jobs/view/4465258274/"
+        },
+        {
+          "id": "4465276041",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4465276041/"
+        },
+        {
+          "id": "4465273047",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4465273047/"
+        },
+        {
+          "id": "4465278040",
+          "location": "Mountain View, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465278040/"
+        },
+        {
+          "id": "4465277024",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4465277024/"
+        },
+        {
+          "id": "4465261185",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4465261185/"
+        },
+        {
+          "id": "4465267141",
+          "location": "Berkeley, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465267141/"
+        },
+        {
+          "id": "4465270112",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465270112/"
+        },
+        {
+          "id": "4465271118",
+          "location": "Portland, OR",
+          "url": "https://www.linkedin.com/jobs/view/4465271118/"
+        },
+        {
+          "id": "4465273046",
+          "location": "Los Angeles, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465273046/"
+        },
+        {
+          "id": "4465253959",
+          "location": "Mountain View, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465253959/"
+        }
+      ]
+    },
+    {
+      "n": 61,
+      "family": "Forward Deployed Engineer",
+      "company": "OpenAI",
+      "title": "Forward Deployed Engineer, Healthcare (NYC/SF/Seattle)",
+      "experience": "6+ yrs",
+      "pay": "$185K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "LLM apps",
+        "agents",
+        "evals",
+        "EHR integration"
+      ],
+      "summary": "End-to-end model deployments with payers, providers and health systems.",
+      "postings": [
+        {
+          "id": "4449375142",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4449375142/"
+        },
+        {
+          "id": "4449357612",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4449357612/"
+        },
+        {
+          "id": "4449363403",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4449363403/"
+        }
+      ]
+    },
+    {
+      "n": 62,
+      "family": "Forward Deployed Engineer",
+      "company": "OpenAI",
+      "title": "Forward Deployed Engineer, Financial Services (NYC)",
+      "experience": "5+ yrs",
+      "pay": "$185K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "evals"
+      ],
+      "summary": "Deployments where correctness, latency, explainability and control matter; evaluation-driven.",
+      "postings": [
+        {
+          "id": "4468019672",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4468019672/"
+        }
+      ]
+    },
+    {
+      "n": 63,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "GenAI Forward Deployed Engineer IV, GenMedia",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "Gemini/Vertex"
+      ],
+      "summary": "Generative-media deployments for Cloud customers.",
+      "postings": [
+        {
+          "id": "4467854358",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4467854358/"
+        },
+        {
+          "id": "4467847417",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4467847417/"
+        },
+        {
+          "id": "4467858251",
+          "location": "San Diego, CA",
+          "url": "https://www.linkedin.com/jobs/view/4467858251/"
+        },
+        {
+          "id": "4467843519",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4467843519/"
+        },
+        {
+          "id": "4467840612",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4467840612/"
+        }
+      ]
+    },
+    {
+      "n": 64,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Partner Forward Deployed Engineer III, GenAI",
+      "experience": "5 yrs",
+      "pay": "$174K–$252K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Gemini/Vertex",
+        "RAG",
+        "agents"
+      ],
+      "summary": "GenAI delivery through Google Cloud partners.",
+      "postings": [
+        {
+          "id": "4466863978",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4466863978/"
+        },
+        {
+          "id": "4466877811",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4466877811/"
+        }
+      ]
+    },
+    {
+      "n": 65,
+      "family": "Forward Deployed Engineer",
+      "company": "Databricks",
+      "title": "Sr. Forward Deployed Engineer, Financial Services",
+      "experience": "6+ yrs",
+      "pay": "Not captured",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Databricks",
+        "Spark",
+        "Python",
+        "MLOps"
+      ],
+      "summary": "Same role for financial-services customers.",
+      "postings": [
+        {
+          "id": "4429414159",
+          "location": "Charlotte, NC",
+          "url": "https://www.linkedin.com/jobs/view/4429414159/"
+        },
+        {
+          "id": "4429416066",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4429416066/"
+        },
+        {
+          "id": "4429409184",
+          "location": "Washington, DC",
+          "url": "https://www.linkedin.com/jobs/view/4429409184/"
+        },
+        {
+          "id": "4429420068",
+          "location": "Boston, MA",
+          "url": "https://www.linkedin.com/jobs/view/4429420068/"
+        },
+        {
+          "id": "4429400090",
+          "location": "Philadelphia, PA",
+          "url": "https://www.linkedin.com/jobs/view/4429400090/"
+        },
+        {
+          "id": "4429415064",
+          "location": "Atlanta, GA",
+          "url": "https://www.linkedin.com/jobs/view/4429415064/"
+        },
+        {
+          "id": "4429400089",
+          "location": "Dallas, TX",
+          "url": "https://www.linkedin.com/jobs/view/4429400089/"
+        },
+        {
+          "id": "4428998074",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4428998074/"
+        }
+      ]
+    },
+    {
+      "n": 66,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer, GenAI, Google Public Sector",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "Active TS/SCI clearance",
+      "skills": [
+        "Python",
+        "React",
+        "Vertex",
+        "MCP",
+        "multi-agent"
+      ],
+      "summary": "Prototype-to-production agentic workflows for public-sector customers.",
+      "postings": [
+        {
+          "id": "4466106095",
+          "location": "Reston, VA",
+          "url": "https://www.linkedin.com/jobs/view/4466106095/"
+        }
+      ]
+    },
+    {
+      "n": 67,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Partner Forward Deployed Engineer IV, GenAI",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Gemini/Vertex",
+        "RAG",
+        "agents"
+      ],
+      "summary": "Senior GenAI delivery through partners.",
+      "postings": [
+        {
+          "id": "4466867144",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4466867144/"
+        },
+        {
+          "id": "4466864232",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4466864232/"
+        }
+      ]
+    },
+    {
+      "n": 68,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer, Higher Education, Public Sector",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "U.S. citizen",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "Vertex"
+      ],
+      "summary": "GenAI adoption in higher-education institutions; integration and data-sovereignty problems.",
+      "postings": [
+        {
+          "id": "4465561955",
+          "location": "Sunnyvale, CA",
+          "url": "https://www.linkedin.com/jobs/view/4465561955/"
+        }
+      ]
+    },
+    {
+      "n": 69,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer IV, GenAI, Public Sector",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "React",
+        "Vertex",
+        "MCP"
+      ],
+      "summary": "Senior agentic deployments for public-sector customers.",
+      "postings": [
+        {
+          "id": "4466573618",
+          "location": "Reston, VA",
+          "url": "https://www.linkedin.com/jobs/view/4466573618/"
+        }
+      ]
+    },
+    {
+      "n": 70,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer, State and Local Government",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "U.S. citizen",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "BigQuery",
+        "Vertex"
+      ],
+      "summary": "Embedded builder shipping agentic solutions in state and local government.",
+      "postings": [
+        {
+          "id": "4465793163",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4465793163/"
+        }
+      ]
+    },
+    {
+      "n": 71,
+      "family": "Forward Deployed Engineer",
+      "company": "AWS",
+      "title": "Sr Forward Deployed Engineer, AWS Forward Deployed Engineering",
+      "experience": "5+ yrs",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "RAG",
+        "agents",
+        "evals"
+      ],
+      "summary": "Leads technical delivery of multi-workstream customer AI programs; sets evaluation and production-readiness standards.",
+      "postings": [
+        {
+          "id": "4460141406",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4460141406/"
+        },
+        {
+          "id": "4460149316",
+          "location": "Bellevue, WA",
+          "url": "https://www.linkedin.com/jobs/view/4460149316/"
+        },
+        {
+          "id": "4460147324",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4460147324/"
+        },
+        {
+          "id": "4460128909",
+          "location": "Mountain View, CA",
+          "url": "https://www.linkedin.com/jobs/view/4460128909/"
+        },
+        {
+          "id": "4460138425",
+          "location": "Herndon, VA",
+          "url": "https://www.linkedin.com/jobs/view/4460138425/"
+        },
+        {
+          "id": "4460145378",
+          "location": "Seattle, WA",
+          "url": "https://www.linkedin.com/jobs/view/4460145378/"
+        },
+        {
+          "id": "4460149313",
+          "location": "Arlington, VA",
+          "url": "https://www.linkedin.com/jobs/view/4460149313/"
+        },
+        {
+          "id": "4460129662",
+          "location": "Boston, MA",
+          "url": "https://www.linkedin.com/jobs/view/4460129662/"
+        }
+      ]
+    },
+    {
+      "n": 72,
+      "family": "Forward Deployed Engineer",
+      "company": "IBM",
+      "title": "Senior Forward Deployed Engineer",
+      "experience": "Senior",
+      "pay": "Not stated on LinkedIn",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "LLM",
+        "NLP/ML"
+      ],
+      "summary": "AI, NLP and ML solutions for client problems (San Francisco).",
+      "postings": [
+        {
+          "id": "4458093722",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4458093722/"
+        }
+      ]
+    },
+    {
+      "n": 73,
+      "family": "Forward Deployed Engineer",
+      "company": "Google",
+      "title": "Forward Deployed Engineer IV, Google Public Sector",
+      "experience": "8 yrs",
+      "pay": "$207K–$300K",
+      "work_authorisation": "Active TS/SCI + polygraph",
+      "skills": [
+        "Python",
+        "React",
+        "Vertex",
+        "BigQuery"
+      ],
+      "summary": "Builds secure AI solutions across federal and state/local environments.",
+      "postings": [
+        {
+          "id": "4465563952",
+          "location": "Reston, VA",
+          "url": "https://www.linkedin.com/jobs/view/4465563952/"
+        }
+      ]
+    },
+    {
+      "n": 74,
+      "family": "Forward Deployed Engineer",
+      "company": "Salesforce",
+      "title": "Forward Deployed Engineer, Agentforce Orchestration",
+      "experience": "3+ yrs",
+      "pay": "$88.97K–$287.91K (up to $316.75K)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Kafka",
+        "Terraform",
+        "Kubernetes",
+        "multi-agent"
+      ],
+      "summary": "Multi-agent orchestration layer inside customer environments.",
+      "postings": [
+        {
+          "id": "4459020419",
+          "location": "McLean, VA",
+          "url": "https://www.linkedin.com/jobs/view/4459020419/"
+        },
+        {
+          "id": "4459021409",
+          "location": "Indianapolis, IN",
+          "url": "https://www.linkedin.com/jobs/view/4459021409/"
+        },
+        {
+          "id": "4459012751",
+          "location": "Chicago, IL",
+          "url": "https://www.linkedin.com/jobs/view/4459012751/"
+        },
+        {
+          "id": "4459000888",
+          "location": "Atlanta, GA",
+          "url": "https://www.linkedin.com/jobs/view/4459000888/"
+        },
+        {
+          "id": "4459007847",
+          "location": "Austin, TX",
+          "url": "https://www.linkedin.com/jobs/view/4459007847/"
+        },
+        {
+          "id": "4459011791",
+          "location": "Denver, CO",
+          "url": "https://www.linkedin.com/jobs/view/4459011791/"
+        },
+        {
+          "id": "4459002862",
+          "location": "New York, NY",
+          "url": "https://www.linkedin.com/jobs/view/4459002862/"
+        },
+        {
+          "id": "4459008806",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4459008806/"
+        }
+      ]
+    },
+    {
+      "n": 75,
+      "family": "Forward Deployed Engineer",
+      "company": "Salesforce",
+      "title": "Expert Agent Builder, Forward Deployed Engineering",
+      "experience": "8+ yrs",
+      "pay": "$157.64K–$287.91K (up to $316.75K)",
+      "work_authorisation": "Not stated",
+      "skills": [
+        "Python",
+        "Java",
+        "agents",
+        "ML",
+        "evals"
+      ],
+      "summary": "Architects the most complex agentic systems for strategic customers.",
+      "postings": [
+        {
+          "id": "4468340083",
+          "location": "San Francisco, CA",
+          "url": "https://www.linkedin.com/jobs/view/4468340083/"
+        }
+      ]
+    }
+  ]
+}
