@@ -12,11 +12,11 @@ const ssrDir = join(root, 'build-ssr');
 const template = readFileSync(join(out, 'index.html'), 'utf8');
 const { render } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href);
 
-// Preload the variable text font: the hero headline is the LCP element.
+// Preload the bold face: the hero headline is the LCP element.
 const assets = readdirSync(join(out, 'assets'));
-const inter = assets.find((f) => /^inter-latin-wght-normal.*\.woff2$/.test(f));
-const preload = inter
-  ? `<link rel="preload" href="/assets/${inter}" as="font" type="font/woff2" crossorigin>`
+const headlineFont = assets.find((f) => /^barlow-latin-700-normal.*\.woff2$/.test(f));
+const preload = headlineFont
+  ? `<link rel="preload" href="/assets/${headlineFont}" as="font" type="font/woff2" crossorigin>`
   : '';
 
 const appHtml = render('/');
@@ -36,4 +36,4 @@ writeFileSync(join(out, 'index.html'), page);
 writeFileSync(join(out, 'app.html'), template.replace('<!--preload-->', '').replace('<!--app-html-->', ''));
 rmSync(ssrDir, { recursive: true, force: true });
 
-console.log(`prerendered / (${(page.length / 1024).toFixed(1)} KB html), wrote app.html fallback${inter ? ', preloaded ' + inter : ''}`);
+console.log(`prerendered / (${(page.length / 1024).toFixed(1)} KB html), wrote app.html fallback${headlineFont ? ', preloaded ' + headlineFont : ''}`);

@@ -35,7 +35,7 @@ const LabShell: React.FC<LabShellProps> = ({ eyebrow, title, evidence, children 
         </div>
 
         <div className="mb-8">
-          <p className="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 text-signal-cyan">
+          <p className="font-mono text-[11px] tracking-[0.2em] uppercase mb-3 text-gold">
             {eyebrow}
           </p>
           <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-white mb-3">{title}</h1>

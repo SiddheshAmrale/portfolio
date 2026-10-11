@@ -17,13 +17,13 @@ function Monogram() {
     <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden>
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#5eead4" />
-          <stop offset="1" stopColor="#818cf8" />
+          <stop offset="0" stopColor="#ffd978" />
+          <stop offset="1" stopColor="#d99a1e" />
         </linearGradient>
       </defs>
       <rect x="1" y="1" width="30" height="30" rx="9" fill="#0a0d16" stroke={`url(#${id})`} strokeOpacity=".7" />
       <path d="M11.5 19.6c.7 1.1 2 1.8 3.6 1.8 2 0 3.3-1 3.3-2.6 0-1.7-1.3-2.2-3.2-2.7-1.8-.5-3.1-1.1-3.1-2.8 0-1.5 1.3-2.6 3.1-2.6 1.4 0 2.5.6 3.1 1.6" stroke={`url(#${id})`} strokeWidth="1.8" fill="none" strokeLinecap="round" />
-      <circle cx="22.5" cy="20.5" r="1.4" fill="#5eead4" />
+      <circle cx="22.5" cy="20.5" r="1.4" fill="#ffd978" />
     </svg>
   );
 }
@@ -138,7 +138,7 @@ export function Footer() {
             © {YEAR} {profile.name} · {profile.location}
           </span>
         </div>
-        <p className="font-mono text-[11px] tracking-[0.08em] text-fog-700">PRERENDERED · ZERO TRACKERS · REACT + VITE</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-fog-700">Prerendered · Zero trackers · React + Vite</p>
         <div className="flex items-center gap-1">
           <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-full p-2 transition-colors hover:text-white">
             <GitHub size={17} />

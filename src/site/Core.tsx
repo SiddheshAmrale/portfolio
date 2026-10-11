@@ -18,22 +18,22 @@ export function CoreOverlay({ x, y, viewW, viewH }: { x: number; y: number; view
         transform: 'translate(-50%, -50%)',
       }}
     >
-      <div className="core-glow absolute inset-0 rounded-full bg-[radial-gradient(closest-side,rgba(94,234,212,.42),rgba(129,140,248,.14)_45%,transparent)]" />
+      <div className="core-glow absolute inset-0 rounded-full bg-[radial-gradient(closest-side,rgba(242,181,48,.42),rgba(94,234,212,.14)_45%,transparent)]" />
       <svg viewBox="-130 -130 260 260" className="core-spin absolute inset-0 h-full w-full">
         <defs>
           <linearGradient id="coreRing" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#5eead4" />
-            <stop offset="1" stopColor="#818cf8" />
+            <stop offset="0" stopColor="#F2B530" />
+            <stop offset="1" stopColor="#5eead4" />
           </linearGradient>
         </defs>
         <circle r="92" fill="none" stroke="url(#coreRing)" strokeOpacity=".5" strokeWidth="1.2" strokeDasharray="2 7" />
-        <path d="M-92 0 A92 92 0 0 1 0 -92" fill="none" stroke="#5eead4" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M-92 0 A92 92 0 0 1 0 -92" fill="none" stroke="#F2B530" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
       <svg viewBox="-130 -130 260 260" className="core-spin-rev absolute inset-0 h-full w-full">
-        <circle r="70" fill="none" stroke="#818cf8" strokeOpacity=".35" strokeWidth="1" />
-        <path d="M70 0 A70 70 0 0 1 -35 60.6" fill="none" stroke="#a5b4fc" strokeWidth="2" strokeLinecap="round" />
+        <circle r="70" fill="none" stroke="#5eead4" strokeOpacity=".35" strokeWidth="1" />
+        <path d="M70 0 A70 70 0 0 1 -35 60.6" fill="none" stroke="#99f6e4" strokeWidth="2" strokeLinecap="round" />
         {[0, 60, 120, 180, 240, 300].map((a) => (
-          <circle key={a} cx={70 * Math.cos((a * Math.PI) / 180)} cy={70 * Math.sin((a * Math.PI) / 180)} r="2.6" fill="#5eead4" />
+          <circle key={a} cx={70 * Math.cos((a * Math.PI) / 180)} cy={70 * Math.sin((a * Math.PI) / 180)} r="2.6" fill="#F2B530" />
         ))}
       </svg>
       <svg viewBox="-130 -130 260 260" className="absolute inset-0 h-full w-full" style={{ width: '100%' }}>
@@ -46,9 +46,9 @@ export function CoreOverlay({ x, y, viewW, viewH }: { x: number; y: number; view
           strokeLinecap="round"
           transform="translate(-2 -1)"
         />
-        <circle cx="14" cy="11" r="3.4" fill="#5eead4" />
+        <circle cx="14" cy="11" r="3.4" fill="#F2B530" />
       </svg>
-      <span className="core-dot absolute rounded-full bg-signal-cyan" style={{ left: '55.4%', top: '54.2%', width: ring(3.4), height: ring(3.4), translate: '-50% -50%' }} />
+      <span className="core-dot absolute rounded-full bg-gold" style={{ left: '55.4%', top: '54.2%', width: ring(3.4), height: ring(3.4), translate: '-50% -50%' }} />
     </div>
   );
 }
@@ -62,7 +62,7 @@ export function CorePanel({ x, y }: { x: number; y: number }) {
       <circle cx="20" cy="11" r="2.4" fill="#fbbf24" />
       <circle cx="28" cy="11" r="2.4" fill="#34d399" />
       <text x="12" y="31" className="core-code">
-        <tspan fill="#5eead4">❯</tspan> orchestrate --agents 6
+        <tspan fill="#F2B530">❯</tspan> orchestrate --agents 6
       </text>
       <text x="12" y="46" className="core-code" fill="#8b93a7">
         dispatch · verify · ship

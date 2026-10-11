@@ -20,7 +20,7 @@ function Loading() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="h-px w-40 overflow-hidden bg-line">
-        <div className="h-full w-1/3 bg-signal-cyan" style={{ animation: 'marquee 1s var(--ease-in-out) infinite alternate' }} />
+        <div className="h-full w-1/3 bg-gold" style={{ animation: 'marquee 1s var(--ease-in-out) infinite alternate' }} />
       </div>
     </div>
   );
@@ -53,7 +53,6 @@ export default function App() {
         </Suspense>
       </main>
       {isWorkbench ? null : <Footer />}
-      {isWorkbench ? null : <div className="grain" aria-hidden />}
     </div>
   );
 }

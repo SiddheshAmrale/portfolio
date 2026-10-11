@@ -19,7 +19,7 @@ export function Stack() {
           {[...all, ...all].map((t, i) => (
             <span key={i} className="flex items-center gap-10 text-2xl font-medium tracking-tight text-fog-700 sm:text-3xl" aria-hidden={i >= all.length}>
               {t}
-              <span className="h-1.5 w-1.5 rounded-full bg-signal-cyan/50" />
+              <span className="h-1.5 w-1.5 rounded-full bg-gold/50" />
             </span>
           ))}
         </div>
@@ -28,7 +28,8 @@ export function Stack() {
       <div className="shell">
       <div className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
         {stack.map((g, k) => (
-          <div key={g.group} className="reveal bg-ink-950 p-7" style={{ ['--d' as string]: `${k * 0.05}s` }}>
+          <div key={g.group} className="bg-ink-950 p-7">
+            <div className="reveal" style={{ ['--d' as string]: `${k * 0.05}s` }}>
             <h3 className="eyebrow mb-5 text-fog-300">{g.group}</h3>
             <ul className="flex flex-wrap gap-2">
               {g.items.map((t) => (
@@ -37,6 +38,7 @@ export function Stack() {
                 </li>
               ))}
             </ul>
+            </div>
           </div>
         ))}
       </div>
@@ -63,7 +65,7 @@ export function Credentials() {
                 className={'spot panel group flex h-full flex-col p-7 transition-colors duration-500 hover:border-fog-500/30' + (k === 0 ? ' beam' : '')}
               >
                 <div className="flex items-center justify-between">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-gradient-to-br from-signal-sky/15 to-signal-indigo/10 text-signal-sky">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-gradient-to-br from-gold-soft/15 to-live/10 text-gold-soft">
                     <Shield size={20} />
                   </span>
                   <span className="font-mono text-[11px] tracking-[0.16em] text-fog-500">{c.code}</span>
@@ -106,12 +108,12 @@ export function Contact() {
   };
   return (
     <section id="contact" className="relative overflow-hidden py-24 sm:py-32">
-      <div aria-hidden className="absolute left-1/2 top-1/2 -z-10 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(94,234,212,.10),rgba(129,140,248,.08),transparent)]" />
+      <div aria-hidden className="absolute left-1/2 top-1/2 -z-10 h-[520px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(242,181,48,.11),rgba(242,181,48,.03),transparent)]" />
       <div className="shell text-center">
         <p className="eyebrow reveal mb-6">
-          <span className="text-signal-cyan">05</span> · Contact
+          <span className="text-gold">05</span> · Contact
         </p>
-        <h2 className="reveal mx-auto max-w-4xl text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.045em] sm:text-7xl">
+        <h2 className="reveal mx-auto max-w-4xl text-balance text-5xl font-bold leading-[0.96] tracking-[-0.025em] sm:text-7xl">
           Let&apos;s build something <span className="grad-text">measurably better.</span>
         </h2>
         <p className="reveal mx-auto mt-6 max-w-xl text-fog-500" style={{ ['--d' as string]: '.08s' }}>

@@ -29,7 +29,7 @@ The older TypeScript workbenches still live in [`src/labs`](src/labs/README.md) 
 
 # The site
 
-**Stack:** React 18 + TypeScript + Tailwind on Vite. The home page is
+**Stack:** React 18 + TypeScript + Tailwind on Vite. Type: Barlow (DIN-style, SIL OFL), black / warm-white / gold palette. The home page is
 prerendered to static HTML at build time (`scripts/prerender.mjs`), so it
 paints before any JavaScript runs, then hydrates. Every lab is its own lazy
 chunk; the home page never downloads lab code.
@@ -50,9 +50,9 @@ server, median of 3):
 
 | | Before (CRA, Netflix theme) | After |
 |---|---|---|
-| Performance | 71 | **99** |
-| Total Blocking Time | 1602 ms | **26 ms** |
-| Largest Contentful Paint | 2.36 s | **1.89 s** |
+| Performance | 71 | **97** |
+| Total Blocking Time | 1602 ms | **20 ms** |
+| Largest Contentful Paint | 2.36 s | **2.10 s** |
 | Accessibility | 82 | **97** |
 | Best Practices | 96 | **100** |
 | Home-page JS (gzip) | 140 KB (everything) | ~71 KB (labs lazy) |

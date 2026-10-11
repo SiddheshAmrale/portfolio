@@ -9,11 +9,11 @@ export function SectionHead({ index, kicker, title, children }: { index: string;
     <header className="mb-14 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
       <div className="reveal">
         <p className="eyebrow mb-4 flex items-center gap-3">
-          <span className="text-signal-cyan">{index}</span>
+          <span className="text-gold">{index}</span>
           <span className="h-px w-8 bg-line" />
           {kicker}
         </p>
-        <h2 className="max-w-3xl text-balance text-4xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-5xl md:text-6xl">{title}</h2>
+        <h2 className="max-w-3xl text-balance text-4xl font-bold leading-[1] tracking-[-0.02em] sm:text-5xl md:text-6xl">{title}</h2>
       </div>
       {children ? (
         <div className="reveal max-w-sm text-[15px] leading-relaxed text-fog-500" style={{ ['--d' as string]: '.1s' }}>
@@ -52,7 +52,7 @@ export function Disciplines() {
             >
               <div className="flex items-start justify-between">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-fog-500">{d.index}</span>
-                <span className="font-mono text-[10px] tracking-[0.2em] text-fog-700 transition-colors group-hover:text-signal-cyan">● ACTIVE</span>
+                <span className="font-mono text-[10px] tracking-[0.2em] text-fog-700 transition-colors group-hover:text-gold">● ACTIVE</span>
               </div>
               <div className="my-6 h-28 sm:h-32">
                 <DomainGlyph id={d.id} />
@@ -62,7 +62,7 @@ export function Disciplines() {
               <ul className="mt-5 space-y-2 border-t border-line pt-5">
                 {d.points.map((p) => (
                   <li key={p} className="flex gap-2.5 text-[13px] text-fog-500">
-                    <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-signal-cyan/70" />
+                    <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-gold/70" />
                     {p}
                   </li>
                 ))}
@@ -106,7 +106,7 @@ function Featured({ p }: { p: Project }) {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-ink-900/90 max-lg:bg-gradient-to-t max-lg:from-ink-900" />
       </div>
       <div className="flex flex-col justify-center p-7 sm:p-10">
-        <p className="eyebrow mb-4 text-signal-cyan">Featured · {p.evidence}</p>
+        <p className="eyebrow mb-4 text-gold">Featured · {p.evidence}</p>
         <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">{p.title}</h3>
         <p className="mt-4 text-[15px] leading-relaxed text-fog-300">{p.summary}</p>
         <div className="mt-6 flex flex-wrap gap-2">
@@ -175,7 +175,7 @@ export function Work() {
             >
               <div className="flex flex-wrap gap-1.5">
                 {p.domains.map((d) => (
-                  <span key={d} className="font-mono text-[10px] tracking-[0.16em] text-signal-cyan/80">
+                  <span key={d} className="font-mono text-[10px] tracking-[0.16em] text-gold/80">
                     {domainLabel[d].toUpperCase()}
                   </span>
                 ))}

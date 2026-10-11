@@ -62,7 +62,7 @@ function AiGlyph() {
           y1={y1}
           x2={x2}
           y2={y2}
-          stroke="#5eead4"
+          stroke="#F2B530"
           strokeWidth="1.2"
           strokeDasharray="6 34"
           className="glyph-signal"
@@ -76,8 +76,8 @@ function AiGlyph() {
             cx={xs[l]}
             cy={y}
             r={l === 2 ? 5 : 4}
-            fill={l === 2 ? '#818cf8' : '#0e121d'}
-            stroke={l === 2 ? '#a5b4fc' : '#5eead4'}
+            fill={l === 2 ? '#5eead4' : '#0e121d'}
+            stroke={l === 2 ? '#99f6e4' : '#F2B530'}
             className={l === 2 ? 'glyph-pulse' : undefined}
             style={l === 2 ? { animationDelay: `${k * 0.6}s` } : undefined}
           />
@@ -99,9 +99,9 @@ function PerfGlyph() {
       <text x="168" y="46" className="glyph-label" fill="#fbbf24">
         16.6 ms
       </text>
-      <path d={d} fill="none" stroke="rgba(94,234,212,.14)" strokeWidth="1.6" />
-      <path d={d} fill="none" stroke="#5eead4" strokeWidth="1.6" pathLength={100} className="glyph-draw" />
-      <circle cx="210" cy="71" r="3" fill="#a5f3fc" className="glyph-pulse" />
+      <path d={d} fill="none" stroke="rgba(242,181,48,.14)" strokeWidth="1.6" />
+      <path d={d} fill="none" stroke="#F2B530" strokeWidth="1.6" pathLength={100} className="glyph-draw" />
+      <circle cx="210" cy="71" r="3" fill="#ffe7a3" className="glyph-pulse" />
     </svg>
   );
 }
@@ -127,15 +127,15 @@ function CloudGlyph() {
         <polygon
           key={i}
           points={hex(x, y, 17)}
-          fill="#818cf8"
-          stroke="#a5b4fc"
+          fill="#5eead4"
+          stroke="#99f6e4"
           strokeOpacity=".5"
           className="glyph-cell"
           style={{ animationDelay: `${i * 0.42}s` }}
         />
       ))}
       {cells.slice(1).map(([x, y], i) => (
-        <circle key={'n' + i} cx={x} cy={y} r="2" fill="#5eead4" className="glyph-pulse" style={{ animationDelay: `${i * 0.3}s` }} />
+        <circle key={'n' + i} cx={x} cy={y} r="2" fill="#F2B530" className="glyph-pulse" style={{ animationDelay: `${i * 0.3}s` }} />
       ))}
     </svg>
   );
@@ -145,15 +145,15 @@ function RoboticsGlyph() {
   return (
     <svg viewBox="0 0 220 100" className="h-full w-full">
       <line x1="20" y1="92" x2="200" y2="92" stroke={stroke} />
-      <rect x="92" y="82" width="36" height="10" rx="2" fill="#151a28" stroke="#5eead4" strokeOpacity=".6" />
+      <rect x="92" y="82" width="36" height="10" rx="2" fill="#151a28" stroke="#F2B530" strokeOpacity=".6" />
       <g className="arm-1">
         <line x1="110" y1="82" x2="110" y2="46" stroke="#c4cad8" strokeWidth="5" strokeLinecap="round" />
         <g className="arm-2">
-          <line x1="110" y1="46" x2="146" y2="40" stroke="#818cf8" strokeWidth="4" strokeLinecap="round" />
-          <path d="M146 40 l8 -5 M146 40 l8 5" stroke="#5eead4" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="110" cy="46" r="4" fill="#0e121d" stroke="#a5b4fc" />
+          <line x1="110" y1="46" x2="146" y2="40" stroke="#5eead4" strokeWidth="4" strokeLinecap="round" />
+          <path d="M146 40 l8 -5 M146 40 l8 5" stroke="#F2B530" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="110" cy="46" r="4" fill="#0e121d" stroke="#99f6e4" />
         </g>
-        <circle cx="110" cy="82" r="4.5" fill="#0e121d" stroke="#5eead4" />
+        <circle cx="110" cy="82" r="4.5" fill="#0e121d" stroke="#F2B530" />
       </g>
       <circle cx="166" cy="60" r="5" fill="none" stroke="#fbbf24" className="glyph-pulse" />
       <circle cx="58" cy="54" r="5" fill="none" stroke="#fbbf24" strokeOpacity=".4" />

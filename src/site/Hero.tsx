@@ -18,7 +18,7 @@ function RoleCycler() {
       <span key={i} className="role-word grad-text">
         {roles[i]}
       </span>
-      <span aria-hidden className="ml-0.5 inline-block w-[2px] self-stretch bg-signal-cyan/80" style={{ animation: 'blink 1s steps(1) infinite' }} />
+      <span aria-hidden className="ml-0.5 inline-block w-[2px] self-stretch bg-gold/80" style={{ animation: 'blink 1s steps(1) infinite' }} />
     </span>
   );
 }
@@ -35,13 +35,13 @@ const LOG = [
 function Stage() {
   return (
     <figure className="relative mx-auto w-full max-w-[460px]">
-      <div className="relative overflow-hidden rounded-[28px] border border-line bg-ink-900 shadow-[0_40px_120px_-40px_rgba(94,234,212,.25)]">
+      <div className="relative overflow-hidden rounded-[28px] border border-line bg-ink-900 shadow-[0_40px_120px_-50px_rgba(242,181,48,.28)]">
         <AgentScene />
         <div aria-hidden className="pointer-events-none absolute inset-3 font-mono text-[10px] tracking-[0.16em] text-fog-500">
-          <span className="absolute left-0 top-0 h-4 w-4 border-l border-t border-signal-cyan/60" />
-          <span className="absolute right-0 top-0 h-4 w-4 border-r border-t border-signal-cyan/60" />
-          <span className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-signal-cyan/60" />
-          <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-signal-cyan/60" />
+          <span className="absolute left-0 top-0 h-4 w-4 border-l border-t border-gold/60" />
+          <span className="absolute right-0 top-0 h-4 w-4 border-r border-t border-gold/60" />
+          <span className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-gold/60" />
+          <span className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-gold/60" />
           <span className="absolute left-6 top-1 text-fog-300">ORCHESTRATOR · S.AMRALE</span>
           <span className="absolute right-6 top-1 flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" style={{ animation: 'pulse-dot 1.8s infinite' }} />6 AGENTS
@@ -49,13 +49,13 @@ function Stage() {
         </div>
       </div>
       {/* Task log: a CSS-only ticker cycling through the agents' jobs */}
-      <figcaption className="mt-3 flex items-center gap-3 overflow-hidden rounded-2xl border border-line bg-ink-950/90 px-4 py-3 font-mono text-[12px]" data-motion>
-        <span className="text-signal-cyan">❯</span>
+      <figcaption className="mt-3 flex items-center gap-3 overflow-hidden rounded-2xl border border-line bg-ink-950/90 px-4 py-3 font-code text-[12px]" data-motion>
+        <span className="text-gold">❯</span>
         <span className="relative h-[18px] flex-1 overflow-hidden">
           <span className="log-ticker absolute inset-x-0 top-0">
             {[...LOG, LOG[0]].map(([who, what], i) => (
               <span key={i} className="block h-[18px] truncate leading-[18px] text-fog-300">
-                <span className="text-signal-indigo">{who}-agent</span> {what}
+                <span className="text-live">{who}-agent</span> {what}
                 <span className="ml-2 text-emerald-400">✓</span>
               </span>
             ))}
@@ -71,7 +71,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden">
       {/* Static gradient under the shader: what you see before / without WebGL */}
-      <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(80%_60%_at_70%_20%,rgba(56,189,248,.10),transparent_60%),radial-gradient(60%_50%_at_10%_80%,rgba(129,140,248,.10),transparent_60%)]" />
+      <div aria-hidden className="absolute inset-0 -z-20 bg-[radial-gradient(80%_60%_at_70%_20%,rgba(56,189,248,.10),transparent_60%),radial-gradient(60%_50%_at_10%_80%,rgba(94,234,212,.10),transparent_60%)]" />
       <Aurora />
       <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-b from-transparent to-ink-950" />
 
@@ -85,7 +85,7 @@ export default function Hero() {
             OPEN TO ROLES · {profile.location.toUpperCase()}
           </div>
 
-          <h1 className="text-[clamp(3.1rem,9.5vw,7.4rem)] font-semibold leading-[0.92] tracking-[-0.045em]">
+          <h1 className="text-[clamp(3.1rem,9.5vw,7.4rem)] font-bold leading-[0.9] tracking-[-0.025em]">
             <span className="split-word">
               <span>{first}</span>
             </span>{' '}
@@ -142,7 +142,7 @@ export default function Hero() {
       <a href="#disciplines" aria-label="Scroll to content" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-fog-500 transition-colors hover:text-fog-300 md:flex">
         SCROLL
         <span className="relative h-10 w-px overflow-hidden bg-line">
-          <span className="absolute inset-x-0 top-0 h-1/2 bg-signal-cyan" style={{ animation: 'scan 2.2s var(--ease-in-out) infinite' }} />
+          <span className="absolute inset-x-0 top-0 h-1/2 bg-gold" style={{ animation: 'scan 2.2s var(--ease-in-out) infinite' }} />
         </span>
       </a>
     </section>

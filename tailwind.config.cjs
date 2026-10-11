@@ -4,34 +4,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Deep-space neutrals.
+        // Neutral blacks (very slightly warm).
         ink: {
-          950: '#04050a',
-          900: '#070910',
-          850: '#0a0d16',
-          800: '#0e121d',
-          700: '#151a28',
-          600: '#1f2638',
+          950: '#060607',
+          900: '#0a0a0c',
+          850: '#0e0f11',
+          800: '#131417',
+          700: '#1a1b1f',
+          600: '#25272c',
         },
-        line: 'rgba(148, 163, 196, 0.12)',
+        line: 'rgba(240, 236, 228, 0.09)',
+        // Warm whites and greys.
         fog: {
-          100: '#eef1f8',
-          300: '#c4cad8',
-          500: '#8b93a7',
-          700: '#5b6377',
+          100: '#f4f1ea',
+          300: '#cbc7be',
+          500: '#93908a',
+          700: '#5f5d59',
         },
-        // Signal accents: cyan -> indigo -> violet, one warm highlight.
-        signal: {
-          cyan: '#5eead4',
-          sky: '#7dd3fc',
-          indigo: '#818cf8',
-          violet: '#c084fc',
-          amber: '#fbbf24',
+        // Pittsburgh gold: the single accent.
+        gold: {
+          DEFAULT: '#f2b530',
+          soft: '#ffd978',
+          deep: '#d99a1e',
         },
+        // Status only (live dots, agent eyes).
+        live: '#5eead4',
       },
       fontFamily: {
-        sans: ['"Inter Variable"', 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+        sans: ['Barlow', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        // Labels use the same DIN-style face, uppercase and tracked.
+        mono: ['Barlow', 'system-ui', 'sans-serif'],
+        code: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       },
       maxWidth: {
         shell: '1240px',
