@@ -1,0 +1,25 @@
+I build data and AI platforms that run in production, and I work directly with the people who use them.
+
+At Pittsburgh International Airport I designed and run the One Data Platform end to end, from device and vendor feeds to the AI-enriched data products operations teams use every day:
+
+• Lakehouse: 60 Databricks Lakeflow pipelines and 58 jobs on Unity Catalog across flights, baggage, parking, ground transport, finance, workforce, and customer experience. Auto Loader bronze with schema rescue, SCD2 silver, gold data products with explicit grain.
+
+• AI in the pipeline: LLM enrichment with Databricks ai_query (Llama 3.3 70B) that turns raw FAA NOTAMs and customer feedback into plain-English summaries, with versioned prompts, a model kill switch, and a content-hashed Delta cache so reruns are deterministic and cheap.
+
+• Ingestion: a .NET 8 Azure Functions platform with about 50 vendor and device connectors (Amadeus, SITA, Daifuku, Brock, Vaisala, Workday, TSA, FAA): watermarking, gap detection, time-range reprocessing, and dual writes to ADLS and Azure Data Explorer. 1,300+ unit tests.
+
+• Streaming and IoT: about 70 Azure Functions and a payload decoder for LoRaWAN sensors, people counters, and camera analytics, streaming through IoT Hub and Event Hubs into Kusto for near-real-time occupancy, gate, and parking data.
+
+• Platform: Terraform, Databricks Asset Bundles, Bicep, and Azure DevOps with OIDC and approval-gated prod. Unity Catalog grants reconciled from code. Lineage kept as code.
+
+• In users' hands: Kusto-backed data APIs with freshness alerts, plus React and MSAL apps operations staff use daily (parking kiosks, live gate status map, concessions, staff directory).
+
+How I work: I sit with the operations teams, map the real workflow, ship a working version fast, measure it, and harden it into a platform other engineers can ship on safely.
+
+What I optimize for: correct data under late, duplicated, and out-of-order events. Freshness SLOs. AI outputs that are versioned, cached, evaluated, and auditable.
+
+On my own time I publish runnable labs (Python, DuckDB, Parquet, GitHub Actions CI): a contract-gated medallion lakehouse, held-out Linux incident diagnosis, and VELA, a native Rust media player. Now building an MCP server that lets AI agents query governed lakehouse data, with evals gating changes in CI.
+
+Microsoft Certified: Azure AI Engineer and Azure Developer. MS in Computer Science, NJIT.
+
+Open to Data Engineer, Data/AI Platform Engineer, and Forward Deployed Engineer roles. Pittsburgh based, open to relocation and remote.

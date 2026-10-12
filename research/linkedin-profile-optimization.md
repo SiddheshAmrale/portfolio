@@ -143,6 +143,23 @@ colleague (engineering quality). Suggest they mention one concrete project each.
 - Banner: [`linkedin-banner.png`](linkedin-banner.png) (1584×396, matches the portfolio).
 - Contact info: add the portfolio URL and GitHub.
 
+## Applied on 12 Oct 2026
+
+| Item | Status |
+|---|---|
+| Headline | Live (§1 text) |
+| About | Live: [`linkedin-about-new.txt`](linkedin-about-new.txt) (2,574 / 2,600 characters) |
+| Current title | Live: "Analytics Full Stack Developer (Data & AI Platform Engineering)", network not notified |
+| Skills | 17 added, each linked to where it was used: Data Quality, Data Governance, Stream Processing, Azure Data Explorer, Azure Data Lake, Azure IoT, Infrastructure as Code (IaC), Bicep, REST APIs, TypeScript, Generative AI, Retrieval-Augmented Generation (RAG), AI Agents, .NET Core, Rust, Apache Parquet, Stakeholder Management. Already present (the skills page lists only some of them): Data Engineering, ETL, Data Modeling, Delta Lake, PySpark, Apache Spark, Azure Databricks, Python, SQL, KQL, Azure Functions, Microsoft Azure, CI/CD, C#, React.js, DuckDB |
+| Top skills | Kept: Python · Azure Databricks · Apache Spark · SQL · LLMs (already right for all three roles) |
+| Open to Work titles | Data Engineer · Platform Engineer · AI Engineer · Software Engineer · Machine Learning Engineer. LinkedIn has no standard "Forward Deployed Engineer" title and files FDE roles under Software Engineer |
+| Contact info | Portfolio (type Portfolio) + GitHub |
+| Featured | Portfolio site · VELA on GitHub · Lakehouse Forge lab |
+
+**Still to do yourself:** upload [`linkedin-banner.png`](linkedin-banner.png) (profile → camera icon on the banner);
+ask for 2–3 recommendations (§9); publish the first post (§8); add the outcome line and
+Freddie Mac specifics with real numbers (§4); drag the Portfolio link to the first Featured slot.
+
 ## Priority order
 
 1. Headline · 2. Skills (add + pin) · 3. Open to Work titles · 4. About · 5. Featured ·
