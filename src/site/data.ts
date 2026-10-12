@@ -106,8 +106,8 @@ export const projects: Project[] = [
     summary:
       'MCP server that gives AI agents governed, read-only access to lakehouse data: SQL allow-list, per-role sandboxes with masking and row filters, a locked engine and an audit log. A CI eval gate checks metric accuracy against an independent oracle, 23 attack and out-of-scope requests, and latency.',
     domains: ['ai', 'data'],
-    tech: ['MCP', 'DuckDB', 'sqlglot', 'Evals'],
-    evidence: '43 tests · CI eval gate',
+    tech: ['MCP', 'DuckDB', 'dbt', 'Evals'],
+    evidence: '44 tests · CI eval gate',
     href: 'https://github.com/SiddheshAmrale/agent-ready-lakehouse',
   },
   {

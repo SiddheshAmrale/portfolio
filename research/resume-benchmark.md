@@ -12,15 +12,15 @@ reads it).
 | Resume | Data Engineer (51 roles) | Forward Deployed Engineer (25 roles) |
 |---|---|---|
 | Original (Aug 2025) | 82% | 67% |
-| New: Data & Platform | 81% | 80% |
-| New: Forward Deployed | 81% | 80% |
+| New: Data & Platform | 83% | 80% |
+| New: Forward Deployed | 83% | 80% |
 
 The original's Data Engineer score included dbt and Iceberg, which nothing in the
 experience supports, so they were removed. The FDE gain comes from evaluation, MCP, LLM apps
 and customer-facing work now being stated explicitly.
 
 **Remaining gaps are vendor stacks, not wording:** Redshift (14 roles, all Amazon/AWS),
-BigQuery/GCP (8), Vertex AI/Gemini (16 Google FDE mentions), dbt (3), Flink (3), Iceberg (2).
+BigQuery/GCP (8), Vertex AI/Gemini (16 Google FDE mentions), Flink (3), Iceberg (2). dbt is now covered by real project work.
 They can only be closed honestly by using them:
 
 | Gap | Cheapest honest fix | Unlocks |
@@ -28,7 +28,7 @@ They can only be closed honestly by using them:
 | Vertex AI / Gemini | Add a Gemini backend + eval run to the Agent-Ready Lakehouse project (free tier) | Google FDE III, GenAI (lists Pittsburgh) |
 | Redshift / AWS data | Port Lakehouse Forge gold layer to Redshift Serverless or Athena; write it up | Amazon / AWS DE II roles |
 | BigQuery | Same port to BigQuery sandbox (free) | Walmart, IBM, Google |
-| dbt | Express Forge silver/gold as dbt models with tests | Banks, Salesforce |
+| dbt | **Done:** Agent-Ready Lakehouse gold layer in dbt, 16 data tests, parity with Python build | Banks, Salesforce |
 | Kafka/Flink/Iceberg | The planned Streaming Lakehouse project | Walmart Ads, Salesforce |
 
 ## 2. Benchmark against a top-company hire

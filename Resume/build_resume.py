@@ -127,12 +127,12 @@ TOPHAT = [
 PROJECTS = {
     "agent": (
         "Agent-Ready Lakehouse",
-        "Python, MCP, DuckDB, sqlglot, GitHub Actions",
+        "Python, MCP, DuckDB, dbt, sqlglot, GitHub Actions",
         "github.com/SiddheshAmrale/agent-ready-lakehouse",
         "MCP server that gives AI agents governed, read-only access to lakehouse data: SQL "
         "allow-list, per-role sandboxes with masking and row filters, a locked engine and an "
-        "audit log. A CI eval gate checks metric accuracy against an independent oracle, 23 "
-        "attack and out-of-scope requests, and latency (p95 14 ms).",
+        "audit log; gold layer also built in dbt with 16 data tests. A CI eval gate checks metric "
+        "accuracy against an independent oracle, 23 attack and out-of-scope requests, and latency.",
     ),
     "forge": (
         "Lakehouse Forge",
@@ -173,7 +173,7 @@ EDUCATION = [
 SKILLS_DATA = [
     ("Data engineering",
      "SQL, Python, PySpark, Apache Spark, Databricks (Lakeflow/DLT, Unity Catalog, "
-     "Auto Loader, Asset Bundles), Delta Lake, Parquet, DuckDB, Airflow, Snowflake, "
+     "Auto Loader, Asset Bundles), Delta Lake, Parquet, DuckDB, dbt, Airflow, Snowflake, "
      "ETL/ELT, CDC, SCD Type 2, dimensional modeling, data warehousing, data quality, data governance, Power BI"),
     ("Streaming",
      "Azure Event Hubs, IoT Hub, Azure Data Explorer (Kusto/KQL), Kafka, "
@@ -199,7 +199,7 @@ SKILLS_FDE = [
      "Semantic Kernel, Databricks ai_query, prompt versioning, MLflow"),
     ("Data",
      "Databricks (Lakeflow/DLT, Unity Catalog), Apache Spark, PySpark, Delta Lake, "
-     "Airflow, Snowflake, Kafka, Event Hubs, Azure Data Explorer, ETL/ELT, CDC, data warehousing, "
+     "dbt, Airflow, Snowflake, Kafka, Event Hubs, Azure Data Explorer, ETL/ELT, CDC, data warehousing, "
      "data modeling, data quality, governance"),
     ("Cloud & delivery",
      "Azure, AWS (S3, Lambda, EKS), Terraform, Bicep, Docker, Kubernetes, "
