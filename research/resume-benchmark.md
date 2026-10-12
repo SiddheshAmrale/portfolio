@@ -48,7 +48,7 @@ Scores 1–5. "Bar" = what a resume that clears these screens typically shows.
 | Production scale | 5 | 4 | **4** | 60 pipelines, ~50 connectors, ~70 functions, 5-min freshness; no data volumes yet |
 | Measured outcomes | 5 | 4 | **4** | 2 days vs weeks, $400K+, −60% requests, −40% MTTR; need confirming (§4) |
 | Data stack match | 5 | 4 | **4** | Spark, Databricks, SQL, Airflow, Kafka, streaming; no Redshift/BigQuery/dbt |
-| AI depth (RAG, agents, evals) | 5 | 3 | **4** | LLMs in pipelines with versioned prompts, RAG + eval sets; MCP project in progress |
+| AI depth (RAG, agents, evals) | 5 | 3 | **4** | LLMs in pipelines with versioned prompts, RAG + eval sets, Agent-Ready Lakehouse (MCP + eval gate) built |
 | Works with customers | 5 | 2 | **3** | Internal ops teams and vendor integrations; no external customers yet |
 | Writing / public signal | 4 | 1 | **2** | Portfolio + labs; no posts, talks or recommendations |
 | Years for level | 5–6+ | 6.7 | 6.7 | Meets Google FDE III, Capital One DE5, Databricks Sr FDE; below 8-yr IV roles |
@@ -59,7 +59,7 @@ Scores 1–5. "Bar" = what a resume that clears these screens typically shows.
 level roles. The two gaps a top-company FDE panel will probe are *external customer work*
 and *public evidence of how you think*. Both are fixable in weeks, not years:
 
-1. Ship the Agent-Ready Lakehouse (MCP + evals) and write it up: covers agents, MCP, evals,
+1. Publish the Agent-Ready Lakehouse (built: D:Projectsgent-ready-lakehouse) and run its agent eval on Gemini and one OpenAI model; write it up: covers agents, MCP, evals,
    and shows customer-style problem framing.
 2. Publish three posts (topics in `linkedin-profile-optimization.md` §8).
 3. Get two recommendations, one from an operations stakeholder ("they sat with us…").

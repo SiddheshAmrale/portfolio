@@ -126,12 +126,13 @@ TOPHAT = [
 
 PROJECTS = {
     "agent": (
-        "Agent-Ready Lakehouse (in progress)",
-        "Python, MCP, DuckDB, GitHub Actions",
+        "Agent-Ready Lakehouse",
+        "Python, MCP, DuckDB, sqlglot, GitHub Actions",
         "github.com/SiddheshAmrale/agent-ready-lakehouse",
-        "MCP server that lets AI agents query governed lakehouse data through "
-        "policy-checked tools (column masking, row filters, audit log), with an "
-        "evaluation suite that gates every change in CI.",
+        "MCP server that gives AI agents governed, read-only access to lakehouse data: SQL "
+        "allow-list, per-role sandboxes with masking and row filters, a locked engine and an "
+        "audit log. A CI eval gate checks metric accuracy against an independent oracle, 23 "
+        "attack and out-of-scope requests, and latency (p95 14 ms).",
     ),
     "forge": (
         "Lakehouse Forge",
@@ -198,7 +199,7 @@ SKILLS_FDE = [
      "Semantic Kernel, Databricks ai_query, prompt versioning, MLflow"),
     ("Data",
      "Databricks (Lakeflow/DLT, Unity Catalog), Apache Spark, PySpark, Delta Lake, "
-     "Airflow, Snowflake, Kafka, Event Hubs, Azure Data Explorer, ETL/ELT, CDC, "
+     "Airflow, Snowflake, Kafka, Event Hubs, Azure Data Explorer, ETL/ELT, CDC, data warehousing, "
      "data modeling, data quality, governance"),
     ("Cloud & delivery",
      "Azure, AWS (S3, Lambda, EKS), Terraform, Bicep, Docker, Kubernetes, "
