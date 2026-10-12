@@ -59,7 +59,7 @@ Scores 1–5. "Bar" = what a resume that clears these screens typically shows.
 level roles. The two gaps a top-company FDE panel will probe are *external customer work*
 and *public evidence of how you think*. Both are fixable in weeks, not years:
 
-1. Publish the Agent-Ready Lakehouse (built: D:Projectsgent-ready-lakehouse) and run its agent eval on Gemini and one OpenAI model; write it up: covers agents, MCP, evals,
+1. Publish the Agent-Ready Lakehouse (built locally in `agent-ready-lakehouse/`) and run its agent eval on Gemini and one OpenAI model; write it up: covers agents, MCP, evals,
    and shows customer-style problem framing.
 2. Publish three posts (topics in `linkedin-profile-optimization.md` §8).
 3. Get two recommendations, one from an operations stakeholder ("they sat with us…").
