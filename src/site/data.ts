@@ -12,7 +12,7 @@ export const profile = {
   phoneHref: 'tel:+19734388729',
   github: 'https://github.com/SiddheshAmrale',
   linkedin: 'https://www.linkedin.com/in/siddheshnitinamrale/',
-  resume: '/Siddhesh_Amrale_Resume_2025_GenAI_.docx',
+  resume: '/Siddhesh_Amrale_Resume.pdf',
 };
 
 export const roles = [

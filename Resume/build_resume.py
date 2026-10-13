@@ -1,16 +1,16 @@
-"""Builds the tailored resumes (DOCX + PDF) from one content model.
+"""Builds the resume (DOCX + PDF) for Data, Platform and Forward Deployed roles.
 
     python build_resume.py
 
 Outputs, next to this script:
-    Siddhesh_Amrale_Resume_Data_Platform.docx / .pdf
-    Siddhesh_Amrale_Resume_Forward_Deployed.docx / .pdf
+    Siddhesh_Amrale_Resume.docx / .pdf  (the PDF is also copied to public/ for the site)
 
 Layout rules (ATS): one column, standard section names, no tables, text
 boxes, icons or images; contact details in the body, not the page header.
 """
 
 import html
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -52,11 +52,8 @@ ACAA = {
         "Built a reusable ingestion platform on .NET 8 Azure Functions (16 function "
         "apps, ~50 connectors including Amadeus, SITA, Daifuku, Workday, TSA and FAA) "
         "with watermark/CDC loads, gap detection and time-range reprocessing. New "
-        "sources now take 2 days instead of weeks; 1,300+ unit tests."
-    ),
-    "cost": (
-        "Moved pipelines off Azure Data Factory onto serverless functions, "
-        "identifying $400K+ a year in savings."
+        "sources now take 2 days instead of weeks, moving off Azure Data Factory "
+        "identified $400K+ a year in savings, and 1,300+ unit tests keep it safe to change."
     ),
     "streaming": (
         "Built the real-time path: ~70 Azure Functions and a Node.js decoder for "
@@ -170,78 +167,43 @@ EDUCATION = [
     ("B.E. Computer Engineering, Savitribai Phule Pune University", "2019"),
 ]
 
-SKILLS_DATA = [
-    ("Data engineering",
-     "SQL, Python, PySpark, Apache Spark, Databricks (Lakeflow/DLT, Unity Catalog, "
-     "Auto Loader, Asset Bundles), Delta Lake, Parquet, DuckDB, dbt, Airflow, Snowflake, "
-     "ETL/ELT, CDC, SCD Type 2, dimensional modeling, data warehousing, data quality, data governance, Power BI"),
-    ("Streaming",
-     "Azure Event Hubs, IoT Hub, Azure Data Explorer (Kusto/KQL), Kafka, "
-     "event-driven architecture, watermarking, late and out-of-order data"),
-    ("Platform & cloud",
-     "Azure (Functions, Data Lake Storage, Key Vault, API Management, DevOps), "
-     "AWS (S3, Lambda, EKS), Terraform, Bicep, Docker, Kubernetes (AKS, EKS), "
-     "GitHub Actions, ArgoCD, CI/CD, OIDC, Prometheus, Grafana, SLIs/SLOs"),
-    ("AI",
-     "LLM pipelines, RAG, Azure OpenAI, Semantic Kernel, Databricks ai_query, "
-     "prompt versioning, LLM evaluation, AI agents, MCP, MLflow"),
-    ("Languages & apps",
-     "Python, SQL/KQL, C#/.NET 8, TypeScript, JavaScript/Node.js, Java, Rust, "
-     "React, Angular, REST, GraphQL, Cypress"),
-]
-
-SKILLS_FDE = [
-    ("Build & ship",
-     "Python, TypeScript, React, Node.js, C#/.NET 8, Java, SQL/KQL, REST, GraphQL, "
-     "Cypress, Rust"),
-    ("AI",
-     "LLM apps and pipelines, RAG, AI agents, MCP, LLM evaluation, Azure OpenAI, "
-     "Semantic Kernel, Databricks ai_query, prompt versioning, MLflow"),
-    ("Data",
-     "Databricks (Lakeflow/DLT, Unity Catalog), Apache Spark, PySpark, Delta Lake, "
-     "dbt, Airflow, Snowflake, Kafka, Event Hubs, Azure Data Explorer, ETL/ELT, CDC, data warehousing, "
-     "data modeling, data quality, governance"),
-    ("Cloud & delivery",
-     "Azure, AWS (S3, Lambda, EKS), Terraform, Bicep, Docker, Kubernetes, "
-     "GitHub Actions, Azure DevOps, ArgoCD, OIDC, Prometheus, Grafana, SLIs/SLOs"),
-    ("Working with customers",
-     "Workflow discovery with operations teams, rapid prototyping, production "
-     "rollout, stakeholder management"),
-]
-
-VARIANTS = {
-    "Data_Platform": {
-        "headline": "Data & AI Platform Engineer",
-        "summary": (
-            "Data and AI platform engineer with 6+ years of experience. Started in "
-            "full-stack product work in Pune, moved to mortgage data pipelines and "
-            "APIs at Freddie Mac while earning an MS in Computer Science at NJIT, "
-            "and now own Pittsburgh International Airport's data platform end to "
-            "end: ~50 source connectors, 60 Databricks pipelines, real-time IoT "
-            "streams and LLM enrichment, all deployed as code. Focus: correct data "
-            "under late, duplicated and out-of-order events, freshness SLOs, and AI "
-            "outputs that are versioned, evaluated and auditable."
-        ),
-        "skills": SKILLS_DATA,
-        "acaa": ["lakehouse", "ingestion", "cost", "streaming", "platform", "llm", "rag", "users"],
-        "projects": ["forge", "agent", "labs", "vela"],
-    },
-    "Forward_Deployed": {
-        "headline": "Data & AI Engineer | Forward-Deployed Builder",
-        "summary": (
-            "Engineer who builds data and AI systems alongside the people who use "
-            "them, 6+ years. Started in full-stack product work in Pune, moved to "
-            "mortgage data pipelines and APIs at Freddie Mac while earning an MS in "
-            "Computer Science at NJIT, and now own Pittsburgh International "
-            "Airport's data and AI platform. The loop: sit with the operations "
-            "team, map the real workflow, ship a working version fast, measure it, "
-            "then harden it into a platform. Shipped LLM enrichment, RAG agents with "
-            "evaluation sets, streaming IoT pipelines and React apps staff use daily."
-        ),
-        "skills": SKILLS_FDE,
-        "acaa": ["users", "rag", "llm", "ingestion", "lakehouse", "streaming", "platform", "cost"],
-        "projects": ["agent", "forge", "vela", "labs"],
-    },
+RESUME = {
+    "headline": "Data & AI Platform Engineer",
+    "summary": (
+        "Data and AI platform engineer with 6+ years of experience, building alongside the "
+        "people who use the work. Started in full-stack product work in Pune, moved to "
+        "mortgage data pipelines and APIs at Freddie Mac while earning an MS in Computer "
+        "Science at NJIT, and now own Pittsburgh International Airport's data and AI "
+        "platform end to end: ~50 source connectors, 60 Databricks pipelines, real-time IoT "
+        "streams, LLM enrichment and RAG agents, all deployed as code. The loop: sit with "
+        "the operations team, map the real workflow, ship a working version fast, measure "
+        "it, then harden it into a platform."
+    ),
+    "skills": [
+        ("Data engineering",
+         "SQL, Python, PySpark, Apache Spark, Databricks (Lakeflow/DLT, Unity Catalog, "
+         "Auto Loader, Asset Bundles), Delta Lake, Parquet, DuckDB, dbt, Airflow, Snowflake, "
+         "ETL/ELT, CDC, SCD Type 2, dimensional modeling, data warehousing, data quality, "
+         "data governance, Power BI"),
+        ("Streaming",
+         "Azure Event Hubs, IoT Hub, Azure Data Explorer (Kusto/KQL), Kafka, "
+         "event-driven architecture, watermarking, late and out-of-order data"),
+        ("AI",
+         "LLM apps and pipelines, RAG, AI agents, MCP, LLM evaluation, Azure OpenAI, "
+         "Semantic Kernel, Databricks ai_query, prompt versioning, MLflow"),
+        ("Platform & cloud",
+         "Azure (Functions, Data Lake Storage, Key Vault, API Management, DevOps), "
+         "AWS (S3, Lambda, EKS), Terraform, Bicep, Docker, Kubernetes (AKS, EKS), "
+         "GitHub Actions, ArgoCD, CI/CD, OIDC, Prometheus, Grafana, SLIs/SLOs"),
+        ("Languages & apps",
+         "Python, SQL/KQL, C#/.NET 8, TypeScript, JavaScript/Node.js, Java, Rust, "
+         "React, Angular, REST, GraphQL, Cypress"),
+        ("Working with users",
+         "Workflow discovery with operations teams, rapid prototyping, production "
+         "rollout, stakeholder management"),
+    ],
+    "acaa": ["lakehouse", "ingestion", "users", "llm", "rag", "streaming", "platform"],
+    "projects": ["agent", "forge", "vela", "labs"],
 }
 
 
@@ -435,11 +397,12 @@ def build_pdf(v, html_path, pdf_path):
 def main():
     build = HERE / "build"
     build.mkdir(exist_ok=True)
-    for key, v in VARIANTS.items():
-        stem = f"Siddhesh_Amrale_Resume_{key}"
-        build_docx(v, HERE / f"{stem}.docx")
-        build_pdf(v, build / f"{stem}.html", HERE / f"{stem}.pdf")
-        print("built", stem)
+    stem = "Siddhesh_Amrale_Resume"
+    build_docx(RESUME, HERE / f"{stem}.docx")
+    build_pdf(RESUME, build / f"{stem}.html", HERE / f"{stem}.pdf")
+    # The site's Resume button serves this same file.
+    shutil.copyfile(HERE / f"{stem}.pdf", HERE.parent / "public" / f"{stem}.pdf")
+    print("built", stem)
     return 0
 
 

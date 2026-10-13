@@ -1,6 +1,6 @@
 # Resume benchmark: Data Engineer · Platform Engineer · Forward Deployed Engineer
 
-12 Oct 2026. Resumes: [`Resume/`](../Resume/) (built by `build_resume.py`, scored by `evaluate.py`).
+12 Oct 2026. Resume: [`Resume/Siddhesh_Amrale_Resume.pdf`](../Resume/Siddhesh_Amrale_Resume.pdf) (built by `build_resume.py`, scored by `evaluate.py`).
 Demand data: the 76 big-company roles in [`job-descriptions/`](job-descriptions/README.md).
 
 ## 1. Keyword coverage (what an ATS match sees)
@@ -12,8 +12,7 @@ reads it).
 | Resume | Data Engineer (51 roles) | Forward Deployed Engineer (25 roles) |
 |---|---|---|
 | Original (Aug 2025) | 82% | 67% |
-| New: Data & Platform | 83% | 80% |
-| New: Forward Deployed | 83% | 80% |
+| Current (one resume for all three role families) | 83% | 80% |
 
 The original's Data Engineer score included dbt and Iceberg, which nothing in the
 experience supports, so they were removed. The FDE gain comes from evaluation, MCP, LLM apps

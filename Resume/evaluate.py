@@ -84,11 +84,13 @@ def score(t, counter):
 def main():
     d = demand()
     resumes = {
-        "Original": HERE / "Siddhesh_Amrale_Resume.pdf",
-        "New: Data & Platform": HERE / "Siddhesh_Amrale_Resume_Data_Platform.pdf",
-        "New: Forward Deployed": HERE / "Siddhesh_Amrale_Resume_Forward_Deployed.pdf",
+        # the Aug 2025 resume, kept out of the repo root: git show c062a6b:Resume/Siddhesh_Amrale_Resume.pdf
+        "Original (Aug 2025)": HERE / "build" / "original_2025.pdf",
+        "Current": HERE / "Siddhesh_Amrale_Resume.pdf",
     }
     for name, pdf in resumes.items():
+        if not pdf.exists():
+            continue
         t = text(pdf)
         words = len(t.split())
         print(f"\n## {name}  ({words} words)")

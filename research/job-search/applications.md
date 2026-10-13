@@ -1,4 +1,4 @@
-# Applications: priority roles, which resume, and drafts
+# Applications: priority roles and drafts
 
 Drafts only: nothing has been sent. Postings were open on 11 Oct 2026; check each is still
 live before applying. Apply on the company site where possible (often better tracked than
@@ -6,13 +6,13 @@ LinkedIn Easy Apply).
 
 ## Priority list
 
-| # | Role | Link | Resume | Why it fits | Before applying |
-|---|---|---|---|---|---|
-| 1 | Google · Forward Deployed Engineer III, Generative AI, Google Cloud ($174K–$252K) | [Pittsburgh](https://www.linkedin.com/jobs/view/4456886943/) | Forward Deployed | Local; RAG, agents, evals; 5 yrs | Run the agent eval on Gemini and add the result to the project README |
-| 2 | Capital One · Data Engineer 5 ($209K–$262K) | [New York](https://www.linkedin.com/jobs/view/4478036527/) · [Chicago](https://www.linkedin.com/jobs/view/4478047069/) · [Plano, Insights Platform](https://www.linkedin.com/jobs/view/4478037437/) | Data & Platform | Will consider sponsorship; Spark + Databricks; 6 yrs | Apply to DE5, not DE4 (DE4 says no sponsorship) |
-| 3 | Databricks · Sr. Forward Deployed Engineer, Digital Native ($182K–$250K) | [New York](https://www.linkedin.com/jobs/view/4465273047/) · [Seattle](https://www.linkedin.com/jobs/view/4465276041/) | Forward Deployed | 60 Lakeflow pipelines, Unity Catalog, TypeScript | Databricks certs would help (DE Professional / GenAI Associate) |
-| 4 | AWS · Sr Forward Deployed Engineer | [New York](https://www.linkedin.com/jobs/view/4460141406/) · [Bellevue](https://www.linkedin.com/jobs/view/4460149316/) | Forward Deployed | RAG, agents, evals, TypeScript/React | AWS AI services are expected; say how fast you would ramp up on them |
-| 5 | Salesforce · Forward Deployed Engineer, Data 360 | [Chicago](https://www.linkedin.com/jobs/view/4459004852/) · [Austin](https://www.linkedin.com/jobs/view/4459014804/) | Forward Deployed | Real-time data engine + Databricks/Snowflake | Read up on Data 360 basics |
+| # | Role | Link | Why it fits | Before applying |
+|---|---|---|---|---|
+| 1 | Google · Forward Deployed Engineer III, Generative AI, Google Cloud ($174K–$252K) | [Pittsburgh](https://www.linkedin.com/jobs/view/4456886943/) | Local; RAG, agents, evals; 5 yrs | Run the agent eval on Gemini and add the result to the project README |
+| 2 | Capital One · Data Engineer 5 ($209K–$262K) | [New York](https://www.linkedin.com/jobs/view/4478036527/) · [Chicago](https://www.linkedin.com/jobs/view/4478047069/) · [Plano, Insights Platform](https://www.linkedin.com/jobs/view/4478037437/) | Will consider sponsorship; Spark + Databricks; 6 yrs | Apply to DE5, not DE4 (DE4 says no sponsorship) |
+| 3 | Databricks · Sr. Forward Deployed Engineer, Digital Native ($182K–$250K) | [New York](https://www.linkedin.com/jobs/view/4465273047/) · [Seattle](https://www.linkedin.com/jobs/view/4465276041/) | 60 Lakeflow pipelines, Unity Catalog, TypeScript | Databricks certs would help (DE Professional / GenAI Associate) |
+| 4 | AWS · Sr Forward Deployed Engineer | [New York](https://www.linkedin.com/jobs/view/4460141406/) · [Bellevue](https://www.linkedin.com/jobs/view/4460149316/) | RAG, agents, evals, TypeScript/React | AWS AI services are expected; say how fast you would ramp up on them |
+| 5 | Salesforce · Forward Deployed Engineer, Data 360 | [Chicago](https://www.linkedin.com/jobs/view/4459004852/) · [Austin](https://www.linkedin.com/jobs/view/4459014804/) | Real-time data engine + Databricks/Snowflake | Read up on Data 360 basics |
 
 ## Recruiter / hiring-manager notes (≤ 300 characters fits a LinkedIn connection note)
 
@@ -60,6 +60,6 @@ LinkedIn Easy Apply).
 
 ## Tracker
 
-| Date | Company | Role | Resume | Referral? | Status | Next step |
-|---|---|---|---|---|---|---|
-| | | | | | | |
+| Date | Company | Role | Referral? | Status | Next step |
+|---|---|---|---|---|---|
+| | | | | | |
