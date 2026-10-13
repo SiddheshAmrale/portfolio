@@ -1,0 +1,45 @@
+Siddhesh Amrale
+Data & AI Platform Engineer | Pittsburgh, PA, open to relocation
+siddhesh.amrale@gmail.com | +1 (973) 438-8729 | linkedin.com/in/siddheshnitinamrale | github.com/SiddheshAmrale | Portfolio: gentle-river-08010bc0f.1.azurestaticapps.net
+
+SUMMARY
+Data and AI platform engineer, 6+ years. Started in full-stack product work in Pune, moved to mortgage data pipelines at Freddie Mac while earning an MS at NJIT, and now own Pittsburgh International Airport's data and AI platform. The loop: sit with the people who use the data, ship a working version fast, measure it, then harden it into a platform.
+
+SKILLS
+Data: SQL, Python, PySpark, Apache Spark, Databricks (Lakeflow/DLT, Unity Catalog), Delta Lake, dbt, Airflow, Snowflake, DuckDB, Parquet, ETL/ELT, CDC, SCD Type 2, data modeling, data warehousing, data quality, governance
+Streaming: Kafka, Azure Event Hubs, IoT Hub, Azure Data Explorer (KQL), event-driven architecture, late and out-of-order data
+AI: LLM apps and pipelines, RAG, AI agents, MCP, LLM evaluation, Azure OpenAI, Semantic Kernel, prompt versioning, MLflow
+Cloud & platform: Azure, AWS (S3, Lambda, EKS), Terraform, Bicep, Docker, Kubernetes, GitHub Actions, Azure DevOps, ArgoCD, Prometheus, Grafana
+Languages & apps: Python, SQL/KQL, C#/.NET, TypeScript, JavaScript/Node.js, Java, Rust, React, Angular, REST, GraphQL
+
+EXPERIENCE
+
+Analytics Full Stack Developer (Data & AI Platform Engineering) | Jan 2024 – Present
+Pittsburgh International Airport (Allegheny County Airport Authority), Pittsburgh, PA
+- Designed and built the One Data Platform on Databricks: 60 Lakeflow (DLT) pipelines and 58 jobs on Unity Catalog across flights, baggage, parking, finance, workforce and customer experience; SCD2 silver and gold data products in Power BI for 5 business units.
+- Built a reusable ingestion platform on .NET 8 Azure Functions (~50 connectors, 1,300+ unit tests) with watermark/CDC loads, gap detection and replay. New sources take 2 days instead of weeks; leaving Azure Data Factory identified $400K+ a year in savings.
+- Partnered with operations teams to map how they really work, then shipped React + MSAL apps and Kusto-backed APIs they use daily (parking kiosks, live gate map, concessions); incident response time down 40%.
+- Put LLMs inside the pipeline: Databricks ai_query (Llama 3.3 70B) turns FAA NOTAMs and passenger feedback into summaries and sentiment, with strict JSON output, versioned prompts, a kill switch and a content-hashed cache for deterministic reruns.
+- Built RAG agents on Azure OpenAI and Semantic Kernel over governed data, gated by evaluation sets; five teams now self-serve answers and ad-hoc report requests fell ~60%.
+- Built the real-time path: ~70 Azure Functions over IoT Hub and Event Hubs into Azure Data Explorer at ~5-minute freshness, all deployed with Terraform, Asset Bundles and Azure DevOps.
+
+Software Engineer | Sep 2022 – Nov 2023
+Freddie Mac, New York, NY (remote)
+- Built Python/SQL pipelines for loan-level mortgage data with automated validation and reconciliation; manual review down 40%.
+- Designed a GraphQL + REST data gateway (Node.js, Java, Azure API Management, Entra ID) serving decisioning data at 1K+ requests/s, P95 under 10 ms; SLOs, circuit breakers and idempotent retries held 99.95% uptime.
+- Moved 12+ services onto Kubernetes (AKS, EKS) with GitHub Actions and ArgoCD canary releases: release cycles 50% shorter, deployment incidents down 30%.
+
+Software Engineer, Full-Stack | Jan 2019 – Jul 2021
+Top Hat Software Technologies, Pune, India
+- Built full-stack apps (Angular, Java, MongoDB) for media delivery over Azure Blob Storage and CDN: 10M+ requests a day under 90 ms p99. Batch ETL cut metadata refresh from 4 hours to under 20 minutes.
+- Added Prometheus and Grafana SLI dashboards and alerts, then fixed the worst bottlenecks: availability rose from 99.5% to 99.9%.
+
+PROJECTS
+- Agent-Ready Lakehouse: MCP server giving AI agents governed, audited, read-only access to lakehouse data; dbt layer with 16 data tests; CI eval gate on accuracy and 23 attack cases. https://github.com/SiddheshAmrale/agent-ready-lakehouse
+- VELA: Rust + libmpv media player: 5.6% CPU on HEVC vs 9.8% for stock mpv, 2.2 MB binary. https://github.com/SiddheshAmrale/vela
+- Lakehouse Forge: Medallion lakehouse with CDC/SCD2, data contracts and freshness SLAs (Python, DuckDB). https://gentle-river-08010bc0f.1.azurestaticapps.net/labs/forge
+
+EDUCATION & CERTIFICATIONS
+M.S. Computer Science, New Jersey Institute of Technology, 2023
+B.E. Computer Engineering, Savitribai Phule Pune University, 2019
+Microsoft Certified: Azure AI Engineer Associate (2025) · Azure Developer Associate (2024) · Azure Administrator Associate (2022)

@@ -4,6 +4,7 @@
 
 Outputs, next to this script:
     Siddhesh_Amrale_Resume.docx / .pdf  (the PDF is also copied to public/ for the site)
+    Siddhesh_Amrale_Resume.txt          (for application forms that take pasted text)
 
 Layout rules (ATS): one column, standard section names, no tables, text
 boxes, icons or images; contact details in the body, not the page header.
@@ -337,6 +338,20 @@ def build_pdf(html_path, pdf_path):
     )
 
 
+# ---------------------------------------------------------------- plain text (paste-in forms)
+
+def build_text():
+    lines = [NAME, HEADLINE, " | ".join(t for line in CONTACT for t, _ in line), "",
+             "SUMMARY", SUMMARY, "", "SKILLS"]
+    lines += [f"{g}: {items}" for g, items in SKILLS]
+    lines += ["", "EXPERIENCE"]
+    for title, dates, org, bullets in JOBS:
+        lines += ["", f"{title} | {dates}", org] + [f"- {b}" for b in bullets]
+    lines += ["", "PROJECTS"] + [f"- {n}: {d} {url}" for n, d, (_, url) in PROJECTS]
+    lines += ["", "EDUCATION & CERTIFICATIONS"] + [f"{d}, {y}" for d, y in EDUCATION] + [CERTS]
+    return "\n".join(lines) + "\n"
+
+
 def page_count(pdf_path):
     return subprocess.run(["pdftotext", str(pdf_path), "-"], capture_output=True,
                           text=True, encoding="utf-8", errors="replace").stdout.count("\f")
@@ -348,6 +363,7 @@ def main():
     stem = "Siddhesh_Amrale_Resume"
     pdf = HERE / f"{stem}.pdf"
     build_docx(HERE / f"{stem}.docx")
+    (HERE / f"{stem}.txt").write_text(build_text(), encoding="utf-8")
     build_pdf(build / f"{stem}.html", pdf)
     pages = page_count(pdf)
     if pages != 1:

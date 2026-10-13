@@ -1,0 +1,12 @@
+Dear Databricks Hiring Team,
+
+I'm applying for the Sr. Forward Deployed Engineer role on the Digital Native Business team. For nearly three years I've owned Pittsburgh International Airport's data and AI platform end to end, and it runs on Databricks: 60 Lakeflow pipelines and 58 jobs on Unity Catalog, Auto Loader ingestion from about 50 vendor and device feeds, real-time IoT streams at five-minute freshness, and ai_query enrichment that turns FAA notices and passenger feedback into plain-English data the operations teams use every day.
+
+The work I'm best at is the loop between people and systems. I sit with an operations team, find what they actually need, ship a first version in days, measure it, then harden it into a platform other engineers can build on. That loop turned new data sources from a weeks-long project into a two-day task, and it put RAG agents in front of five business teams, with evaluation sets checked before every change. It is the same loop your FDEs run with customers, and I want to run it across many teams building on Databricks.
+
+Outside work I publish runnable projects. The most relevant is the Agent-Ready Lakehouse (github.com/SiddheshAmrale/agent-ready-lakehouse): an MCP server that gives AI agents governed access to lakehouse data, with a dbt layer and an evaluation suite that blocks unsafe changes in CI.
+
+I'd welcome the chance to talk.
+
+Siddhesh Amrale
+siddhesh.amrale@gmail.com | +1 (973) 438-8729

@@ -62,4 +62,4 @@ LinkedIn Easy Apply).
 
 | Date | Company | Role | Referral? | Status | Next step |
 |---|---|---|---|---|---|
-| | | | | | |
+| 2026-10-13 | Databricks | Sr. Forward Deployed Engineer, Digital Native Business (Greenhouse job 8807049002) | No | Applied: resume text + cover letter; answered no sponsorship needed, yes to Bay Area relocation | Message a Databricks FDE or recruiter on LinkedIn (draft above) |
