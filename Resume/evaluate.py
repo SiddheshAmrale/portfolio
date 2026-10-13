@@ -62,7 +62,7 @@ def demand():
 
 
 def text(pdf):
-    return subprocess.run(["pdftotext", "-layout", str(pdf), "-"], capture_output=True,
+    return subprocess.run(["pdftotext", "-enc", "UTF-8", "-layout", str(pdf), "-"], capture_output=True,
                           text=True, encoding="utf-8", errors="replace").stdout.lower()
 
 
@@ -79,6 +79,18 @@ def score(t, counter):
         else:
             miss.append((lab, n))
     return round(100 * got / total), hit, miss
+
+
+def per_role(t):
+    """Share of each researched role's listed skills that the resume shows."""
+    roles = json.loads(JOBS.read_text(encoding="utf-8"))["roles"]
+    out = collections.defaultdict(list)
+    for r in roles:
+        checks = [lab for s in r["skills"] for lab in labels(s) if lab in SYN]
+        if checks:
+            hit = [lab for lab in checks if any(re.search(p.replace(" ", r"\s+"), t) for p in SYN[lab])]
+            out[r["family"]].append((len(hit) / len(checks), r["company"], r["title"]))
+    return out
 
 
 def main():
@@ -98,6 +110,10 @@ def main():
             pct, hit, miss = score(t, c)
             print(f"  {fam}: {pct}% of demand covered; missing: "
                   + ", ".join(f"{m} ({n})" for m, n in miss[:10]))
+        for fam, rows in per_role(t).items():
+            full = sum(s == 1 for s, *_ in rows)
+            mean = sum(s for s, *_ in rows) / len(rows)
+            print(f"  {fam}: mean per-role match {mean:.0%}, full match on {full}/{len(rows)} roles")
 
 
 if __name__ == "__main__":

@@ -27,9 +27,15 @@ EDGE = Path(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe")
 
 NAME = "Siddhesh Amrale"
 HEADLINE = "Data & AI Platform Engineer | Pittsburgh, PA, open to relocation"
-CONTACT = [  # two lines, so no URL is split across a line break
-    ["siddhesh.amrale@gmail.com", "+1 (973) 438-8729", "linkedin.com/in/siddheshnitinamrale"],
-    ["github.com/SiddheshAmrale", "Portfolio: gentle-river-08010bc0f.1.azurestaticapps.net"],
+SITE = "https://gentle-river-08010bc0f.1.azurestaticapps.net"
+
+# (shown text, link). Two lines, so no URL is split across a line break.
+CONTACT = [
+    [("siddhesh.amrale@gmail.com", "mailto:siddhesh.amrale@gmail.com"),
+     ("+1 (973) 438-8729", "tel:+19734388729"),
+     ("linkedin.com/in/siddheshnitinamrale", "https://www.linkedin.com/in/siddheshnitinamrale/")],
+    [("github.com/SiddheshAmrale", "https://github.com/SiddheshAmrale"),
+     ("Portfolio: gentle-river-08010bc0f.1.azurestaticapps.net", SITE)],
 ]
 
 SUMMARY = (
@@ -64,7 +70,7 @@ JOBS = [
             "Built a reusable ingestion platform on .NET 8 Azure Functions (~50 connectors, 1,300+ "
             "unit tests) with watermark/CDC loads, gap detection and replay. New sources take 2 days "
             "instead of weeks; leaving Azure Data Factory identified $400K+ a year in savings.",
-            "Work directly with operations teams to map how they really work, then ship React + "
+            "Partnered with operations teams to map how they really work, then shipped React + "
             "MSAL apps and Kusto-backed APIs they use daily (parking kiosks, live gate map, "
             "concessions); incident response time down 40%.",
             "Put LLMs inside the pipeline: Databricks ai_query (Llama 3.3 70B) turns FAA NOTAMs and "
@@ -105,13 +111,14 @@ PROJECTS = [
     ("Agent-Ready Lakehouse",
      "MCP server giving AI agents governed, audited, read-only access to lakehouse data; dbt "
      "layer with 16 data tests; CI eval gate on accuracy and 23 attack cases.",
-     "github.com/SiddheshAmrale/agent-ready-lakehouse"),
+     ("github.com/SiddheshAmrale/agent-ready-lakehouse",
+      "https://github.com/SiddheshAmrale/agent-ready-lakehouse")),
     ("VELA",
      "Rust + libmpv media player: 5.6% CPU on HEVC vs 9.8% for stock mpv, 2.2 MB binary.",
-     "github.com/SiddheshAmrale/vela"),
+     ("github.com/SiddheshAmrale/vela", "https://github.com/SiddheshAmrale/vela")),
     ("Lakehouse Forge",
      "Medallion lakehouse with CDC/SCD2, data contracts and freshness SLAs (Python, DuckDB).",
-     "portfolio /labs/forge"),
+     ("portfolio /labs/forge", SITE + "/labs/forge")),
 ]
 
 CERTS = ("Microsoft Certified: Azure AI Engineer Associate (2025) · Azure Developer "
@@ -128,6 +135,43 @@ EDUCATION = [
 INK = RGBColor(0x11, 0x11, 0x11)
 MUTED = RGBColor(0x44, 0x44, 0x44)
 BODY_PT = 9.8
+
+
+LINK = RGBColor(0x1F, 0x4E, 0x8C)
+
+
+def _run(paragraph, text, size=None, color=None):
+    r = paragraph.add_run(text)
+    if size:
+        r.font.size = Pt(size)
+    if color:
+        r.font.color.rgb = color
+    return r
+
+
+def _hyperlink(paragraph, url, text, size=None):
+    """A real, clickable hyperlink run (python-docx has no public API for this)."""
+    rel = paragraph.part.relate_to(
+        url, "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+        is_external=True)
+    link = OxmlElement("w:hyperlink")
+    link.set(qn("r:id"), rel)
+    run = OxmlElement("w:r")
+    props = OxmlElement("w:rPr")
+    color = OxmlElement("w:color")
+    color.set(qn("w:val"), str(LINK))
+    props.append(color)
+    if size:
+        sz = OxmlElement("w:sz")
+        sz.set(qn("w:val"), str(int(size * 2)))
+        props.append(sz)
+    run.append(props)
+    t = OxmlElement("w:t")
+    t.text = text
+    t.set(qn("xml:space"), "preserve")
+    run.append(t)
+    link.append(run)
+    paragraph._p.append(link)
 
 
 def _border_bottom(paragraph):
@@ -189,7 +233,11 @@ def build_docx(path):
     para(NAME, size=19, bold=True)
     para(HEADLINE, size=11, color=MUTED)
     for line in CONTACT:
-        para(" | ".join(line), size=9, color=MUTED)
+        p = para()
+        for i, (text, url) in enumerate(line):
+            if i:
+                _run(p, " | ", size=9, color=MUTED)
+            _hyperlink(p, url, text, size=9)
 
     heading("Summary")
     para(SUMMARY)
@@ -212,7 +260,7 @@ def build_docx(path):
         p = para(after=1)
         p.add_run(name + ": ").bold = True
         p.add_run(desc + " ")
-        p.add_run(where).font.color.rgb = MUTED
+        _hyperlink(p, where[1], where[0])
 
     heading("Education & certifications")
     for degree, year in EDUCATION:
@@ -248,6 +296,7 @@ li {{ margin-bottom: 1pt; }}
 .skill {{ margin-bottom: 1.5pt; }}
 .proj {{ margin-bottom: 1.5pt; }}
 .muted {{ color: #444; }}
+a {{ color: #1f4e8c; text-decoration: none; }}
 .edu {{ display: flex; justify-content: space-between; }}
 .cert {{ margin-top: 1pt; }}
 """
@@ -258,7 +307,8 @@ def build_html():
     out = [f"<!doctype html><html lang='en'><head><meta charset='utf-8'><title>{e(NAME)} Resume</title>"
            f"<style>{CSS}</style></head><body>"]
     out.append(f"<h1>{e(NAME)}</h1><p class='headline'>{e(HEADLINE)}</p>")
-    out += [f"<p class='contact'>{e(' | '.join(line))}</p>" for line in CONTACT]
+    out += ["<p class='contact'>" + " | ".join(f"<a href='{e(u)}'>{e(t)}</a>" for t, u in line) + "</p>"
+            for line in CONTACT]
     out.append(f"<h2>Summary</h2><p>{e(SUMMARY)}</p>")
     out.append("<h2>Skills</h2>")
     out += [f"<p class='skill'><b>{e(g)}:</b> {e(items)}</p>" for g, items in SKILLS]
@@ -269,8 +319,8 @@ def build_html():
         out += [f"<li>{e(b)}</li>" for b in bullets]
         out.append("</ul>")
     out.append("<h2>Projects</h2>")
-    out += [f"<p class='proj'><b>{e(n)}:</b> {e(d)} <span class='muted'>{e(w)}</span></p>"
-            for n, d, w in PROJECTS]
+    out += [f"<p class='proj'><b>{e(n)}:</b> {e(d)} <a href='{e(url)}'>{e(text)}</a></p>"
+            for n, d, (text, url) in PROJECTS]
     out.append("<h2>Education &amp; certifications</h2>" + "".join(
         f"<div class='edu'><span>{e(d)}</span><span>{e(y)}</span></div>" for d, y in EDUCATION))
     out.append(f"<p class='cert'>{e(CERTS)}</p>")
