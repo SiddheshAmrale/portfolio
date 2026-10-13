@@ -1,0 +1,492 @@
+{
+  "collected": "2026-10-11",
+  "source": "LinkedIn public job search (United States)",
+  "note": "Summaries are paraphrased; follow url for the full posting. not_stated = the posting did not mention it.",
+  "jobs": [
+    {
+      "role_family": "Data Engineer",
+      "company": "Deloitte",
+      "title": "Data Engineer III",
+      "location": "Greater Indianapolis",
+      "posted": "4 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-iii-at-deloitte-4475178472",
+      "pay": "$105,400–$207,800",
+      "experience": "5+ yrs pipelines/ETL",
+      "sponsorship": "no",
+      "clearance_or_us_person": "Active Secret clearance",
+      "skills": [
+        "ETL",
+        "batch + near-real-time",
+        "data modelling",
+        "data quality",
+        "lineage",
+        "incident management"
+      ],
+      "summary": "Batch and near-real-time pipelines and data models for government analytics and AI; platform deployment, monitoring and incident work."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "IBM",
+      "title": "Data Engineer, Data Platforms (Google)",
+      "location": "New York (remote U.S.)",
+      "posted": "5 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-google-2-at-ibm-4474402402",
+      "pay": "not_stated",
+      "experience": "Mid-senior",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "GCP",
+        "BigQuery",
+        "Dataflow/Beam",
+        "Dataproc",
+        "Pub/Sub",
+        "Airflow",
+        "dbt",
+        "Spark",
+        "Python",
+        "Scala"
+      ],
+      "summary": "Consulting role building batch and real-time GCP pipelines for warehouses and lakes, orchestrated with Cloud Composer."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Joyce University",
+      "title": "Data Engineer",
+      "location": "Draper, UT (remote/hybrid)",
+      "posted": "1 day ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-joyce-university-4478046118",
+      "pay": "not_stated",
+      "experience": "3+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "SQL Server",
+        "ETL/ELT",
+        "dimensional modelling",
+        "SCD",
+        "data quality",
+        "Python",
+        "Git",
+        "Sigma"
+      ],
+      "summary": "Owns the university warehouse: ingestion from SIS/LMS/CRM, star-schema modelling, data-quality reconciliation, FERPA/GLBA controls, regulatory reporting."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Seneca Holdings",
+      "title": "Senior Data Engineer",
+      "location": "Washington, DC",
+      "posted": "6 days ago",
+      "url": "https://www.linkedin.com/jobs/view/senior-data-engineer-at-seneca-holdings-4473656049",
+      "pay": "not_stated",
+      "experience": "Mid-senior",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": "Federal FISMA High environment",
+      "skills": [
+        "Databricks",
+        "AWS",
+        "medallion",
+        "PySpark",
+        "SQL",
+        "AWS DMS",
+        "GitLab CI/CD",
+        "Kafka/Kinesis",
+        "Delta Lake",
+        "Terraform"
+      ],
+      "summary": "Databricks-on-AWS pipelines with medallion layers, source-to-target mapping and unit tests, near-real-time ingestion via DMS."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Medical Mutual",
+      "title": "Data Engineer (I/II)",
+      "location": "Dublin, OH",
+      "posted": "2 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-medical-mutual-4468841167",
+      "pay": "not_stated",
+      "experience": "Entry level",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "Databricks/Snowflake",
+        "Azure/Synapse",
+        "data modelling",
+        "data quality",
+        "data profiling"
+      ],
+      "summary": "Lake and warehouse pipelines, business requirements, profiling, documentation and data-quality enforcement."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Booz Allen Hamilton",
+      "title": "Data Engineer",
+      "location": "Arlington, VA (customer site)",
+      "posted": "5 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-at-booz-allen-hamilton-4476379144",
+      "pay": "$62,000–$141,000",
+      "experience": "5+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Spark/PySpark",
+        "Scala/Java",
+        "Databricks",
+        "Kafka/Kinesis",
+        "AWS",
+        "Docker/Kubernetes",
+        "ML support"
+      ],
+      "summary": "Pipelines and lakehouse/warehouse platforms for a government customer, supporting ML."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Amazon Web Services",
+      "title": "Data Engineer II, Marketplace & Partner Services",
+      "location": "Seattle, WA",
+      "posted": "4 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-ii-aws-marketplace-and-partner-services-at-amazon-web-services-aws-4476399883",
+      "pay": "not_stated",
+      "experience": "5+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Redshift",
+        "Spark",
+        "Airflow",
+        "Kinesis",
+        "Python/Java",
+        "data modelling",
+        "GenAI"
+      ],
+      "summary": "Data infrastructure, models and pipelines feeding insights, customer features and ML; GenAI building expected."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Travelers",
+      "title": "Data Engineer I, Cloud Data Modernization",
+      "location": "Hartford, CT",
+      "posted": "3 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-i-cloud-data-modernization-aws-databricks-dbt-sql-ai-at-travelers-4475498462",
+      "pay": "$109,300–$180,200",
+      "experience": "not_stated",
+      "sponsorship": "no (no H-1B, TN or STEM OPT)",
+      "clearance_or_us_person": null,
+      "skills": [
+        "AWS",
+        "Databricks",
+        "dbt",
+        "SQL",
+        "PySpark",
+        "governance",
+        "data quality"
+      ],
+      "summary": "Cloud analytics modernisation: data solutions feeding AI/ML and BI."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Cognizant",
+      "title": "Lead Data Engineer, Azure Databricks & PySpark",
+      "location": "Las Vegas, NV",
+      "posted": "6 days ago",
+      "url": "https://www.linkedin.com/jobs/view/lead-data-engineer-azure-databricks-and-pyspark-at-cognizant-4474273968",
+      "pay": "$120K–$135K",
+      "experience": "13+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Azure Databricks",
+        "PySpark",
+        "Spark tuning",
+        "Delta Lake",
+        "CI/CD"
+      ],
+      "summary": "Hands-on lead for high-performance Azure Databricks pipelines and engineering practices."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Oracle",
+      "title": "Senior Data Engineer (Fusion)",
+      "location": "Cleveland, OH",
+      "posted": "3 days ago",
+      "url": "https://www.linkedin.com/jobs/view/senior-data-engineer-fusion-experience-at-oracle-4466244592",
+      "pay": "$102,300–$209,500",
+      "experience": "Mid-senior",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "ETL",
+        "Oracle Fusion",
+        "query/index optimisation",
+        "governance",
+        "data quality"
+      ],
+      "summary": "Requirements to pipelines across many sources; troubleshooting flows and tuning collection."
+    },
+    {
+      "role_family": "Data Engineer",
+      "company": "Amazon Game Studios",
+      "title": "Data Engineer II, Creator Services",
+      "location": "Culver City, CA",
+      "posted": "3 days ago",
+      "url": "https://www.linkedin.com/jobs/view/data-engineer-ii-creator-services-at-amazon-game-studios-4476948829",
+      "pay": "not_stated",
+      "experience": "3+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "SQL",
+        "Redshift",
+        "Kinesis",
+        "AWS",
+        "ETL/ELT",
+        "data modelling",
+        "internal tools"
+      ],
+      "summary": "Curated datasets for AI and self-service analytics plus internal automation tools for creator monetisation."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Nominal",
+      "title": "Forward Deployed Engineer, AI",
+      "location": "Austin, TX",
+      "posted": "4 days ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-ai-at-nominal-4474415937",
+      "pay": "not_stated",
+      "experience": "4+ yrs",
+      "sponsorship": "U.S. person required",
+      "clearance_or_us_person": "Clearance or eligible",
+      "skills": [
+        "Python",
+        "AI agents",
+        "evals",
+        "on-site"
+      ],
+      "summary": "Embedded with hardware teams building agentic workflows that do engineering work; productises patterns and proves measured value."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Nebius (Tavily)",
+      "title": "FDE, Ecosystem",
+      "location": "New York",
+      "posted": "6 hours ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-ecosystem-tavily-at-nebius-4458437054",
+      "pay": "not_stated",
+      "experience": "3+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "LLM",
+        "RAG",
+        "agents",
+        "SDKs",
+        "APIs",
+        "partner integrations"
+      ],
+      "summary": "Partner integrations with model providers and agent frameworks; reference implementations, retrieval pipelines and demos."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Closr",
+      "title": "Forward Deployed Engineer",
+      "location": "San Francisco",
+      "posted": "4 days ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-at-closr-4476714589",
+      "pay": "$120K–$240K (senior $160K–$270K)",
+      "experience": "1–8+ yrs",
+      "sponsorship": "possible (visa transfer, select roles)",
+      "clearance_or_us_person": "Some gov roles need clearance",
+      "skills": [
+        "Python",
+        "TypeScript",
+        "AWS/Azure/GCP",
+        "Docker/Kubernetes",
+        "LLM features",
+        "data pipelines"
+      ],
+      "summary": "Turns enterprise workflows into deployed software (integrations, pipelines, LLM features) and owns deployments end to end."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Trail",
+      "title": "Forward Deployed Engineer",
+      "location": "Palo Alto, CA",
+      "posted": "5 days ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-at-trail-4476388071",
+      "pay": "$130K–$160K",
+      "experience": "2+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python/Go/JavaScript",
+        "PRDs",
+        "customer onboarding"
+      ],
+      "summary": "Technical partner taking customer deployments from idea to production; writes requirements and builds them."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Revin",
+      "title": "Forward Deployed Engineer (Pathfinder)",
+      "location": "New York",
+      "posted": "3 weeks ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-fde-at-revin-4466119486",
+      "pay": "$120K–$200K",
+      "experience": "2+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "TypeScript",
+        "React",
+        "SQL",
+        "LLM",
+        "on-site"
+      ],
+      "summary": "Field role embedded with operators of large businesses deploying AI systems; rapid prototyping and deep integrations."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Conversion",
+      "title": "Founding Forward Deployed Engineer",
+      "location": "San Francisco",
+      "posted": "2 weeks ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-at-conversion-4469676076",
+      "pay": "$175K–$250K",
+      "experience": "Entry level (per LinkedIn)",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "AI deployments",
+        "pilots",
+        "technical sales"
+      ],
+      "summary": "Turns enterprise needs into working AI deployments that prove value in pilots, alongside deployment strategists."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Fulcrum",
+      "title": "Forward Deployed AI Engineer",
+      "location": "San Francisco",
+      "posted": "1 week ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-ai-engineer-at-fulcrum-4452286868",
+      "pay": "$140K–$300K",
+      "experience": "2+ yrs",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "TypeScript",
+        "AI automation",
+        "compliance"
+      ],
+      "summary": "Owns customer implementations of AI automations for insurance brokers, including customisation."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Runtime (recruiter)",
+      "title": "Senior Forward Deployed Engineer",
+      "location": "U.S. remote",
+      "posted": "3 weeks ago",
+      "url": "https://www.linkedin.com/jobs/view/senior-forward-deployed-engineer-at-runtime-4469213452",
+      "pay": "Up to $210K base + 20% OTE + equity",
+      "experience": "Senior",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "TypeScript",
+        "AI code review",
+        "enterprise deployments"
+      ],
+      "summary": "Enterprise deployments for a Series B AI developer-tools company focused on AI-generated code quality."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Domino Data Lab",
+      "title": "Forward Deployed Engineer",
+      "location": "New York",
+      "posted": "1 week ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-at-domino-data-lab-4470713537",
+      "pay": "not_stated",
+      "experience": "1–3 yrs customer-facing",
+      "sponsorship": "possible (H-1B case by case)",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "SQL",
+        "MLOps",
+        "Snowflake",
+        "AWS/Azure/GCP",
+        "Docker/Kubernetes",
+        "CI/CD"
+      ],
+      "summary": "Ramps by shadowing a senior FDE, then owns customer engagements deploying production ML-lifecycle solutions."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Cohere",
+      "title": "FDE, Agentic Platform",
+      "location": "New York",
+      "posted": "2 days ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-agentic-platform-at-cohere-4423810353",
+      "pay": "not_stated",
+      "experience": "Entry level (per LinkedIn)",
+      "sponsorship": "not_stated",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "React",
+        "LLM agents",
+        "RAG",
+        "evals"
+      ],
+      "summary": "Frames enterprise problems as agentic workflows with success criteria and evals; builds agents and ships platform features."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Deloitte",
+      "title": "Palantir Associate FDE, GPS",
+      "location": "New York",
+      "posted": "2 weeks ago",
+      "url": "https://www.linkedin.com/jobs/view/palantir-associate-forward-deployed-engineer-gps-at-deloitte-4443795960",
+      "pay": "$91,100–$175,100",
+      "experience": "2+ yrs",
+      "sponsorship": "no",
+      "clearance_or_us_person": "Clearance-eligible",
+      "skills": [
+        "Palantir Foundry/AIP",
+        "GenAI",
+        "Spark",
+        "dbt",
+        "Airflow",
+        "AWS/Azure",
+        "CI/CD"
+      ],
+      "summary": "Embedded with government clients prototyping GenAI solutions on Palantir."
+    },
+    {
+      "role_family": "Forward Deployed Engineer",
+      "company": "Analog Devices",
+      "title": "Forward Deployed Engineer",
+      "location": "San Jose, CA",
+      "posted": "1 week ago",
+      "url": "https://www.linkedin.com/jobs/view/forward-deployed-engineer-at-analog-devices-4454131968",
+      "pay": "$230,000–$316,250",
+      "experience": "10+ yrs",
+      "sponsorship": "U.S. person required (export control)",
+      "clearance_or_us_person": null,
+      "skills": [
+        "Python",
+        "data pipelines",
+        "APIs",
+        "MLOps",
+        "edge AI",
+        "on-site"
+      ],
+      "summary": "Production pipelines, integrations and AI workflows embedded with customers and edge-AI teams; owns architecture."
+    }
+  ]
+}

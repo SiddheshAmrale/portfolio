@@ -3,7 +3,7 @@
 
 export const profile = {
   name: 'Siddhesh Amrale',
-  role: 'AI Cloud Engineer',
+  role: 'Analytics Full Stack Developer (Data & AI Platform Engineering)',
   employer: 'Pittsburgh International Airport',
   location: 'Pittsburgh, PA',
   coords: '40.44°N 79.99°W',
@@ -12,7 +12,7 @@ export const profile = {
   phoneHref: 'tel:+19734388729',
   github: 'https://github.com/SiddheshAmrale',
   linkedin: 'https://www.linkedin.com/in/siddheshnitinamrale/',
-  resume: '/Siddhesh_Amrale_Resume_2025_GenAI_.docx',
+  resume: '/Siddhesh_Amrale_Resume.pdf',
 };
 
 export const roles = [
@@ -99,6 +99,16 @@ export const projects: Project[] = [
     evidence: 'Desktop app · 85 end-to-end checks',
     href: 'https://github.com/SiddheshAmrale/vela',
     image: '/vela/home.jpg',
+  },
+  {
+    id: 'agent-lakehouse',
+    title: 'Agent-Ready Lakehouse',
+    summary:
+      'MCP server that gives AI agents governed, read-only access to lakehouse data: SQL allow-list, per-role sandboxes with masking and row filters, a locked engine and an audit log. A CI eval gate checks metric accuracy against an independent oracle, 23 attack and out-of-scope requests, and latency.',
+    domains: ['ai', 'data'],
+    tech: ['MCP', 'DuckDB', 'dbt', 'Evals'],
+    evidence: '44 tests · CI eval gate',
+    href: 'https://github.com/SiddheshAmrale/agent-ready-lakehouse',
   },
   {
     id: 'inference',
