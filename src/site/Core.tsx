@@ -1,7 +1,7 @@
-// Centre of the agent scene: a holographic command core showing either the
-// face portrait (src/assets/me/avatar-face.*) or the SA monogram. Built from HTML layers (each ring is its own small SVG) so the
-// rotations and the glow pulse are pure compositor work: animating these
-// inside the main SVG made Chrome repaint the whole scene every frame.
+// Centre of the agent scene: holographic command core with the SA monogram
+// (optional face at src/assets/me/avatar-face.*). Built from HTML layers (each
+// ring is its own small SVG) so rotations and the glow pulse are compositor
+// work — animating these inside the main SVG made Chrome repaint every frame.
 
 export function CoreOverlay({ x, y, viewW, viewH, face }: { x: number; y: number; viewW: number; viewH: number; face?: string }) {
   return (

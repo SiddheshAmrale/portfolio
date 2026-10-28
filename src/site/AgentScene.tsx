@@ -1,8 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { CoreOverlay, CorePanel } from './Core';
 
-// Optional face portrait at src/assets/me/avatar-face.(webp|png|jpg): shown in
-// the command core (hashed, long-cached asset); otherwise the SA monogram.
+// Optional face at src/assets/me/avatar-face.(webp|png|jpg); default is SA.
 const found = import.meta.glob('../assets/me/avatar-face.{webp,png,jpg}', {
   eager: true,
   query: '?url',
@@ -10,8 +9,7 @@ const found = import.meta.glob('../assets/me/avatar-face.{webp,png,jpg}', {
 }) as Record<string, string>;
 const FACE: string | undefined = Object.values(found)[0];
 
-// "Orchestrator" scene: the agents, the beams that connect them to the centre
-// and the centre itself (3D portrait or command core).
+// "Orchestrator" scene: agents, beams to the centre, and the SA command core.
 //
 // Every continuous animation here is compositor-only (transform / opacity on
 // HTML layers). Animations of SVG children run on the main thread every frame,

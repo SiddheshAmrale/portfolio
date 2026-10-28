@@ -57,9 +57,12 @@ server, median of 3):
 | Best Practices | 96 | **100** |
 | Home-page JS (gzip) | 140 KB (everything) | ~71 KB (labs lazy) |
 
-**Portrait:** a head-and-shoulders 3D avatar at
-`src/assets/me/avatar-face.webp` sits in the command core at the centre of the
-agent scene. Remove it and the core shows the SA monogram instead.
+**Command core:** the agent-scene centre shows the **SA** monogram. Dropping an
+optional `src/assets/me/avatar-face.webp` would switch it to a face portrait.
+
+**Sibling apps** (separate repos next to this portfolio, like VELA):
+[SA-Photoshop](https://github.com/SiddheshAmrale/sa-photoshop) and
+[World Tracker](https://github.com/SiddheshAmrale/world-tracker).
 
 ```bash
 npm run dev        # http://localhost:5173

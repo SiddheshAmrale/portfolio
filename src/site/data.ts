@@ -101,6 +101,26 @@ export const projects: Project[] = [
     image: '/vela/home.jpg',
   },
   {
+    id: 'sa-photoshop',
+    title: 'SA-Photoshop',
+    summary:
+      'Native image editor in pure Rust: layers, masks, adjustment layers, brushes, type, vectors and real PSD files. Fork of PhotoCraft (MIT/Apache-2.0) — open source, offline, and cross-platform (desktop + web).',
+    domains: ['performance'],
+    tech: ['Rust', 'GPU', 'PSD', 'Native · Web'],
+    evidence: 'Fork of PhotoCraft · Rust native',
+    href: 'https://github.com/SiddheshAmrale/sa-photoshop',
+  },
+  {
+    id: 'world-tracker',
+    title: 'World Tracker',
+    summary:
+      'Live photorealistic 3D globe of aircraft, ships, satellites, earthquakes and public cameras, with voice control. Performance-focused fork of God\'s Eye View: motion LOD, memoized time, and panel coalescing that lifted live-view FPS from the teens into the mid-20s–40s.',
+    domains: ['performance', 'cloud'],
+    tech: ['Cesium', 'JavaScript', 'Realtime', '3D globe'],
+    evidence: 'Live globe · voice agent',
+    href: 'https://github.com/SiddheshAmrale/world-tracker',
+  },
+  {
     id: 'agent-lakehouse',
     title: 'Agent-Ready Lakehouse',
     summary:
